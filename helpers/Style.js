@@ -22,7 +22,7 @@ define([
 
       var self = this;
       var options = self.opts(arguments);
-      var url = name.indexOf(self.options.paths.frameworkStyles) < 0 ? '/site/styles/' + name : '/' + name;
+      var url = name.indexOf(self.options.paths.frameworkStyles) < 0 ? '/site/styles/' + name : '/' + name.replace('framework', self.options.frameworkDir);
       url += '.css';
 
       var hash = options.hash;
