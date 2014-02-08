@@ -12,7 +12,7 @@ module.exports = function (options) {
   // And start the beast
   requirejs([
 
-    './lib/Asimov'
+    options.frameworkDir + '/lib/Asimov'
 
   ], function (Asimov) {
     
