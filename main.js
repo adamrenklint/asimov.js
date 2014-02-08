@@ -9,6 +9,8 @@ var requirejs = require('requirejs');
 
 module.exports = function (options) {
 
+  options.pkg = require('./package.json');
+
   // And start the beast
   requirejs([
 
