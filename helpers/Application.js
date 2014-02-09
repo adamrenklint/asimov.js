@@ -10,14 +10,12 @@
 define([
 
   '../lib/render/TemplateHelper',
-  '../lib/core/Filesystem',
   'lodash'
 
-], function (TemplateHelper, Filesystem, _) {
+], function (TemplateHelper, _) {
 
   var _super = TemplateHelper.prototype;
-  var filesystem = new Filesystem();
-
+  
   return TemplateHelper.extend({
 
     'applications': {},
@@ -48,7 +46,7 @@ define([
       var options = self.opts(arguments);
       var url = self.getUrl(name);
 
-      if (!filesystem.pathExists('public' + url)) {
+      if (!self.filesystem.pathExists('public' + url)) {
         throw new Error('Cannot find application ' + name + ' @ ' + url);
       }
 

@@ -6,7 +6,7 @@
 
 define([
 
-  'framework/vendor/wunderbits.core/public/WBEventEmitter'
+  'wunderbits-core/public/WBEventEmitter'
 
 ], function (WBEventEmitter) {
 
