@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js youtube template helper class
+  youtube template helper class
 
 */
 

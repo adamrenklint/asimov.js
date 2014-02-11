@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js style sheet template helper class
+  style sheet template helper class
 
   registers stylesheet to render queue and and inserts
   code that loads it on the client side, unless already loaded

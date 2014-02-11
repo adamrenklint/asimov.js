@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js email template helper class
+  email template helper class
 
 */
 

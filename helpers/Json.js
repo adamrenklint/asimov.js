@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js json template helper class
+  json template helper class
 
 */
 

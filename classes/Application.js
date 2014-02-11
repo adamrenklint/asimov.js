@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js client application class
+  client application class
 
 */
 

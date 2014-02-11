@@ -1,6 +1,9 @@
 /*
   
-  ▲ asimov.js bootstrap
+  asimov.js bootstrap
+
+  sets up requirejs and some configuration defaults
+  then loads the framework loader
 
 */
 

@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js image template helper class
+  image template helper class
 
   just a shortcut for embedding images
 

@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js children template helper class
+  children template helper class
 
   iterates over the children of the current
   or defined page, nested or shallow

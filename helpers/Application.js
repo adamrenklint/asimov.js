@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js application template helper class
+  application template helper class
 
   registers application from template to render queue
   and inserts code to load application on client side

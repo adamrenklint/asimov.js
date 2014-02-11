@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js vimeo template helper class
+  vimeo template helper class
 
 */
 

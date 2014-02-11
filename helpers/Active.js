@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js active template helper class
+  active template helper class
 
   checks if the provided url is the active one,
   and then returns the value provided

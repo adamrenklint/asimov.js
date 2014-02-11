@@ -1,6 +1,6 @@
 /*
   
-  ▲ asimov.js link template helper class
+  link template helper class
 
 */
 
