@@ -1,5 +1,5 @@
 /*
-  
+
   json template helper class
 
 */

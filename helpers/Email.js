@@ -1,5 +1,5 @@
 /*
-  
+
   email template helper class
 
 */

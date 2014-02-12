@@ -1,5 +1,5 @@
 /*
-  
+
   style sheet template helper class
 
   registers stylesheet to render queue and and inserts
@@ -33,9 +33,9 @@ define([
         'url': url
       };
 
-      if (!self.options.map[url]) {
+      if (!self.map[url]) {
         self.vent('queue', styles);
-        self.options.map[url] = styles;
+        self.map[url] = styles;
       }
 
       hash.rel = 'stylesheet';

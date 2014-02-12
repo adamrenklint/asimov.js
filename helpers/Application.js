@@ -1,5 +1,5 @@
 /*
-  
+
   application template helper class
 
   registers application from template to render queue
@@ -15,13 +15,13 @@ define([
 ], function (TemplateHelper, _) {
 
   var _super = TemplateHelper.prototype;
-  
+
   return TemplateHelper.extend({
 
     'applications': {},
 
     'getUrl': function (name) {
-      
+
       return '/applications/' + name + '/Application.js';
     },
 
@@ -33,9 +33,9 @@ define([
         'name': name,
         'url': url
       };
-      
+
       self.vent('queue', app);
-      self.options.map[url] = app;
+      self.map[url] = app;
 
       return app;
     },
@@ -50,7 +50,7 @@ define([
         throw new Error('Cannot find application ' + name + ' @ ' + url);
       }
 
-      if (!self.options.map[url]) {
+      if (!self.map[url]) {
 
         self.queueApp(name, url);
       }

@@ -1,5 +1,5 @@
 /*
-  
+
   image template helper class
 
   just a shortcut for embedding images
@@ -8,12 +8,9 @@
 
 define([
 
-  '../lib/render/TemplateHelper',
-  'lodash'
+  '../lib/render/TemplateHelper'
 
-], function (TemplateHelper, _) {
-
-  var _super = TemplateHelper.prototype;
+], function (TemplateHelper) {
 
   return TemplateHelper.extend({
 
@@ -23,7 +20,7 @@ define([
       var options = self.opts(arguments);
       var hash = options.hash;
 
-      hash.src = _.isString(src) ? src : hash.src;
+      hash.src = typeof src === 'string' ? src : hash.src;
       hash.src = self.currentUrl + '/' + hash.src;
 
       hash.selfClose = true;
