@@ -47,7 +47,7 @@ define([
         data.url = url;
 
         var urlPieces = self.currentUrl.split('/');
-        var childPieces = url.split('/')
+        var childPieces = url.split('/');
 
         data.isDirectChild = urlPieces.length === childPieces.length - 1;
         html += options.fn(data);

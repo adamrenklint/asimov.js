@@ -22,7 +22,13 @@ define([
 
       var self = this;
       var options = self.opts(arguments);
-      var url = name.indexOf(self.options.paths.frameworkStyles) < 0 ? '/site/styles/' + name : '/' + name.replace('framework', self.options.frameworkDir);
+      var url = '/site/styles/' + name;
+
+      if (name.indexOf(self.options.paths.frameworkStyles) >= 0) {
+        name = name.split(self.options.paths.frameworkStyles)[1];
+        url = '/asimov.js' + name;
+      }
+
       url += '.css';
 
       var hash = options.hash;
