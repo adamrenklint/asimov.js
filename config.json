@@ -6,10 +6,8 @@
     "frameworkStyles": "framework/styles",
     "content": "content",
     "data": "site/data",
-    "templates": [
-      "framework/templates",
-      "site/templates"
-    ],
+    "templates": "site/templates",
+    "frameworkTemplates": "framework/templates",
     "helpers": [
       "framework/helpers",
       "site/helpers"
