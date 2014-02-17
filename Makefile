@@ -6,10 +6,10 @@ start:
 	@node main.js
 
 test:
-	@node bin/runner test tests
+	@runner.js test tests
 
 coverage:
-	@node bin/runner coverage tests
+	@runner.js coverage tests
 
 publish:
 	@npm publish
