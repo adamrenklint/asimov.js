@@ -1,4 +1,4 @@
-install:
+finstall:
 	@npm install
 	@npm install -g runner.js
 
