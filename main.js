@@ -1,5 +1,5 @@
 /*
-  
+
   asimov.js bootstrap
 
   sets up requirejs and some configuration defaults
@@ -13,23 +13,18 @@ var requirejs = require('requirejs');
 module.exports = function (options) {
 
   options = options || {};
-  options.frameworkDir = options.frameworkDir || 'node_modules/asimov-framework';
   options.pkg = require('./package.json');
 
   requirejs.config({
-    'paths': {
-      'asimov-core': options.frameworkDir + '/node_modules/asimov-core/lib',
-      'vendor/wunderbits.core': options.frameworkDir + '/node_modules/asimov-core/vendor/wunderbits.core'
-    }
+    'baseUrl': __dirname
   });
 
-  // And start the beast
   requirejs([
 
-    options.frameworkDir + '/lib/core/Loader'
+    './lib/core/Loader'
 
   ], function (Loader) {
-    
+
     var instance = new Loader(options);
   });
 };
