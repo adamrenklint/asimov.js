@@ -7,10 +7,10 @@
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:adamrenklint/asimov-framework.git"
+    "url": "git@github.com:adamrenklint/asimov.git"
   },
   "bugs": {
-    "url": "https://github.com/adamrenklint/asimov-framework/issues"
+    "url": "https://github.com/adamrenklint/asimov/issues"
   },
   "engines": {
     "node": "~0.10.0",
