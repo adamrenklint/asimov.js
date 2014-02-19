@@ -11,7 +11,7 @@
       "site/templates"
     ],
     "helpers": [
-      "framework/helpers",
+      "framework/lib/helpers",
       "site/helpers"
     ],
     "middleware": "site/middleware"
