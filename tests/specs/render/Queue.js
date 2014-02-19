@@ -1,6 +1,6 @@
 test('lib/render/Queue', [
 
-  'lib/render/Queue'
+  '../../../lib/render/Queue'
 
 ], function (runner) {
 
