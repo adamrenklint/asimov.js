@@ -9,12 +9,14 @@
 
 // Setup requirejs
 var requirejs = require('requirejs');
+var uri = requirejs('URIjs');
 
 module.exports = function (options) {
 
   options = options || {};
   options.pkg = require('./package.json');
-  options.frameworkDir = options.frameworkDir || __dirname;
+  options.relativeDir = uri(__dirname).relativeTo(process.cwd());
+  options.frameworkDir = __dirname;
 
   requirejs.config({
     'baseUrl': __dirname
