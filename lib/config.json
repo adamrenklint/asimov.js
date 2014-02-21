@@ -2,16 +2,19 @@
   "paths": {
     "applications": "public/applications",
     "configs": "environments",
-    "styles": "site/styles",
-    "frameworkStyles": "framework/styles",
+    "styles": [
+      "{{framework}}/styles",
+      "site/styles"
+    ],
+    "frameworkStyles": "{{framework}}/styles",
     "content": "content",
     "data": "site/data",
     "templates": [
-      "framework/templates",
+      "{{framework}}/templates",
       "site/templates"
     ],
     "helpers": [
-      "framework/lib/helpers",
+      "{{framework}}/helpers",
       "site/helpers"
     ],
     "middleware": "site/middleware"

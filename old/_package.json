@@ -1,0 +1,22 @@
+{
+  "name": "asimov-app-template",
+  "version": "0.0.1",
+  "homepage": "http://asimovjs.org",
+  "description": "Default template for asimov.js apps",
+  "author": "Adam Renklint <adam@renklint.com>",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adamrenklint/asimov-app-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adamrenklint/asimov-app-template/issues"
+  },
+  "engines": {
+    "node": "~0.10.0",
+    "npm": "~1.1.60"
+  },
+  "dependencies": {
+    "asimov-framework": "latest"
+  }
+}
