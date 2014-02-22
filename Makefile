@@ -1,15 +1,9 @@
 install:
 	@npm install
-	@npm install -g runner.js
+	@npm install -g nodemon
 
 start:
-	@node main.js
-
-test:
-	@runner.js test tests
-
-coverage:
-	@runner.js coverage tests
+	@nodemon main.js
 
 publish:
 	@npm publish
