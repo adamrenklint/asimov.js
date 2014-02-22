@@ -2,4 +2,4 @@ title: home 2
 ---
 text:
 
-lkalksjdklasblasdklsakldjask
+lkalksjdklasblasdklsakldjask foo?{{site.foo}}
