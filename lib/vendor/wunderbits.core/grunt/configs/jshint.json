@@ -1,0 +1,11 @@
+{
+  "options": {
+    "jshintrc": "public/.jshintrc"
+  },
+  "public": {
+    "src": [
+      "Gruntfile.js",
+      "public/**/*.js"
+    ]
+  }
+}

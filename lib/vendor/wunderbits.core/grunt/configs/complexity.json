@@ -1,0 +1,15 @@
+{
+  "options": {
+    "cyclomatic": 5,
+    "halstead": 20,
+    "maintainability": 100,
+    "errorsOnly": false
+  },
+  "public": {
+    "src": [
+      "Gruntfile.js",
+      "public/**/*.js",
+      "!public/mixins/WBBindableMixin.js"
+    ]
+  }
+}

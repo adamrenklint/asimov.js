@@ -1,0 +1,26 @@
+{
+  "name": "wunderbits.core",
+  "version": "0.0.2",
+  "description": "Core components of Wunderbits",
+  "scripts": {
+    "test": "grunt lint specs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wunderlist/wunderbits.core.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wunderlist/wunderbits.core/issues"
+  },
+  "homepage": "http://wunderlist.github.io/wunderbits.core",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-complexity": "~0.1.4",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "kaapi": "~0.1.5",
+    "kaapi.coverage": "0.0.2"
+  }
+}

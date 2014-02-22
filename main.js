@@ -1,33 +1,27 @@
 /*
 
-  asimov.js bootstrap
-
-  sets up requirejs and some configuration defaults
-  then loads the framework loader
+  minimal bootstrap
 
 */
 
-// Setup requirejs
-var requirejs = require('requirejs');
-var uri = requirejs('URIjs');
+// Override env flags
+process.env.DEBUG = true;
+process.env.ENV = 'development';
+// process.env.LOG_LEVEL = 'verbose';
+// process.env.LOG_LEVEL = 'silent';
 
-module.exports = function (options) {
+var options = {};
+options.frameworkDir = 'lib';
+// options.baseDir = __dirname;
+// options.logVerbose = true;
+options.meta = require('./package.json');
 
-  options = options || {};
-  options.pkg = require('./package.json');
-  options.relativeDir = uri(__dirname).relativeTo(process.cwd());
-  options.frameworkDir = __dirname;
+// var port = process.env.PORT || 3003;
+var asimov = require('./lib/asimov')(options);
 
-  requirejs.config({
-    'baseUrl': __dirname
-  });
 
-  requirejs([
-
-    './lib/core/Loader'
-
-  ], function (Loader) {
-
-    var instance = new Loader(options);
-  });
-};
+// create basic "struct in struct" and test when installed
+// ensure basic functionality
+// add models and collections, take from backbone
+// refactor, change everything that makes sense to models and collections
+// start over with the watchers and work back to where I was before

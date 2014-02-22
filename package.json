@@ -1,10 +1,10 @@
 {
   "name": "asimov",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "homepage": "http://asimovjs.org",
   "description": "A simple web framework for awesome websites and apps",
   "author": "Adam Renklint <adam@renklint.com>",
-  "main": "main.js",
+  "main": "framework/asimov.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:adamrenklint/asimov.git"
