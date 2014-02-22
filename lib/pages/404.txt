@@ -1,0 +1,7 @@
+title: Not Found
+---
+url: /404
+---
+text:
+
+Page Not Found
