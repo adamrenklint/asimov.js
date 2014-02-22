@@ -1,6 +1,6 @@
 {
   "paths": {
-    "frameworkPages": "{[framework}}/pages",
+    "frameworkPages": "{{framework}}/pages",
     "applications": "public/applications",
     "configs": "environments",
     "styles": [
