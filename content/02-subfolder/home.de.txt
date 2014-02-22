@@ -2,4 +2,4 @@ title: tttyskslandd, germany
 ---
 text:
 
-jasd9asdi0asid0asd0asd9asid09asiasd auf deutsch
+jasd9asdi0asid0asd0asd9asid09asiasd auf deutsch {{super.title}}
