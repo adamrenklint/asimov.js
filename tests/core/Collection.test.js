@@ -18,7 +18,7 @@ test('core/Collection', [
 
   runner.spec('add (object model, object options)', function () {
 
-    runner.when('a model is passed as argument', function () {
+    runner.when('model is a valid model', function () {
 
       runner.it('should add model to self.models', function () {
 

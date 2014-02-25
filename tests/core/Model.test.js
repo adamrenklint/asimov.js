@@ -12,9 +12,9 @@ test('core/Model', [
 
   runner.spec('initialize (object attributes, object options)', function () {
 
-    runner.when('attributes are passed as argument', function () {
+    runner.when('attributes is an object', function () {
 
-      runner.it('should set them as self.attributes', function () {
+      runner.it('should set it as self.attributes', function () {
 
         var attributes = {
           'foo': 'bar'
