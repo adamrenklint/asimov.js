@@ -4,6 +4,6 @@ headline: ▲ asimov.js
 ---
 text:
 
-Welcome to your brand new asimov.js app. This is the default landing page, which you can change or remove by editing <code>/content/home.txt</code>.
+_Welcome to your brand new asimov.js app. This is the default landing page, which you can change or remove by editing <code>/content/home.txt</code>.
 
 New to asimov.js? Check out {{link "http://asimovjs.org" "asimovjs.org"}}

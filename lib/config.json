@@ -7,7 +7,6 @@
       "{{framework}}/styles",
       "site/styles"
     ],
-    "frameworkStyles": "{{framework}}/styles",
     "content": "content",
     "data": "site/data",
     "templates": [
