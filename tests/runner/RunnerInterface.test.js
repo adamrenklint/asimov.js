@@ -1,4 +1,4 @@
-test('tests/RunnerInterface', [
+test('runner/RunnerInterface', [
 
   '../../lib/runner/RunnerInterface',
   '../mocks/Server'
@@ -52,11 +52,11 @@ test('tests/RunnerInterface', [
 
     runner.when('callback is not a function', function () {
 
-      runner.it('should throw an error', function () {
+      runner.it('should NOT throw an error', function () {
 
         expect(function () {
           instance.it('null', null);
-        }).to.throw(Error);
+        }).to.not.throw(Error);
       });
     });
 
