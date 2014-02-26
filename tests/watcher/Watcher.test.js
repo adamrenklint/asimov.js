@@ -157,9 +157,35 @@ test('watcher/Watcher', [
 
     runner.when('there is a matching parser for model.attributes.type', function () {
 
-      runner.it('should pass model as first argument');
-      runner.it('should pass null as second argument');
-      runner.it('should pass itself as third argument');
+      runner.it('should pass model as first argument', function () {
+
+        var model = new runner.deps.Model({
+          'path': 'foo',
+          'type': 'styleSheet',
+          'raw': 'baz'
+        });
+
+        var spy = sinon.spy(instance._parsers.styleSheet, 'parse');
+
+        instance.parseDependencies(model);
+        expect(spy).to.have.been.calledWith(model);
+        instance._parsers.styleSheet.parse.restore();
+      });
+
+      runner.it('should pass itself as third argument', function () {
+
+        var model = new runner.deps.Model({
+          'path': 'foo',
+          'type': 'styleSheet',
+          'raw': 'baz'
+        });
+
+        var spy = sinon.spy(instance._parsers.styleSheet, 'parse');
+
+        instance.parseDependencies(model);
+        expect(spy).to.have.been.calledWith(model, null, instance);
+        instance._parsers.styleSheet.parse.restore();
+      });
     });
   });
 });
