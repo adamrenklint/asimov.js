@@ -31,22 +31,41 @@ test('watcher/DependencyParser', [
 
     runner.when('model is not a valid model', function () {
 
-      runner.it('should throw an error');
+      runner.it('should throw an error', function () {
+
+        var dependencies = new runner.deps.Model();
+        expect(function () {
+          instance.add({}, 'foo', dependencies);
+        }).to.throw(Error);
+      });
     });
 
     runner.when('path is not a string', function () {
 
-      runner.it('should throw an error');
+      runner.it('should throw an error', function () {
+
+        var model = new runner.deps.Model();
+        var dependencies = new runner.deps.Model();
+        expect(function () {
+          instance.add(model, null, dependencies);
+        }).to.throw(Error);
+      });
     });
 
     runner.when('dependencies is not a valid model', function () {
 
-      runner.it('should throw an error');
+      runner.it('should throw an error', function () {
+
+        var model = new runner.deps.Model();
+        expect(function () {
+          instance.add(model, 'null');
+        }).to.throw(Error);
+      });
     });
 
     runner.when('valid options are provided', function () {
 
-      runner.when('model is not already registered as a dependecy of path', function () {
+      runner.when('model is not already registered as a dependency of path', function () {
 
         runner.it('it should add model as a dependency of path', function () {
 

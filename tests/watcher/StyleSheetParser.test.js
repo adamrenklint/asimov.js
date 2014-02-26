@@ -29,11 +29,6 @@ test('watcher/StyleSheetParser', [
       });
     });
 
-    runner.when('raw is not a string',  function () {
-
-      runner.it('should use model.attributes.raw as raw');
-    });
-
     runner.when('raw does not contain an @import statement', function () {
 
       runner.it('should not change the dependency graph');
@@ -50,6 +45,11 @@ test('watcher/StyleSheetParser', [
 
         runner.it('should throw error');
       });
+    });
+
+    runner.when('raw is not a string',  function () {
+
+      runner.it('should use model.attributes.raw as raw');
     });
   });
 });
