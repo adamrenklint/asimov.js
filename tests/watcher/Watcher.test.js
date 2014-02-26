@@ -1,6 +1,7 @@
 test('watcher/Watcher', [
 
   '../../lib/watcher/Watcher',
+  '../../lib/core/Model'
 
 ], function (runner) {
 
@@ -27,7 +28,7 @@ test('watcher/Watcher', [
       });
     });
 
-    runner.when('path is a valid path', function () {
+    runner.when('path is a string', function () {
 
       runner.when('a file in the path is added', function () {
 
@@ -52,7 +53,7 @@ test('watcher/Watcher', [
         runner.it('should call self.handleChange', function (done) {
 
           var filename = runner.getTempFilename();
-          var content = '7s89d7a9sd7';
+          var content = 'foo';
 
           instance.handleChange = function (changed) {
             if (changed.indexOf(filename) >= 0) {
@@ -71,8 +72,8 @@ test('watcher/Watcher', [
         runner.it('should call self.handleChange', function () {
 
           var filename = runner.getTempFilename();
-          var content1 = '7s89d7a9sd7';
-          var content2 = '7s89d77d98as9da9sd7';
+          var content1 = 'foo';
+          var content2 = 'barbaz';
 
           instance.handleChange = function (changed) {
             if (changed.indexOf(filename) >= 0) {
@@ -85,6 +86,78 @@ test('watcher/Watcher', [
           runner.writeTempFile(filename, content2);
         });
       });
+    });
+  });
+
+  runner.spec('watch (object model)', function () {
+
+    runner.when('model.attributes.type is not defined', function () {
+
+      runner.it('should throw an error', function () {
+
+        var model = new runner.deps.Model({
+          'path': 'foo',
+          'raw': 'bar'
+        });
+
+        expect(function () {
+          instance.watch(model);
+        }).to.throw(Error);
+      });
+    });
+
+    runner.when('model.attributes.path is not defined', function () {
+
+      runner.it('should throw an error', function () {
+
+        var model = new runner.deps.Model({
+          'type': 'foo',
+          'raw': 'bar'
+        });
+
+        expect(function () {
+          instance.watch(model);
+        }).to.throw(Error);
+      });
+    });
+
+    runner.when('model.attributes.raw is not defined', function () {
+
+      runner.it('should throw an error', function () {
+
+        var model = new runner.deps.Model({
+          'path': 'foo',
+          'type': 'bar'
+        });
+
+        expect(function () {
+          instance.watch(model);
+        }).to.throw(Error);
+      });
+    });
+  });
+
+  runner.spec('parseDependencies (object model)', function () {
+
+    runner.when('there is no matching parser for model.attributes.type', function () {
+
+      runner.it('should throw an error', function () {
+
+        var model = new runner.deps.Model({
+          'path': 'foo',
+          'type': 'bar',
+          'raw': 'baz'
+        });
+
+        expect(function () {
+          instance.parseDependencies(model);
+        }).to.throw(Error);
+      });
+    });
+
+    runner.when('there is a matching parser for model.attributes.type', function () {
+
+      //
     });
   });
 });
