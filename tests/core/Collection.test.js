@@ -85,5 +85,23 @@ test('core/Collection', [
         expect(spy.args[0][0].attributes.foo).to.equal('bar');
       });
     });
+
+    runner.when('several unique models are added', function () {
+
+      runner.it('should store all of them in self.models', function () {
+
+        var attributes1 = { 'foo': 'bar' };
+        var attributes2 = { 'foz': 'nil' };
+        var attributes3 = { 'zoo': 'lan' };
+
+        instance.add(attributes1);
+        instance.add(attributes2);
+        instance.add(attributes3);
+
+        expect(instance.models.length).to.equal(3);
+        expect(instance.models[0].attributes.foo).to.equal('bar');
+        expect(instance.models[2].attributes.zoo).to.equal('lan');
+      });
+    });
   });
 });
