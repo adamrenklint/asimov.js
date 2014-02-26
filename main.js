@@ -13,7 +13,7 @@ process.env.ENV = 'development';
 var options = {};
 options.frameworkDir = 'lib';
 // options.baseDir = __dirname;
-options.logVerbose = true;
+// options.logVerbose = true;
 options.meta = require('./package.json');
 
 // var port = process.env.PORT || 3003;
