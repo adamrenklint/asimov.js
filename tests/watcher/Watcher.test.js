@@ -157,7 +157,9 @@ test('watcher/Watcher', [
 
     runner.when('there is a matching parser for model.attributes.type', function () {
 
-      //
+      runner.it('should pass model as first argument');
+      runner.it('should pass null as second argument');
+      runner.it('should pass itself as third argument');
     });
   });
 });
