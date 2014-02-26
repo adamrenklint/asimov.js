@@ -23,8 +23,10 @@ test('watcher/StyleSheetParser', [
 
       runner.it('should throw an error', function () {
 
+        var model = new runner.deps.Model();
+        var dependencies = new runner.deps.Model();
         expect(function () {
-
+          instance.parse(null, 'foo', dependencies);
         }).to.throw(Error);
       });
     });
