@@ -90,7 +90,7 @@ test('watcher/DependencyParser', [
         });
       });
 
-      runner.when('model is already registered as a dependecy of path', function () {
+      runner.when('model is already registered as a dependency of path', function () {
 
         runner.it('it should not add model again', function () {
 

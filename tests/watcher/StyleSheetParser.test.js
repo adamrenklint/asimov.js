@@ -23,7 +23,6 @@ test('watcher/StyleSheetParser', [
 
       runner.it('should throw an error', function () {
 
-        var model = new runner.deps.Model();
         var dependencies = new runner.deps.Model();
         expect(function () {
           instance.parse(null, 'foo', dependencies);
@@ -31,9 +30,38 @@ test('watcher/StyleSheetParser', [
       });
     });
 
+    runner.when('model is not a model, but without attributes.path', function () {
+
+      runner.it('should throw an error', function () {
+
+        var model = new runner.deps.Model();
+        var dependencies = new runner.deps.Model();
+        expect(function () {
+          instance.parse(model, 'foo', dependencies);
+        }).to.throw(Error);
+      });
+    });
+
     runner.when('raw does not contain an @import statement', function () {
 
-      runner.it('should not change the dependency graph');
+      runner.it('should only add itself to the dependency graph', function (done) {
+
+        var model = new runner.deps.Model({
+          'path': 'foo/bar'
+        });
+        var dependencies = new runner.deps.Model();
+        instance.parse(model, 'foo', dependencies);
+
+        _.each(dependencies.attributes, function (arr, path) {
+          if (path.indexOf('foo/bar') >= 0) {
+            _.each(arr, function (dep) {
+              if (dep.attributes.path.indexOf('foo/bar') >= 0) {
+                done();
+              }
+            });
+          }
+        });
+      });
     });
 
     runner.when('raw contains @import statements', function () {
