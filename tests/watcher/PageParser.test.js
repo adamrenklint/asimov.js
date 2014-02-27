@@ -2,27 +2,45 @@ test('watcher/PageParser', [
 
   '../../lib/watcher/PageParser',
   '../../lib/render/TemplatesCollection',
+  '../../lib/nodes/PageNodesCollection',
   '../../lib/core/Model',
   'lodash'
 
 ], function (test) {
 
-  var instance, templates, _;
+  function options (opts) {
+    opts = opts || {};
+    opts.muteLog = true;
+    opts.localization = {
+      'defaultLangCode': 'en'
+    };
+    opts.paths = {
+      'content': 'tests/mocks/pages',
+      'frameworkPages': 'tests/mocks/pages'
+    };
+    return opts;
+  }
+
+  var instance, pages, templates, _;
 
   test.before(function (done) {
-    templates = new test.deps.TemplatesCollection(null, {
-      'muteLog': true
-    });
-    templates.fetch('tests/mocks/templates').done(function () {
+
+    templates = new test.deps.TemplatesCollection(null, options());
+    pages = new test.deps.PageNodesCollection(null, options());
+
+    var loadedTemplates = templates.fetch('tests/mocks/templates');
+    var loadedPages = pages.fetch('tests/mocks/pages');
+
+    templates.when(loadedPages, loadedTemplates).done(function () {
       done();
     });
   });
 
   test.beforeEach(function () {
-    instance = new test.deps.PageParser({
+    instance = new test.deps.PageParser(options({
       'templates': templates,
-      'muteLog': true
-    });
+      'pages': pages
+    }));
     _ = test.deps.lodash;
   });
 
@@ -73,7 +91,6 @@ test('watcher/PageParser', [
 
         _.each(dependencies.attributes, function (arr, path) {
           if (path.indexOf(pagePath) >= 0) {
-            expect(arr.length).to.equal(2);
             _.each(arr, function (dep) {
               if (dep.attributes.path.indexOf(pagePath) >= 0) {
                 wasFound = true;
@@ -100,7 +117,6 @@ test('watcher/PageParser', [
 
         _.each(dependencies.attributes, function (arr, path) {
           if (path.indexOf('simple') >= 0) {
-            expect(arr.length).to.equal(2);
             _.each(arr, function (dep) {
               if (dep.attributes.path.indexOf(pagePath) >= 0) {
                 wasFound = true;
@@ -137,7 +153,7 @@ test('watcher/PageParser', [
         });
       });
 
-      test.when('model a attribute value includes a {{>partial}}', function () {
+      test.when('a model attribute value includes a {{>partial}}', function () {
 
         test.it('should register model as a dependency of the partial', function () {
 
@@ -167,12 +183,12 @@ test('watcher/PageParser', [
 
         test.it('should register model as a dependency of the other page', function () {
 
-          var pagePath = 'foo/bar';
-          var superPath = 'foo/super';
+          var pagePath = 'barbaz';
+          var superUrl = '/foo/super';
           var model = new test.deps.Model({
             'path': pagePath,
             'raw': 'foo',
-            'inherits': superPath,
+            'inherits': superUrl,
             'template': 'simple'
           });
           var dependencies = new test.deps.Model();
@@ -181,7 +197,7 @@ test('watcher/PageParser', [
           var wasFound = false;
 
           _.each(dependencies.attributes, function (arr, path) {
-            if (path.indexOf(superPath) >= 0) {
+            if (path.indexOf('/mocks/pages/foo.txt') >= 0) {
               wasFound = true;
             }
           });
