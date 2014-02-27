@@ -187,6 +187,18 @@ test('watcher/Watcher', [
     test.when('a javascript file is removed', function () {
       test.it('should trigger fetch on all its dependencies');
     });
+
+    test.when('a config file is changed', function () {
+      test.it('should call process.exit with code 1');
+      // test.it('should throw an error');
+    });
+
+    test.when('a config file is removed', function () {
+      test.when('that config file is loaded', function () {
+        test.it('should call process.exit with code 1');
+        // test.it('should throw an error');
+      });
+    });
   });
 
   test.spec('parseDependencies (object model)', function () {

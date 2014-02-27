@@ -153,7 +153,7 @@ test('watcher/PageParser', [
         });
       });
 
-      test.when('a model attribute value includes a {{>partial}}', function () {
+      test.when('a model attribute value includes a partial', function () {
 
         test.it('should register model as a dependency of the partial', function () {
 
