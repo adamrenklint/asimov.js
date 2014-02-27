@@ -10,7 +10,7 @@ test('watcher/Watcher', [
   runner.beforeEach(function () {
     instance = new runner.deps.Watcher(null, {
       'paths': {
-        'styles': ['lib/styles', 'site/styles']
+        'styles': ['tests/mocks/styles']
       }
     });
   });

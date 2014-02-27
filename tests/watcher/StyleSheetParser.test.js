@@ -11,7 +11,7 @@ test('watcher/StyleSheetParser', [
   runner.beforeEach(function () {
     instance = new runner.deps.StyleSheetParser({
       'paths': {
-        'styles': ['lib/styles', 'site/styles']
+        'styles': ['tests/mocks/styles']
       }
     });
     _ = runner.deps.lodash;
@@ -71,12 +71,16 @@ test('watcher/StyleSheetParser', [
 
         expect(_.keys(dependencies.attributes).length).to.equal(1);
 
+        var wasFound = false;
         _.each(dependencies.attributes, function (arr, path) {
           if (path.indexOf('foo/bar') >= 0) {
+            wasFound = true;
             expect(arr.length).to.equal(1);
             expect(arr[0].attributes.path).to.include('foo/bar');
           }
         });
+
+        expect(wasFound).to.be.true;
       });
     });
 
@@ -88,27 +92,73 @@ test('watcher/StyleSheetParser', [
 
           var model = new runner.deps.Model({
             'path': 'foo/bar',
-            'raw': '@import "404.styl"\n@import "main.styl"'
+            'raw': '@import "foo"\n@import "bar"'
           });
           var dependencies = new runner.deps.Model();
           instance.parse(model, null, dependencies);
 
           expect(_.keys(dependencies.attributes).length).to.equal(3);
 
+          var wasFound = false;
           _.each(dependencies.attributes, function (arr, path) {
             if (path.indexOf('foo/bar') >= 0) {
 
+              wasFound = true;
               expect(arr.length).to.equal(1);
               expect(arr[0].attributes.path).to.include('foo/bar');
             }
           });
+
+          expect(wasFound).to.be.true;
         });
 
-        runner.it('should register the model as a node of the stylus file in the dependency graph');
+        runner.it('should register the model as a node of the stylus file in the dependency graph', function () {
 
-        runner.when('the found stylus file includes includes @import statements', function () {
+          var model = new runner.deps.Model({
+            'path': 'foo/bar',
+            'raw': '@import "foo"'
+          });
+          var dependencies = new runner.deps.Model();
+          instance.parse(model, null, dependencies);
 
-          runner.it('should register the first stylesheet as a dependency of the other');
+          expect(_.keys(dependencies.attributes).length).to.equal(2);
+
+          var wasFound = false;
+          _.each(dependencies.attributes, function (arr, path) {
+            if (path.indexOf('foo.styl') >= 0) {
+              wasFound = true;
+              expect(arr.length).to.equal(1);
+              expect(arr[0].attributes.path).to.include('foo/bar');
+            }
+          });
+
+          expect(wasFound).to.be.true;
+        });
+
+        runner.when('the imported stylesheet includes includes @import statements', function () {
+
+          runner.it('should register the model as a dependency of the nested stylesheet', function () {
+
+            var model = new runner.deps.Model({
+              'path': 'foo/bar',
+              'raw': '@import "includer"'
+            });
+            var dependencies = new runner.deps.Model();
+            instance.parse(model, null, dependencies);
+
+            expect(_.keys(dependencies.attributes).length).to.equal(3);
+
+            var wasFound = false;
+            _.each(dependencies.attributes, function (arr, path) {
+              if (path.indexOf('foo.styl') >= 0) {
+                wasFound = true;
+                expect(arr.length).to.equal(1);
+                expect(arr[0].attributes.path).to.include('foo/bar');
+              }
+            });
+
+            expect(wasFound).to.be.true;
+          });
         });
       });
 
@@ -120,7 +170,7 @@ test('watcher/StyleSheetParser', [
           });
           var dependencies = new runner.deps.Model();
           expect(function () {
-            instance.parse(model, '@import "notExisting.styl"', dependencies);
+            instance.parse(model, '@import "notExisting"', dependencies);
           }).to.throw(Error);
         });
       });
@@ -128,7 +178,28 @@ test('watcher/StyleSheetParser', [
 
     runner.when('raw is not a string',  function () {
 
-      runner.it('should use model.attributes.raw as raw');
+      runner.it('should use model.attributes.raw as raw', function () {
+
+        var model = new runner.deps.Model({
+          'path': 'foo/bar',
+          'raw': '@import "foo"'
+        });
+        var dependencies = new runner.deps.Model();
+        instance.parse(model, null, dependencies);
+
+        expect(_.keys(dependencies.attributes).length).to.equal(2);
+
+        var wasFound = false;
+        _.each(dependencies.attributes, function (arr, path) {
+          if (path.indexOf('foo.styl') >= 0) {
+            wasFound = true;
+            expect(arr.length).to.equal(1);
+            expect(arr[0].attributes.path).to.include('foo/bar');
+          }
+        });
+
+        expect(wasFound).to.be.true;
+      });
     });
   });
 });
