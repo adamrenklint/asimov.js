@@ -8,7 +8,7 @@ test('watcher/Watcher', [
   var instance;
 
   runner.beforeEach(function () {
-    instance = new runner.deps.Watcher({
+    instance = new runner.deps.Watcher(null, {
       'paths': {
         'styles': ['lib/styles', 'site/styles']
       }

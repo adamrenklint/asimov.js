@@ -61,7 +61,7 @@ test('watcher/StyleSheetParser', [
 
     runner.when('raw does not contain an @import statement', function () {
 
-      runner.it('should only add itself to the dependency graph', function (done) {
+      runner.it('should only add itself to the dependency graph', function () {
 
         var model = new runner.deps.Model({
           'path': 'foo/bar'
@@ -69,17 +69,12 @@ test('watcher/StyleSheetParser', [
         var dependencies = new runner.deps.Model();
         instance.parse(model, 'foo', dependencies);
 
-        expect(_.keys(model.attributes).length).to.equal(1);
+        expect(_.keys(dependencies.attributes).length).to.equal(1);
 
         _.each(dependencies.attributes, function (arr, path) {
           if (path.indexOf('foo/bar') >= 0) {
-
             expect(arr.length).to.equal(1);
-            _.each(arr, function (dep) {
-              if (dep.attributes.path.indexOf('foo/bar') >= 0) {
-                done();
-              }
-            });
+            expect(arr[0].attributes.path).to.include('foo/bar');
           }
         });
       });
@@ -89,7 +84,7 @@ test('watcher/StyleSheetParser', [
 
       runner.when('the imported stylus file exists', function () {
 
-        runner.it('should add itself to the dependency graph', function (done) {
+        runner.it('should add itself to the dependency graph', function () {
 
           var model = new runner.deps.Model({
             'path': 'foo/bar',
@@ -98,17 +93,13 @@ test('watcher/StyleSheetParser', [
           var dependencies = new runner.deps.Model();
           instance.parse(model, null, dependencies);
 
-          expect(_.keys(model.attributes).length).to.equal(3);
+          expect(_.keys(dependencies.attributes).length).to.equal(3);
 
           _.each(dependencies.attributes, function (arr, path) {
             if (path.indexOf('foo/bar') >= 0) {
 
-              // expect(arr.length).to.equal(1);
-              _.each(arr, function (dep) {
-                if (dep.attributes.path.indexOf('foo/bar') >= 0) {
-                  done();
-                }
-              });
+              expect(arr.length).to.equal(1);
+              expect(arr[0].attributes.path).to.include('foo/bar');
             }
           });
         });
