@@ -2,14 +2,15 @@ test('watcher/PageParser', [
 
   '../../lib/watcher/PageParser',
   '../../lib/render/TemplatesCollection',
+  '../../lib/core/Model',
   'lodash'
 
-], function (runner) {
+], function (test) {
 
   var instance, templates, _;
 
-  runner.before(function (done) {
-    templates = new runner.deps.TemplatesCollection(null, {
+  test.before(function (done) {
+    templates = new test.deps.TemplatesCollection(null, {
       'muteLog': true
     });
     templates.fetch('tests/mocks/templates').done(function () {
@@ -17,197 +18,177 @@ test('watcher/PageParser', [
     });
   });
 
-  runner.beforeEach(function () {
-    instance = new runner.deps.PageParser({
+  test.beforeEach(function () {
+    instance = new test.deps.PageParser({
       'templates': templates,
       'muteLog': true
     });
-    _ = runner.deps.lodash;
+    _ = test.deps.lodash;
   });
 
-  runner.afterEach(function () {
+  test.afterEach(function () {
     instance.destroy();
   });
 
-  runner.spec('initialize (object options)', function () {
+  test.spec('initialize (object options)', function () {
 
-    runner.when('options.templates is not a collection', function () {
+    test.when('options.templates is not a collection', function () {
 
-      runner.it('should throw an error', function () {
-
-        expect(function () {
-          new runner.deps.PageParser();
-        }).to.throw(Error);
+      test.itShouldThrowError(function () {
+        new test.deps.PageParser();
       });
     });
   });
 
-  // runner.spec('parse (object model, string raw, object dependencies)', function () {
+  test.spec('parse (object model, string raw, object dependencies)', function () {
 
-  //   runner.when('model is not a model', function () {
+    test.when('model.attributes.template references a non-existing template', function () {
 
-  //     runner.it('should throw an error', function () {
+      test.itShouldThrowError(function () {
 
-  //       var dependencies = new runner.deps.Model();
-  //       expect(function () {
-  //         instance.parse(null, 'foo', dependencies);
-  //       }).to.throw(Error);
-  //     });
-  //   });
+        var model = new test.deps.Model({
+          'path': 'foo/bar',
+          'raw': 'foo',
+          'template': 'monkeybusiness'
+        });
+        var dependencies = new test.deps.Model();
+        instance.parse(model, null, dependencies);
+      });
+    });
 
-  //   runner.when('model is a model, but without attributes.path', function () {
+    test.when('model.attributes.template references an existing template', function () {
 
-  //     runner.it('should throw an error', function () {
+      test.it('should register model as a dependency of itself', function () {
 
-  //       var model = new runner.deps.Model();
-  //       var dependencies = new runner.deps.Model();
-  //       expect(function () {
-  //         instance.parse(model, 'foo', dependencies);
-  //       }).to.throw(Error);
-  //     });
-  //   });
+        var pagePath = 'foo/bar';
+        var model = new test.deps.Model({
+          'path': pagePath,
+          'raw': 'foo',
+          'template': 'simple'
+        });
+        var dependencies = new test.deps.Model();
+        instance.parse(model, null, dependencies);
 
-  //   runner.when('raw does not contain an @import statement', function () {
+        var wasFound = false;
 
-  //     runner.it('should only add itself to the dependency graph', function () {
+        _.each(dependencies.attributes, function (arr, path) {
+          if (path.indexOf(pagePath) >= 0) {
+            expect(arr.length).to.equal(2);
+            _.each(arr, function (dep) {
+              if (dep.attributes.path.indexOf(pagePath) >= 0) {
+                wasFound = true;
+              }
+            });
+          }
+        });
 
-  //       var model = new runner.deps.Model({
-  //         'path': 'foo/bar'
-  //       });
-  //       var dependencies = new runner.deps.Model();
-  //       instance.parse(model, 'foo', dependencies);
+        expect(wasFound).to.be.true;
+      });
 
-  //       expect(_.keys(dependencies.attributes).length).to.equal(1);
+      test.it('should register model as a dependency of the template', function () {
 
-  //       var wasFound = false;
-  //       _.each(dependencies.attributes, function (arr, path) {
-  //         if (path.indexOf('foo/bar') >= 0) {
-  //           wasFound = true;
-  //           expect(arr.length).to.equal(1);
-  //           expect(arr[0].attributes.path).to.include('foo/bar');
-  //         }
-  //       });
+        var pagePath = 'foo/bar';
+        var model = new test.deps.Model({
+          'path': pagePath,
+          'raw': 'foo',
+          'template': 'simple'
+        });
+        var dependencies = new test.deps.Model();
+        instance.parse(model, null, dependencies);
 
-  //       expect(wasFound).to.be.true;
-  //     });
-  //   });
+        var wasFound = false;
 
-  //   runner.when('raw contains @import statements', function () {
+        _.each(dependencies.attributes, function (arr, path) {
+          if (path.indexOf('simple') >= 0) {
+            expect(arr.length).to.equal(2);
+            _.each(arr, function (dep) {
+              if (dep.attributes.path.indexOf(pagePath) >= 0) {
+                wasFound = true;
+              }
+            });
+          }
+        });
 
-  //     runner.when('the imported stylus file exists', function () {
+        expect(wasFound).to.be.true;
+      });
 
-  //       runner.it('should add itself to the dependency graph', function () {
+      test.when('the template includes a partial', function () {
 
-  //         var model = new runner.deps.Model({
-  //           'path': 'foo/bar',
-  //           'raw': '@import "foo"\n@import "bar"'
-  //         });
-  //         var dependencies = new runner.deps.Model();
-  //         instance.parse(model, null, dependencies);
+        test.it('should not register model as a dependency of the partial', function () {
 
-  //         expect(_.keys(dependencies.attributes).length).to.equal(3);
+          var pagePath = 'foo/bar';
+          var model = new test.deps.Model({
+            'path': pagePath,
+            'raw': 'foo',
+            'template': 'includer'
+          });
+          var dependencies = new test.deps.Model();
+          instance.parse(model, null, dependencies);
 
-  //         var wasFound = false;
-  //         _.each(dependencies.attributes, function (arr, path) {
-  //           if (path.indexOf('foo/bar') >= 0) {
+          var wasFound = false;
 
-  //             wasFound = true;
-  //             expect(arr.length).to.equal(1);
-  //             expect(arr[0].attributes.path).to.include('foo/bar');
-  //           }
-  //         });
+          _.each(dependencies.attributes, function (arr, path) {
+            if (path.indexOf('simple') >= 0) {
+              wasFound = true;
+            }
+          });
 
-  //         expect(wasFound).to.be.true;
-  //       });
+          expect(wasFound).to.be.false;
+        });
+      });
 
-  //       runner.it('should register the model as a node of the stylus file in the dependency graph', function () {
+      test.when('model a attribute value includes a {{>partial}}', function () {
 
-  //         var model = new runner.deps.Model({
-  //           'path': 'foo/bar',
-  //           'raw': '@import "foo"'
-  //         });
-  //         var dependencies = new runner.deps.Model();
-  //         instance.parse(model, null, dependencies);
+        test.it('should register model as a dependency of the partial', function () {
 
-  //         expect(_.keys(dependencies.attributes).length).to.equal(2);
+          var pagePath = 'foo/bar';
+          var model = new test.deps.Model({
+            'path': pagePath,
+            'raw': 'foo',
+            'foo': 'foo {{>includer}} bar',
+            'template': 'simple'
+          });
+          var dependencies = new test.deps.Model();
+          instance.parse(model, null, dependencies);
 
-  //         var wasFound = false;
-  //         _.each(dependencies.attributes, function (arr, path) {
-  //           if (path.indexOf('foo.styl') >= 0) {
-  //             wasFound = true;
-  //             expect(arr.length).to.equal(1);
-  //             expect(arr[0].attributes.path).to.include('foo/bar');
-  //           }
-  //         });
+          var wasFound = false;
 
-  //         expect(wasFound).to.be.true;
-  //       });
+          _.each(dependencies.attributes, function (arr, path) {
+            if (path.indexOf('includer') >= 0) {
+              wasFound = true;
+            }
+          });
 
-  //       runner.when('the imported stylesheet includes includes @import statements', function () {
+          expect(wasFound).to.be.true;
+        });
+      });
 
-  //         runner.it('should register the model as a dependency of the nested stylesheet', function () {
+      test.when('model inherits from another page', function () {
 
-  //           var model = new runner.deps.Model({
-  //             'path': 'foo/bar',
-  //             'raw': '@import "includer"'
-  //           });
-  //           var dependencies = new runner.deps.Model();
-  //           instance.parse(model, null, dependencies);
+        test.it('should register model as a dependency of the other page', function () {
 
-  //           expect(_.keys(dependencies.attributes).length).to.equal(3);
+          var pagePath = 'foo/bar';
+          var superPath = 'foo/super';
+          var model = new test.deps.Model({
+            'path': pagePath,
+            'raw': 'foo',
+            'inherits': superPath,
+            'template': 'simple'
+          });
+          var dependencies = new test.deps.Model();
+          instance.parse(model, null, dependencies);
 
-  //           var wasFound = false;
-  //           _.each(dependencies.attributes, function (arr, path) {
-  //             if (path.indexOf('foo.styl') >= 0) {
-  //               wasFound = true;
-  //               expect(arr.length).to.equal(1);
-  //               expect(arr[0].attributes.path).to.include('foo/bar');
-  //             }
-  //           });
+          var wasFound = false;
 
-  //           expect(wasFound).to.be.true;
-  //         });
-  //       });
-  //     });
+          _.each(dependencies.attributes, function (arr, path) {
+            if (path.indexOf(superPath) >= 0) {
+              wasFound = true;
+            }
+          });
 
-  //     runner.when('the imported stylus file does not exist', function () {
-
-  //       runner.it('should throw error', function () {
-  //         var model = new runner.deps.Model({
-  //           'path': 'foo/bar'
-  //         });
-  //         var dependencies = new runner.deps.Model();
-  //         expect(function () {
-  //           instance.parse(model, '@import "notExisting"', dependencies);
-  //         }).to.throw(Error);
-  //       });
-  //     });
-  //   });
-
-  //   runner.when('raw is not a string',  function () {
-
-  //     runner.it('should use model.attributes.raw as raw', function () {
-
-  //       var model = new runner.deps.Model({
-  //         'path': 'foo/bar',
-  //         'raw': '@import "foo"'
-  //       });
-  //       var dependencies = new runner.deps.Model();
-  //       instance.parse(model, null, dependencies);
-
-  //       expect(_.keys(dependencies.attributes).length).to.equal(2);
-
-  //       var wasFound = false;
-  //       _.each(dependencies.attributes, function (arr, path) {
-  //         if (path.indexOf('foo.styl') >= 0) {
-  //           wasFound = true;
-  //           expect(arr.length).to.equal(1);
-  //           expect(arr[0].attributes.path).to.include('foo/bar');
-  //         }
-  //       });
-
-  //       expect(wasFound).to.be.true;
-  //     });
-  //   });
-  // });
+          expect(wasFound).to.be.true;
+        });
+      });
+    });
+  });
 });
