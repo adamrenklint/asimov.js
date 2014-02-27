@@ -27,6 +27,68 @@ test('watcher/DependencyParser', [
     });
   });
 
+  runner.spec('assertAttributes (object attributes, string raw)', function () {
+
+    runner.when('attributes is not an object', function () {
+
+      runner.it('should throw an error', function () {
+
+        expect(function () {
+          instance.assertAttributes(null, 'foo');
+        }).to.throw(Error);
+      });
+    });
+
+    runner.when('attributes.path is not a string', function () {
+
+      runner.it('should throw an error', function () {
+
+        expect(function () {
+          instance.assertAttributes({}, 'foo');
+        }).to.throw(Error);
+      });
+    });
+
+    runner.when('raw is not a string',  function () {
+
+      runner.when('attributes.raw is a string', function () {
+
+        runner.it('should return attributes.raw', function () {
+
+          var attributes = {
+            'path': 'foo/bar',
+            'raw': 'fooo'
+          };
+          var result = instance.assertAttributes(attributes);
+          expect(result).to.equal('fooo');
+        });
+      });
+
+      runner.when('attributes.raw is not a string', function () {
+
+        runner.it('should throw an error', function () {
+
+          expect(function () {
+            instance.assertAttributes({
+              'path': 'foo/bar'
+            });
+          }).to.throw(Error);
+        });
+      });
+    });
+
+    runner.when('raw is a string', function () {
+
+      runner.it('should retun raw', function () {
+
+        var result = instance.assertAttributes({
+          'path': 'foo/bar'
+        }, 'foo');
+        expect(result).to.equal('foo');
+      });
+    });
+  });
+
   runner.spec('add (object model, string path, object dependencies)', function () {
 
     runner.when('model is not a valid model', function () {

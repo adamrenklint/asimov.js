@@ -36,29 +36,6 @@ test('watcher/StyleSheetParser', [
 
   runner.spec('parse (object model, string raw, object dependencies)', function () {
 
-    runner.when('model is not a model', function () {
-
-      runner.it('should throw an error', function () {
-
-        var dependencies = new runner.deps.Model();
-        expect(function () {
-          instance.parse(null, 'foo', dependencies);
-        }).to.throw(Error);
-      });
-    });
-
-    runner.when('model is a model, but without attributes.path', function () {
-
-      runner.it('should throw an error', function () {
-
-        var model = new runner.deps.Model();
-        var dependencies = new runner.deps.Model();
-        expect(function () {
-          instance.parse(model, 'foo', dependencies);
-        }).to.throw(Error);
-      });
-    });
-
     runner.when('raw does not contain an @import statement', function () {
 
       runner.it('should only add itself to the dependency graph', function () {
@@ -173,32 +150,6 @@ test('watcher/StyleSheetParser', [
             instance.parse(model, '@import "notExisting"', dependencies);
           }).to.throw(Error);
         });
-      });
-    });
-
-    runner.when('raw is not a string',  function () {
-
-      runner.it('should use model.attributes.raw as raw', function () {
-
-        var model = new runner.deps.Model({
-          'path': 'foo/bar',
-          'raw': '@import "foo"'
-        });
-        var dependencies = new runner.deps.Model();
-        instance.parse(model, null, dependencies);
-
-        expect(_.keys(dependencies.attributes).length).to.equal(2);
-
-        var wasFound = false;
-        _.each(dependencies.attributes, function (arr, path) {
-          if (path.indexOf('foo.styl') >= 0) {
-            wasFound = true;
-            expect(arr.length).to.equal(1);
-            expect(arr[0].attributes.path).to.include('foo/bar');
-          }
-        });
-
-        expect(wasFound).to.be.true;
       });
     });
   });
