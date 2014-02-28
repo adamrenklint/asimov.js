@@ -189,7 +189,9 @@ test('watcher/Watcher', [
     });
 
     test.when('a config file is changed', function () {
-      test.itShouldThrowError();
+      test.when('that config file is loaded', function () {
+        test.itShouldThrowError();
+      });
     });
 
     test.when('a config file is removed', function () {

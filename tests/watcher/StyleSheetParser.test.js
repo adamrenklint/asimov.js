@@ -4,46 +4,46 @@ test('watcher/StyleSheetParser', [
   '../../lib/core/Model',
   'lodash'
 
-], function (runner) {
+], function (test) {
 
   var instance, _;
 
-  runner.beforeEach(function () {
-    instance = new runner.deps.StyleSheetParser({
+  test.beforeEach(function () {
+    instance = new test.deps.StyleSheetParser({
       'paths': {
         'styles': ['tests/mocks/styles']
       }
     });
-    _ = runner.deps.lodash;
+    _ = test.deps.lodash;
   });
 
-  runner.afterEach(function () {
+  test.afterEach(function () {
     instance.destroy();
   });
 
-  runner.spec('initialize (object options)', function () {
+  test.spec('initialize (object options)', function () {
 
-    runner.when('options.paths.styles is not an array', function () {
+    test.when('options.paths.styles is not an array', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
         expect(function () {
-          new runner.deps.StyleSheetParser();
+          new test.deps.StyleSheetParser();
         }).to.throw(Error);
       });
     });
   });
 
-  runner.spec('parse (object model, string raw, object dependencies)', function () {
+  test.spec('parse (object model, string raw, object dependencies)', function () {
 
-    runner.when('raw does not contain an @import statement', function () {
+    test.when('raw does not contain an @import statement', function () {
 
-      runner.it('should only add itself to the dependency graph', function () {
+      test.it('should only add itself to the dependency graph', function () {
 
-        var model = new runner.deps.Model({
+        var model = new test.deps.Model({
           'path': 'foo/bar'
         });
-        var dependencies = new runner.deps.Model();
+        var dependencies = new test.deps.Model();
         instance.parse(model, 'foo', dependencies);
 
         expect(_.keys(dependencies.attributes).length).to.equal(1);
@@ -61,17 +61,17 @@ test('watcher/StyleSheetParser', [
       });
     });
 
-    runner.when('raw contains @import statements', function () {
+    test.when('raw contains @import statements', function () {
 
-      runner.when('the imported stylus file exists', function () {
+      test.when('the imported stylus file exists', function () {
 
-        runner.it('should add itself to the dependency graph', function () {
+        test.it('should add itself to the dependency graph', function () {
 
-          var model = new runner.deps.Model({
+          var model = new test.deps.Model({
             'path': 'foo/bar',
             'raw': '@import "foo"\n@import "bar"'
           });
-          var dependencies = new runner.deps.Model();
+          var dependencies = new test.deps.Model();
           instance.parse(model, null, dependencies);
 
           expect(_.keys(dependencies.attributes).length).to.equal(3);
@@ -89,13 +89,13 @@ test('watcher/StyleSheetParser', [
           expect(wasFound).to.be.true;
         });
 
-        runner.it('should register the model as a node of the stylus file in the dependency graph', function () {
+        test.it('should register the model as a node of the stylus file in the dependency graph', function () {
 
-          var model = new runner.deps.Model({
+          var model = new test.deps.Model({
             'path': 'foo/bar',
             'raw': '@import "foo"'
           });
-          var dependencies = new runner.deps.Model();
+          var dependencies = new test.deps.Model();
           instance.parse(model, null, dependencies);
 
           expect(_.keys(dependencies.attributes).length).to.equal(2);
@@ -112,15 +112,15 @@ test('watcher/StyleSheetParser', [
           expect(wasFound).to.be.true;
         });
 
-        runner.when('the imported stylesheet includes includes @import statements', function () {
+        test.when('the imported stylesheet includes includes @import statements', function () {
 
-          runner.it('should register the model as a dependency of the nested stylesheet', function () {
+          test.it('should register the model as a dependency of the nested stylesheet', function () {
 
-            var model = new runner.deps.Model({
+            var model = new test.deps.Model({
               'path': 'foo/bar',
               'raw': '@import "includer"'
             });
-            var dependencies = new runner.deps.Model();
+            var dependencies = new test.deps.Model();
             instance.parse(model, null, dependencies);
 
             expect(_.keys(dependencies.attributes).length).to.equal(3);
@@ -139,13 +139,13 @@ test('watcher/StyleSheetParser', [
         });
       });
 
-      runner.when('the imported stylus file does not exist', function () {
+      test.when('the imported stylus file does not exist', function () {
 
-        runner.it('should throw error', function () {
-          var model = new runner.deps.Model({
+        test.it('should throw error', function () {
+          var model = new test.deps.Model({
             'path': 'foo/bar'
           });
-          var dependencies = new runner.deps.Model();
+          var dependencies = new test.deps.Model();
           expect(function () {
             instance.parse(model, '@import "notExisting"', dependencies);
           }).to.throw(Error);

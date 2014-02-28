@@ -4,22 +4,22 @@ test('watcher/DependencyParser', [
   '../../lib/core/Model',
   'lodash'
 
-], function (runner) {
+], function (test) {
 
   var instance, _;
 
-  runner.beforeEach(function () {
-    instance = new runner.deps.DependencyParser();
-    _ = runner.deps.lodash;
+  test.beforeEach(function () {
+    instance = new test.deps.DependencyParser();
+    _ = test.deps.lodash;
   });
 
-  runner.afterEach(function () {
+  test.afterEach(function () {
     instance.destroy();
   });
 
-  runner.spec('parse ()', function () {
+  test.spec('parse ()', function () {
 
-    runner.it('should throw an error', function () {
+    test.it('should throw an error', function () {
 
       expect(function () {
         instance.parse();
@@ -27,11 +27,11 @@ test('watcher/DependencyParser', [
     });
   });
 
-  runner.spec('assertAttributes (object attributes, string raw)', function () {
+  test.spec('assertAttributes (object attributes, string raw)', function () {
 
-    runner.when('attributes is not an object', function () {
+    test.when('attributes is not an object', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
         expect(function () {
           instance.assertAttributes(null, 'foo');
@@ -39,9 +39,9 @@ test('watcher/DependencyParser', [
       });
     });
 
-    runner.when('attributes.path is not a string', function () {
+    test.when('attributes.path is not a string', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
         expect(function () {
           instance.assertAttributes({}, 'foo');
@@ -49,11 +49,11 @@ test('watcher/DependencyParser', [
       });
     });
 
-    runner.when('raw is not a string',  function () {
+    test.when('raw is not a string',  function () {
 
-      runner.when('attributes.raw is a string', function () {
+      test.when('attributes.raw is a string', function () {
 
-        runner.it('should return attributes.raw', function () {
+        test.it('should return attributes.raw', function () {
 
           var attributes = {
             'path': 'foo/bar',
@@ -64,9 +64,9 @@ test('watcher/DependencyParser', [
         });
       });
 
-      runner.when('attributes.raw is not a string', function () {
+      test.when('attributes.raw is not a string', function () {
 
-        runner.it('should throw an error', function () {
+        test.it('should throw an error', function () {
 
           expect(function () {
             instance.assertAttributes({
@@ -77,9 +77,9 @@ test('watcher/DependencyParser', [
       });
     });
 
-    runner.when('raw is a string', function () {
+    test.when('raw is a string', function () {
 
-      runner.it('should retun raw', function () {
+      test.it('should retun raw', function () {
 
         var result = instance.assertAttributes({
           'path': 'foo/bar'
@@ -89,55 +89,55 @@ test('watcher/DependencyParser', [
     });
   });
 
-  runner.spec('add (object model, string path, object dependencies)', function () {
+  test.spec('add (object model, string path, object dependencies)', function () {
 
-    runner.when('model is not a valid model', function () {
+    test.when('model is not a valid model', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
-        var dependencies = new runner.deps.Model();
+        var dependencies = new test.deps.Model();
         expect(function () {
           instance.add({}, 'foo', dependencies);
         }).to.throw(Error);
       });
     });
 
-    runner.when('path is not a string', function () {
+    test.when('path is not a string', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
-        var model = new runner.deps.Model();
-        var dependencies = new runner.deps.Model();
+        var model = new test.deps.Model();
+        var dependencies = new test.deps.Model();
         expect(function () {
           instance.add(model, null, dependencies);
         }).to.throw(Error);
       });
     });
 
-    runner.when('dependencies is not a valid model', function () {
+    test.when('dependencies is not a valid model', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
-        var model = new runner.deps.Model();
+        var model = new test.deps.Model();
         expect(function () {
           instance.add(model, 'null');
         }).to.throw(Error);
       });
     });
 
-    runner.when('valid options are provided', function () {
+    test.when('valid options are provided', function () {
 
-      runner.when('model is not already registered as a dependency of path', function () {
+      test.when('model is not already registered as a dependency of path', function () {
 
-        runner.it('it should add model as a dependency of path', function () {
+        test.it('it should add model as a dependency of path', function () {
 
-          var model = new runner.deps.Model({
+          var model = new test.deps.Model({
             'id': 'foo',
             'bar': 'baz'
           });
-          var watcherModel = new runner.deps.Model();
+          var watcherModel = new test.deps.Model();
 
-          var UsableClass = runner.deps.DependencyParser.extend({
+          var UsableClass = test.deps.DependencyParser.extend({
             'parse': function () {}
           });
           instance = new UsableClass();
@@ -152,17 +152,17 @@ test('watcher/DependencyParser', [
         });
       });
 
-      runner.when('model is already registered as a dependency of path', function () {
+      test.when('model is already registered as a dependency of path', function () {
 
-        runner.it('it should not add model again', function () {
+        test.it('it should not add model again', function () {
 
-          var model = new runner.deps.Model({
+          var model = new test.deps.Model({
             'id': 'foo',
             'bar': 'baz'
           });
-          var watcherModel = new runner.deps.Model();
+          var watcherModel = new test.deps.Model();
 
-          var UsableClass = runner.deps.DependencyParser.extend({
+          var UsableClass = test.deps.DependencyParser.extend({
             'parse': function () {}
           });
           instance = new UsableClass();

@@ -3,19 +3,19 @@ test('runner/RunnerInterface', [
   '../../lib/runner/RunnerInterface',
   '../mocks/Server'
 
-], function (runner) {
+], function (test) {
 
   var instance;
 
-  runner.beforeEach(function () {
-    instance = new runner.deps.RunnerInterface();
+  test.beforeEach(function () {
+    instance = new test.deps.RunnerInterface();
   });
 
-  runner.spec('test (string name, array dependencies, function callback)', function () {
+  test.spec('test (string name, array dependencies, function callback)', function () {
 
-    runner.when('name is not a string', function () {
+    test.when('name is not a string', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
         expect(function () {
           instance.test(null, [], function () {});
@@ -23,9 +23,9 @@ test('runner/RunnerInterface', [
       });
     });
 
-    runner.when('callback is not a function', function () {
+    test.when('callback is not a function', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
         expect(function () {
           instance.test('name', [], null);
@@ -38,11 +38,11 @@ test('runner/RunnerInterface', [
     });
   });
 
-  runner.spec('it (string message, function callback)', function () {
+  test.spec('it (string message, function callback)', function () {
 
-    runner.when('message is not a string', function () {
+    test.when('message is not a string', function () {
 
-      runner.it('should throw an error', function () {
+      test.it('should throw an error', function () {
 
         expect(function () {
           instance.it(null, function () {});
@@ -50,9 +50,9 @@ test('runner/RunnerInterface', [
       });
     });
 
-    runner.when('callback is not a function', function () {
+    test.when('callback is not a function', function () {
 
-      runner.it('should NOT throw an error', function () {
+      test.it('should NOT throw an error', function () {
 
         expect(function () {
           instance.it('null', null);
@@ -60,9 +60,9 @@ test('runner/RunnerInterface', [
       });
     });
 
-    runner.when('callback functions takes done() argument', function () {
+    test.when('callback functions takes done() argument', function () {
 
-      runner.when('done() is called', function () {
+      test.when('done() is called', function () {
 
         it('should not timeout the test', function (done) {
 
@@ -72,19 +72,19 @@ test('runner/RunnerInterface', [
     });
   });
 
-  runner.before(function () {
+  test.before(function () {
 
-    this.server = runner.deps.Server.listen(5657);
+    this.server = test.deps.Server.listen(5657);
   });
 
-  runner.after(function () {
+  test.after(function () {
 
     this.server.close();
   });
 
-  runner.integration('http://asimovjs.org', function () {
+  test.integration('http://asimovjs.org', function () {
 
-    runner.it('should return a 200 OK', function () {
+    test.it('should return a 200 OK', function () {
 
       expect(this.browser.success).to.be.true;
     });
