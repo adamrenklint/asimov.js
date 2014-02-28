@@ -179,6 +179,11 @@ test('watcher/PageParser', [
         });
       });
 
+      test.when('a model attribute value uses the site variable', function () {
+
+        test.it('should register model as a dependency for all loaded config files');
+      });
+
       test.when('model inherits from another page', function () {
 
         test.it('should register model as a dependency of the other page', function () {
