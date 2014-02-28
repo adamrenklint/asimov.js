@@ -189,14 +189,12 @@ test('watcher/Watcher', [
     });
 
     test.when('a config file is changed', function () {
-      test.it('should call process.exit with code 1');
-      // test.it('should throw an error');
+      test.itShouldThrowError();
     });
 
     test.when('a config file is removed', function () {
       test.when('that config file is loaded', function () {
-        test.it('should call process.exit with code 1');
-        // test.it('should throw an error');
+        test.itShouldThrowError();
       });
     });
   });
