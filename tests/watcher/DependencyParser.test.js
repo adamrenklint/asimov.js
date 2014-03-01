@@ -31,11 +31,8 @@ test('watcher/DependencyParser', [
 
     test.when('attributes is not an object', function () {
 
-      test.it('should throw an error', function () {
-
-        expect(function () {
-          instance.assertAttributes(null, 'foo');
-        }).to.throw(Error);
+      test.itShouldThrowError('invalid model', function () {
+        instance.assertAttributes(null, 'foo');
       });
     });
 

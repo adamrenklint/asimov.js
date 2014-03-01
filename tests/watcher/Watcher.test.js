@@ -152,6 +152,11 @@ test('watcher/Watcher', [
       test.it('should trigger fetch on all its dependencies');
     });
 
+    test.when('a content/ subfolder is changed', function () {
+      test.it('should update the url on any page within folder');
+      test.it('should update the path on any page within folder');
+    });
+
     test.when('a data textile is added', function () {
       test.it('should trigger fetch on self.options.pages');
     });
