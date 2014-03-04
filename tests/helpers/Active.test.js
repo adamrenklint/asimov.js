@@ -20,7 +20,7 @@ test([
     instance.setUrl('/blog');
   });
 
-  test.spec('run (string url, [string value])', function () {
+  test.spec('run (string url, string value, object options)', function () {
 
     test.when('url is not a string', function () {
 
