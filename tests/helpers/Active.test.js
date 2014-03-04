@@ -56,18 +56,46 @@ test([
 
           test.when('url matches the rendering page', function () {
 
-            test.it('should return the passed value');
+            test.it('should return the passed value', function () {
+
+              var result = instance.run('/blog', {
+                'hash': {},
+                'fn': function () {
+                  return '<div id="active">yo</div>';
+                }
+              });
+
+              expect(result).to.equal('<div id="active">yo</div>');
+            });
           });
 
           test.when('url doesn\'t match rendering page', function () {
 
-            test.it('should return an empty string');
+            test.it('should return an empty string', function () {
+
+              var result = instance.run('/blog2', {
+                'hash': {},
+                'fn': function () {
+                  return '<div id="active">yo</div>';
+                }
+              });
+
+              expect(result).to.equal('');
+            });
           });
         });
 
         test.when('options.fn is not a function', function () {
 
-          test.itShouldThrowError();
+          test.it('should return an empty string', function () {
+
+            var result = instance.run('/blog2', {
+              'hash': {},
+              'fn': null
+            });
+
+            expect(result).to.equal('');
+          });
         });
       });
     });
