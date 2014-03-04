@@ -1,7 +1,8 @@
 test([
 
   '../../lib/helpers/Children',
-  '../../lib/core/Collection'
+  '../../lib/core/Collection',
+  '../../lib/nodes/PageNodesCollection'
 
 ], function (test) {
 
@@ -9,22 +10,30 @@ test([
 
   beforeEach(function () {
 
-    var pages = new test.deps.Collection([{
+    var pages = new test.deps.PageNodesCollection([{
       'type': 'page',
-      'url': '/'
+      'path': '/'
     }, {
       'type': 'page',
-      'url': '/sub'
+      'path': '/sub'
     }, {
       'type': 'page',
-      'url': '/sub/sub2'
+      'path': '/sub/sub2'
     }, {
       'type': 'page',
-      'url': '/foo'
+      'path': '/foo'
     }, {
       'type': 'page',
-      'url': '/foo/bar'
-    }]);
+      'path': '/foo/bar'
+    }], {
+      'localization': {
+        'defaultLangCode': 'en'
+      },
+      'paths': {
+        'content': 'not-a-real-url',
+        'frameworkPages': 'not-a-real-url'
+      }
+    });
 
     var queue = new test.deps.Collection();
 
@@ -65,11 +74,11 @@ test([
             var result = instance.run('/foo', {
               'hash': {},
               'fn': function (obj) {
-                return '>>' + obj.url;
+                return '::' + obj.url;
               }
             });
 
-            expect(result).to.equal('>>/foo/bar');
+            expect(result).to.equal('::/foo/bar');
           });
 
           test.it('should only include direct children', function () {
@@ -77,11 +86,11 @@ test([
             var result = instance.run('/', {
               'hash': {},
               'fn': function (obj) {
-                return '>>' + obj.url;
+                return '::' + obj.url;
               }
             });
 
-            expect(result).to.equal('>>/sub>>/foo');
+            expect(result).to.equal('::/sub::/foo');
           });
         });
 
@@ -118,11 +127,11 @@ test([
               'url': '/foo'
             },
             'fn': function (obj) {
-              return '>>' + obj.url;
+              return '::' + obj.url;
             }
           });
 
-          expect(result).to.equal('>>/foo/bar');
+          expect(result).to.equal('::/foo/bar');
         });
       });
 
@@ -133,11 +142,11 @@ test([
           var result = instance.run({
             'hash': {},
             'fn': function (obj) {
-              return '>>' + obj.url;
+              return '::' + obj.url;
             }
           });
 
-          expect(result).to.equal('>>/sub/sub2');
+          expect(result).to.equal('::/sub/sub2');
         });
       });
     });
