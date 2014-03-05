@@ -70,6 +70,7 @@ test([
 
       test.itShouldThrowError(function () {
 
+        instace.pages = null;
         instance.children();
       });
     });
@@ -84,7 +85,7 @@ test([
 
         var parent = pages.get('/');
         var children = parent.children();
-        expect(children).to.be.instanceOf(test.deps.PageNodesCollection);
+        expect(children.namespace).to.equal('Pages');
       });
 
       test.when('the page model has children in self.pages', function () {
