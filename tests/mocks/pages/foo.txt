@@ -1,7 +1,0 @@
-title: foo
----
-url: /foo/super
----
-text:
-
-lorem ipsum, yo

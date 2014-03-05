@@ -3,7 +3,7 @@ install:
 	@npm install -g nodemon
 
 start:
-	@nodemon main.js
+	@node main.js
 
 test:
 	@node main.js --test

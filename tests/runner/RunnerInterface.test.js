@@ -1,7 +1,7 @@
 test('runner/RunnerInterface', [
 
-  '../../lib/runner/RunnerInterface',
-  '../mocks/Server'
+  '../../lib/runner/RunnerInterface'
+
 
 ], function (test) {
 
@@ -72,21 +72,31 @@ test('runner/RunnerInterface', [
     });
   });
 
-  test.before(function () {
+  // test.before(function () {
 
-    this.server = test.deps.Server.listen(5657);
-  });
+  //   this.server = test.deps.Server.listen(5657);
+  // });
 
-  test.after(function () {
+  // test.after(function () {
 
-    this.server.close();
-  });
+  //   this.server.close();
+  // });
 
-  test.integration('http://asimovjs.org', function () {
+  // test.integration('/', function () {
 
-    test.it('should return a 200 OK', function () {
+  //   test.itShouldLoad();
+  //   // test.it('should return a 200 OK', function () {
 
-      expect(this.browser.success).to.be.true;
-    });
-  });
+  //   //   expect(this.browser.success).to.be.true;
+  //   // });
+  // });
+
+  // test.integration('http://asimovjs.org', function () {
+
+  //   test.itShouldLoad();
+  //   // test.it('should return a 200 OK', function () {
+
+  //   //   expect(this.browser.success).to.be.true;
+  //   // });
+  // });
 });

@@ -189,7 +189,7 @@ test('watcher/PageParser', [
         test.it('should register model as a dependency of the other page', function () {
 
           var pagePath = 'barbaz';
-          var superUrl = '/foo/super';
+          var superUrl = '/foo';
           var model = new test.deps.Model({
             'path': pagePath,
             'raw': 'foo',
@@ -202,7 +202,7 @@ test('watcher/PageParser', [
           var wasFound = false;
 
           _.each(dependencies.attributes, function (arr, path) {
-            if (path.indexOf('/mocks/pages/foo.txt') >= 0) {
+            if (path.indexOf('/mocks/pages/foo/simple.txt') >= 0) {
               wasFound = true;
             }
           });
