@@ -10,7 +10,6 @@ test([
 
   beforeEach(function () {
 
-    debugger;
     var pages = new test.deps.PageNodesCollection([{
       'type': 'page',
       'path': process.cwd() + '/content/'
