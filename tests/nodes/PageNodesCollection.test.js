@@ -13,8 +13,8 @@ test([
         'defaultLangCode': 'en'
       },
       'paths': {
-        'content': 'content',
-        'frameworkPages': 'not-a-real-url'
+        'content': 'tests/mocks/pages',
+        'frameworkPages': 'tests/mocks/pages'
       }
     });
   });
@@ -26,19 +26,19 @@ test([
       test.beforeEach(function () {
         instance.add([{
           'type': 'page',
-          'path': process.cwd() + '/content/'
+          'path': process.cwd() + '/' + instance.options.paths.content + '/page.txt'
         }, {
           'type': 'page',
-          'path': process.cwd() + '/content/sub'
+          'path': process.cwd() + '/' + instance.options.paths.content + '/sub/page.txt'
         }, {
           'type': 'page',
-          'path': process.cwd() + '/content/sub/sub2'
+          'path': process.cwd() + '/' + instance.options.paths.content + '/sub/sub2/page.txt'
         }, {
           'type': 'page',
-          'path': process.cwd() + '/content/foo'
+          'path': process.cwd() + '/' + instance.options.paths.content + '/foo/page.txt'
         }, {
           'type': 'page',
-          'path': process.cwd() + '/content/foo/bar'
+          'path': process.cwd() + '/' + instance.options.paths.content + '/foo/bar/page.txt'
         }]);
       });
 

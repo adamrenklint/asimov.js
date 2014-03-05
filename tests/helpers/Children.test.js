@@ -12,19 +12,19 @@ test([
 
     var pages = new test.deps.PageNodesCollection([{
       'type': 'page',
-      'path': process.cwd() + '/content/'
+      'path': process.cwd() + '/content/page.txt'
     }, {
       'type': 'page',
-      'path': process.cwd() + '/content/sub'
+      'path': process.cwd() + '/content/sub/page.txt'
     }, {
       'type': 'page',
-      'path': process.cwd() + '/content/sub/sub2'
+      'path': process.cwd() + '/content/sub/sub2/page.txt'
     }, {
       'type': 'page',
-      'path': process.cwd() + '/content/foo'
+      'path': process.cwd() + '/content/foo/page.txt'
     }, {
       'type': 'page',
-      'path': process.cwd() + '/content/foo/bar'
+      'path': process.cwd() + '/content/foo/bar/page.txt'
     }], {
       'localization': {
         'defaultLangCode': 'en'
