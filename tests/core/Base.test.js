@@ -2,21 +2,21 @@ test('core/Base', [
 
   '../../lib/core/Base'
 
-], function (runner) {
+], function (test) {
 
   var instance;
 
-  runner.beforeEach(function () {
-    instance = new runner.deps.Base();
+  test.beforeEach(function () {
+    instance = new test.deps.Base();
   });
 
-  runner.afterEach(function () {
+  test.afterEach(function () {
     instance.destroy();
   });
 
-  runner.spec('trigger (string name, object params)', function () {
+  test.spec('trigger (string name, object params)', function () {
 
-    runner.it('should call the event', function () {
+    test.it('should call the event', function () {
 
       var spy = sinon.spy();
       instance.on('foo', spy);
@@ -27,7 +27,7 @@ test('core/Base', [
       expect(spy).to.have.been.calledWith(params);
     });
 
-    runner.it('should also call "all" event', function () {
+    test.it('should also call "all" event', function () {
 
       var spy = sinon.spy();
       instance.on('all', spy);
@@ -37,7 +37,7 @@ test('core/Base', [
       expect(spy).to.have.been.calledOnce;
     });
 
-    runner.it('should pass the original event name as first argument in "all" event', function () {
+    test.it('should pass the original event name as first argument in "all" event', function () {
 
       var spy = sinon.spy();
       instance.on('all', spy);
@@ -47,7 +47,7 @@ test('core/Base', [
       expect(spy).to.have.been.calledWith('foo');
     });
 
-    runner.it('should also pass the original arguments', function () {
+    test.it('should also pass the original arguments', function () {
 
       var spy = sinon.spy();
       instance.on('all', spy);
@@ -56,5 +56,52 @@ test('core/Base', [
 
       expect(spy).to.have.been.calledWith('foo', params, 'bro', 'code');
     });
+  });
+
+  test.spec('assert (string type, * object, string message', function () {
+
+    // test.when('type is not a string', function () {
+
+    //   test.itShouldThrowError();
+    // });
+
+    // test.when('type is a string', function () {
+
+    // });
+
+    test.when('type is "defined"', function () {
+
+      test.when('object is an empty string', function () {
+
+        test.itShouldThrowError(function () {
+          instance.assert('defined', '', 'The thing should be defined');
+        });
+      });
+
+      test.when('object is non-empty string', function () {
+
+        test.itShouldNotThrowError(function () {
+          instance.assert('defined', ' ', 'The thing should be defined');
+        });
+      });
+    });
+
+    // test.when('more than one string is passed as type', function () {
+
+    //   test.it('should test each assertion', function () {
+
+    //     test.when('any of the assertions fail', function () {
+    //       test.itShouldThrowError(function () {
+    //         instance.assert('defined string', '', 'The thing should be defined');
+    //       });
+    //     });
+
+    //     test.when('any all the assertions pass', function () {
+    //       test.itShouldNotThrowError(function () {
+    //         instance.assert('defined string', 's', 'The thing should be defined');
+    //       });
+    //     });
+    //   });
+    // });
   });
 });
