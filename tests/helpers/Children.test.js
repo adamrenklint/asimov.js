@@ -6,36 +6,31 @@ test([
 
 ], function (test) {
 
-  var instance;
+  var instance, pages;
 
-  beforeEach(function () {
+  test.before(function (done) {
 
-    var pages = new test.deps.PageNodesCollection([{
-      'type': 'page',
-      'path': process.cwd() + '/content/page.txt'
-    }, {
-      'type': 'page',
-      'path': process.cwd() + '/content/sub/page.txt'
-    }, {
-      'type': 'page',
-      'path': process.cwd() + '/content/sub/sub2/page.txt'
-    }, {
-      'type': 'page',
-      'path': process.cwd() + '/content/foo/page.txt'
-    }, {
-      'type': 'page',
-      'path': process.cwd() + '/content/foo/bar/page.txt'
-    }], {
+    _ = test.deps.lodash;
+
+    pages = new test.deps.PageNodesCollection(null, {
       'localization': {
         'defaultLangCode': 'en'
       },
       'paths': {
-        'content': 'content',
-        'frameworkPages': 'not-a-real-url'
-      }
+        'content': 'tests/mocks/pages',
+        'frameworkPages': 'tests/mocks/pages'
+      },
+      'muteLog': true
     });
 
-    pages.mediator.unpublish('collection:pages').publish('collection:pages', pages);
+    pages.mediator.publish('collection:pages', pages);
+
+    pages.fetch('tests/mocks/pages').done(function () {
+      done();
+    });
+  });
+
+  beforeEach(function () {
 
     var queue = new test.deps.Collection();
 
@@ -45,7 +40,7 @@ test([
       'pages': pages
     });
 
-    instance.setUrl('/sub');
+    instance.setUrl('/foo');
   });
 
   test.spec('run (string url, object options)', function () {
@@ -89,7 +84,7 @@ test([
               }
             });
 
-            expect(result).to.equal('::/sub::/foo');
+            expect(result).to.equal('::/foo::/zoo');
           });
         });
 
@@ -145,7 +140,7 @@ test([
             }
           });
 
-          expect(result).to.equal('::/sub/sub2');
+          expect(result).to.equal('::/foo/bar');
         });
       });
     });
