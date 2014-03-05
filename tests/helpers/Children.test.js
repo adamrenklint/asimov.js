@@ -35,11 +35,7 @@ test([
       }
     });
 
-    pages.logger.log('count before ' + pages.models.length)
-
     pages.mediator.unpublish('collection:pages').publish('collection:pages', pages);
-
-    pages.logger.log('count after ' + pages.models.length)
 
     var queue = new test.deps.Collection();
 
@@ -69,10 +65,7 @@ test([
             });
 
             expect(spy).to.have.been.calledOnce;
-            expect(spy).to.have.been.calledWith({
-              'type': 'page',
-              'url': '/foo/bar'
-            });
+            expect(spy.firstCall.args[0].url).to.equal('/foo/bar');
           });
 
           test.it('should return the value of all function calls', function () {
