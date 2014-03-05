@@ -10,11 +10,26 @@ test([
 
   test.before(function (done) {
 
+    _ = test.deps.lodash;
+
+    pages = new test.deps.PageNodesCollection(null, {
+      'localization': {
+        'defaultLangCode': 'en'
+      },
+      'paths': {
+        'content': 'tests/mocks/pages',
+        'frameworkPages': 'tests/mocks/pages'
+      },
+      'muteLog': true
+    });
+
+    pages.fetch('tests/mocks/pages').done(function () {
+      done();
+    });
   });
 
   test.beforeEach(function () {
 
-    _ = test.deps.lodash;
     instance = new test.deps.PageNode({
       'path': 'fake/soemthing.txt'
     }, {
