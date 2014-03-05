@@ -102,6 +102,41 @@ test('core/Collection', [
         expect(instance.models[0].attributes.foo).to.equal('bar');
         expect(instance.models[2].attributes.zoo).to.equal('lan');
       });
+
+      runner.when('the models use slashes in their ids', function () {
+
+        runner.it('should treat each as unique', function () {
+
+          var attributes1 = { 'id': '/', 'foo': 'bar' };
+          var attributes2 = { 'id': '/foo', 'foz': 'nil' };
+          var attributes3 = { 'id': '/foo/bar', 'zoo': 'lan' };
+
+          instance.add(attributes1);
+          instance.add(attributes2);
+          instance.add(attributes3);
+
+          expect(instance.models.length).to.equal(3);
+          expect(instance.models[0].attributes.foo).to.equal('bar');
+          expect(instance.models[2].attributes.zoo).to.equal('lan');
+        });
+
+        runner.it('should find them by id', function () {
+
+          var attributes1 = { 'id': '/', 'foo': 'bar' };
+          var attributes2 = { 'id': '/foo', 'foz': 'nil' };
+          var attributes3 = { 'id': '/foo/bar', 'zoo': 'lan' };
+
+          instance.add(attributes1);
+          instance.add(attributes2);
+          instance.add(attributes3);
+
+          // Why double the length? Collections store two references,
+          // one for the id (idAttribute) and one for the cid
+          expect(_.keys(instance._byId).length).to.equal(6);
+          expect(instance.get('/').attributes.foo).to.equal('bar');
+          expect(instance.get('/foo/bar').attributes.zoo).to.equal('lan');
+        });
+      });
     });
   });
 });

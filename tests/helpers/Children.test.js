@@ -10,30 +10,37 @@ test([
 
   beforeEach(function () {
 
+    debugger;
     var pages = new test.deps.PageNodesCollection([{
       'type': 'page',
-      'path': '/'
+      'path': process.cwd() + '/content/'
     }, {
       'type': 'page',
-      'path': '/sub'
+      'path': process.cwd() + '/content/sub'
     }, {
       'type': 'page',
-      'path': '/sub/sub2'
+      'path': process.cwd() + '/content/sub/sub2'
     }, {
       'type': 'page',
-      'path': '/foo'
+      'path': process.cwd() + '/content/foo'
     }, {
       'type': 'page',
-      'path': '/foo/bar'
+      'path': process.cwd() + '/content/foo/bar'
     }], {
       'localization': {
         'defaultLangCode': 'en'
       },
       'paths': {
-        'content': 'not-a-real-url',
+        'content': 'content',
         'frameworkPages': 'not-a-real-url'
       }
     });
+
+    pages.logger.log('count before ' + pages.models.length)
+
+    pages.mediator.unpublish('collection:pages').publish('collection:pages', pages);
+
+    pages.logger.log('count after ' + pages.models.length)
 
     var queue = new test.deps.Collection();
 
