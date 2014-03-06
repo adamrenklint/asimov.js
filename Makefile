@@ -1,6 +1,5 @@
 install:
 	@npm install
-	@npm install -g nodemon
 
 start:
 	@node main.js
