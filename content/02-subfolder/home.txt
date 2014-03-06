@@ -1,153 +1,35 @@
-Title: Accomplish Your 2014 New Year’s Resolutions
+title: The server application
+---
+headline: Something seomghitn
+---
+text:
 
-----
+At the heart of asimov.js is a simple express server with some smart middleware hooked into it. By adding your own custom initializers and request middleware, you can extend the server modify the entire flow of rendering and caching.
 
-Headline: Accomplish Your 2014 Resolutions
+## Bootstrap
 
-----
+Once you start the server application using <code>node main.js</code>, there's a series of synchronous and asynchronous events triggering. In <code>main.js</code> you have the chance to pass in options to the bootstrap, and change the behavior of some or all components and the bootstrap process.
 
-Subheadline: With Wunderlist
+After playing the intro animation, the crawler scans the <code>content</code> folder for all <code>.txt</code> content textfiles and creates a map of the available urls. This map is passed to the render queue, and to the server to be used by middleware. The server then starts handling incoming requests.
 
-----
+Templates and template helpers are then loaded and validated, and the render queue starts processing jobs, saving its output to the in-memory cache. As application bundles and stylesheets are included in the rendered pages, they are also added to the render queue, processed and cached.
 
-ImageClasses: retina
+Finally, the file structure is observed for changes, which triggers re-rendering of the changed resource, and all other resources that depends on it.
 
-----
+## The flow of a request
 
-Date: 2013-12-17
+When the server receives a request, it first passes through a set of server middleware, then any custom middleware you define, then some more framework middleware, and if the request has not been taken care of by then, a 404 is returned.
 
-----
+When a request for a url that should be cached is received, it's passed on to the cache instance that tries to find the resource. If it or any of its dependencies are in queue to be rendered, they get pushed to the front of the queue and the requests are served as soon as rendering is complete.
 
-Text:
+When the <code>ENV</code> flag is set to <code>dev</code>, **pages are always re-rendered** before they are sent to the browser - but application bundles and stylesheets are still only recompiled when changed.
 
-With the new year just around the corner, now’s the time to start thinking about your 2014 resolutions.  This year Wunderlist is here to help you take your resolutions beyond just a thought and make sure that 2014 is the year that you accomplish  your fitness, finance and productivity goals.
+## Logging (WIP)
 
-We all know the drill: we start the year with good intentions, motivated and completely focused on what we want to achieve. Yet, how many of us actually keep our new year’s resolutions past January? According to a (link: http://quirkology.com/UK/Experiment_resolution.shtml text: study) by author and psychologist (link: http://richardwiseman.wordpress.com/ text: Richard Wiseman) not many. His research found that 52% of resolution-makers were confident that they’d achieve their goals, yet only 12% succeeded.
+Logging happens on three levels: verbose, default and silent. Set <code>options.logVerbose</code> to <code>true</code> in <code>main.js</code> to see everything. Set <code>options.logSilent</code> to <code>true</code> to mute all logging except for critical system messages, and of course errors.
 
-###The secret to keeping your new year’s resolutions
-So, what’s the secret?  Wiseman’s puts their success down to taking meaningful steps to achieve their new year’s resolutions. They planned ahead, identified a single resolution, set step-by-step goals, tracked their progress  and made their commitment known publicly.
+Logging can also be done in two ways. The default style uses a hack to clear the console to change its content and update the timings and is nice and good in development. But that style of logging doesn't work well with production logs. Switch to the alternative style by by setting <code>options.devLogger</code> to <code>false</code> in <code>main.js</code>. This is done automatically when the server is started with <code>ENV=production node main.js</code>.
 
-###Plan ahead
-Don’t wait until the new year to think about your resolution. Last minute decisions tend to be based on what is on your mind at that time. Instead, take some time now and reflect upon what you really want to achieve.
+## Disable intro animation (WIP)
 
-###Identify one resolution only
-Once you’ve really thought about what it is you want to accomplish in 2014, it is important you narrow it down to only one resolution. Many people often make the mistake of trying to achieve too much. The chances of success are greater when people channel their energy into changing just one aspect of their behavior.
-
-###Start small
-There’s is literally nothing more daunting and demotivating  than being faced with a huge task. Let’s take improving your fitness as an example, just thinking about it down makes it feel somewhat impossible. So, start by breaking it down into smaller and more tangible to-dos, like go for a jog twice a week, develop a healthy weekly menu plan, walk to work, instead of catching the bus, etc. Then set one main to-do for each week that is related to your fitness goal. All the steps are then visible from the beginning, so it’s clear the path you need to take.
-
-###Keep track of  your progress
-It’s very important to know where you’re heading and to make a note of your progress on the way. Tracking your goals (complete with Due Dates and Reminders) helps to maintain momentum and can help to ward off disillusionment. Plus there is nothing more satisfying than checking off your to-dos along the way.
-
-###Ask for support
-Once you’ve set out all the steps you need to take to smash your new year’s resolution, try sharing your list with a trusted friend or loved one. Not only will you be **ten times more likely to stick to your resolutions**, they’ll also be able to help keep you honest, provide moral support and be there to celebrate with you, when you accomplish your goals.
-
-###Get a little help from Wunderlist
-To get you started on the right foot our team of experts have created three lists to help you accomplish your (link: http://resolutions.wunderlist.com/fitness text:Fitness),  (link: http://resolutions.wunderlist.com/finance text:Finance) and (link: http://resolutions.wunderlist.com/productivity text:Productivity) resolutions this coming year. The three lists can be added directly into your Wunderlist with just one click on the lists below. They provide practical to-dos (along with Due Dates, Reminders and Recurring Tasks, as well as  some fun facts and words of motivation along the way) on achieving your goals. So, what are you waiting for, add your list of choice to Wunderlist now!
-
-<div class="embedded medium">
-  <div class="list-header">
-    <a class="avatar"></a>
-    <span class="list-title">Fitness 2014</span>
-    <div class="meta-data"><span class="timestamp">Created by</span> <span class="user-name">Wunderlist</span></div>
-  </div>
-  <div class="list-content">
-    <ul>
-      <li>Measure yourself</li>
-      <li>Set your goals</li>
-      <li>Identify your support team</li>
-      <li>Start your 21 day program</li>
-      <li>Try doing a weekly menu</li>
-      <li>Use small steps to make giant leaps</li>
-      <li>Shop for motivation</li>
-      <li>Review your progress</li>
-      <li>Don't forget to eat breakfast</li>
-      <li>Remove caffeine, nicotine, or alcohol</li>
-      <li>Reward yourself, you deserve it!</li>
-      <li>Sign up for a sporting event</li>
-      <li>Try on your "goal garment"</li>
-      <li>Keep it fresh</li>
-      <li>Lean on your friends</li>
-      <li>Eat in</li>
-      <li>Try working out together</li>
-      <li>Become an expert</li>
-      <li>Hit the refresh button</li>
-    </ul>
-  </div>
-  <div class="list-footer">
-    <a href="http://resolutions.wunderlist.com/fitness" class="share-generic share-wunderlist"><span></span>Add to my Wunderlist</a>
-  </div>
-</div>
-
-<div class="embedded medium">
-  <div class="list-header">
-    <a class="avatar"></a>
-    <span class="list-title">Finance 2014</span>
-    <div class="meta-data"><span class="timestamp">Created by</span> <span class="user-name">Wunderlist</span></div>
-  </div>
-  <div class="list-content">
-    <ul>
-      <li>Write down your goals</li>
-      <li>Start tracking your spending</li>
-      <li>Increase your success ten fold</li>
-      <li>Cut back on excess</li>
-      <li>Create a budget</li>
-      <li>Find a budget system that works for you</li>
-      <li>Take the first step</li>
-      <li>A reminder</li>
-      <li>Take stock and adjust</li>
-      <li>Set up a rewards</li>
-      <li>Consider a sub­-account</li>
-      <li>Try switching to cash</li>
-      <li>It’s a habit!</li>
-      <li>Cut the credit cards</li>
-      <li>Reduce your monthly builds</li>
-      <li>Review and take stock</li>
-      <li>Make adjustments</li>
-      <li>Become an expert</li>
-    </ul>
-  </div>
-  <div class="list-footer">
-    <a href="http://resolutions.wunderlist.com/finance" class="share-generic share-wunderlist"><span></span>Add to my Wunderlist</a>
-  </div>
-</div>
-
-<div class="embedded medium">
-  <div class="list-header">
-    <a class="avatar"></a>
-    <span class="list-title">Productivity 2014</span>
-    <div class="meta-data"><span class="timestamp">Created by</span> <span class="user-name">Wunderlist</span></div>
-  </div>
-  <div class="list-content">
-    <ul>
-      <li>Write down your goals</li>
-      <li>Find your support team</li>
-      <li>Set your alarm an hour early</li>
-      <li>Create a daily to-do list</li>
-      <li>Simplify your to-dos</li>
-      <li>Start tracking your time</li>
-      <li>Identify at what time you are your most productive</li>
-      <li>Use your commute time</li>
-      <li>A rested mind is more productive</li>
-      <li>Stop multitasking</li>
-      <li>Make your space personal</li>
-      <li>Keep track of progress</li>
-      <li>Set up a rewards</li>
-      <li>Mix it up</li>
-      <li>Don't waste the time you save</li>
-      <li>Tackle your email</li>
-      <li>Lean on your support</li>
-      <li>Learn when to say no</li>
-      <li>Meet less</li>
-      <li>Create a stop Doing List</li>
-      <li>Time to take stock</li>
-    </ul>
-  </div>
-  <div class="list-footer">
-    <a href="http://resolutions.wunderlist.com/productivity" class="share-generic share-wunderlist"><span></span>Add to my Wunderlist</a>
-  </div>
-</div>
-
-
-To further support you in accomplishing your 2014 new year’s resolutions we will be sharing further tips and advice right here on our blog in the new year, so stay tuned! In the meantime we would love to hear what you think about the lists, so please leave a comment below. Oh, and  to stay up to date with all things Wunderlist be sure to follow us on (link: https://www.facebook.com/Wunderlist text: Facebook), (twitter: Wunderlist text: Twitter) and (link: https://plus.google.com/105356136092009396367/posts text:Google+) or sign up to our <a href="#footer">newsletter</a> below.
-
+In case you want to shave of a second or two from the startup time, you can disable the intro animation by setting <code>options.animateIntro</code> to <code>false</code> in <code>main.js</code>.
