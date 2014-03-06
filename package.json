@@ -39,6 +39,6 @@
     "mocha": "^1.17.1",
     "zombie": "^2.0.0-alpha29",
     "sinon": "^1.8.2",
-    "sinon-chai": "^2.5.0",
+    "sinon-chai": "^2.5.0"
   }
 }
