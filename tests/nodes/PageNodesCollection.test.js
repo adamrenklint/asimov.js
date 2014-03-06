@@ -58,19 +58,19 @@ test([
     });
   });
 
-  test.spec('getChildrenOf (string url)', function () {
+  test.spec('childrenOf (string url, object options)', function () {
 
     test.when('url is not a string', function () {
 
       test.itShouldThrowError(function () {
-        instance.getChildrenOf();
+        instance.childrenOf();
       });
     });
 
     test.when('url doesn\'t match any page', function () {
 
       test.itShouldThrowError(function () {
-        instance.getChildrenOf('/never-existed');
+        instance.childrenOf('/never-existed');
       });
     });
 
@@ -78,7 +78,7 @@ test([
 
       test.it('should return an instance of PageNodesCollection', function () {
 
-        var children = instance.getChildrenOf('/');
+        var children = instance.childrenOf('/');
         expect(children.namespace).to.equal('Pages');
       });
 
@@ -86,7 +86,7 @@ test([
 
         test.it('should return each child in the PageNodesCollection', function () {
 
-          var children = instance.getChildrenOf('/');
+          var children = instance.childrenOf('/');
 
           expect(children.get('/foo').attributes.title).to.equal('foo');
           expect(children.get('/zoo').attributes.title).to.equal('zoologogogogy');
@@ -94,7 +94,7 @@ test([
 
         test.it('should not return any other pages in the PageNodesCollection',function () {
 
-          var children = instance.getChildrenOf('/');
+          var children = instance.childrenOf('/');
           expect(children.models.length).to.equal(2);
         });
       });
@@ -103,9 +103,29 @@ test([
 
         test.it('should return an empty PageNodesCollection', function () {
 
-          var children = instance.getChildrenOf('/zoo');
-
+          var children = instance.childrenOf('/zoo');
           expect(children.models.length).to.equal(0);
+        });
+      });
+
+      test.when('options.hidden is false (default)', function () {
+
+        test.it('should not return hidden pages', function () {
+
+          var children = instance.childrenOf('/foo/bar');
+          expect(children.models.length).to.equal(0);
+        });
+      });
+
+      test.when('options.hidden is true', function () {
+
+        test.it('should also return hidden pages', function () {
+
+          var children = instance.childrenOf('/foo/bar', {
+            'hidden': true
+          });
+          expect(children.models.length).to.equal(1);
+          expect(children.get('/foo/bar/invisible').attributes.title).to.equal('Invisible');
         });
       });
     });
