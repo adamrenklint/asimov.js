@@ -75,48 +75,20 @@ test([
       });
     });
 
-    test.when('a pages collection is defined', function () {
+    test.when('self.pages is a PageNodesCollection', function () {
 
       test.beforeEach(function () {
         instance.mediator.trigger('collection:pages', pages);
       });
 
-      test.it('should return an instance of PageNodesCollection', function () {
+      test.it('should return the children of the page node', function () {
 
         var parent = pages.get('/');
         var children = parent.children();
-        expect(children.namespace).to.equal('Pages');
-      });
 
-      test.when('the page model has children in self.pages', function () {
-
-        test.it('should return each child in the PageNodesCollection', function () {
-
-          var parent = pages.get('/');
-          var children = parent.children();
-
-          expect(children.get('/foo').attributes.title).to.equal('foo');
-          expect(children.get('/zoo').attributes.title).to.equal('zoologogogogy');
-        });
-
-        test.it('should not return any other pages in the PageNodesCollection',function () {
-
-          var parent = pages.get('/');
-          var children = parent.children();
-
-          expect(children.models.length).to.equal(2);
-        });
-      });
-
-      test.when('the page model has no children in self.pages', function () {
-
-        test.it('should return an empty PageNodesCollection', function () {
-
-          var parent = pages.get('/zoo');
-          var children = parent.children();
-
-          expect(children.models.length).to.equal(0);
-        });
+        expect(children.models.length).to.equal(2);
+        expect(children.get('/foo').attributes.title).to.equal('foo');
+        expect(children.get('/zoo').attributes.title).to.equal('zoologogogogy');
       });
     });
   });
