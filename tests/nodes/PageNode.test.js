@@ -109,7 +109,7 @@ test([
 
     test.when('self.pages is not an instance of PageNodesCollection', function () {
 
-      test.itShouldThrowError(function () {
+      test.itShould.throwError(function () {
 
         instace.pages = null;
         instance.children();

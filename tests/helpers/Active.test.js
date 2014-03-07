@@ -24,7 +24,7 @@ test([
 
     test.when('url is not a string', function () {
 
-      test.itShouldThrowError(function () {
+      test.itShould.throwError(function () {
         instance.run(null, 'string');
       });
     });

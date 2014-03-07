@@ -52,7 +52,7 @@ test('watcher/PageParser', [
 
     test.when('options.templates is not a collection', function () {
 
-      test.itShouldThrowError(function () {
+      test.itShould.throwError(function () {
         new test.deps.PageParser();
       });
     });
@@ -62,7 +62,7 @@ test('watcher/PageParser', [
 
     test.when('model.attributes.template references a non-existing template', function () {
 
-      test.itShouldThrowError(function () {
+      test.itShould.throwError(function () {
 
         var model = new test.deps.Model({
           'path': 'foo/bar',

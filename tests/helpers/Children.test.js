@@ -90,7 +90,7 @@ test([
 
         test.when('options.fn is not function', function () {
 
-          test.itShouldThrowError(function () {
+          test.itShould.throwError(function () {
             instance.run('/foo', {
               'hash': {},
               'fn': null
@@ -101,7 +101,7 @@ test([
 
       test.when('no page exists for url', function () {
 
-        test.itShouldThrowError(function () {
+        test.itShould.throwError(function () {
             instance.run('/foos', {
               'hash': {},
               'fn': function () {}

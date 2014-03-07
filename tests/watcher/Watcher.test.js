@@ -38,6 +38,8 @@ test('watcher/Watcher', [
 
         test.it('should call self.handleChange', function (done) {
 
+          this.timeout(5000);
+
           var filename = test.getTempFilename();
           var content = '7s89d7a9sd7';
 
@@ -48,7 +50,10 @@ test('watcher/Watcher', [
           };
 
           instance.startWatching(test.options.tempPath);
-          test.writeTempFile(filename, content);
+
+          setTimeout(function () {
+            test.writeTempFile(filename, content);
+          }, 10);
         });
       });
 
@@ -195,13 +200,13 @@ test('watcher/Watcher', [
 
     test.when('a config file is changed', function () {
       test.when('that config file is loaded', function () {
-        test.itShouldThrowError();
+        test.itShould.throwError();
       });
     });
 
     test.when('a config file is removed', function () {
       test.when('that config file is loaded', function () {
-        test.itShouldThrowError();
+        test.itShould.throwError();
       });
     });
   });
