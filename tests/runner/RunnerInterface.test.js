@@ -72,16 +72,6 @@ test('runner/RunnerInterface', [
     });
   });
 
-  // test.before(function () {
-
-  //   this.server = test.deps.Server.listen(5657);
-  // });
-
-  // test.after(function () {
-
-  //   this.server.close();
-  // });
-
   test.integration('/', function () {
 
     // test.itShouldLoad();
@@ -93,12 +83,11 @@ test('runner/RunnerInterface', [
     });
   });
 
-  // test.integration('http://asimovjs.org', function () {
+  test.integration('/subfolder', function () {
 
-  //   test.itShouldLoad();
-  //   // test.it('should return a 200 OK', function () {
+    test.it('should return a 200 OK', function () {
 
-  //   //   expect(this.browser.success).to.be.true;
-  //   // });
-  // });
+      expect(this.browser.success).to.be.true;
+    });
+  });
 });
