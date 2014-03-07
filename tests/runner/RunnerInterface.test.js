@@ -74,20 +74,6 @@ test('runner/RunnerInterface', [
 
   test.integration('/', function () {
 
-    // test.itShould.loadPage();
-
-    // test.it('should something');
-    test.it('should return a 200 OK', function () {
-
-      expect(this.browser.success).to.be.true;
-    });
-  });
-
-  test.integration('/subfolder', function () {
-
-    test.it('should return a 200 OK', function () {
-
-      expect(this.browser.success).to.be.true;
-    });
+    test.itShould.loadPage();
   });
 });
