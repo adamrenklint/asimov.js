@@ -1,3 +1,6 @@
+-----
+testing: mixing delimiter lengths
+----
 title: The server application
 ---
 headline: Something seomghitn
