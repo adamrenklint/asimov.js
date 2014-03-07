@@ -64,6 +64,47 @@ test([
     });
   });
 
+  test.spec('parsePosition (string path)', function () {
+
+    test.when('path contains no position in its last part', function () {
+
+      test.it('should remove all positions', function () {
+
+        var before = '/asdasdas/10-asdasds/2-asiuhd/asdsada/index.txt';
+        var after = instance.parsePosition(before);
+
+        expect(after).to.equal('/asdasdas/asdasds/asiuhd/asdsada/index.txt');
+      });
+
+      test.it('should not set attributes.position', function () {
+
+        var before = '/asdasdas/10-asdasds/2-asiuhd/asdsada/index.txt';
+        var after = instance.parsePosition(before);
+
+        expect(instance.attributes.position).to.be.null;
+      });
+    });
+
+    test.when('path contains a position in its last part', function () {
+
+      test.it('should remove all positions', function () {
+
+        var before = '/asdasdas/10-asdasds/2-asiuhd/07-asdsada/index.txt';
+        var after = instance.parsePosition(before);
+
+        expect(after).to.equal('/asdasdas/asdasds/asiuhd/asdsada/index.txt');
+      });
+
+      test.it('should not set attributes.position', function () {
+
+        var before = '/asdasdas/10-asdasds/2-asiuhd/07-asdsada/index.txt';
+        var after = instance.parsePosition(before);
+
+        expect(instance.attributes.position).to.be.equal(7);
+      });
+    });
+  });
+
   test.spec('children ()', function () {
 
     test.when('self.pages is not an instance of PageNodesCollection', function () {

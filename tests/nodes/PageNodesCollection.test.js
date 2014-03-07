@@ -121,11 +121,11 @@ test([
 
         test.it('should also return hidden pages', function () {
 
-          var children = instance.childrenOf('/foo/bar', {
+          var children = instance.childrenOf('/', {
             'hidden': true
           });
-          expect(children.models.length).to.equal(1);
-          expect(children.get('/foo/bar/invisible').attributes.title).to.equal('Invisible');
+          expect(children.models.length).to.equal(3);
+          expect(children.get('/hidden').attributes.title).to.equal('Invisible');
         });
       });
     });
