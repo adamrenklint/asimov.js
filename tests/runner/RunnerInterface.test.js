@@ -82,14 +82,16 @@ test('runner/RunnerInterface', [
   //   this.server.close();
   // });
 
-  // test.integration('/', function () {
+  test.integration('/', function () {
 
-  //   test.itShouldLoad();
-  //   // test.it('should return a 200 OK', function () {
+    // test.itShouldLoad();
 
-  //   //   expect(this.browser.success).to.be.true;
-  //   // });
-  // });
+    // test.it('should something');
+    test.it('should return a 200 OK', function () {
+
+      expect(this.browser.success).to.be.true;
+    });
+  });
 
   // test.integration('http://asimovjs.org', function () {
 
