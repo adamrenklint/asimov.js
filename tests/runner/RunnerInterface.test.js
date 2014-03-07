@@ -74,7 +74,7 @@ test('runner/RunnerInterface', [
 
   test.integration('/', function () {
 
-    // test.itShouldLoad();
+    // test.itShould.loadPage();
 
     // test.it('should something');
     test.it('should return a 200 OK', function () {

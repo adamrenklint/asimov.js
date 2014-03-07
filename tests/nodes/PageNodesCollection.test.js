@@ -62,14 +62,14 @@ test([
 
     test.when('url is not a string', function () {
 
-      test.itShouldThrowError(function () {
+      test.itShould.throwError(function () {
         instance.childrenOf();
       });
     });
 
     test.when('url doesn\'t match any page', function () {
 
-      test.itShouldThrowError(function () {
+      test.itShould.throwError(function () {
         instance.childrenOf('/never-existed');
       });
     });

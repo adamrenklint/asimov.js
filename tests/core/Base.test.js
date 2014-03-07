@@ -62,7 +62,7 @@ test('core/Base', [
 
     // test.when('type is not a string', function () {
 
-    //   test.itShouldThrowError();
+    //   test.itShould.throwError();
     // });
 
     // test.when('type is a string', function () {
@@ -73,14 +73,14 @@ test('core/Base', [
 
       test.when('object is an empty string', function () {
 
-        test.itShouldThrowError(function () {
+        test.itShould.throwError(function () {
           instance.assert('defined', '', 'The thing should be defined');
         });
       });
 
       test.when('object is non-empty string', function () {
 
-        test.itShouldNotThrowError(function () {
+        test.itShould.notThrowError(function () {
           instance.assert('defined', ' ', 'The thing should be defined');
         });
       });
@@ -91,13 +91,13 @@ test('core/Base', [
     //   test.it('should test each assertion', function () {
 
     //     test.when('any of the assertions fail', function () {
-    //       test.itShouldThrowError(function () {
+    //       test.itShould.throwError(function () {
     //         instance.assert('defined string', '', 'The thing should be defined');
     //       });
     //     });
 
     //     test.when('any all the assertions pass', function () {
-    //       test.itShouldNotThrowError(function () {
+    //       test.itShould.notThrowError(function () {
     //         instance.assert('defined string', 's', 'The thing should be defined');
     //       });
     //     });
