@@ -104,7 +104,7 @@ test('watcher/PageParser', [
 
       test.it('should register model as a dependency of the template', function () {
 
-        var pagePath = 'foo/bar';
+        var pagePath = '01-foo/01-bar';
         var model = new test.deps.Model({
           'path': pagePath,
           'raw': 'foo',
@@ -188,7 +188,7 @@ test('watcher/PageParser', [
 
         test.it('should register model as a dependency of the other page', function () {
 
-          var pagePath = 'barbaz';
+          var pagePath = '10-barbaz';
           var superUrl = '/foo';
           var model = new test.deps.Model({
             'path': pagePath,
@@ -202,7 +202,7 @@ test('watcher/PageParser', [
           var wasFound = false;
 
           _.each(dependencies.attributes, function (arr, path) {
-            if (path.indexOf('/mocks/pages/foo/simple.txt') >= 0) {
+            if (path.indexOf('/mocks/pages/01-foo/simple.txt') >= 0) {
               wasFound = true;
             }
           });
