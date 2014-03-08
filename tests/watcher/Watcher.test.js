@@ -146,7 +146,10 @@ test('watcher/Watcher', [
     });
 
     test.when('a page file is added', function () {
-      test.it('should trigger fetch on self.options.pages');
+
+      test.it('should trigger fetch on self.options.pages', function () {
+
+      });
     });
 
     test.when('a page file is changed', function () {

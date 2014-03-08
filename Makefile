@@ -8,7 +8,7 @@ test:
 	@node main.js --test
 
 publish:
-	@npm publish --dd
+	@node main.js --test && npm publish --dd
 	@git tag "v$(shell node -e "var config = require('./package.json'); console.log(config.version);")"
 	@git push --tags
 
