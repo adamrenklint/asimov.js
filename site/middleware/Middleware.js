@@ -9,7 +9,7 @@
 
 define([
 
-  '../../lib/server/Middleware'
+  '../../node_modules/asimov.js/lib/server/Middleware'
 
 ], function (Middleware) {
 
