@@ -17,9 +17,13 @@
       "{{framework}}/helpers",
       "site/helpers"
     ],
-    "middleware": "site/middleware"
+    "middleware": [
+      "site/middleware",
+      "{{framework}}/middleware"
+    ]
   },
   "localization": {
     "defaultLangCode": "en"
-  }
+  },
+  "middleware": []
 }
