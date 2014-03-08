@@ -24,6 +24,18 @@ test([
     });
   });
 
+  test.spec('fetch (array paths)', function () {
+
+    test.when('a path contains "/_"', function () {
+
+      test.it('should not add a pageNode and crawl', function () {
+
+        var children = instance.childrenOf('/hidden');
+        expect(children.models.length).to.equal(0);
+      });
+    });
+  });
+
   test.spec('add (array models, object options)', function () {
 
     test.when('several unique models with similar ids are passed', function () {
