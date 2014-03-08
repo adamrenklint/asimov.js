@@ -1,11 +1,17 @@
 install:
-	@npm install
+	@npm install && npm install -g nodemon
 
 start:
 	@node main.js
 
+open:
+	@node main.js --open
+
 test:
 	@node main.js --test
+
+test-watch:
+	@nodemon main.js --test
 
 publish:
 	@make test && make force-publish
