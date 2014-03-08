@@ -4,6 +4,9 @@ install:
 start:
 	@node main.js
 
+open:
+	@node main.js --open
+
 test:
 	@node main.js --test
 
