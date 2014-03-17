@@ -17,7 +17,7 @@ test([
       'pages': collection
     });
 
-    instance.setUrl('/blog');
+    instance.currentUrl = '/blog';
   });
 
   test.spec('run (string url, string value, object options)', function () {

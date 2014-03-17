@@ -40,7 +40,7 @@ test([
       'pages': pages
     });
 
-    instance.setUrl('/foo');
+    instance.currentUrl = '/foo';
   });
 
   test.spec('run (string url, object options)', function () {
