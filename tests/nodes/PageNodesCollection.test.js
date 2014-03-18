@@ -1,12 +1,15 @@
 test([
 
-  '../../lib/nodes/PageNodesCollection'
+  '../../lib/nodes/PageNodesCollection',
+  'lodash'
 
 ], function (test) {
 
-  var instance;
+  var instance, _;
 
   beforeEach(function (done) {
+
+    _ = test.deps.lodash;
 
     instance = new test.deps.PageNodesCollection(null, {
       'localization': {
@@ -66,6 +69,43 @@ test([
 
       test.it('should add each unique model', function () {
         expect(instance.models.length).to.equal(5 + length);
+      });
+
+      test.it('should sort the collection by position, debounced', function (done) {
+
+        instance.reset();
+        instance.add([{
+          'type': 'page',
+          'path': process.cwd() + '/' + instance.options.paths.content + '/page-3.txt',
+          'position': 30
+        }, {
+          'type': 'page',
+          'path': process.cwd() + '/' + instance.options.paths.content + '/sub/page-1.txt',
+          'position': 1
+        }, {
+          'type': 'page',
+          'path': process.cwd() + '/' + instance.options.paths.content + '/sub/sub2/page-5.txt',
+          'position': 1231
+        }, {
+          'type': 'page',
+          'path': process.cwd() + '/' + instance.options.paths.content + '/foo/page-4.txt',
+          'position': 80
+        }, {
+          'type': 'page',
+          'path': process.cwd() + '/' + instance.options.paths.content + '/foo/bar/page-2.txt',
+          'position': 10
+        }]);
+
+        setTimeout(function () {
+
+          instance.sort();
+          instance.sort();
+          _.each(instance.models, function (model, index) {
+            expect(model.attributes.path).to.contain('page-' + (index + 1));
+          });
+
+          done();
+        }, 10);
       });
     });
   });

@@ -1,6 +1,6 @@
 {
   "name": "asimov.js",
-  "version": "0.9.27",
+  "version": "0.9.28",
   "homepage": "http://asimovjs.org",
   "description": "A better way to build awesome websites and apps",
   "author": "Adam Renklint <adam@renklint.com>",
@@ -31,7 +31,6 @@
     "madge": "~0.1.8",
     "markdown": "~0.5.0",
     "marked": "~0.3.1",
-    "URIjs": "^1.12.0",
     "watchdirectory": "^0.1.5",
     "chai": "^1.9.0",
     "mocha": "^1.17.1",
