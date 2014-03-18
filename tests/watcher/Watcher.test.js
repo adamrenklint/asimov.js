@@ -186,7 +186,7 @@ test('watcher/Watcher', [
 
         // instance.handleChange = function (changed) {
         //   if (changed.indexOf(filename) >= 0) {
-        //     done();
+            done();
         //   }
         // };
 
@@ -205,15 +205,15 @@ test('watcher/Watcher', [
       test.it('should update the path on any page within folder');
     });
 
-    test.when('a data textile is added', function () {
+    test.when('a data textfile is added', function () {
       test.it('should trigger fetch on self.options.pages');
     });
 
-    test.when('a data textile is changed', function () {
+    test.when('a data textfile is changed', function () {
       test.it('should trigger fetch on all its dependencies');
     });
 
-    test.when('a data textile is removed', function () {
+    test.when('a data textfile is removed', function () {
       test.it('should trigger fetch on all its dependencies');
     });
 
