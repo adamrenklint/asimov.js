@@ -1,6 +1,6 @@
 {
   "paths": {
-    "outputDir": "{{framework}}/build",
+    "outputDir": "build",
     "frameworkPages": "{{framework}}/pages",
     "applications": "public/applications",
     "configs": "environments",
