@@ -1,7 +1,7 @@
 test('watcher/TemplateParser', [
 
   '../../lib/watcher/TemplateParser',
-  // '../../lib/core/Model',
+  '../../lib/core/Model',
   'lodash'
 
 ], function (test) {
@@ -10,9 +10,9 @@ test('watcher/TemplateParser', [
 
   test.beforeEach(function () {
     instance = new test.deps.TemplateParser({
-      // 'paths': {
-      //   'styles': ['tests/mocks/styles']
-      // }
+      'paths': {
+        'templates': ['tests/mocks/templates']
+      }
     });
     _ = test.deps.lodash;
   });
@@ -36,16 +36,85 @@ test('watcher/TemplateParser', [
 
   test.spec('parse (object model, string raw, object dependencies)', function () {
 
-    test.it('should add model as a dependency of itself');
+    test.it('should add model as a dependency of itself', function () {
+
+      var templatePath = 'something/template.tmpl';
+      var model = new test.deps.Model({
+        'path': templatePath,
+        'raw': 'blabla'
+      });
+      var dependencies = new test.deps.Model();
+      instance.parse(model, null, dependencies);
+
+      var wasFound = false;
+
+      _.each(dependencies.attributes, function (arr, path) {
+        if (path.indexOf(templatePath) >= 0) {
+          _.each(arr, function (dep) {
+            if (dep.attributes.path.indexOf(templatePath) >= 0) {
+              wasFound = true;
+            }
+          });
+        }
+      });
+
+      expect(wasFound).to.be.true;
+    });
 
     test.when('the template includes a partial', function () {
 
-      test.it('should add model as a dependency for the partial');
+      test.it('should add model as a dependency for the partial', function () {
+
+        var templatePath = 'something/template.tmpl';
+        var model = new test.deps.Model({
+          'path': templatePath,
+          'raw': 'blabla {{>simple}} asda'
+        });
+        var dependencies = new test.deps.Model();
+        instance.parse(model, null, dependencies);
+
+        var wasFound = false;
+
+        _.each(dependencies.attributes, function (arr, path) {
+          if (path.indexOf('templates/simple') >= 0) {
+            _.each(arr, function (dep) {
+              if (dep.attributes.path.indexOf(templatePath) >= 0) {
+                wasFound = true;
+              }
+            });
+          }
+        });
+
+        expect(wasFound).to.be.true;
+      });
     });
 
     test.when('the template includes multiple levels of partials', function () {
 
-      test.it('should add model as a dependency for the all partials');
+      test.it('should add model as a dependency for the nested partial', function () {
+
+        var templatePath = 'something/template.tmpl';
+        var model = new test.deps.Model({
+          'path': templatePath,
+          'raw': 'blabla {{>includer}} asda'
+        });
+        var dependencies = new test.deps.Model();
+        instance.parse(model, null, dependencies);
+
+        var wasFound = false;
+
+        _.each(dependencies.attributes, function (arr, path) {
+          if (path.indexOf('templates/simple') >= 0) {
+            _.each(arr, function (dep) {
+              if (dep.attributes.path.indexOf(templatePath) >= 0) {
+                wasFound = true;
+              }
+            });
+          }
+        });
+
+        expect(wasFound).to.be.true;
+      });
     });
 
     test.when('the template uses the site variable', function () {

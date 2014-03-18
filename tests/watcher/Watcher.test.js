@@ -1,17 +1,22 @@
 test('watcher/Watcher', [
 
   '../../lib/watcher/Watcher',
-  '../../lib/core/Model'
+  '../../lib/core/Model',
+  '../../lib/core/Collection'
 
 ], function (test) {
 
   var instance;
 
   test.beforeEach(function () {
+
+    var templates = new test.deps.Collection();
+
     instance = new test.deps.Watcher(null, {
       'paths': {
         'styles': ['tests/mocks/styles']
-      }
+      },
+      'templates': templates
     });
   });
 
