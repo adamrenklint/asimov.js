@@ -1,4 +1,4 @@
-title: Hello world!tempasda
+title: Hello world!
 ---
 headline: ▲ asimov.js
 ---
