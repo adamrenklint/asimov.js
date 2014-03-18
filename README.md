@@ -15,6 +15,10 @@ You need to have node and npm installed. Then fork this repo and open it in your
 
     $ make test
 
+## Start the server
+
+    $ make start
+
 ## Publish to NPM
 
     $ make publish
