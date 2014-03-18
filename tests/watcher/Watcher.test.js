@@ -10,7 +10,10 @@ test('watcher/Watcher', [
 
   test.beforeEach(function () {
 
-    var templates = new test.deps.Collection();
+    var templates = new test.deps.Collection({
+      'name': 'simple',
+      'path': 'simple'
+    });
     var pages = new test.deps.Collection();
 
     instance = new test.deps.Watcher(null, {
@@ -157,21 +160,40 @@ test('watcher/Watcher', [
       test.it('should trigger fetch on self.options.pages', function (done) {
 
         var fetch = instance.options.pages.fetch;
+
         instance.options.pages.fetch = function () {
+
+          instance.options.pages.fetch.restore();
+          instance.options.pages.fetch = fetch;
+
           done();
         };
-        sinon.spy(instance.options.pages, 'fetch');
 
+        sinon.spy(instance.options.pages, 'fetch');
         var filename = test.getTempFilename() + '.txt';
         instance.startWatching(test.options.tempPath);
         test.writeTempFile(filename, 'asdf');
-
-        instance.options.pages.fetch.restore();
       });
     });
 
     test.when('a page file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
+
+      test.it('should trigger fetch on all its dependencies', function (done) {
+
+        // var filename = test.getTempFilename();
+        // var content1 = 'foo';
+        // var content2 = 'barbaz';
+
+        // instance.handleChange = function (changed) {
+        //   if (changed.indexOf(filename) >= 0) {
+        //     done();
+        //   }
+        // };
+
+        // test.writeTempFile(filename, content1);
+        // instance.startWatching(test.options.tempPath);
+        // test.writeTempFile(filename, content2);
+      });
     });
 
     test.when('a page file is removed', function () {
