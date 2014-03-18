@@ -11,12 +11,14 @@ test('watcher/Watcher', [
   test.beforeEach(function () {
 
     var templates = new test.deps.Collection();
+    var pages = new test.deps.Collection();
 
     instance = new test.deps.Watcher(null, {
       'paths': {
         'styles': ['tests/mocks/styles']
       },
-      'templates': templates
+      'templates': templates,
+      'pages': pages
     });
   });
 
@@ -152,8 +154,19 @@ test('watcher/Watcher', [
 
     test.when('a page file is added', function () {
 
-      test.it('should trigger fetch on self.options.pages', function () {
+      test.it('should trigger fetch on self.options.pages', function (done) {
 
+        var fetch = instance.options.pages.fetch;
+        instance.options.pages.fetch = function () {
+          done();
+        };
+        sinon.spy(instance.options.pages, 'fetch');
+
+        var filename = test.getTempFilename() + '.txt';
+        instance.startWatching(test.options.tempPath);
+        test.writeTempFile(filename, 'asdf');
+
+        instance.options.pages.fetch.restore();
       });
     });
 
