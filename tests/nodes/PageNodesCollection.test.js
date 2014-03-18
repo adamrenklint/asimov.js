@@ -27,17 +27,17 @@ test([
     });
   });
 
-  test.spec('fetch (array paths)', function () {
+  // test.spec('fetch (array paths)', function () {
 
-    test.when('a path contains "/_"', function () {
+  //   test.when('a path contains "/_"', function () {
 
-      test.it('should not add a pageNode and crawl', function () {
+  //     test.it('should not add a pageNode and crawl', function () {
 
-        var children = instance.childrenOf('/hidden');
-        expect(children.models.length).to.equal(0);
-      });
-    });
-  });
+  //       var children = instance.childrenOf('/hidden');
+  //       expect(children.models.length).to.equal(0);
+  //     });
+  //   });
+  // });
 
   test.spec('add (array models, object options)', function () {
 
@@ -71,41 +71,30 @@ test([
         expect(instance.models.length).to.equal(5 + length);
       });
 
-      test.it('should sort the collection by position, debounced', function (done) {
+      test.it('should sort the collection', function () {
 
         instance.reset();
         instance.add([{
           'type': 'page',
-          'path': process.cwd() + '/' + instance.options.paths.content + '/page-3.txt',
-          'position': 30
+          'path': process.cwd() + '/' + instance.options.paths.content + '/01-sub/page-1.txt',
+          'raw': 'asdf'
         }, {
           'type': 'page',
-          'path': process.cwd() + '/' + instance.options.paths.content + '/sub/page-1.txt',
-          'position': 1
+          'path': process.cwd() + '/' + instance.options.paths.content + '/1241-sub/sub2/page-4.txt',
+          'raw': 'asdf'
         }, {
           'type': 'page',
-          'path': process.cwd() + '/' + instance.options.paths.content + '/sub/sub2/page-5.txt',
-          'position': 1231
+          'path': process.cwd() + '/' + instance.options.paths.content + '/80-foo/page-3.txt',
+          'raw': 'asdf'
         }, {
           'type': 'page',
-          'path': process.cwd() + '/' + instance.options.paths.content + '/foo/page-4.txt',
-          'position': 80
-        }, {
-          'type': 'page',
-          'path': process.cwd() + '/' + instance.options.paths.content + '/foo/bar/page-2.txt',
-          'position': 10
+          'path': process.cwd() + '/' + instance.options.paths.content + '/10-foo/bar/page-2.txt',
+          'raw': 'asdf'
         }]);
 
-        setTimeout(function () {
-
-          instance.sort();
-          instance.sort();
           _.each(instance.models, function (model, index) {
             expect(model.attributes.path).to.contain('page-' + (index + 1));
           });
-
-          done();
-        }, 10);
       });
     });
   });
