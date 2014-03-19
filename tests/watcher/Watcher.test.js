@@ -155,9 +155,25 @@ test('watcher/Watcher', [
       });
     });
 
+    var pageFilename;
+
+    test.before(function () {
+      pageFilename = test.getTempFilename() + '.txt';
+    });
+
     test.when('a page file is added', function () {
 
       test.it('should trigger fetch on self.options.pages', function (done) {
+
+        instance.startWatching(test.options.tempPath);
+
+        var model = new test.deps.Model({
+          'path': 'foo/aadasd.txt',
+          'type': 'page',
+          'raw': 'fooooo',
+          'template': 'simple'
+        });
+        instance.watch(model);
 
         var fetch = instance.options.pages.fetch;
 
@@ -170,9 +186,7 @@ test('watcher/Watcher', [
         };
 
         sinon.spy(instance.options.pages, 'fetch');
-        var filename = test.getTempFilename() + '.txt';
-        instance.startWatching(test.options.tempPath);
-        test.writeTempFile(filename, 'asdf');
+        test.writeTempFile(pageFilename, 'asdf');
       });
     });
 
@@ -180,19 +194,28 @@ test('watcher/Watcher', [
 
       test.it('should trigger fetch on all its dependencies', function (done) {
 
-        // var filename = test.getTempFilename();
-        // var content1 = 'foo';
-        // var content2 = 'barbaz';
+        instance.startWatching(test.options.tempPath);
 
-        // instance.handleChange = function (changed) {
-        //   if (changed.indexOf(filename) >= 0) {
-            done();
-        //   }
-        // };
+        var model = new test.deps.Model({
+          'path': 'foo/aadasd.txt',
+          'type': 'page',
+          'raw': 'fooooo',
+          'template': 'simple'
+        });
+        instance.watch(model);
 
-        // test.writeTempFile(filename, content1);
-        // instance.startWatching(test.options.tempPath);
-        // test.writeTempFile(filename, content2);
+        var fetch = instance.options.pages.fetch;
+
+        instance.options.pages.fetch = function () {
+
+          instance.options.pages.fetch.restore();
+          instance.options.pages.fetch = fetch;
+
+          // done();
+        };
+
+        sinon.spy(instance.options.pages, 'fetch');
+        test.writeTempFile(pageFilename, 'asdf');
       });
     });
 
