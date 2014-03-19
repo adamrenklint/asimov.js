@@ -1,0 +1,7 @@
+title: Internal Server Error
+---
+url: /error
+---
+text:
+
+{{title}}
