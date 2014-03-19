@@ -4,6 +4,8 @@ headline: asimov.js
 ---
 text:
 
-Welcome to your brand new asimov.js project. This is the default landing page, which you can change by editing <strong>/content/home.txt</strong>.
+Welcome to your brand new asimov.js project.
+
+This is the default landing page, which you can change by editing <strong>/content/home.txt</strong>.
 
 New to asimov.js? Check out {{link "http://asimovjs.org" "asimovjs.org"}}
