@@ -21,7 +21,8 @@ test('watcher/Watcher', [
         'styles': ['tests/mocks/styles']
       },
       'templates': templates,
-      'pages': pages
+      'pages': pages,
+      'muteLog': true
     });
   });
 
@@ -175,106 +176,140 @@ test('watcher/Watcher', [
         });
         instance.watch(model);
 
-        var fetch = instance.options.pages.fetch;
+        instance.options.pages.fetch = done;
 
-        instance.options.pages.fetch = function () {
-
-          instance.options.pages.fetch.restore();
-          instance.options.pages.fetch = fetch;
-
-          done();
-        };
-
-        sinon.spy(instance.options.pages, 'fetch');
         test.writeTempFile(pageFilename, 'asdf');
       });
     });
 
     test.when('a page file is changed', function () {
 
-      test.it('should trigger fetch on all its dependencies', function (done) {
+      test.when('the dependency target is a page', function () {
 
-        instance.startWatching(test.options.tempPath);
+        test.it('should call fetch() on the target', function (done) {
 
-        var model = new test.deps.Model({
-          'path': 'foo/aadasd.txt',
-          'type': 'page',
-          'raw': 'fooooo',
-          'template': 'simple'
+          instance.startWatching(test.options.tempPath);
+
+          var model = new test.deps.Model({
+            'path': test.options.tempPath + '/' + pageFilename,
+            'type': 'page',
+            'raw': 'fooooo',
+            'template': 'simple'
+          });
+
+          model.fetch = done;
+          instance.watch(model);
+
+          test.writeTempFile(pageFilename, 'asdfchanged');
         });
-        instance.watch(model);
-
-        var fetch = instance.options.pages.fetch;
-
-        instance.options.pages.fetch = function () {
-
-          instance.options.pages.fetch.restore();
-          instance.options.pages.fetch = fetch;
-
-          // done();
-        };
-
-        sinon.spy(instance.options.pages, 'fetch');
-        test.writeTempFile(pageFilename, 'asdf');
       });
     });
 
     test.when('a page file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
+
+      test.when('the dependency target is a page', function () {
+
+        test.it('should call destroy() on the target', function (done) {
+
+          instance.startWatching(test.options.tempPath);
+
+          var model = new test.deps.Model({
+            'path': test.options.tempPath + '/' + pageFilename,
+            'type': 'page',
+            'raw': 'fooooo',
+            'template': 'simple'
+          });
+
+          model.fetch = done;
+          instance.watch(model);
+
+          test.removeTempFile(pageFilename);
+        });
+      });
     });
 
-    test.when('a content/ subfolder name is changed', function () {
-      test.it('should update the url on any page within folder');
-      test.it('should update the path on any page within folder');
-    });
+    // FIRST: what can depend on what. a page file on page files and templates,
+    // a template on templates, and then data textfiles, stylesheets, etc
 
-    test.when('a data textfile is added', function () {
-      test.it('should trigger fetch on self.options.pages');
-    });
+    // spec out every case, and the write the tests
 
-    test.when('a data textfile is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
+    // test.when('a content/ subfolder name is changed', function () {
+    //   test.it('should update the url on any page within folder');
+    //   test.it('should update the path on any page within folder');
+    // });
 
-    test.when('a data textfile is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
+    // test.when('a data textfile is added', function () {
+    //   test.it('should trigger fetch on self.options.pages');
+    // });
+
+    // test.when('a data textfile is changed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
+
+    // test.when('a data textfile is removed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
+
+    test.when('a template file is added', function () {
+
+      test.it('should call fetch() on self.options.templates');
     });
 
     test.when('a template file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
+
+      test.when('the dependency target is a template', function () {
+
+        test.it('should call fetch() on the template');
+
+        test.it('should call handleChange with target path');
+      });
+
+      test.when('the dependency target is a page', function () {
+
+        test.it('should call fetch() on the template');
+
+        test.it('should trigger "change:raw" on the target');
+      });
     });
 
     test.when('a template file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
+
+      test.it('should call destroy() on the template');
+
+      test.it('should trigger handleChange() with each dependency target path');
     });
 
-    test.when('a stylesheet file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
+    // test.when('a template file is removed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
 
-    test.when('a stylesheet file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
+    // test.when('a stylesheet file is changed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
 
-    test.when('a javascript file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
+    // test.when('a stylesheet file is removed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
 
-    test.when('a javascript file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
+    // test.when('a javascript file is changed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
 
-    test.when('a config file is changed', function () {
-      test.when('that config file is loaded', function () {
-        test.itShould.throwError();
-      });
-    });
+    // test.when('a javascript file is removed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
 
-    test.when('a config file is removed', function () {
-      test.when('that config file is loaded', function () {
-        test.itShould.throwError();
-      });
-    });
+    // test.when('a config file is changed', function () {
+    //   test.when('that config file is loaded', function () {
+    //     test.itShould.throwError();
+    //   });
+    // });
+
+    // test.when('a config file is removed', function () {
+    //   test.when('that config file is loaded', function () {
+    //     test.itShould.throwError();
+    //   });
+    // });
   });
 
   test.spec('parseDependencies (object model)', function () {
