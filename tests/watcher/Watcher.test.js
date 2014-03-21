@@ -322,6 +322,43 @@ test('watcher/Watcher', [
     // });
   });
 
+  test.spec('handleChange (string path, object oldStat, object newStat, string type)', function () {
+
+    var extensions = {
+      'page': 'txt',
+      'template': 'tmpl'
+    };
+
+    function testHandleChange (type) {
+
+      var actions = ['created', 'modified', 'deleted'];
+
+      for (var i = 0, max = actions.length; i < max; i++) {
+        testHandleChangeForAction(type, actions[i]);
+      }
+    }
+
+    function testHandleChangeForAction (type, action) {
+
+      test.when('a ' + type + ' file is ' + action, function () {
+        test.it('should call ' + type + '.' + action + ' handler', function () {
+
+          var spy = sinon.spy(instance._handlers[type], action);
+          var path = 'a9ua09dua90sud09sad.' + extensions[type];
+          instance.handleChange(path, {}, {}, action);
+
+          expect(spy).to.have.been.calledOnce;
+          // expect(spy).to.have.been.calledWith(model, null, instance);
+
+          instance._handlers[type][action].restore();
+        });
+      });
+    }
+
+    testHandleChange('page');
+    testHandleChange('template');
+  });
+
   test.spec('parseDependencies (object model)', function () {
 
     test.when('there is no matching parser for model.attributes.type', function () {
