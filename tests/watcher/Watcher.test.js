@@ -220,35 +220,13 @@ test('watcher/Watcher', [
             'template': 'simple'
           });
 
-          model.fetch = done;
+          model.destroy = done;
           instance.watch(model);
 
           test.removeTempFile(pageFilename);
         });
       });
     });
-
-    // FIRST: what can depend on what. a page file on page files and templates,
-    // a template on templates, and then data textfiles, stylesheets, etc
-
-    // spec out every case, and the write the tests
-
-    // test.when('a content/ subfolder name is changed', function () {
-    //   test.it('should update the url on any page within folder');
-    //   test.it('should update the path on any page within folder');
-    // });
-
-    // test.when('a data textfile is added', function () {
-    //   test.it('should trigger fetch on self.options.pages');
-    // });
-
-    // test.when('a data textfile is changed', function () {
-    //   test.it('should trigger fetch on all its dependencies');
-    // });
-
-    // test.when('a data textfile is removed', function () {
-    //   test.it('should trigger fetch on all its dependencies');
-    // });
 
     test.when('a template file is added', function () {
 
@@ -278,6 +256,35 @@ test('watcher/Watcher', [
 
       test.it('should trigger handleChange() with each dependency target path');
     });
+
+
+
+
+
+
+    // FIRST: what can depend on what. a page file on page files and templates,
+    // a template on templates, and then data textfiles, stylesheets, etc
+
+    // spec out every case, and the write the tests
+
+    // test.when('a content/ subfolder name is changed', function () {
+    //   test.it('should update the url on any page within folder');
+    //   test.it('should update the path on any page within folder');
+    // });
+
+    // test.when('a data textfile is added', function () {
+    //   test.it('should trigger fetch on self.options.pages');
+    // });
+
+    // test.when('a data textfile is changed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
+
+    // test.when('a data textfile is removed', function () {
+    //   test.it('should trigger fetch on all its dependencies');
+    // });
+
+
 
     // test.when('a template file is removed', function () {
     //   test.it('should trigger fetch on all its dependencies');

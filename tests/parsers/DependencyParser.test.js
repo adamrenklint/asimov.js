@@ -1,6 +1,6 @@
-test('watcher/DependencyParser', [
+test([
 
-  '../../lib/watcher/DependencyParser',
+  '../../lib/parsers/DependencyParser',
   '../../lib/core/Model',
   'lodash'
 
