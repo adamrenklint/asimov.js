@@ -1,6 +1,6 @@
 test([
 
-  '../../lib/updaters/PageHandler',
+  '../../lib/updaters/StyleSheetHandler',
   '../../lib/core/Collection',
   'lodash'
 
@@ -9,7 +9,7 @@ test([
   var instance, _;
 
   test.beforeEach(function () {
-    instance = new test.deps.PageHandler({
+    instance = new test.deps.StyleSheetHandler({
       'pages': new test.deps.Collection(),
       'templates': new test.deps.Collection(),
       'styleSheets': new test.deps.Collection()
@@ -21,48 +21,35 @@ test([
     instance.destroy();
   });
 
-  test.spec('created (string path, array graph)', function () {
-
-    test.it('should call fetch() on self.options.pages', function () {
-
-      var spy = sinon.spy(instance.options.pages, 'fetch');
-
-      instance.created('/any/path/page.txt', []);
-
-      expect(spy).to.have.been.calledOnce;
-      instance.options.pages.fetch.restore();
-    });
-  });
-
   test.spec('modified (string path, array graph)', function () {
 
-    test.when('graph contains a page', function () {
+    test.when('graph contains a styleSheet', function () {
 
-      test.when('the page matches the modified path', function () {
+      test.when('the styleSheet matches the modified path', function () {
 
         test.it('should call fetch() on the page', function () {
 
-          var modified = new instance.options.pages.model({
-            'path': '/foo/bar/page.txt'
+          var modified = new instance.options.styleSheets.model({
+            'path': '/foo/bar/main.styl'
           });
           var spy = sinon.spy(modified, 'fetch');
 
-          instance.modified('/foo/bar/page.txt', [modified]);
+          instance.modified('/foo/bar/main.styl', [modified]);
 
           expect(spy).to.have.been.calledOnce;
           modified.fetch.restore();
         });
       });
 
-      test.when('the page doesn\'t match the modified path', function () {
+      test.when('the styleSheet doesn\'t match the modified path', function () {
 
-        test.it('should defer trigger "change:raw" with page', function (done) {
+        test.it('should defer trigger "change:raw" on styleSheet', function (done) {
 
           var notModified = instance.options.pages.create({
-            'path': '/foo/bar2/page.txt'
+            'path': '/foo/bar2/main.styl'
           });
 
-          instance.modified('/foo/bar/page.txt', [notModified]);
+          instance.modified('/foo/bar/main.styl', [notModified]);
 
           notModified.on('change:raw', function () {
             done();

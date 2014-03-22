@@ -12,7 +12,7 @@ test([
     instance = new test.deps.TemplateHandler({
       'pages': new test.deps.Collection(),
       'templates': new test.deps.Collection(),
-      'watcher': new test.deps.Collection()
+      'styleSheets': new test.deps.Collection()
     });
     _ = test.deps.lodash;
   });
