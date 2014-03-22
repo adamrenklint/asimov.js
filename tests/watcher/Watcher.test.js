@@ -10,13 +10,19 @@ test('watcher/Watcher', [
 
   test.beforeEach(function () {
 
-    var templates = new test.deps.Collection();
+    var templates = new test.deps.Collection({
+      'name': 'simple',
+      'path': 'simple'
+    });
+    var pages = new test.deps.Collection();
 
     instance = new test.deps.Watcher(null, {
       'paths': {
         'styles': ['tests/mocks/styles']
       },
-      'templates': templates
+      'templates': templates,
+      'pages': pages,
+      'muteLog': true
     });
   });
 
@@ -48,8 +54,9 @@ test('watcher/Watcher', [
           var filename = test.getTempFilename();
           var content = '7s89d7a9sd7';
 
-          instance.handleChange = function (changed) {
-            if (changed.indexOf(filename) >= 0) {
+          instance.handleChange = function (path, oldStat, newStat, type) {
+            if (path.indexOf(filename) >= 0) {
+              expect(type).to.equal('created');
               done();
             }
           };
@@ -69,8 +76,9 @@ test('watcher/Watcher', [
           var filename = test.getTempFilename();
           var content = 'foo';
 
-          instance.handleChange = function (changed) {
-            if (changed.indexOf(filename) >= 0) {
+          instance.handleChange = function (path, oldStat, newStat, type) {
+            if (path.indexOf(filename) >= 0) {
+              expect(type).to.equal('deleted');
               done();
             }
           };
@@ -89,8 +97,9 @@ test('watcher/Watcher', [
           var content1 = 'foo';
           var content2 = 'barbaz';
 
-          instance.handleChange = function (changed) {
-            if (changed.indexOf(filename) >= 0) {
+          instance.handleChange = function (path, oldStat, newStat, type) {
+            if (path.indexOf(filename) >= 0) {
+              expect(type).to.equal('removed');
               done();
             }
           };
@@ -149,74 +158,43 @@ test('watcher/Watcher', [
         }).to.throw(Error);
       });
     });
+  });
 
-    test.when('a page file is added', function () {
+  test.spec('handleChange (string path, object oldStat, object newStat, string type)', function () {
 
-      test.it('should trigger fetch on self.options.pages', function () {
+    var extensions = {
+      'page': 'txt',
+      'template': 'tmpl'
+    };
 
+    function testHandleChange (type) {
+
+      var actions = ['created', 'modified', 'deleted'];
+
+      for (var i = 0, max = actions.length; i < max; i++) {
+        testHandleChangeForAction(type, actions[i]);
+      }
+    }
+
+    function testHandleChangeForAction (type, action) {
+
+      test.when('a ' + type + ' file is ' + action, function () {
+        test.it('should call ' + type + '.' + action + ' handler', function () {
+
+          var spy = sinon.spy(instance._handlers[type], action);
+          var path = 'a9ua09dua90sud09sad.' + extensions[type];
+          instance.handleChange(path, {}, {}, action);
+
+          expect(spy).to.have.been.calledOnce;
+          // expect(spy).to.have.been.calledWith(model, null, instance);
+
+          instance._handlers[type][action].restore();
+        });
       });
-    });
+    }
 
-    test.when('a page file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a page file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a content/ subfolder name is changed', function () {
-      test.it('should update the url on any page within folder');
-      test.it('should update the path on any page within folder');
-    });
-
-    test.when('a data textile is added', function () {
-      test.it('should trigger fetch on self.options.pages');
-    });
-
-    test.when('a data textile is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a data textile is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a template file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a template file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a stylesheet file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a stylesheet file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a javascript file is changed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a javascript file is removed', function () {
-      test.it('should trigger fetch on all its dependencies');
-    });
-
-    test.when('a config file is changed', function () {
-      test.when('that config file is loaded', function () {
-        test.itShould.throwError();
-      });
-    });
-
-    test.when('a config file is removed', function () {
-      test.when('that config file is loaded', function () {
-        test.itShould.throwError();
-      });
-    });
+    testHandleChange('page');
+    testHandleChange('template');
   });
 
   test.spec('parseDependencies (object model)', function () {

@@ -1,6 +1,6 @@
-test('watcher/AppBundleParser', [
+test([
 
-  '../../lib/watcher/AppBundleParser',
+  '../../lib/parsers/AppBundleParser',
   // '../../lib/core/Model',
   'lodash'
 

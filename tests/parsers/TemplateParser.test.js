@@ -1,6 +1,6 @@
-test('watcher/TemplateParser', [
+test([
 
-  '../../lib/watcher/TemplateParser',
+  '../../lib/parsers/TemplateParser',
   '../../lib/core/Model',
   'lodash'
 

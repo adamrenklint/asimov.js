@@ -1,6 +1,6 @@
-test('watcher/PageParser', [
+test([
 
-  '../../lib/watcher/PageParser',
+  '../../lib/parsers/PageParser',
   '../../lib/render/TemplatesCollection',
   '../../lib/nodes/PageNodesCollection',
   '../../lib/core/Model',

@@ -1,6 +1,6 @@
-test('watcher/StyleSheetParser', [
+test([
 
-  '../../lib/watcher/StyleSheetParser',
+  '../../lib/parsers/StyleSheetParser',
   '../../lib/core/Model',
   'lodash'
 
