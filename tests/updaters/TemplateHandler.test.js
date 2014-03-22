@@ -38,7 +38,7 @@ test([
 
     test.when('graph contains a page', function () {
 
-      test.it('should defer call watcher.handleChange() with page path', function (done) {
+      test.it('should defer trigger "change:raw" with page', function (done) {
 
         var notModified = instance.options.pages.create({
             'path': '/foo/bar2/page.txt'
@@ -54,7 +54,7 @@ test([
 
           instance.options.watcher.handleChange = handleChange;
 
-          done();
+          // done();
         };
       });
     });
@@ -79,7 +79,7 @@ test([
 
       test.when('template doesn\'t match the modified path', function () {
 
-        test.it('should defer call watcher.handleChange() with template path', function (done) {
+        test.it('should defer trigger "change:raw" with template', function (done) {
 
           var notModified = instance.options.templates.create({
             'path': '/merabaz/another.tmpl'
@@ -95,7 +95,7 @@ test([
 
             instance.options.watcher.handleChange = handleChange;
 
-            done();
+            // done();
           };
         });
       });
@@ -104,10 +104,9 @@ test([
 
   test.spec('deleted (string path, array graph)', function () {
 
-
     test.when('graph contains a page', function () {
 
-      test.it('should defer call watcher.handleChange() with page path', function (done) {
+      test.it('should defer trigger "change:raw" with page', function (done) {
 
         var notDeleted = instance.options.pages.create({
             'path': '/foo/bar2/page.txt'
@@ -123,7 +122,7 @@ test([
 
           instance.options.watcher.handleChange = handleChange;
 
-          done();
+          // done();
         };
       });
     });
@@ -148,7 +147,7 @@ test([
 
       test.when('template doesn\'t match the deleted path', function () {
 
-        test.it('should defer call watcher.handleChange() with template path', function (done) {
+        test.it('should defer trigger "change:raw" on template', function (done) {
 
           var notDeleted = instance.options.templates.create({
             'path': '/merabaz/another.tmpl'
@@ -164,7 +163,7 @@ test([
 
             instance.options.watcher.handleChange = handleChange;
 
-            done();
+            // done();
           };
         });
       });
