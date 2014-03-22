@@ -63,30 +63,110 @@ test([
 
       test.when('template matches the modified path', function () {
 
-        test.it('should call fetch() on the modified template');
+        test.it('should call fetch() on the modified template', function () {
+
+          var modified = new instance.options.templates.model({
+            'path': '/barabaz/something.tmpl'
+          });
+          var spy = sinon.spy(modified, 'fetch');
+
+          instance.modified('/barabaz/something.tmpl', [modified]);
+
+          expect(spy).to.have.been.calledOnce;
+          modified.fetch.restore();
+        });
       });
 
       test.when('template doesn\'t match the modified path', function () {
 
-        test.it('should defer call watcher.handleChange() with template path');
+        test.it('should defer call watcher.handleChange() with template path', function (done) {
+
+          var notModified = instance.options.templates.create({
+            'path': '/merabaz/another.tmpl'
+          });
+
+          instance.modified('/barabaz/something.tmpl', [notModified]);
+
+          var handleChange = instance.options.watcher.handleChange;
+          instance.options.watcher.handleChange = function (path, oldS, newS, type) {
+
+            expect(path).to.equal('/merabaz/another.tmpl');
+            expect(type).to.equal('modified');
+
+            instance.options.watcher.handleChange = handleChange;
+
+            done();
+          };
+        });
       });
     });
   });
 
   test.spec('deleted (string path, array graph)', function () {
 
-    test.it('should call destroy() on the deleted template');
 
     test.when('graph contains a page', function () {
 
-      test.it('should defer call watcher.handleChange() with page path');
+      test.it('should defer call watcher.handleChange() with page path', function (done) {
+
+        var notDeleted = instance.options.pages.create({
+            'path': '/foo/bar2/page.txt'
+          });
+
+        instance.deleted('/barabaz/something.tmpl', [notDeleted]);
+
+        var handleChange = instance.options.watcher.handleChange;
+        instance.options.watcher.handleChange = function (path, oldS, newS, type) {
+
+          expect(path).to.equal('/foo/bar2/page.txt');
+          expect(type).to.equal('modified');
+
+          instance.options.watcher.handleChange = handleChange;
+
+          done();
+        };
+      });
     });
 
     test.when('graph contains a template', function () {
 
+      test.when('template matches the deleted path', function () {
+
+        test.it('should call destroy() on the deleted template', function () {
+
+          var deleted = new instance.options.templates.model({
+            'path': '/barabaz/something.tmpl'
+          });
+          var spy = sinon.spy(deleted, 'destroy');
+
+          instance.deleted('/barabaz/something.tmpl', [deleted]);
+
+          expect(spy).to.have.been.calledOnce;
+          deleted.destroy.restore();
+        });
+      });
+
       test.when('template doesn\'t match the deleted path', function () {
 
-        test.it('should defer call watcher.handleChange() with template path');
+        test.it('should defer call watcher.handleChange() with template path', function (done) {
+
+          var notDeleted = instance.options.templates.create({
+            'path': '/merabaz/another.tmpl'
+          });
+
+          instance.deleted('/barabaz/something.tmpl', [notDeleted]);
+
+          var handleChange = instance.options.watcher.handleChange;
+          instance.options.watcher.handleChange = function (path, oldS, newS, type) {
+
+            expect(path).to.equal('/merabaz/another.tmpl');
+            expect(type).to.equal('modified');
+
+            instance.options.watcher.handleChange = handleChange;
+
+            done();
+          };
+        });
       });
     });
   });
