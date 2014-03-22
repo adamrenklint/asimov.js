@@ -26,11 +26,11 @@ test([
 
     test.when('graph contains a page', function () {
 
-      test.it('should call fetch() on the page');
+      test.it('should call fetch() on the modified page');
 
       test.when('the page doesn\'t match the modified path', function () {
 
-        test.it('should call watcher.handleChange() with page path');
+        test.it('should defer call watcher.handleChange() with page path');
       });
     });
   });
