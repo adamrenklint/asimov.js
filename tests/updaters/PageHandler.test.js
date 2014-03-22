@@ -64,16 +64,9 @@ test([
 
           instance.modified('/foo/bar/page.txt', [notModified]);
 
-          var handleChange = instance.options.watcher.handleChange;
-          instance.options.watcher.handleChange = function (path, oldS, newS, type) {
-
-            expect(path).to.equal('/foo/bar2/page.txt');
-            expect(type).to.equal('modified');
-
-            instance.options.watcher.handleChange = handleChange;
-
-            // done();
-          };
+          notModified.on('change:raw', function () {
+            done();
+          });
         });
       });
     });
@@ -109,16 +102,9 @@ test([
 
           instance.deleted('/foo/bar/page.txt', [notDeleted]);
 
-          var handleChange = instance.options.watcher.handleChange;
-          instance.options.watcher.handleChange = function (path, oldS, newS, type) {
-
-            expect(path).to.equal('/foo/bar2/page.txt');
-            expect(type).to.equal('modified');
-
-            instance.options.watcher.handleChange = handleChange;
-
-            // done();
-          };
+          notDeleted.on('change:raw', function () {
+            done();
+          });
         });
       });
     });
