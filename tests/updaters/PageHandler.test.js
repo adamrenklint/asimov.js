@@ -83,17 +83,43 @@ test([
 
     test.when('graph contains a page', function () {
 
-      test.it('should call destroy() on the page', function () {
+      test.when('page matches the deleted path', function () {
 
-        var deleted = new instance.options.pages.model({
-          'path': '/foo/bar/page.txt'
+        test.it('should call destroy() on the deleted page', function () {
+
+          var deleted = new instance.options.pages.model({
+            'path': '/foo/bar/page.txt'
+          });
+          var spy = sinon.spy(deleted, 'destroy');
+
+          instance.deleted('/foo/bar/page.txt', [deleted]);
+
+          expect(spy).to.have.been.calledOnce;
+          deleted.destroy.restore();
         });
-        var spy = sinon.spy(deleted, 'destroy');
+      });
 
-        instance.deleted('/foo/bar/page.txt', [deleted]);
+      test.when('page doesn\'t match the deleted path', function () {
 
-        expect(spy).to.have.been.calledOnce;
-        deleted.destroy.restore();
+        test.it('should defer call watcher.handleChange() with page path', function (done) {
+
+          var notDeleted = instance.options.pages.create({
+            'path': '/foo/bar2/page.txt'
+          });
+
+          instance.deleted('/foo/bar/page.txt', [notDeleted]);
+
+          var handleChange = instance.options.watcher.handleChange;
+          instance.options.watcher.handleChange = function (path, oldS, newS, type) {
+
+            expect(path).to.equal('/foo/bar2/page.txt');
+            expect(type).to.equal('modified');
+
+            instance.options.watcher.handleChange = handleChange;
+
+            done();
+          };
+        });
       });
     });
   });
