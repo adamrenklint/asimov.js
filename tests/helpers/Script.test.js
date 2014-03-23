@@ -1,6 +1,8 @@
 test([
 
-  '../../lib/helpers/Script'
+  '../../lib/helpers/Script',
+  '../../lib/core/Collection',
+  '../../lib/nodes/ScriptNodesCollection'
 
 ], function (test) {
 
@@ -8,45 +10,36 @@ test([
 
   beforeEach(function () {
 
-    var collection = new test.deps.Collection();
-
     instance = new test.deps.Script({
       'name': 'script',
-      // 'queue': collection,
-      // 'pages': collection
+      'queue': new test.deps.Collection(),
+      'scripts': new test.deps.ScriptNodesCollection(),
+      'paths': {
+        'scripts': 'site/scripts'
+      }
     });
 
     instance.currentUrl = '/blog';
   });
 
-  test.spec('run (string url)', function () {
+  test.spec('run (string name)', function () {
 
-    test.when('url is not a string', function () {
+    test.when('name is not a string', function () {
 
       test.itShould.throwError(function () {
-        instance.run(null, 'string');
+        instance.run(null);
       });
     });
 
-    test.when('url is a string', function () {
+    test.when('name is a string', function () {
 
-      test.when('value is a string', function () {
+      test.it('should return a script tag', function () {
 
-        // test.when('url matches the rendering page', function () {
-
-        //   test.it('should return the passed value', function () {
-        //     var result = instance.run('/blog', 'string');
-        //     expect(result).to.equal('string');
-        //   });
-        // });
-
-        // test.when('url doesn\'t match rendering page', function () {
-
-        //   test.it('should return an empty string', function () {
-        //     var result = instance.run('/blog2', 'string');
-        //     expect(result).to.equal('');
-        //   });
-        // });
+        var result = instance.run('site/scripts/bootstrap', {
+          'hash': {}
+        });
+        expect(result).to.include('<script');
+        expect(result).to.include('src="/site/scripts/bootstrap.js');
       });
     });
   });
