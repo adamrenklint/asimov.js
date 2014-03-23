@@ -8,6 +8,10 @@
       "{{framework}}/styles",
       "site/styles"
     ],
+    "scripts": [
+      "src",
+      "site/scripts"
+    ],
     "content": "content",
     "data": "site/data",
     "templates": [

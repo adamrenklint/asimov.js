@@ -3,7 +3,7 @@ node_js:
   - 0.10
 
 env:
-  - TRAVIS=true LEGACY_RENDER=true
+  - TRAVIS=true
 
 # Found this gem in travis's code
 # use depth=1 to make cloning faster
