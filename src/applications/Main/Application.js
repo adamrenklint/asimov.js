@@ -1,5 +1,5 @@
-define(function () {
+define(['./Router'], function (Router) {
   return function () {
-    alert('init');
+    new Router('init');
   };
 });

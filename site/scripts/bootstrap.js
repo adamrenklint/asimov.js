@@ -1,1 +1,1 @@
-console.log('bootstrapped!');
+console.log('normal script loaded the normal way...');
