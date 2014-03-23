@@ -164,7 +164,8 @@ test('watcher/Watcher', [
 
     var extensions = {
       'page': 'txt',
-      'template': 'tmpl'
+      'template': 'tmpl',
+      'styleSheet': 'styl'
     };
 
     function testHandleChange (type) {
