@@ -120,7 +120,7 @@ test([
       test.it('should return an instance of PageNodesCollection', function () {
 
         var children = instance.childrenOf('/');
-        expect(children.namespace).to.equal('Pages');
+        expect(children.filetype).to.equal('page');
       });
 
       test.when('the page model has children in self.pages', function () {
