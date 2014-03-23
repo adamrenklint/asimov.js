@@ -4,6 +4,9 @@ install:
 start:
 	@node main.js
 
+debug:
+	@VERBOSE=true node main.js
+
 open:
 	@node main.js --open
 
