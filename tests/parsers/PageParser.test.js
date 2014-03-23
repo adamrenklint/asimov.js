@@ -161,7 +161,7 @@ test([
           var model = new test.deps.Model({
             'path': pagePath,
             'raw': 'foo',
-            'foo': 'foo {{>includer}} bar',
+            'foo': 'foo {{include "includer"}} bar',
             'template': 'simple'
           });
           var dependencies = new test.deps.Model();
