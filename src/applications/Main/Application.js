@@ -1,3 +1,5 @@
 define(function () {
-  alert('loaded');
+  return function () {
+    alert('init');
+  };
 });
