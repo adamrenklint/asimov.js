@@ -1,1 +1,1 @@
-alert('bootstrapped!');
+console.log('bootstrapped!');
