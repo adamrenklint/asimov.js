@@ -47,7 +47,16 @@ test([
         var result = instance.run('site/scripts/bootstrap', {
           'hash': {}
         });
-        expect(result).to.include('div data-bundle="/site/scripts/bootstrap.js');
+        expect(result).to.include('div class="bundle_site_scripts_bootstrap"');
+      });
+
+      test.it('should return a bootstrap harness for the bundle', function () {
+
+        var result = instance.run('site/scripts/bootstrap', {
+          'hash': {}
+        });
+
+        expect(result).to.include('new Bundle();');
       });
     });
   });
