@@ -38,7 +38,7 @@ test([
 
     test.when('graph contains a page', function () {
 
-      test.it('should defer trigger "change:raw" with page', function (done) {
+      test.it('should defer trigger "change:raw" on page', function (done) {
 
         var notModified = instance.options.pages.create({
             'path': '/foo/bar2/page.txt'
@@ -72,7 +72,7 @@ test([
 
       test.when('template doesn\'t match the modified path', function () {
 
-        test.it('should defer trigger "change:raw" with template', function (done) {
+        test.it('should defer trigger "force:change" on the template', function (done) {
 
           var notModified = instance.options.templates.create({
             'path': '/merabaz/another.tmpl'
@@ -80,7 +80,7 @@ test([
 
           instance.modified('/barabaz/something.tmpl', [notModified]);
 
-          notModified.on('change:raw', function () {
+          notModified.on('force:change', function () {
             done();
           });
         });
@@ -126,7 +126,7 @@ test([
 
       test.when('template doesn\'t match the deleted path', function () {
 
-        test.it('should defer trigger "change:raw" on template', function (done) {
+        test.it('should defer trigger "force:change" on the template', function (done) {
 
           var notDeleted = instance.options.templates.create({
             'path': '/merabaz/another.tmpl'
@@ -134,7 +134,7 @@ test([
 
           instance.deleted('/barabaz/something.tmpl', [notDeleted]);
 
-          notDeleted.on('change:raw', function () {
+          notDeleted.on('force:change', function () {
             done();
           });
         });

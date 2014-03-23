@@ -195,6 +195,7 @@ test('watcher/Watcher', [
 
     testHandleChange('page');
     testHandleChange('template');
+    testHandleChange('styleSheet');
   });
 
   test.spec('parseDependencies (object model)', function () {
