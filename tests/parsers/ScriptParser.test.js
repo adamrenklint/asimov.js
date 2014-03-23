@@ -10,9 +10,9 @@ test([
 
   test.beforeEach(function () {
     instance = new test.deps.ScriptParser({
-      // 'paths': {
-      //   'styles': ['tests/mocks/styles']
-      // }
+      'paths': {
+        'scripts': ['site/scripts']
+      }
     });
     _ = test.deps.lodash;
   });
@@ -27,7 +27,8 @@ test([
 
       var model = new test.deps.Model({
         'path': 'foo/bar.js',
-        'url': '/foo/bar.js'
+        'url': '/foo/bar.js',
+        'rendered': ''
       });
       var dependencies = new test.deps.Model();
 
@@ -46,6 +47,26 @@ test([
       });
     });
 
-    // test.it('should')
+    test.it('should register the model as a node of the script file in the dependency graph', function () {
+
+        var model = new test.deps.Model({
+          'path': 'foo/bar.js',
+          'rendered': ';define("site/scripts/bootstrap", '
+        });
+        var dependencies = new test.deps.Model();
+        instance.parse(model, null, dependencies);
+
+        expect(_.keys(dependencies.attributes).length).to.equal(2);
+
+        var wasFound = false;
+        _.each(dependencies.attributes, function (arr, path) {
+          if (path.indexOf('site/scripts/bootstrap.js') >= 0) {
+            wasFound = true;
+            expect(arr[0].attributes.path).to.include('foo/bar.js');
+          }
+        });
+
+        expect(wasFound).to.be.true;
+      });
   });
 });
