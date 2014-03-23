@@ -68,7 +68,7 @@ test([
         var templatePath = 'something/template.tmpl';
         var model = new test.deps.Model({
           'path': templatePath,
-          'raw': 'blabla {{>simple}} asda'
+          'raw': 'blabla {{include "simple"'
         });
         var dependencies = new test.deps.Model();
         instance.parse(model, null, dependencies);
@@ -96,7 +96,7 @@ test([
         var templatePath = 'something/template.tmpl';
         var model = new test.deps.Model({
           'path': templatePath,
-          'raw': 'blabla {{>includer}} asda'
+          'raw': 'blabla {{include "includer"'
         });
         var dependencies = new test.deps.Model();
         instance.parse(model, null, dependencies);
