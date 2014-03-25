@@ -33,8 +33,7 @@
     "marked": "~0.3.1",
     "watchdirectory": "~0.1.5",
     "static-asset": "~0.5.2",
-    "uglify-js": "~2.4.13",
-    "jscoverage": "^0.3.8"
+    "uglify-js": "~2.4.13"
   },
   "devDependencies": {
     "chai": "~1.9.0",
