@@ -1,2 +1,0 @@
-[![Build Status](https://travis-ci.org/wunderlist/wunderbits.core.png?branch=master)](https://travis-ci.org/wunderlist/wunderbits.core)
-[![Code Climate](https://codeclimate.com/repos/52cd169e695680257e00289c/badges/d0cfebed32e0f3087579/gpa.png)](https://codeclimate.com/repos/52cd169e695680257e00289c/feed)
