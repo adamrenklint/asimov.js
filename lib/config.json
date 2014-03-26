@@ -35,10 +35,5 @@
     "defaultLangCode": "en"
   },
   "middleware": [],
-  "initializers": [
-    "Collections",
-    "Server",
-    "CollectionEvents",
-    "FetchCollections"
-  ]
+  "initializers": []
 }
