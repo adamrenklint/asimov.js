@@ -1,6 +1,8 @@
 install:
 	@npm install && npm install -g nodemon
 	@git submodule init && git submodule update
+	#cd node_modules/asimov.js && make install
+	#cd node_modules/asimov.js && make install-dev
 
 start:
 	@node main.js
