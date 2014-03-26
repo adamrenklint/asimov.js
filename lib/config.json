@@ -25,10 +25,15 @@
     "middleware": [
       "site/middleware",
       "{{framework}}/middleware"
+    ],
+    "initializers": [
+      "{{framework}}/initializers",
+      "site/initializers"
     ]
   },
   "localization": {
     "defaultLangCode": "en"
   },
-  "middleware": []
+  "middleware": [],
+  "initializers": []
 }
