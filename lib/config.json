@@ -9,8 +9,7 @@
       "site/styles"
     ],
     "scripts": [
-      "src",
-      "site/scripts"
+      "lib"
     ],
     "content": "content",
     "data": "site/data",
@@ -20,15 +19,15 @@
     ],
     "helpers": [
       "{{framework}}/helpers",
-      "site/helpers"
+      "lib/helpers"
     ],
     "middleware": [
-      "site/middleware",
+      "lib/middleware",
       "{{framework}}/middleware"
     ],
     "initializers": [
       "{{framework}}/initializers",
-      "site/initializers"
+      "lib/initializers"
     ]
   },
   "localization": {
