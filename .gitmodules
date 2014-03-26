@@ -1,0 +1,3 @@
+[submodule "modules/wunderbits.core"]
+	path = modules/wunderbits.core
+	url = git@github.com:wunderlist/wunderbits.core.git

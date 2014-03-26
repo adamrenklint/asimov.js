@@ -1,5 +1,6 @@
 install:
 	@npm install && npm install -g nodemon
+	@git submodule init && git submodule update
 
 start:
 	@node main.js
