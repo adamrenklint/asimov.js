@@ -1,3 +1,11 @@
+// var Test = require('../Test');
+// // var Test = require('asimov.js').Test;
+// var _super = Test.prototype;
+
+// module.exports = Test.extend({
+
+// });
+
 test('core/Base', [
 
   '../../lib/core/Base'

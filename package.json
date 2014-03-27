@@ -1,6 +1,6 @@
 {
   "name": "asimov.js",
-  "version": "0.11.2",
+  "version": "0.12.0",
   "homepage": "http://asimovjs.org",
   "description": "A better way to build awesome websites and apps",
   "author": "Adam Renklint <adam@renklint.com>",
@@ -33,7 +33,8 @@
     "marked": "~0.3.1",
     "watchdirectory": "~0.1.5",
     "static-asset": "~0.5.2",
-    "uglify-js": "~2.4.13"
+    "uglify-js": "~2.4.13",
+    "wunderbits.core": "git+https://github.com/wunderlist/wunderbits.core.git#dba4687"
   },
   "devDependencies": {
     "chai": "~1.9.0",
