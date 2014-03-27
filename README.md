@@ -5,6 +5,10 @@ asimov.js
 
 **A better way to build awesome websites and apps, based on [three rules](http://asimovjs.org/three-rules).**
 
+## Install from NPM
+
+    $ npm install -g asimov.js
+
 ## Getting started
 
 You need to have node and npm installed. Then fork this repo and open it in your terminal.
