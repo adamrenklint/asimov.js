@@ -11,7 +11,7 @@ test([
   test.beforeEach(function () {
     instance = new test.deps.ScriptParser({
       'paths': {
-        'scripts': ['site/scripts']
+        'scripts': ['lib']
       }
     });
     _ = test.deps.lodash;
@@ -51,7 +51,7 @@ test([
 
         var model = new test.deps.Model({
           'path': 'foo/bar.js',
-          'rendered': ';define("site/scripts/bootstrap", '
+          'rendered': ';define("lib/scripts/bootstrap", '
         });
         var dependencies = new test.deps.Model();
         instance.parse(model, null, dependencies);
@@ -60,7 +60,7 @@ test([
 
         var wasFound = false;
         _.each(dependencies.attributes, function (arr, path) {
-          if (path.indexOf('site/scripts/bootstrap.js') >= 0) {
+          if (path.indexOf('lib/scripts/bootstrap.js') >= 0) {
             wasFound = true;
             expect(arr[0].attributes.path).to.include('foo/bar.js');
           }
