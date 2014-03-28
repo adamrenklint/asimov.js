@@ -3,11 +3,11 @@ asimov.js
 
 [![NPM version](https://badge.fury.io/js/asimov.js.png)](http://badge.fury.io/js/asimov.js) [![Build Status](https://travis-ci.org/adamrenklint/asimov.js.png?branch=master)](https://travis-ci.org/adamrenklint/asimov.js) [![Code Climate](https://codeclimate.com/github/adamrenklint/asimov.js.png)](https://codeclimate.com/github/adamrenklint/asimov.js)
 
-**A better way to build awesome websites and apps, based on [three rules](http://asimovjs.org/three-rules).**
+**A better way to build awesome websites and apps, based on files and folders.**
 
 ## How to use
 
-Documentation is still in progress and will be available at [asimovjs.org](http://asimovjs.org).
+Documentation is still in progress and will be made available at [asimovjs.org](http://asimovjs.org).
 
 ## Develop and contribute
 
