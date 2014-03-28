@@ -84,7 +84,19 @@ test([
               }
             });
 
-            expect(result).to.equal('<ul><li><a href="/foo">::/foo</a></li><li><a href="/zoo">::/zoo</a></li></ul>');
+            expect(result).to.equal('<ul><li class="active"><a href="/foo">::/foo</a></li><li><a href="/zoo">::/zoo</a></li></ul>');
+          });
+
+          test.it('should set class to "active" for active page', function () {
+
+            var result = instance.run('/', {
+              'hash': {},
+              'fn': function (obj) {
+                return '::' + obj.url;
+              }
+            });
+
+            expect(result).to.equal('<ul><li class="active"><a href="/foo">::/foo</a></li><li><a href="/zoo">::/zoo</a></li></ul>');
           });
         });
 
@@ -96,7 +108,7 @@ test([
               'hash': {}
             });
 
-            expect(result).to.equal('<ul><li><a href="/foo">foo</a></li><li><a href="/zoo">zoologogogogy</a></li></ul>');
+            expect(result).to.equal('<ul><li class="active"><a href="/foo">foo</a></li><li><a href="/zoo">zoologogogogy</a></li></ul>');
           });
         });
       });
