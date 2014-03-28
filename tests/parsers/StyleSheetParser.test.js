@@ -137,6 +137,29 @@ test([
             expect(wasFound).to.be.true;
           });
         });
+
+        test.it('should handle also handle single quotes', function () {
+
+          var model = new test.deps.Model({
+            'path': 'foo/bar',
+            'raw': "@import 'foo'"
+          });
+          var dependencies = new test.deps.Model();
+          instance.parse(model, null, dependencies);
+
+          expect(_.keys(dependencies.attributes).length).to.equal(2);
+
+          var wasFound = false;
+          _.each(dependencies.attributes, function (arr, path) {
+            if (path.indexOf('foo.styl') >= 0) {
+              wasFound = true;
+              expect(arr.length).to.equal(1);
+              expect(arr[0].attributes.path).to.include('foo/bar');
+            }
+          });
+
+          expect(wasFound).to.be.true;
+        });
       });
 
       test.when('the imported stylus file does not exist', function () {
