@@ -34,7 +34,8 @@
     "static-asset": "~0.5.2",
     "uglify-js": "~2.4.13",
     "wunderbits.core": "git+https://github.com/wunderlist/wunderbits.core.git#dba4687",
-    "yaml-js": "0.0.8"
+    "yaml-js": "0.0.8",
+    "express-livereload": "0.0.24"
   },
   "devDependencies": {
     "chai": "~1.9.0",
