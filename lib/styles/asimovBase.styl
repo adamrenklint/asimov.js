@@ -1,23 +1,38 @@
-@import "asimovColors.styl"
-@import url("http://fonts.googleapis.com/css?family=Signika:400,600,700")
+// FONTS
+
+@import url("http://fonts.googleapis.com/css?family=Signika:300,400,600,700")
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700")
+@import url("http://fonts.googleapis.com/css?family=Source+Code+Pro");
+
+// COLOURS
+
+$lighter = #fcfcfc
+$dark = #7e7e7e
+$darker = #595959
+$accent = #da6c76
+
+// RESETS
 
 *
   margin: 0
   padding: 0
 
-body
-  text-align: center
-  background-color: $lighter
-  font-family: Georgia, Cambria, "Times New Roman", Times,serif
-  color: $dark
-  line-height: 1.5
-  font-size: 1.6em
-  margin: 100px auto
-  max-width: 600px
+ul
+  list-style: none
 
-  @media screen and (max-width: 600px)
-    margin: 30px
-    font-size: 1.2em
+// GLOBAL
+
+body
+  background-color: $lighter
+  font-family: 'Open Sans', sans-serif
+  color: $dark
+  font-size: 16px
+  line-height: @font-size + 120%
+  margin: 0 auto
+
+h1
+  font-family: "Signika", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+  font-weight 300
 
 a
   color: $dark
@@ -27,26 +42,84 @@ a
   &:hover
     color: $darker
 
+// FUNCTIONAL
+
+.center
+  text-align: center
+
+.clearfix:after
+  content: "."
+  display: block
+  clear: both
+  visibility: hidden
+  line-height: 0
+  height: 0
+
+.clearfix
+  display: inline-block
+
+html[xmlns] .clearfix
+  display: block
+
+* html .clearfix
+  height: 1%;
+
+// TYPOGRAPHY
+
 p
-  margin-bottom: 20px
+  margin-bottom: 15px
+  font-weight: 300
 
-h1
-  font-family: "Signika", "Helvetica Neue", "Helvetica", "Arial", Sans-Serif
-  margin-top 15%
-  margin-bottom 5%
-  font-size 60px
-  font-weight 300
-  color $accent
+// CODE
 
-  .name
-    font-weight: 700
-
-  @media screen and (max-width: 600px)
-    font-size 40px
-
-.footer
+pre
+  padding: 6px 16px
+  background: rgba($accent,0.05)
+  font-family: 'Source Code Pro'
   font-size: 1em
-  position: fixed
-  bottom: 20px
-  left: 0
-  right: 0
+  margin: 10px 0 30px
+  border-radius: 4px
+  color: $accent
+  border: 1px solid $accent
+  opacity: 0.8
+
+  &:hover
+    opacity: 1
+
+// BUTTONS
+
+.asimov-button
+  border-radius: 100px
+  background-color: $accent
+  display: inline-block
+  font-size: 1.3em
+  font-weight: 700
+  color: white
+  padding: 10px 25px
+  cursor: pointer
+
+  &:hover
+    color: white
+    background-color: lighten($accent,20%)
+
+  &.outline
+    background-color: transparent
+    box-shadow: inset 0 0 0 2px $accent
+    color: $accent
+
+    &:hover
+      color: white
+      background-color: $accent
+
+.asimov-wrapper
+  width: 620px
+  margin: 100px auto 0
+
+  h1
+    margin-bottom: 30px
+    font-size 60px
+    color $accent
+
+  p
+    font-size: 1.625em
+    line-height: @font-size + 5%
