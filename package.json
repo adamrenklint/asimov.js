@@ -33,7 +33,7 @@
     "watchdirectory": "~0.1.5",
     "static-asset": "~0.5.2",
     "uglify-js": "~2.4.13",
-    "wunderbits.core": "git+https://github.com/wunderlist/wunderbits.core.git#959f92d",
+    "wunderbits.core": "git+https://github.com/wunderlist/wunderbits.core.git#dba4687",
     "yaml-js": "0.0.8"
   },
   "devDependencies": {
