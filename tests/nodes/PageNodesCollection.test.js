@@ -99,6 +99,27 @@ test([
     });
   });
 
+  test.spec('getPageForAlias (string url)', function () {
+
+    test.when('url matches page.attributes.alias', function () {
+
+      test.it('should return the page', function () {
+
+        var page = instance.getPageForAlias('/winnie-the-poo');
+        expect(page && page.attributes.url).to.equal('/');
+      });
+    });
+
+    test.when('url has no match', function () {
+
+      test.it('should return null', function () {
+
+        var page = instance.getPageForAlias('/winnie-the-poo-2');
+        expect(page).to.be.undefined;
+      });
+    });
+  });
+
   test.spec('childrenOf (string url, object options)', function () {
 
     test.when('url is not a string', function () {

@@ -1,5 +1,7 @@
 title: Hello world!
 ---
+alias: /the-alias-for-home
+---
 headline: asimov.js
 ---
 text:
