@@ -5,24 +5,26 @@ asimov.js
 
 **A better way to build awesome websites and apps, based on [three rules](http://asimovjs.org/three-rules).**
 
-## Install from NPM
+## How to use
 
-    $ npm install -g asimov.js
+Documentation is still in progress and will be available at [asimovjs.org](http://asimovjs.org).
 
-## Getting started
+## Develop and contribute
 
 You need to have node and npm installed. Then fork this repo and open it in your terminal.
 
-    $ make install && make open
+### Install dependencies
 
-## Run tests
+    $ make install
+
+### Run tests
 
     $ make test
 
-## Start the server
+### Start the server
 
     $ make start
 
-## Publish to NPM
+### Publish to NPM
 
     $ make publish
