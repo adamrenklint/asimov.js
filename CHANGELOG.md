@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.3
+
+  - **Released Saturday March 29th, 2014 @ 4pm**
+  - Fixed order of loading templates - now you can use the same name as a default framework template
+
 ## 0.13.2
 
   - **Released Saturday March 29th, 2014 @ 3.55pm**

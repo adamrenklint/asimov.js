@@ -15,8 +15,8 @@
     "content": "content",
     "data": "site/data",
     "templates": [
-      "node_modules/asimov.js/site/templates",
-      "site/templates"
+      "site/templates",
+      "node_modules/asimov.js/site/templates"
     ],
     "helpers": [
       "{{framework}}/helpers",
