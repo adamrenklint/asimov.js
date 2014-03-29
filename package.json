@@ -38,7 +38,8 @@
     "uglify-js": "~2.4.13",
     "wunderbits.core": "git+https://github.com/wunderlist/wunderbits.core.git#dba4687",
     "yaml-js": "0.0.8",
-    "express-livereload": "0.0.24"
+    "express-livereload": "0.0.24",
+    "browserify": "^3.38.0"
   },
   "devDependencies": {
     "chai": "~1.9.0",

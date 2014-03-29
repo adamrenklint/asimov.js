@@ -28,7 +28,7 @@ test([
       var model = new test.deps.Model({
         'path': 'foo/bar.js',
         'url': '/foo/bar.js',
-        'rendered': ''
+        'unminified': ''
       });
       var dependencies = new test.deps.Model();
 
@@ -49,11 +49,9 @@ test([
 
     test.it('should register the model as a node of the script file in the dependency graph', function () {
 
-        console.log('TODO: THIS TEST NEEDS TO BE UPDATED, NO MORE AMD');
-
         var model = new test.deps.Model({
-          'path': 'foo/bar.js',
-          'rendered': ';define("scripts/bootstrap", '
+          'path': 'lib/applications/Main/Application.js',
+          'unminified': ';require("./Router");'
         });
         var dependencies = new test.deps.Model();
         instance.parse(model, null, dependencies);
@@ -62,9 +60,9 @@ test([
 
         var wasFound = false;
         _.each(dependencies.attributes, function (arr, path) {
-          if (path.indexOf('lib/scripts/bootstrap.js') >= 0) {
+          if (path.indexOf('lib/applications/Main/Router.js') >= 0) {
             wasFound = true;
-            expect(arr[0].attributes.path).to.include('foo/bar.js');
+            expect(arr[0].attributes.path).to.include('lib/applications/Main/Application.js');
           }
         });
 
