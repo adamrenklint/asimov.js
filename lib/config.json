@@ -14,7 +14,7 @@
     "content": "content",
     "data": "site/data",
     "templates": [
-      "{{framework}}/templates",
+      "{{framework}}/site/templates",
       "site/templates"
     ],
     "helpers": [

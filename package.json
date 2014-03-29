@@ -8,7 +8,7 @@
     "Marvin Labod <marvin@6wunderkinder.com> (http://www.inlovewithcss.com)",
     "Timothy Achumba <timothy@achumba.com> (http://awsme.me)"
   ],
-  "bin": "./lib/bin/asimov",
+  "bin": "./bin/asimov",
   "main": "./lib/asimov.js",
   "preferGlobal": true,
   "repository": {
