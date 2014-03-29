@@ -4,7 +4,7 @@
 
   - Automatically reload browser when build folder changes [#62](https://github.com/adamrenklint/asimov.js/issues/62)
   - All client side javascript is now processed with browserify and served minified
-  - Removed {{bundle}} helper, instead use {{script :path construct=true}}
+  - Removed ```{{bundle}}``` helper, instead use ```{{script :path construct=true}}```
   - Fixed high CPU usage from watching directories [#165](https://github.com/adamrenklint/asimov.js/issues/165)
   - Simple redirects with page.attributes.alias [#45](https://github.com/adamrenklint/asimov.js/issues/45)
   - Better error message when trying to include a non-existing stylesheet [#166](https://github.com/adamrenklint/asimov.js/issues/166)
