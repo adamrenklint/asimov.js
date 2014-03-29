@@ -2,6 +2,7 @@
 
 ## 0.13.0
 
+  - **Released Saturday March 29th, 2014 @ 3.45pm**
   - Automatically reload browser when build folder changes [#62](https://github.com/adamrenklint/asimov.js/issues/62)
   - All client side javascript is now processed with browserify and served minified
   - Removed ```{{bundle}}``` helper, instead use ```{{script :path construct=true}}```
