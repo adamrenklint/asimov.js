@@ -5,8 +5,8 @@
     "applications": "public/applications",
     "configs": "environments",
     "styles": [
-      "node_modules/asimov.js/site/styles",
-      "site/styles"
+      "site/styles",
+      "node_modules/asimov.js/site/styles"
     ],
     "scripts": [
       "lib",

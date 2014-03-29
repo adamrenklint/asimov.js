@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.4
+
+  - **Released Saturday March 29th, 2014 @ 4.05pm**
+  - Fixed order of loading stylesheets - now you can use the same name as a default framework stylesheet
+
 ## 0.13.3
 
   - **Released Saturday March 29th, 2014 @ 4pm**
