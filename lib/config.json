@@ -5,7 +5,7 @@
     "applications": "public/applications",
     "configs": "environments",
     "styles": [
-      "{{framework}}/styles",
+      "node_modules/asimov.js/site/styles",
       "site/styles"
     ],
     "scripts": [
@@ -14,7 +14,7 @@
     "content": "content",
     "data": "site/data",
     "templates": [
-      "{{framework}}/site/templates",
+      "node_modules/asimov.js/site/templates",
       "site/templates"
     ],
     "helpers": [
