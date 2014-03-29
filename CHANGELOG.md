@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.1
+
+  - **Released Saturday March 29th, 2014 @ 3.50pm**
+  - Fixed default templates and styles paths wrong when installed as npm module
+
 ## 0.13.0
 
   - **Released Saturday March 29th, 2014 @ 3.45pm**
