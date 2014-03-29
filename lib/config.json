@@ -9,7 +9,8 @@
       "site/styles"
     ],
     "scripts": [
-      "lib"
+      "lib",
+      "node_modules/asimov.js/lib"
     ],
     "content": "content",
     "data": "site/data",
