@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.5
+
+  - **Released Saturday March 29th, 2014 @ 4.15pm**
+  - Don't watch stylesheet dependency if it is located in ```node_modules```
+
 ## 0.13.4
 
   - **Released Saturday March 29th, 2014 @ 4.05pm**
