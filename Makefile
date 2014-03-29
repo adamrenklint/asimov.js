@@ -11,7 +11,9 @@ open:
 	@node main.js --open
 
 test:
-	@node main.js --test
+	istanbul cover _mocha -- tests/parsers/PageParser.test.js -R spec
+	# istanbul cover _mocha -- tests/**.test.js -R spec
+	# @node main.js --test
 
 test-watch:
 	@nodemon main.js --test
