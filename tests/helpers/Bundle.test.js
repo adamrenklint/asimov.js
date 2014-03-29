@@ -35,7 +35,7 @@ test([
 
       test.it('should return a script tag', function () {
 
-        var result = instance.run('lib/scripts/bootstrap', {
+        var result = instance.run('scripts/bootstrap', {
           'hash': {}
         });
         expect(result).to.include('<script');
@@ -44,15 +44,15 @@ test([
 
       test.it('should return a bootstrap element for the bundle', function () {
 
-        var result = instance.run('lib/scripts/bootstrap', {
+        var result = instance.run('scripts/bootstrap', {
           'hash': {}
         });
-        expect(result).to.include('div class="bundle_lib_scripts_bootstrap"');
+        expect(result).to.include('div class="bundle_scripts_bootstrap"');
       });
 
       test.it('should return a bootstrap harness for the bundle', function () {
 
-        var result = instance.run('lib/scripts/bootstrap', {
+        var result = instance.run('scripts/bootstrap', {
           'hash': {}
         });
 

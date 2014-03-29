@@ -49,9 +49,11 @@ test([
 
     test.it('should register the model as a node of the script file in the dependency graph', function () {
 
+        console.log('TODO: THIS TEST NEEDS TO BE UPDATED, NO MORE AMD');
+
         var model = new test.deps.Model({
           'path': 'foo/bar.js',
-          'rendered': ';define("lib/scripts/bootstrap", '
+          'rendered': ';define("scripts/bootstrap", '
         });
         var dependencies = new test.deps.Model();
         instance.parse(model, null, dependencies);

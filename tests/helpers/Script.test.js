@@ -35,7 +35,7 @@ test([
 
       test.it('should return a script tag', function () {
 
-        var result = instance.run('lib/scripts/bootstrap', {
+        var result = instance.run('scripts/bootstrap', {
           'hash': {}
         });
         expect(result).to.include('<script');
