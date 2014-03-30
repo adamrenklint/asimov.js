@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.14.2
+
+  - **Released Sunday March 30th, 2014 @ 10.30pm**
+  - Fixed dev dependencies attempting to load in production environment
+
 ## 0.14.1
 
   - **Released Sunday March 30th, 2014 @ 10.20pm**
