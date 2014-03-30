@@ -1,8 +1,6 @@
 install:
 	@echo "\n[make] Installing project dependencies...\n"
 	@npm install --quiet
-	@echo "\n[make] Installing test dependencies...\n"
-	@npm install --quiet -g nodemon mocha
 
 start:
 	@node main.js

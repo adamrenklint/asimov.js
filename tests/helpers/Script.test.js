@@ -1,19 +1,19 @@
-test([
+var libPath = '../../lib/';
+var Script = require(libPath + 'helpers/Script');
+var Collection = require(libPath + 'core/Collection');
+var ScriptNodesCollection = require(libPath + 'nodes/ScriptNodesCollection');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/helpers/Script',
-  '../../lib/core/Collection',
-  '../../lib/nodes/ScriptNodesCollection'
-
-], function (test) {
+Test.run('helpers/Script', function (test) {
 
   var instance;
 
   beforeEach(function () {
 
-    instance = new test.deps.Script({
+    instance = new Script({
       'name': 'script',
-      'queue': new test.deps.Collection(),
-      'scripts': new test.deps.ScriptNodesCollection(),
+      'queue': new Collection(),
+      'scripts': new ScriptNodesCollection(),
       'paths': {
         'scripts': 'lib'
       }

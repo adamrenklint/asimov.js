@@ -1,18 +1,16 @@
-test([
+var libPath = '../../lib/';
+var Children = require(libPath + 'helpers/Children');
+var Collection = require(libPath + 'core/Collection');
+var PageNodesCollection = require(libPath + 'nodes/PageNodesCollection');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/helpers/Children',
-  '../../lib/core/Collection',
-  '../../lib/nodes/PageNodesCollection'
-
-], function (test) {
+Test.run('helpers/Children', function (test) {
 
   var instance, pages;
 
   test.before(function (done) {
 
-    _ = test.deps.lodash;
-
-    pages = new test.deps.PageNodesCollection(null, {
+    pages = new PageNodesCollection(null, {
       'localization': {
         'defaultLangCode': 'en'
       },
@@ -32,9 +30,9 @@ test([
 
   beforeEach(function () {
 
-    var queue = new test.deps.Collection();
+    var queue = new Collection();
 
-    instance = new test.deps.Children({
+    instance = new Children({
       'name': 'active',
       'queue': queue,
       'pages': pages

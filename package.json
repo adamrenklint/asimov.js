@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "chai": "~1.9.0",
-    "mocha": "~1.17.1",
+    "mocha": "~1.18.2",
     "zombie": "~2.0.0-alpha29",
     "sinon": "~1.8.2",
     "sinon-chai": "~2.5.0"

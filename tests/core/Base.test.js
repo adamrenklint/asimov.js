@@ -1,14 +1,8 @@
 var libPath = '../../lib/';
 var Base = require(libPath + 'core/Base');
-// var TemplatesCollection = require(libPath + 'render/TemplatesCollection');
-// var PageNodesCollection = require(libPath + 'nodes/PageNodesCollection');
-// var Model = require(libPath + 'core/Model');
-// var _ = require('lodash');
-
 var Test = require(libPath + 'runner/Test');
 
-Test.run('parsers/PageParser', function (test) {
-
+Test.run('core/Base', function (test) {
 
   var instance;
 

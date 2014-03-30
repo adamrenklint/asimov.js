@@ -1,17 +1,17 @@
-test([
+var libPath = '../../lib/';
+var Active = require(libPath + 'helpers/Active');
+var Collection = require(libPath + 'core/Collection');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/helpers/Active',
-  '../../lib/core/Collection'
-
-], function (test) {
+Test.run('helpers/Active', function (test) {
 
   var instance;
 
   beforeEach(function () {
 
-    var collection = new test.deps.Collection();
+    var collection = new Collection();
 
-    instance = new test.deps.Active({
+    instance = new Active({
       'name': 'active',
       'queue': collection,
       'pages': collection
