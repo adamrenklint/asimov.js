@@ -14,8 +14,14 @@ test:
 	@node main.js --test
 
 coverage:
+	@make generate-coverage && make view-coverage || make view-coverage
+
+generate-coverage:
 	@echo "Generating coverage report using Istanbul..."
 	@istanbul cover _mocha -- tests/*/**.test.js -R spec
+
+view-coverage:
+	@open coverage/lcov-report/index.html
 
 test-watch:
 	@nodemon main.js --test
@@ -28,4 +34,4 @@ force-publish:
 	@git tag "v$(shell node -e "var config = require('./package.json'); console.log(config.version);")"
 	@git push --tags
 
-.PHONY: install start test coverage test-watch publish force-publish
+.PHONY: install start test coverage generate-coverage view-coverage test-watch publish force-publish
