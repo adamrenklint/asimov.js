@@ -22,7 +22,7 @@ Test.run('parsers/PageParser', function (test) {
     return opts;
   }
 
-  var instance, pages, templates, _;
+  var instance, pages, templates;
 
   test.before(function (done) {
 
