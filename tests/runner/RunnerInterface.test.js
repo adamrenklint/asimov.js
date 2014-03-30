@@ -1,14 +1,13 @@
-test('runner/RunnerInterface', [
+var libPath = '../../lib/';
+var RunnerInterface = require(libPath + 'runner/RunnerInterface');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/runner/RunnerInterface'
-
-
-], function (test) {
+Test.run('runner/RunnerInterface', function (test) {
 
   var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.RunnerInterface();
+    instance = new RunnerInterface();
   });
 
   test.spec('test (string name, array dependencies, function callback)', function () {

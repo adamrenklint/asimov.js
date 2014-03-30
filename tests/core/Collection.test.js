@@ -1,26 +1,25 @@
-test('core/Collection', [
+var libPath = '../../lib/';
+var Collection = require(libPath + 'core/Collection');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/core/Collection',
-  'lodash'
+Test.run('core/Collection', function (test) {
 
-], function (runner) {
+  var instance;
 
-  var instance, _;
-
-  runner.beforeEach(function () {
-    instance = new runner.deps.Collection();
-    _ = runner.deps.lodash;
+  test.beforeEach(function () {
+    instance = new Collection();
   });
 
-  runner.afterEach(function () {
+  test.afterEach(function () {
     instance.destroy();
   });
 
-  runner.spec('add (object model, object options)', function () {
+  test.spec('add (object model, object options)', function () {
 
-    runner.when('model is a valid model', function () {
+    test.when('model is a valid model', function () {
 
-      runner.it('should add model to self.models', function () {
+      test.it('should add model to self.models', function () {
 
         var attributes = {
           'foo': 'bar'
@@ -32,7 +31,7 @@ test('core/Collection', [
         expect(instance.models[0].attributes.foo).to.equal('bar');
       });
 
-      runner.it('should trigger the models "add" event', function () {
+      test.it('should trigger the models "add" event', function () {
 
         var attributes = {
           'foo': 'bar'
@@ -46,7 +45,7 @@ test('core/Collection', [
         model.destroy();
       });
 
-      runner.it('should trigger the models "all" event', function () {
+      test.it('should trigger the models "all" event', function () {
 
         var attributes = {
           'foo': 'bar'
@@ -60,7 +59,7 @@ test('core/Collection', [
         model.destroy();
       });
 
-      runner.it('should listen for models "all" event and call self._onModelEvent()', function () {
+      test.it('should listen for models "all" event and call self._onModelEvent()', function () {
 
         var attributes = {
           'foo': 'bar'
@@ -71,7 +70,7 @@ test('core/Collection', [
         expect(spy).to.have.been.calledOnce;
       });
 
-      runner.it('should trigger "add" event', function () {
+      test.it('should trigger "add" event', function () {
 
         var spy = sinon.spy();
         var attributes = {
@@ -86,9 +85,9 @@ test('core/Collection', [
       });
     });
 
-    runner.when('several unique models are added', function () {
+    test.when('several unique models are added', function () {
 
-      runner.it('should store all of them in self.models', function () {
+      test.it('should store all of them in self.models', function () {
 
         var attributes1 = { 'foo': 'bar' };
         var attributes2 = { 'foz': 'nil' };
@@ -103,9 +102,9 @@ test('core/Collection', [
         expect(instance.models[2].attributes.zoo).to.equal('lan');
       });
 
-      runner.when('the models use slashes in their ids', function () {
+      test.when('the models use slashes in their ids', function () {
 
-        runner.it('should treat each as unique', function () {
+        test.it('should treat each as unique', function () {
 
           var attributes1 = { 'id': '/', 'foo': 'bar' };
           var attributes2 = { 'id': '/foo', 'foz': 'nil' };
@@ -120,7 +119,7 @@ test('core/Collection', [
           expect(instance.models[2].attributes.zoo).to.equal('lan');
         });
 
-        runner.it('should find them by id', function () {
+        test.it('should find them by id', function () {
 
           var attributes1 = { 'id': '/', 'foo': 'bar' };
           var attributes2 = { 'id': '/foo', 'foz': 'nil' };

@@ -1,20 +1,19 @@
-test([
+var libPath = '../../lib/';
+var ScriptHandler = require(libPath + 'updaters/ScriptHandler');
+var Collection = require(libPath + 'core/Collection');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/updaters/ScriptHandler',
-  '../../lib/core/Collection',
-  'lodash'
+Test.run('updaters/ScriptHandler', function (test) {
 
-], function (test) {
-
-  var instance, _;
+  var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.ScriptHandler({
-      'pages': new test.deps.Collection(),
-      'templates': new test.deps.Collection(),
-      'scripts': new test.deps.Collection()
+    instance = new ScriptHandler({
+      'pages': new Collection(),
+      'templates': new Collection(),
+      'scripts': new Collection()
     });
-    _ = test.deps.lodash;
   });
 
   test.afterEach(function () {

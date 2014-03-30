@@ -1,20 +1,19 @@
-test([
+var libPath = '../../lib/';
+var TemplateParser = require(libPath + 'parsers/TemplateParser');
+var Model = require(libPath + 'core/Model');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/parsers/TemplateParser',
-  '../../lib/core/Model',
-  'lodash'
+Test.run('parsers/TemplateParser', function (test) {
 
-], function (test) {
-
-  var instance, _;
+  var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.TemplateParser({
+    instance = new TemplateParser({
       'paths': {
         'templates': ['tests/mocks/templates']
       }
     });
-    _ = test.deps.lodash;
   });
 
   test.afterEach(function () {
@@ -28,7 +27,7 @@ test([
     //   test.it('should throw an error', function () {
 
     //     expect(function () {
-    //       new test.deps.StyleSheetParser();
+    //       new StyleSheetParser();
     //     }).to.throw(Error);
     //   });
     // });
@@ -39,11 +38,11 @@ test([
     test.it('should add model as a dependency of itself', function () {
 
       var templatePath = 'something/template.tmpl';
-      var model = new test.deps.Model({
+      var model = new Model({
         'path': templatePath,
         'raw': 'blabla'
       });
-      var dependencies = new test.deps.Model();
+      var dependencies = new Model();
       instance.parse(model, null, dependencies);
 
       var wasFound = false;
@@ -66,11 +65,11 @@ test([
       test.it('should add model as a dependency for the partial', function () {
 
         var templatePath = 'something/template.tmpl';
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': templatePath,
           'raw': 'blabla {{import "simple"'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, null, dependencies);
 
         var wasFound = false;
@@ -94,11 +93,11 @@ test([
       test.it('should add model as a dependency for the nested partial', function () {
 
         var templatePath = 'something/template.tmpl';
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': templatePath,
           'raw': 'blabla {{import "includer"'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, null, dependencies);
 
         var wasFound = false;
@@ -122,11 +121,11 @@ test([
       test.it('should find and use the right partial', function () {
 
         var templatePath = 'something/template.tmpl';
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': templatePath,
           'raw': 'blabla {{import "includingNested"}} asda'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, null, dependencies);
 
         var wasFound = false;

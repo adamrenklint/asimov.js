@@ -1,14 +1,14 @@
-test([
+var libPath = '../../lib/';
+var MetaNode = require(libPath + 'nodes/MetaNode');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/nodes/MetaNode'
-
-], function (test) {
+Test.run('nodes/MetaNode', function (test) {
 
   var instance;
 
   test.beforeEach(function () {
 
-    instance = new test.deps.MetaNode();
+    instance = new MetaNode();
   });
 
   test.spec('parseRawMeta (string raw)', function () {

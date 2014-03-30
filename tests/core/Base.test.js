@@ -1,21 +1,13 @@
-// var Test = require('../Test');
-// // var Test = require('asimov.js').Test;
-// var _super = Test.prototype;
+var libPath = '../../lib/';
+var Base = require(libPath + 'core/Base');
+var Test = require(libPath + 'runner/Test');
 
-// module.exports = Test.extend({
-
-// });
-
-test('core/Base', [
-
-  '../../lib/core/Base'
-
-], function (test) {
+Test.run('core/Base', function (test) {
 
   var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.Base();
+    instance = new Base();
   });
 
   test.afterEach(function () {
@@ -28,7 +20,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('foo', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params);
 
       expect(spy).to.have.been.calledOnce;
@@ -39,7 +31,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('all', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params);
 
       expect(spy).to.have.been.calledOnce;
@@ -49,7 +41,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('all', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params);
 
       expect(spy).to.have.been.calledWith('foo');
@@ -59,7 +51,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('all', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params, 'bro', 'code');
 
       expect(spy).to.have.been.calledWith('foo', params, 'bro', 'code');

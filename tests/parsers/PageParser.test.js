@@ -1,12 +1,13 @@
-test([
+var libPath = '../../lib/';
+var PageParser = require(libPath + 'parsers/PageParser');
+var TemplatesCollection = require(libPath + 'render/TemplatesCollection');
+var PageNodesCollection = require(libPath + 'nodes/PageNodesCollection');
+var Model = require(libPath + 'core/Model');
+var _ = require('lodash');
 
-  '../../lib/parsers/PageParser',
-  '../../lib/render/TemplatesCollection',
-  '../../lib/nodes/PageNodesCollection',
-  '../../lib/core/Model',
-  'lodash'
+var Test = require(libPath + 'runner/Test');
 
-], function (test) {
+Test.run('parsers/PageParser', function (test) {
 
   function options (opts) {
     opts = opts || {};
@@ -21,12 +22,12 @@ test([
     return opts;
   }
 
-  var instance, pages, templates, _;
+  var instance, pages, templates;
 
   test.before(function (done) {
 
-    templates = new test.deps.TemplatesCollection(null, options());
-    pages = new test.deps.PageNodesCollection(null, options());
+    templates = new TemplatesCollection(null, options());
+    pages = new PageNodesCollection(null, options());
 
     var loadedTemplates = templates.fetch('tests/mocks/templates');
     var loadedPages = pages.fetch('tests/mocks/pages');
@@ -37,11 +38,10 @@ test([
   });
 
   test.beforeEach(function () {
-    instance = new test.deps.PageParser(options({
+    instance = new PageParser(options({
       'templates': templates,
       'pages': pages
     }));
-    _ = test.deps.lodash;
   });
 
   test.afterEach(function () {
@@ -53,7 +53,7 @@ test([
     test.when('options.templates is not a collection', function () {
 
       test.itShould.throwError(function () {
-        new test.deps.PageParser();
+        new PageParser();
       });
     });
   });
@@ -64,12 +64,12 @@ test([
 
       test.itShould.throwError(function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'foo/bar',
           'raw': 'foo',
           'template': 'monkeybusiness'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, null, dependencies);
       });
     });
@@ -79,12 +79,12 @@ test([
       test.it('should register model as a dependency of itself', function () {
 
         var pagePath = 'foo/bar';
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': pagePath,
           'raw': 'foo',
           'template': 'simple'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, null, dependencies);
 
         var wasFound = false;
@@ -105,12 +105,12 @@ test([
       test.it('should register model as a dependency of the template', function () {
 
         var pagePath = '01-foo/01-bar';
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': pagePath,
           'raw': 'foo',
           'template': 'simple'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, null, dependencies);
 
         var wasFound = false;
@@ -133,12 +133,12 @@ test([
         test.it('should not register model as a dependency of the partial', function () {
 
           var pagePath = 'foo/bar';
-          var model = new test.deps.Model({
+          var model = new Model({
             'path': pagePath,
             'raw': 'foo',
             'template': 'includer'
           });
-          var dependencies = new test.deps.Model();
+          var dependencies = new Model();
           instance.parse(model, null, dependencies);
 
           var wasFound = false;
@@ -158,13 +158,13 @@ test([
         test.it('should register model as a dependency of the partial', function () {
 
           var pagePath = 'foo/bar';
-          var model = new test.deps.Model({
+          var model = new Model({
             'path': pagePath,
             'raw': 'foo',
             'foo': 'foo {{import "includer"}} bar',
             'template': 'simple'
           });
-          var dependencies = new test.deps.Model();
+          var dependencies = new Model();
           instance.parse(model, null, dependencies);
 
           var wasFound = false;
@@ -190,13 +190,13 @@ test([
 
           var pagePath = '10-barbaz';
           var superUrl = '/foo';
-          var model = new test.deps.Model({
+          var model = new Model({
             'path': pagePath,
             'raw': 'foo',
             'inherits': superUrl,
             'template': 'simple'
           });
-          var dependencies = new test.deps.Model();
+          var dependencies = new Model();
           instance.parse(model, null, dependencies);
 
           var wasFound = false;

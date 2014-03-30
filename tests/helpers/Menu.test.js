@@ -1,18 +1,16 @@
-test([
+var libPath = '../../lib/';
+var Menu = require(libPath + 'helpers/Menu');
+var Collection = require(libPath + 'core/Collection');
+var PageNodesCollection = require(libPath + 'nodes/PageNodesCollection');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/helpers/Menu',
-  '../../lib/core/Collection',
-  '../../lib/nodes/PageNodesCollection'
-
-], function (test) {
+Test.run('helpers/Menu', function (test) {
 
   var instance, pages;
 
   test.before(function (done) {
 
-    _ = test.deps.lodash;
-
-    pages = new test.deps.PageNodesCollection(null, {
+    pages = new PageNodesCollection(null, {
       'localization': {
         'defaultLangCode': 'en'
       },
@@ -32,9 +30,9 @@ test([
 
   beforeEach(function () {
 
-    var queue = new test.deps.Collection();
+    var queue = new Collection();
 
-    instance = new test.deps.Menu({
+    instance = new Menu({
       'name': 'active',
       'queue': queue,
       'pages': pages

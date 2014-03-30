@@ -1,20 +1,19 @@
-test([
+var libPath = '../../lib/';
+var StyleSheetParser = require(libPath + 'parsers/StyleSheetParser');
+var Model = require(libPath + 'core/Model');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/parsers/StyleSheetParser',
-  '../../lib/core/Model',
-  'lodash'
+Test.run('parsers/StyleSheetParser', function (test) {
 
-], function (test) {
-
-  var instance, _;
+  var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.StyleSheetParser({
+    instance = new StyleSheetParser({
       'paths': {
         'styles': ['tests/mocks/styles']
       }
     });
-    _ = test.deps.lodash;
   });
 
   test.afterEach(function () {
@@ -28,7 +27,7 @@ test([
       test.it('should throw an error', function () {
 
         expect(function () {
-          new test.deps.StyleSheetParser();
+          new StyleSheetParser();
         }).to.throw(Error);
       });
     });
@@ -40,10 +39,10 @@ test([
 
       test.it('should only add itself to the dependency graph', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'foo/bar'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, 'foo', dependencies);
 
         expect(_.keys(dependencies.attributes).length).to.equal(1);
@@ -67,11 +66,11 @@ test([
 
         test.it('should add itself to the dependency graph', function () {
 
-          var model = new test.deps.Model({
+          var model = new Model({
             'path': 'foo/bar',
             'raw': '@import "foo"\n@import "bar"'
           });
-          var dependencies = new test.deps.Model();
+          var dependencies = new Model();
           instance.parse(model, null, dependencies);
 
           expect(_.keys(dependencies.attributes).length).to.equal(3);
@@ -91,11 +90,11 @@ test([
 
         test.it('should register the model as a node of the stylus file in the dependency graph', function () {
 
-          var model = new test.deps.Model({
+          var model = new Model({
             'path': 'foo/bar',
             'raw': '@import "foo"'
           });
-          var dependencies = new test.deps.Model();
+          var dependencies = new Model();
           instance.parse(model, null, dependencies);
 
           expect(_.keys(dependencies.attributes).length).to.equal(2);
@@ -116,11 +115,11 @@ test([
 
           test.it('should register the model as a dependency of the nested stylesheet', function () {
 
-            var model = new test.deps.Model({
+            var model = new Model({
               'path': 'foo/bar',
               'raw': '@import "includer"'
             });
-            var dependencies = new test.deps.Model();
+            var dependencies = new Model();
             instance.parse(model, null, dependencies);
 
             expect(_.keys(dependencies.attributes).length).to.equal(3);
@@ -140,11 +139,11 @@ test([
 
         test.it('should handle also handle single quotes', function () {
 
-          var model = new test.deps.Model({
+          var model = new Model({
             'path': 'foo/bar',
             'raw': "@import 'foo'"
           });
-          var dependencies = new test.deps.Model();
+          var dependencies = new Model();
           instance.parse(model, null, dependencies);
 
           expect(_.keys(dependencies.attributes).length).to.equal(2);
@@ -165,10 +164,10 @@ test([
       test.when('the imported stylus file does not exist', function () {
 
         test.it('should throw error', function () {
-          var model = new test.deps.Model({
+          var model = new Model({
             'path': 'foo/bar'
           });
-          var dependencies = new test.deps.Model();
+          var dependencies = new Model();
           expect(function () {
             instance.parse(model, '@import "notExisting"', dependencies);
           }).to.throw(Error);

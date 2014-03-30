@@ -9,7 +9,4 @@
 process.env.ENV = 'development';
 
 var options = {};
-options.frameworkDir = 'lib';
-options.meta = require('./package.json');
-
 var asimov = require('./lib/asimov')(options);

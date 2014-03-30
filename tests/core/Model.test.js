@@ -1,26 +1,26 @@
-test('core/Model', [
+var libPath = '../../lib/';
+var Model = require(libPath + 'core/Model');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/core/Model'
-
-], function (runner) {
+Test.run('core/Model', function (test) {
 
   var instance;
 
-  runner.beforeEach(function () {
-    instance = new runner.deps.Model();
+  test.beforeEach(function () {
+    instance = new Model();
   });
 
-  runner.spec('initialize (object attributes, object options)', function () {
+  test.spec('initialize (object attributes, object options)', function () {
 
-    runner.when('attributes is an object', function () {
+    test.when('attributes is an object', function () {
 
-      runner.it('should set it as self.attributes', function () {
+      test.it('should set it as self.attributes', function () {
 
         var attributes = {
           'foo': 'bar'
         };
 
-        instance = new runner.deps.Model(attributes);
+        instance = new Model(attributes);
 
         expect(instance.attributes.foo).to.equal('bar');
       });

@@ -1,20 +1,19 @@
-test([
+var libPath = '../../lib/';
+var PageHandler = require(libPath + 'updaters/PageHandler');
+var Collection = require(libPath + 'core/Collection');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/updaters/PageHandler',
-  '../../lib/core/Collection',
-  'lodash'
+Test.run('updaters/PageHandler', function (test) {
 
-], function (test) {
-
-  var instance, _;
+  var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.PageHandler({
-      'pages': new test.deps.Collection(),
-      'templates': new test.deps.Collection(),
-      'styleSheets': new test.deps.Collection()
+    instance = new PageHandler({
+      'pages': new Collection(),
+      'templates': new Collection(),
+      'styleSheets': new Collection()
     });
-    _ = test.deps.lodash;
   });
 
   test.afterEach(function () {

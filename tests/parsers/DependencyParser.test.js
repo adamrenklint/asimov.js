@@ -1,16 +1,15 @@
-test([
+var libPath = '../../lib/';
+var DependencyParser = require(libPath + 'parsers/DependencyParser');
+var Model = require(libPath + 'core/Model');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/parsers/DependencyParser',
-  '../../lib/core/Model',
-  'lodash'
+Test.run('parsers/DependencyParser', function (test) {
 
-], function (test) {
-
-  var instance, _;
+  var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.DependencyParser();
-    _ = test.deps.lodash;
+    instance = new DependencyParser();
   });
 
   test.afterEach(function () {
@@ -92,7 +91,7 @@ test([
 
       test.it('should throw an error', function () {
 
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         expect(function () {
           instance.add({}, 'foo', dependencies);
         }).to.throw(Error);
@@ -103,8 +102,8 @@ test([
 
       test.it('should throw an error', function () {
 
-        var model = new test.deps.Model();
-        var dependencies = new test.deps.Model();
+        var model = new Model();
+        var dependencies = new Model();
         expect(function () {
           instance.add(model, null, dependencies);
         }).to.throw(Error);
@@ -115,7 +114,7 @@ test([
 
       test.it('should throw an error', function () {
 
-        var model = new test.deps.Model();
+        var model = new Model();
         expect(function () {
           instance.add(model, 'null');
         }).to.throw(Error);
@@ -128,13 +127,13 @@ test([
 
         test.it('it should add model as a dependency of path', function () {
 
-          var model = new test.deps.Model({
+          var model = new Model({
             'id': 'foo',
             'bar': 'baz'
           });
-          var watcherModel = new test.deps.Model();
+          var watcherModel = new Model();
 
-          var UsableClass = test.deps.DependencyParser.extend({
+          var UsableClass = DependencyParser.extend({
             'parse': function () {}
           });
           instance = new UsableClass();
@@ -153,13 +152,13 @@ test([
 
         test.it('it should not add model again', function () {
 
-          var model = new test.deps.Model({
+          var model = new Model({
             'id': 'foo',
             'bar': 'baz'
           });
-          var watcherModel = new test.deps.Model();
+          var watcherModel = new Model();
 
-          var UsableClass = test.deps.DependencyParser.extend({
+          var UsableClass = DependencyParser.extend({
             'parse': function () {}
           });
           instance = new UsableClass();

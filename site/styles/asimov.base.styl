@@ -118,7 +118,7 @@ pre
       background-color: $accent
 
 .asimov-wrapper
-  width: 620px
+  max-width: 620px
   margin: 100px auto 0
 
   h1
@@ -129,3 +129,7 @@ pre
   p
     font-size: 1.625em
     line-height: @font-size + 5%
+
+  @media screen and (max-width: 600px)
+    margin: 30px
+    font-size: 0.8em
