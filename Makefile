@@ -11,9 +11,11 @@ open:
 	@node main.js --open
 
 test:
-	istanbul cover _mocha -- tests/parsers/PageParser.test.js -R spec
-	# istanbul cover _mocha -- tests/**.test.js -R spec
-	# @node main.js --test
+	@node main.js --test
+
+coverage:
+	@echo "Generating coverage report using Istanbul..."
+	@istanbul cover _mocha -- tests/*/**.test.js -R spec
 
 test-watch:
 	@nodemon main.js --test
@@ -26,4 +28,4 @@ force-publish:
 	@git tag "v$(shell node -e "var config = require('./package.json'); console.log(config.version);")"
 	@git push --tags
 
-.PHONY: install start test test-watch publish force-publish
+.PHONY: install start test coverage test-watch publish force-publish
