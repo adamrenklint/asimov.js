@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.0
+
+  - **Released ?**
+  - Completely new and much simpler test runner format, without the awkward dependecy loader
+  - Test coverage reports with Istanbul
+
 ## 0.13.5
 
   - **Released Saturday March 29th, 2014 @ 4.15pm**
