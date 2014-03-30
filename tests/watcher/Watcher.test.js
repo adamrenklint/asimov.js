@@ -1,22 +1,22 @@
-test('watcher/Watcher', [
+var libPath = '../../lib/';
+var Watcher = require(libPath + 'watcher/Watcher');
+var Collection = require(libPath + 'core/Collection');
+var Model = require(libPath + 'core/Model');
+var Test = require(libPath + 'runner/Test');
 
-  '../../lib/watcher/Watcher',
-  '../../lib/core/Model',
-  '../../lib/core/Collection'
-
-], function (test) {
+Test.run('watcher/Watcher', function (test) {
 
   var instance;
 
   test.beforeEach(function () {
 
-    var templates = new test.deps.Collection({
+    var templates = new Collection({
       'name': 'simple',
       'path': 'simple'
     });
-    var pages = new test.deps.Collection();
+    var pages = new Collection();
 
-    instance = new test.deps.Watcher(null, {
+    instance = new Watcher(null, {
       'paths': {
         'styles': ['tests/mocks/styles']
       },
@@ -118,7 +118,7 @@ test('watcher/Watcher', [
 
       test.it('should throw an error', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'foo',
           'raw': 'bar'
         });
@@ -133,7 +133,7 @@ test('watcher/Watcher', [
 
       test.it('should throw an error', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'type': 'foo',
           'raw': 'bar'
         });
@@ -148,7 +148,7 @@ test('watcher/Watcher', [
 
       test.it('should throw an error', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'foo',
           'type': 'bar'
         });
@@ -205,7 +205,7 @@ test('watcher/Watcher', [
 
       test.it('should throw an error', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'foo',
           'type': 'bar',
           'raw': 'baz'
@@ -221,7 +221,7 @@ test('watcher/Watcher', [
 
       test.it('should pass model as first argument', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'foo',
           'type': 'styleSheet',
           'raw': 'baz'
@@ -236,7 +236,7 @@ test('watcher/Watcher', [
 
       test.it('should pass itself as third argument', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'foo',
           'type': 'styleSheet',
           'raw': 'baz'
