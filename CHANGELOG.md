@@ -5,6 +5,7 @@
   - **Released ?**
   - Completely new and much simpler test runner format, without the awkward dependecy loader
   - Test coverage reports with Istanbul
+  - .asimov-wrapper in asimov.base.styl is now responsive
 
 ## 0.13.5
 
