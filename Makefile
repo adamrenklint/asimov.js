@@ -16,7 +16,7 @@ open:
 
 test:
 	@echo "\n[make] Running all tests...\n"
-	@node main.js --test
+	@mocha tests/*/**.test.js -R spec
 
 coverage:
 	@make generate-coverage && make view-coverage || make view-coverage
