@@ -15,6 +15,10 @@ open:
 
 test:
 	@echo "\n[make] Running all tests...\n"
+	@mocha tests/*/**.test.js -R dot
+
+test-verbose:
+	@echo "\n[make] Running all tests...\n"
 	@mocha tests/*/**.test.js -R spec
 
 coverage:
@@ -22,7 +26,7 @@ coverage:
 
 generate-coverage:
 	@echo "\n[make] Generating coverage report using Istanbul...\n"
-	@istanbul cover _mocha -- tests/*/**.test.js -R spec
+	@istanbul cover _mocha -- tests/*/**.test.js -R dot
 
 view-coverage:
 	@open coverage/lcov-report/index.html
