@@ -1,20 +1,19 @@
-test([
+var libPath = '../../lib/';
+var ScriptParser = require(libPath + 'parsers/ScriptParser');
+var Model = require(libPath + 'core/Model');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/parsers/ScriptParser',
-  '../../lib/core/Model',
-  'lodash'
+Test.run('parsers/ScriptParser', function (test) {
 
-], function (test) {
-
-  var instance, _;
+  var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.ScriptParser({
+    instance = new ScriptParser({
       'paths': {
         'scripts': ['lib']
       }
     });
-    _ = test.deps.lodash;
   });
 
   test.afterEach(function () {
@@ -25,12 +24,12 @@ test([
 
     test.it('should add model as a dependency of itself', function (done) {
 
-      var model = new test.deps.Model({
+      var model = new Model({
         'path': 'foo/bar.js',
         'url': '/foo/bar.js',
         'unminified': ''
       });
-      var dependencies = new test.deps.Model();
+      var dependencies = new Model();
 
       instance.parse(model, null, dependencies);
 
@@ -49,11 +48,11 @@ test([
 
     test.it('should register the model as a node of the script file in the dependency graph', function () {
 
-        var model = new test.deps.Model({
+        var model = new Model({
           'path': 'lib/applications/Main/Application.js',
           'unminified': ';require("./Router");'
         });
-        var dependencies = new test.deps.Model();
+        var dependencies = new Model();
         instance.parse(model, null, dependencies);
 
         expect(_.keys(dependencies.attributes).length).to.equal(2);

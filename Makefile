@@ -1,6 +1,7 @@
 install:
 	@echo "\n[make] Installing project dependencies...\n"
 	@npm install --quiet
+	@npm install --quiet -g mocha
 
 start:
 	@node main.js

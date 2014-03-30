@@ -1,18 +1,16 @@
-test([
+var libPath = '../../lib/';
+var PageNode = require(libPath + 'nodes/PageNode');
+var PageNodesCollection = require(libPath + 'nodes/PageNodesCollection');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/nodes/PageNode',
-  '../../lib/nodes/PageNodesCollection',
-  'lodash'
+Test.run('nodes/PageNode', function (test) {
 
-], function (test) {
-
-  var instance, _, pages;
+  var instance, pages;
 
   test.before(function (done) {
 
-    _ = test.deps.lodash;
-
-    pages = new test.deps.PageNodesCollection(null, {
+    pages = new PageNodesCollection(null, {
       'localization': {
         'defaultLangCode': 'en'
       },
@@ -30,7 +28,7 @@ test([
 
   test.beforeEach(function () {
 
-    instance = new test.deps.PageNode({
+    instance = new PageNode({
       'path': 'fake/soemthing.txt'
     }, {
       'localization': {

@@ -1,4 +1,7 @@
-test(function (test) {
+var libPath = '../../lib/';
+var Test = require(libPath + 'runner/Test');
+
+Test.run('integration/home', function (test) {
 
   var instance;
 

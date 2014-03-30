@@ -1,17 +1,15 @@
-test([
+var libPath = '../../lib/';
+var PageNodesCollection = require(libPath + 'nodes/PageNodesCollection');
+var Test = require(libPath + 'runner/Test');
+var _ = require('lodash');
 
-  '../../lib/nodes/PageNodesCollection',
-  'lodash'
+Test.run('nodes/PageNodesCollection', function (test) {
 
-], function (test) {
-
-  var instance, _;
+  var instance;
 
   beforeEach(function (done) {
 
-    _ = test.deps.lodash;
-
-    instance = new test.deps.PageNodesCollection(null, {
+    instance = new PageNodesCollection(null, {
       'localization': {
         'defaultLangCode': 'en'
       },
