@@ -10,9 +10,6 @@ debug:
 	@echo "\n[make] Starting project in debug mode...\n"
 	@VERBOSE=true node main.js
 
-open:
-	@node main.js --open
-
 test:
 	@echo "\n[make] Running all tests...\n"
 	@mocha tests/*/**.test.js -R dot
@@ -40,4 +37,4 @@ force-publish:
 	@git tag "v$(shell node -e "var config = require('./package.json'); console.log(config.version);")"
 	@git push --tags
 
-.PHONY: install start test coverage generate-coverage view-coverage test-watch publish force-publish
+.PHONY: install start debug test test-verbose coverage generate-coverage view-coverage publish force-publish

@@ -1,8 +1,13 @@
 # Changelog
 
+## 0.14.1
+
+  - **Released Sunday March 30th, 2014 @ 10.20pm**
+  - Fixed a critical issue with loading the initial config, crashed every time when loaded as npm module
+
 ## 0.14.0
 
-  - **Released ?**
+  - **Released Sunday March 30th, 2014 @ 10pm**
   - Completely new and much simpler test runner format, without the awkward dependency loader [#169](https://github.com/adamrenklint/asimov.js/issues/169)
   - Use ```make test``` for the dot reporter, ```make test-verbose``` for the spec reporter
   - Test coverage reports with Istanbul with ```make coverage``` [#40](https://github.com/adamrenklint/asimov.js/issues/40)
