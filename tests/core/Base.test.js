@@ -1,21 +1,19 @@
-// var Test = require('../Test');
-// // var Test = require('asimov.js').Test;
-// var _super = Test.prototype;
+var libPath = '../../lib/';
+var Base = require(libPath + 'core/Base');
+// var TemplatesCollection = require(libPath + 'render/TemplatesCollection');
+// var PageNodesCollection = require(libPath + 'nodes/PageNodesCollection');
+// var Model = require(libPath + 'core/Model');
+// var _ = require('lodash');
 
-// module.exports = Test.extend({
+var Test = require(libPath + 'runner/Test');
 
-// });
+Test.run('parsers/PageParser', function (test) {
 
-test('core/Base', [
-
-  '../../lib/core/Base'
-
-], function (test) {
 
   var instance;
 
   test.beforeEach(function () {
-    instance = new test.deps.Base();
+    instance = new Base();
   });
 
   test.afterEach(function () {
@@ -28,7 +26,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('foo', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params);
 
       expect(spy).to.have.been.calledOnce;
@@ -39,7 +37,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('all', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params);
 
       expect(spy).to.have.been.calledOnce;
@@ -49,7 +47,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('all', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params);
 
       expect(spy).to.have.been.calledWith('foo');
@@ -59,7 +57,7 @@ test('core/Base', [
 
       var spy = sinon.spy();
       instance.on('all', spy);
-      var params = { 'foo': 'bar' }
+      var params = { 'foo': 'bar' };
       instance.trigger('foo', params, 'bro', 'code');
 
       expect(spy).to.have.been.calledWith('foo', params, 'bro', 'code');

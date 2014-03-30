@@ -28,10 +28,6 @@ generate-coverage:
 view-coverage:
 	@open coverage/lcov-report/index.html
 
-test-watch:
-	@echo "\n[make] Running all tests and watching for changes...\n"
-	@nodemon main.js --test
-
 publish:
 	@echo "\n[make] Publishing version $(shell node -e "var config = require('./package.json'); console.log(config.version);") to npm...\n"
 	@make test && make force-publish
