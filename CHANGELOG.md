@@ -3,8 +3,10 @@
 ## 0.14.0
 
   - **Released ?**
-  - Completely new and much simpler test runner format, without the awkward dependency loader
-  - Test coverage reports with Istanbul with ```make coverage```
+  - Completely new and much simpler test runner format, without the awkward dependency loader [#169](https://github.com/adamrenklint/asimov.js/issues/169)
+  - Use ```make test``` for the dot reporter, ```make test-verbose``` for the spec reporter
+  - Test coverage reports with Istanbul with ```make coverage``` [#40](https://github.com/adamrenklint/asimov.js/issues/40)
+  - Better initialization of integration test server, without setTimeout [#153](https://github.com/adamrenklint/asimov.js/issues/153)
   - ```.asimov-wrapper``` in ```asimov.base.styl``` is now responsive
 
 ## 0.13.5
