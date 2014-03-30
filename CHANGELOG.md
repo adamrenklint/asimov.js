@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.4
+
+  - **Released Sunday March 30th, 2014 @ 11.15pm**
+  - Fixed critical issue with not respecting process.env.PORT
+  - Added ```make publish-beta```, which makes the version installable with ```npm install asimov.js@beta```
+
 ## 0.14.3
 
   - **Released Sunday March 30th, 2014 @ 10.50pm**

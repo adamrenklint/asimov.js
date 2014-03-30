@@ -32,6 +32,10 @@ publish:
 	@echo "\n[make] Publishing version $(shell node -e "var config = require('./package.json'); console.log(config.version);") to npm...\n"
 	@make test && make force-publish
 
+publish-beta:
+	@echo "\n[make] Publishing beta version $(shell node -e "var config = require('./package.json'); console.log(config.version);") to npm...\n"
+	@make test && npm publish --tag beta
+
 force-publish:
 	@npm publish --dd
 	@git tag "v$(shell node -e "var config = require('./package.json'); console.log(config.version);")"
