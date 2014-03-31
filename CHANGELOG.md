@@ -6,6 +6,17 @@
   - [ ] ```$ asimov.js create myAwesomeProject``` will create a new folder and download the asimov template project
   http://stackoverflow.com/questions/5746325/how-do-i-download-a-tarball-from-github-using-curl
 
+## 0.14.7
+
+  - **Released Monday March 31th, 2014 @ 3.50pm**
+  - Fixed issue with all page attributes gettings converted to SafeString after rendering value - SafeString will now only be used if the output value contains HTML [#174](https://github.com/adamrenklint/asimov.js/issues/174)
+
+## 0.14.6
+
+  - **Released Monday March 31th, 2014 @ 11.10am**
+  - Fixed issue with loading path for browserify binary
+  - 30 second timeout for initial integration test request
+
 ## 0.14.4, 0.14.5
 
   - **Released Sunday March 30th, 2014 @ 11.15pm**
