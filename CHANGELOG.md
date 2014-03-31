@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.6
+
+  - **Released Monday March 31th, 2014 @ 11.10am**
+  - Fixed issue with loading path for browserify binary
+  - 30 second timeout for initial integration test request
+
 ## 0.14.4, 0.14.5
 
   - **Released Sunday March 30th, 2014 @ 11.15pm**
