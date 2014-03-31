@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.15.0
+
+  - **Released ?**
+  - [ ] ```$ asimov.js create myAwesomeProject``` will create a new folder and download the asimov template project
+  http://stackoverflow.com/questions/5746325/how-do-i-download-a-tarball-from-github-using-curl
+  - [ ] rename to paragon.js, use only paragon as npm name (js is implied), and then rename all the repos and references and buy new domain and all that
+
 ## 0.14.4, 0.14.5
 
   - **Released Sunday March 30th, 2014 @ 11.15pm**
