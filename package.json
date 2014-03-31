@@ -44,6 +44,7 @@
     "zombie": "~2.0.0-alpha29",
     "sinon": "~1.8.2",
     "sinon-chai": "~2.5.0",
-    "wunderbits.core": "^0.1.1"
+    "wunderbits.core": "^0.1.1",
+    "commander": "^2.2.0"
   }
 }
