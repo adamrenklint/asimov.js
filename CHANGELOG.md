@@ -20,7 +20,7 @@
 ## 0.14.3
 
   - **Released Sunday March 30th, 2014 @ 10.50pm**
-  - Restructure dependencies, everything is available everywhere
+  - Restructured dependencies, everything is available everywhere
 
 ## 0.14.2
 
