@@ -9,7 +9,7 @@
 
   - **Released Monday March 31th, 2014 @ 11.10am**
   - Fixed issue with loading path for browserify binary
-  - 30 second timeout for initial integration test request
+  - Changed timeout for initial integration test request to 30 seconds
 
 ## 0.14.4, 0.14.5
 
