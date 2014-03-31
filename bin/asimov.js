@@ -13,6 +13,7 @@ var CLI = Base.extend({
   'paths': {
 
     'create': commandsPath + 'Create',
+    'start': commandsPath + 'Start',
     'help': commandsPath + 'Help'
   },
 
@@ -21,8 +22,9 @@ var CLI = Base.extend({
     var self = this;
     _super.initialize.apply(self, arguments);
 
-    self.logger.pending(self.namespace, 'Loading asimov.js @ ' + self.options.pkg.version);
-    self.logger.log(self.namespace, 'The time is ' + new Date());
+    // self.logger.pending(self.namespace, 'Loading asimov.js @ ' + self.options.pkg.version);
+    // self.logger.log(self.namespace, 'New to asimov.js? Check out http://asimovjs.org');
+    // self.logger.log(self.namespace, 'The time is ' + new Date());
 
     var Command = self.getCommand(self.options.args);
     self.assert('function', Command, 'Invalid command');
