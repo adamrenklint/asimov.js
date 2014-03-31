@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.14.7
+
+  - **Released Monday March 31th, 2014 @ 3.50pm**
+  - Fixed issue with all page attributes gettings converted to SafeString after rendering value - SafeString will now only be used if the output value contains HTML [#174](https://github.com/adamrenklint/asimov.js/issues/174)
+
 ## 0.14.6
 
   - **Released Monday March 31th, 2014 @ 11.10am**
