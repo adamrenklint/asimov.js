@@ -7,7 +7,8 @@
   - Scaffold a brand new project in seconds with ```asimov.js create [name]```
   - Start your project with ```asimov.js start```, which is really just an alias for ```node main.js```
   - Run all tests with ```asimov.js test```, or just a few matching a string with ```asimov.js test [grep]```
-  - Classes that should be subclassed by applications and plugins are now exported on asimov.js' ```module.exports```: Base, Middleware, Initializer, Helper and Test [#139](https://github.com/adamrenklint/asimov.js/issues/139)
+  - Extend default classes with ```asimov.js new [type] [path]```, where ```[type]``` can be Base, Middleware, Initializer, Helper or Test and ```[path]``` is relative to ```lib/```, without file extension
+  - Extend your custom classes with ```asimov.js new [parent] [path]```, where both ```[parent]``` and ```[path]``` are paths relative to ```lib/```, without file extension
 
 ## 0.14.7
 
