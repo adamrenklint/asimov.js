@@ -1,44 +1,46 @@
-install:
-	@echo "\n[make] Installing project dependencies...\n"
-	@npm install --quiet
-	@npm install --quiet -g mocha
+# The only thing that should actually stay in the makefile is the publishing, but that should ideally also be handled by a plugin - yeah, CLI commands are also extendable, in lib/commands or in plugins
 
-start:
-	@node main.js
+# install:
+# 	@echo "\n[make] Installing project dependencies...\n"
+# 	@npm install --quiet
+# 	@npm install --quiet -g mocha
 
-debug:
-	@echo "\n[make] Starting project in debug mode...\n"
-	@VERBOSE=true node main.js
+# start:
+# 	@node main.js
 
-test:
-	@echo "\n[make] Running all tests...\n"
-	@mocha tests/*/**.test.js -R dot
+# debug:
+# 	@echo "\n[make] Starting project in debug mode...\n"
+# 	@VERBOSE=true node main.js
 
-test-verbose:
-	@echo "\n[make] Running all tests...\n"
-	@mocha tests/*/**.test.js -R spec
+# test:
+# 	@echo "\n[make] Running all tests...\n"
+# 	@mocha tests/*/**.test.js -R dot
 
-coverage:
-	@make generate-coverage && make view-coverage || make view-coverage
+# test-verbose:
+# 	@echo "\n[make] Running all tests...\n"
+# 	@mocha tests/*/**.test.js -R spec
 
-generate-coverage:
-	@echo "\n[make] Generating coverage report using Istanbul...\n"
-	@istanbul cover _mocha -- tests/*/**.test.js -R dot
+# coverage:
+# 	@make generate-coverage && make view-coverage || make view-coverage
 
-view-coverage:
-	@open coverage/lcov-report/index.html
+# generate-coverage:
+# 	@echo "\n[make] Generating coverage report using Istanbul...\n"
+# 	@istanbul cover _mocha -- tests/*/**.test.js -R dot
 
-publish:
-	@echo "\n[make] Publishing version $(shell node -e "var config = require('./package.json'); console.log(config.version);") to npm...\n"
-	@make test && make force-publish
+# view-coverage:
+# 	@open coverage/lcov-report/index.html
 
-publish-beta:
-	@echo "\n[make] Publishing beta version $(shell node -e "var config = require('./package.json'); console.log(config.version);") to npm...\n"
-	@make test && npm publish --tag beta
+# publish:
+# 	@echo "\n[make] Publishing version $(shell node -e "var config = require('./package.json'); console.log(config.version);") to npm...\n"
+# 	@make test && make force-publish
 
-force-publish:
-	@npm publish --dd
-	@git tag "v$(shell node -e "var config = require('./package.json'); console.log(config.version);")"
-	@git push --tags
+# publish-beta:
+# 	@echo "\n[make] Publishing beta version $(shell node -e "var config = require('./package.json'); console.log(config.version);") to npm...\n"
+# 	@make test && npm publish --tag beta
 
-.PHONY: install start debug test test-verbose coverage generate-coverage view-coverage publish force-publish
+# force-publish:
+# 	@npm publish --dd
+# 	@git tag "v$(shell node -e "var config = require('./package.json'); console.log(config.version);")"
+# 	@git push --tags
+
+# .PHONY: install start debug test test-verbose coverage generate-coverage view-coverage publish force-publish
