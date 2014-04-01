@@ -3,10 +3,11 @@
 ## 0.15.0
 
   - **Released ?**
-  - The flagship feature of this release is the **CLI**, with a bunch of few of the most important commands, and more coming soon. To use, install asimov.js globally with ```npm install -g asimov.js```.
+  - Install globally with ```npm install -g asimov.js``` to use the new CLI
   - Scaffold a brand new project in seconds with ```asimov.js create [name]```
   - Start your project with ```asimov.js start```, which is really just an alias for ```node main.js```
   - Run all tests with ```asimov.js test```, or just a few matching a pattern with ```asimov.js test [pattern]```
+  - Classes that should be subclassed by applications and plugins are now exported on asimov.js' ```module.exports```: Base, Middleware, Initializer, TemplateHelper, Test [#139](https://github.com/adamrenklint/asimov.js/issues/139)
 
 ## 0.14.7
 
