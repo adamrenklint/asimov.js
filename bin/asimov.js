@@ -11,6 +11,10 @@ var meta = pkgExists ? require(loadPathPkgPath) : {};
 var _ = require('lodash');
 var commandsPath = '../lib/commands/';
 
+var path = __dirname;
+var isModule = path.indexOf('node_modules/asimov.js/lib') >= 0;
+var frameworkDir = isModule ? 'node_modules/asimov.js/lib' : 'lib';
+
 var CLI = Base.extend({
 
   'namespace': 'cli',
@@ -20,7 +24,8 @@ var CLI = Base.extend({
     'create': commandsPath + 'Create',
     'start': commandsPath + 'Start',
     'help': commandsPath + 'Help',
-    'test': commandsPath + 'Test'
+    'test': commandsPath + 'Test',
+    'new': commandsPath + 'New'
   },
 
   'initialize': function () {
@@ -71,5 +76,6 @@ var CLI = Base.extend({
 module.exports = new CLI({
   'pkg': pkg,
   'args': process.argv,
-  'meta': meta
+  'meta': meta,
+  'frameworkDir': frameworkDir
 });
