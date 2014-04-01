@@ -32,9 +32,14 @@ var CLI = Base.extend({
     // self.logger.log(self.namespace, 'New to asimov.js? Check out http://asimovjs.org');
     // self.logger.log(self.namespace, 'The time is ' + new Date());
 
-    var Command = self.getCommand(self.options.args);
+    var command = self.getCommand(self.options.args);
+    var loadPath = self.paths[command];
+    var Command = require(loadPath);
+
     self.assert('function', Command, 'Invalid command');
-    new Command(self.options);
+    new Command(_.merge(self.options, {
+      'command': command
+    }));
   },
 
   'getCommand': function (args) {
@@ -49,9 +54,7 @@ var CLI = Base.extend({
     });
 
     self.assert('number', pathIndex, 'Failed to start CLI, invalid load path');
-    var name = self.options.command = args[pathIndex + 1];
-    var loadPath = self.paths[name];
-    return require(loadPath);
+    return self.options.command = args[pathIndex + 1];
   }
 });
 
