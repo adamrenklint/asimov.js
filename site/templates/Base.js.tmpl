@@ -1,0 +1,15 @@
+var Base = require('asimov.js').Base;
+var _super = Base.prototype;
+
+module.exports = Base.extend({
+
+  'initialize': function () {
+
+    var self = this;
+    _super.initialize.apply(self, arguments);
+
+    // This is a raw, base class with just
+    // some logging and event methods
+    // Bend and extend it to your needs
+  }
+});
