@@ -34,8 +34,18 @@ var CLI = Base.extend({
 
     var command = self.getCommand(self.options.args);
     var loadPath = self.paths[command];
-    var Command = require(loadPath);
+    var Command;
 
+    try {
+      Command = require(loadPath);
+    }
+    catch (e) {}
+
+    if (typeof Command !== 'function') {
+      self.logger.log(self.namespace, 'Invalid command: ' + command);
+      self.logger.log(self.namespace, 'To get usage instructions, type ' + 'asimov.js help'.bold);
+      process.exit(1);
+    }
     self.assert('function', Command, 'Invalid command');
     new Command(_.merge(self.options, {
       'command': command
