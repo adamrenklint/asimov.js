@@ -4,9 +4,12 @@ var Base = require('../lib/core/Base');
 var _super = Base.prototype;
 var npath = require('path');
 var pkg = require('../package.json');
-var meta = require(npath.join(process.cwd(), 'package.json'));
+var fs = require('fs');
+var loadPathPkgPath = npath.join(process.cwd(), 'package.json');
+var pkgExists = fs.existsSync(loadPathPkgPath);
+var meta = pkgExists ? require(loadPathPkgPath) : {};
 var _ = require('lodash');
-var commandsPath = '../lib/cli/';
+var commandsPath = '../lib/commands/';
 
 var CLI = Base.extend({
 
