@@ -3,8 +3,10 @@
 ## 0.15.0
 
   - **Released ?**
-  - [ ] ```$ asimov.js create myAwesomeProject``` will create a new folder and download the asimov template project
-  http://stackoverflow.com/questions/5746325/how-do-i-download-a-tarball-from-github-using-curl
+  - The flagship feature of this release is the **CLI**, with a bunch of few of the most important commands, and more coming soon. To use, install asimov.js globally with ```npm install -g asimov.js```.
+  - Scaffold a brand new project in seconds with ```asimov.js create [name]```
+  - Start your project with ```asimov.js start```, which is really just an alias for ```node main.js```
+  - Run all tests with ```asimov.js test```, or just a few matching a pattern with ```asimov.js test [pattern]```
 
 ## 0.14.7
 
