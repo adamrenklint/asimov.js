@@ -5,8 +5,6 @@ node_js:
 env:
   - TRAVIS=true
 
-# Found this gem in travis's code
-# use depth=1 to make cloning faster
 git:
   depth: 1
   submodules: false
