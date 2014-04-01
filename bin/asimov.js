@@ -2,7 +2,9 @@
 
 var Base = require('../lib/core/Base');
 var _super = Base.prototype;
+var npath = require('path');
 var pkg = require('../package.json');
+var meta = require(npath.join(process.cwd(), 'package.json'));
 var _ = require('lodash');
 var commandsPath = '../lib/cli/';
 
@@ -14,7 +16,8 @@ var CLI = Base.extend({
 
     'create': commandsPath + 'Create',
     'start': commandsPath + 'Start',
-    'help': commandsPath + 'Help'
+    'help': commandsPath + 'Help',
+    'test': commandsPath + 'Test'
   },
 
   'initialize': function () {
@@ -51,5 +54,6 @@ var CLI = Base.extend({
 
 module.exports = new CLI({
   'pkg': pkg,
-  'args': process.argv
+  'args': process.argv,
+  'meta': meta
 });

@@ -15,4 +15,4 @@ install:
   - make install
 
 script:
-  - make test
+  - node bin/asimov.js test
