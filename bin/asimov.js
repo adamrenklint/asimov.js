@@ -47,12 +47,12 @@ var CLI = Base.extend({
     }
     catch (e) {}
 
-    if (typeof Command !== 'function') {
-      self.logger.log(self.namespace, 'Invalid command: ' + command);
-      self.logger.log(self.namespace, 'To get usage instructions, type ' + 'asimov.js help'.bold);
-      process.exit(1);
-    }
-    self.assert('function', Command, 'Invalid command');
+    self.assert('function', Command, function () {
+      self.error([
+        'Invalid command: ' + command,
+        'To get usage instructions, type ' + 'asimov.js help'.bold
+      ]);
+    });
 
     var config = new Config(_.merge({}, self.options, {
       'muteLog': true
