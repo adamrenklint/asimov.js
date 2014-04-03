@@ -10,6 +10,9 @@
   ],
   "bin": "./bin/asimov",
   "main": "./lib/asimov.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha tests/**/*.test.js"
+  },
   "preferGlobal": true,
   "repository": {
     "type": "git",
