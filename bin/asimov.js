@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var Base = require('../lib/core/Base');
+var Config = require('../lib/core/Config');
 var _super = Base.prototype;
 var npath = require('path');
 var pkg = require('../package.json');
@@ -12,8 +13,8 @@ var _ = require('lodash');
 var commandsPath = '../lib/commands/';
 
 var path = __dirname;
-var isModule = path.indexOf('node_modules/asimov.js/lib') >= 0;
-var frameworkDir = isModule ? 'node_modules/asimov.js/lib' : 'lib';
+var isModule = path.indexOf('node_modules/asimov.js/bin') >= 0;
+var frameworkDir = path.replace('/bin', '/lib');
 
 var CLI = Base.extend({
 
@@ -52,9 +53,11 @@ var CLI = Base.extend({
       process.exit(1);
     }
     self.assert('function', Command, 'Invalid command');
-    new Command(_.merge(self.options, {
-      'command': command
-    }));
+
+    var config = new Config(self.options);
+    config.json.command = command;
+
+    new Command(config.json);
   },
 
   'getCommand': function (args) {
