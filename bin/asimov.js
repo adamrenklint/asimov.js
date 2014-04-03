@@ -14,7 +14,7 @@ var commandsPath = '../lib/commands/';
 
 var path = __dirname;
 var isModule = path.indexOf('node_modules/asimov.js/bin') >= 0;
-var frameworkDir = path.replace('/bin', '/lib');
+var frameworkDir = path.replace('/bin', '');
 
 var CLI = Base.extend({
 
