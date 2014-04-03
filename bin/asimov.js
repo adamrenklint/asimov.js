@@ -25,7 +25,7 @@ var CLI = Base.extend({
     'start': commandsPath + 'Start',
     'help': commandsPath + 'Help',
     'test': commandsPath + 'Test',
-    'new': commandsPath + 'New'
+    'extend': commandsPath + 'Extend'
   },
 
   'initialize': function () {
