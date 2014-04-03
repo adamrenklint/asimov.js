@@ -54,7 +54,9 @@ var CLI = Base.extend({
     }
     self.assert('function', Command, 'Invalid command');
 
-    var config = new Config(self.options);
+    var config = new Config(_.merge({}, self.options, {
+      'muteLog': true
+    }));
     config.json.command = command;
 
     new Command(config.json);
