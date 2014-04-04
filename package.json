@@ -48,6 +48,7 @@
     "sinon": "~1.9.0",
     "sinon-chai": "~2.5.0",
     "wunderbits.core": "~0.1.4",
-    "commander": "^2.2.0"
+    "commander": "^2.2.0",
+    "istanbul": "^0.2.7"
   }
 }
