@@ -20,27 +20,17 @@ var CLI = Base.extend({
 
   'namespace': 'cli',
 
-  'paths': {
-
-    'create': commandsPath + 'Create',
-    'start': commandsPath + 'Start',
-    'debug': commandsPath + 'Debug',
-    'help': commandsPath + 'Help',
-    'test': commandsPath + 'Test',
-    'extend': commandsPath + 'Extend'
-  },
-
   'initialize': function () {
 
     var self = this;
     _super.initialize.apply(self, arguments);
 
-    // self.logger.pending(self.namespace, 'Loading asimov.js @ ' + self.options.pkg.version);
-    // self.logger.log(self.namespace, 'New to asimov.js? Check out http://asimovjs.org');
-    // self.logger.log(self.namespace, 'The time is ' + new Date());
+    var config = new Config(_.merge({}, self.options, {
+      'muteLog': true
+    }));
 
     var command = self.getCommand(self.options.args);
-    var loadPath = self.paths[command];
+    var loadPath = self.filesystem.findFirstMatch('/' + command + '.js', config.json.paths.commands);
     var Command;
 
     try {
@@ -55,9 +45,6 @@ var CLI = Base.extend({
       ]);
     });
 
-    var config = new Config(_.merge({}, self.options, {
-      'muteLog': true
-    }));
     config.json.command = command;
 
     new Command(config.json);

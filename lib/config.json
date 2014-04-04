@@ -29,6 +29,10 @@
     "initializers": [
       "{{rootFramework}}/lib/initializers",
       "lib/initializers"
+    ],
+    "commands": [
+      "lib/commands",
+      "{{rootFramework}}/lib/commands"
     ]
   },
   "localization": {
