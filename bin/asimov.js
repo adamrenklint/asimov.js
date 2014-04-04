@@ -1,11 +1,19 @@
 #!/usr/bin/env node
 
+var npath = require('path');
+var fs = require('fs');
+var colors = require('colors');
+var modulePath = npath.join(process.cwd(), 'node_modules');
+var moduleFolderExists = fs.existsSync(modulePath);
+if (!moduleFolderExists) {
+  console.log('[error] Missing local dependencies, run ' + 'npm install'.bold);
+  process.exit(1);
+}
+
 var Base = require('../lib/core/Base');
 var Config = require('../lib/core/Config');
 var _super = Base.prototype;
-var npath = require('path');
 var pkg = require('../package.json');
-var fs = require('fs');
 var loadPathPkgPath = npath.join(process.cwd(), 'package.json');
 var pkgExists = fs.existsSync(loadPathPkgPath);
 var meta = pkgExists ? require(loadPathPkgPath) : {};
