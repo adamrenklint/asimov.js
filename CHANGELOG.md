@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.2
+
+  - **Released Saturday April 5th, 2014 @ 4.55pm**
+  - Fixed issue with default error stylesheet not being namespaced and getting overwritten by project specific stylesheet with the same name
+
 ## 0.15.1
 
   - **Released Saturday April 5th, 2014 @ 4.45pm**
