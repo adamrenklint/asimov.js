@@ -2,7 +2,7 @@
 
 ## 0.15.0
 
-  - **Released ?**
+  - **Released Saturday April 5th, 2014 @ 4.40pm**
   - Install globally with ```npm install -g asimov.js``` to use the new CLI
   - Scaffold a brand new project in seconds with ```ajs create [name]```
   - Start your project with ```ajs start```, which is really just an alias for ```node main.js```
@@ -10,8 +10,8 @@
   - Create a new page with ```ajs new page [url] [template]```, for example ```ajs new page /blog/01-hello-world post```
   - Create a new template in ```/site/templates``` using ```ajs new template [name]```
   - Create a new stylesheet in ```/site/styles``` using ```ajs new style [name]```
-  - Extend default classes with ```ajs extend [type] [path]```, where ```[type]``` can be Base, Middleware, Initializer, Helper or Test and ```[path]``` is relative to ```lib/```, without file extension
-  - Extend your custom classes with ```ajs new [parent] [path]```, where both ```[parent]``` and ```[path]``` are paths relative to ```lib/```, without file extension
+  - Extend default classes with ```ajs extend [type] [path]```, where ```[type]``` can be Base, Middleware, Initializer, Helper or Test and ```[path]``` is relative to ```/lib```, without file extension
+  - Extend your custom classes with ```ajs new [parent] [path]```, where both ```[parent]``` and ```[path]``` are paths relative to ```/lib```, without file extension
   - Publish project to NPM, create and push git tag with ```ajs publish```
   - Publish beta version with ```ajs publish --beta```, which makes the module installable with ```npm install yourModule@beta```
   - All file model paths are now consistently absolute
