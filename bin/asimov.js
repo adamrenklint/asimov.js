@@ -31,6 +31,7 @@ var CLI = Base.extend({
     }));
 
     var command = self.getCommand(self.options.args);
+    console.log(config.json.paths.commands)
     var loadPath = self.filesystem.findFirstMatch('/' + command + '.js', config.json.paths.commands);
     var Command;
 
@@ -63,7 +64,9 @@ var CLI = Base.extend({
     });
 
     self.assert('number', pathIndex, 'Failed to start CLI, invalid load path');
-    return self.options.command = (args[pathIndex + 1] || 'help');
+    var command = args[pathIndex + 1] || 'help';
+    self.options.command = command[0].toUpperCase() + command.substr(1);
+    return self.options.command;
   }
 });
 
