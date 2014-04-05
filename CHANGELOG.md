@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.3
+
+  - **Released ?**
+  - Removed version from *meta generator** tag, a security faux pas
+
 ## 0.15.2
 
   - **Released Saturday April 5th, 2014 @ 4.55pm**
