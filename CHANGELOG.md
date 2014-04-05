@@ -4,11 +4,13 @@
 
   - **Released ?**
   - Install globally with ```npm install -g asimov.js``` to use the new CLI
-  - Scaffold a brand new project in seconds with ```asimov.js create [name]```
-  - Start your project with ```asimov.js start```, which is really just an alias for ```node main.js```
-  - Run all tests with ```asimov.js test```, or just a few matching a string with ```asimov.js test [grep]```
-  - Extend default classes with ```asimov.js new [type] [path]```, where ```[type]``` can be Base, Middleware, Initializer, Helper or Test and ```[path]``` is relative to ```lib/```, without file extension
-  - Extend your custom classes with ```asimov.js new [parent] [path]```, where both ```[parent]``` and ```[path]``` are paths relative to ```lib/```, without file extension
+  - Scaffold a brand new project in seconds with ```ajs create [name]```
+  - Start your project with ```ajs start```, which is really just an alias for ```node main.js```
+  - Run all tests with ```ajs test```, or just a few matching a string with ```ajs test [grep]```
+  - Extend default classes with ```ajs extend [type] [path]```, where ```[type]``` can be Base, Middleware, Initializer, Helper or Test and ```[path]``` is relative to ```lib/```, without file extension
+  - Extend your custom classes with ```ajs new [parent] [path]```, where both ```[parent]``` and ```[path]``` are paths relative to ```lib/```, without file extension
+  - Publish project to NPM, create and push to git tag with ```ajs publish```
+  - Publish beta version with ```ajs publish --beta```, which makes the module installable with ```npm install yourModule@beta```
   - All file model paths are now consistently absolute
 
 ## 0.14.7
