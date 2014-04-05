@@ -7,6 +7,7 @@
   - Scaffold a brand new project in seconds with ```ajs create [name]```
   - Start your project with ```ajs start```, which is really just an alias for ```node main.js```
   - Run all tests with ```ajs test```, or just a few matching a string with ```ajs test [grep]```
+  - Create a new page with ```ajs new page [url] [template]```, for example ```ajs new page /blog/01-hello-world post```
   - Extend default classes with ```ajs extend [type] [path]```, where ```[type]``` can be Base, Middleware, Initializer, Helper or Test and ```[path]``` is relative to ```lib/```, without file extension
   - Extend your custom classes with ```ajs new [parent] [path]```, where both ```[parent]``` and ```[path]``` are paths relative to ```lib/```, without file extension
   - Publish project to NPM, create and push git tag with ```ajs publish```
