@@ -56,7 +56,7 @@ var CLI = Base.extend({
     var pathIndex;
 
     _.find(args, function (arg, index) {
-      if (arg.indexOf('asimov.js/bin') > 0) {
+      if (arg.indexOf('asimov.js/bin') > 0 || arg.indexOf('bin/asimov.js') > 0 || arg.indexOf('bin/ajs') > 0) {
         pathIndex = index;
       }
     });
