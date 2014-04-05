@@ -1,38 +1,38 @@
 {
   "paths": {
     "outputDir": "build",
-    "frameworkPages": "{{rootFramework}}/lib/pages",
+    "frameworkPages": "{{framework}}/lib/pages",
     "applications": "public/applications",
     "configs": "environments",
     "styles": [
       "site/styles",
-      "{{rootFramework}}/site/styles"
+      "{{framework}}/site/styles"
     ],
     "scripts": [
       "lib",
-      "{{rootFramework}}/lib"
+      "{{framework}}/lib"
     ],
     "content": "content",
     "data": "site/data",
     "templates": [
       "site/templates",
-      "{{rootFramework}}/site/templates"
+      "{{framework}}/site/templates"
     ],
     "helpers": [
-      "{{rootFramework}}/lib/helpers",
+      "{{framework}}/lib/helpers",
       "lib/helpers"
     ],
     "middleware": [
       "lib/middleware",
-      "{{rootFramework}}/lib/middleware"
+      "{{framework}}/lib/middleware"
     ],
     "initializers": [
-      "{{rootFramework}}/lib/initializers",
+      "{{framework}}/lib/initializers",
       "lib/initializers"
     ],
     "commands": [
       "lib/commands",
-      "{{rootFramework}}/lib/commands"
+      "{{framework}}/lib/commands"
     ]
   },
   "localization": {
