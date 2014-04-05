@@ -1,0 +1,14 @@
+var Middleware = require('asimov.js').Middleware;
+var _super = Middleware.prototype;
+
+module.exports = Middleware.extend({
+
+  'use': function (req, res, next) {
+
+    var self = this;
+
+    // Here's where you do your custom request middleware voodoo
+
+    next();
+  }
+});

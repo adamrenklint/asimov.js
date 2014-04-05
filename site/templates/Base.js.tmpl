@@ -1,15 +1,15 @@
-var Base = require('./Base');
+var Base = require('asimov.js').Base;
 var _super = Base.prototype;
 
 module.exports = Base.extend({
-
-  'namespace': 'init',
 
   'initialize': function () {
 
     var self = this;
     _super.initialize.apply(self, arguments);
 
-    self.assert('function', self.run, 'Initializer class must implement a run method');
+    // This is a raw, base class with just
+    // some logging and event methods
+    // Bend and extend it to your needs
   }
 });

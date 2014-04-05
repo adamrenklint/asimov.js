@@ -1,34 +1,38 @@
 {
   "paths": {
     "outputDir": "build",
-    "frameworkPages": "{{framework}}/pages",
+    "frameworkPages": "{{framework}}/lib/pages",
     "applications": "public/applications",
     "configs": "environments",
     "styles": [
       "site/styles",
-      "node_modules/asimov.js/site/styles"
+      "{{framework}}/site/styles"
     ],
     "scripts": [
       "lib",
-      "node_modules/asimov.js/lib"
+      "{{framework}}/lib"
     ],
     "content": "content",
     "data": "site/data",
     "templates": [
       "site/templates",
-      "node_modules/asimov.js/site/templates"
+      "{{framework}}/site/templates"
     ],
     "helpers": [
-      "{{framework}}/helpers",
+      "{{framework}}/lib/helpers",
       "lib/helpers"
     ],
     "middleware": [
       "lib/middleware",
-      "{{framework}}/middleware"
+      "{{framework}}/lib/middleware"
     ],
     "initializers": [
-      "{{framework}}/initializers",
+      "{{framework}}/lib/initializers",
       "lib/initializers"
+    ],
+    "commands": [
+      "lib/commands",
+      "{{framework}}/lib/commands"
     ]
   },
   "localization": {

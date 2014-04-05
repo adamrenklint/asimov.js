@@ -1,0 +1,11 @@
+var {{parent.name}} = require('{{parent.path}}');
+var _super = {{parent.name}}.prototype;
+
+module.exports = {{parent.name}}.extend({
+
+  'initialize': function () {
+
+    var self = this;
+    _super.initialize.apply(self, arguments);
+  }
+});

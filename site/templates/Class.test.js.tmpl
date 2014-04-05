@@ -1,0 +1,22 @@
+var {{name}} = require('{{path}}');
+var Test = require('asimov.js').Test;
+
+Test.run('{{name}}', function (test) {
+
+  var instance;
+
+  test.beforeEach(function () {
+    instance = new {{name}}();
+  });
+
+  test.afterEach(function () {
+    instance.destroy();
+  });
+
+//  test.spec('method ()', function () {
+//
+//    test.it('should be true', function () {
+//      expect(true).to.be.true;
+//    });
+//  });
+});
