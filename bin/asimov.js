@@ -15,6 +15,7 @@ var commandsPath = '../lib/commands/';
 var path = __dirname;
 var isModule = path.indexOf('node_modules/asimov.js/bin') >= 0;
 var frameworkDir = path.replace('/bin', '');
+console.log(frameworkDir)
 
 var CLI = Base.extend({
 
@@ -54,6 +55,8 @@ var CLI = Base.extend({
 
     var self = this;
     var pathIndex;
+
+    console.log(args)
 
     _.find(args, function (arg, index) {
       if (arg.indexOf('asimov.js/bin') > 0 || arg.indexOf('bin/asimov.js') > 0 || arg.indexOf('bin/ajs') > 0) {
