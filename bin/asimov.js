@@ -62,7 +62,7 @@ var CLI = Base.extend({
     });
 
     self.assert('number', pathIndex, 'Failed to start CLI, invalid load path');
-    return self.options.command = args[pathIndex + 1];
+    return self.options.command = (args[pathIndex + 1] || 'help');
   }
 });
 
