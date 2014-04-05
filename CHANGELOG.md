@@ -4,7 +4,7 @@
 
   - **Released ?**
   - Removed version from *meta generator** tag, a security faux pas
-  - Omitting ```[template]``` in ```ajs new page [url] [template]``` now defaults to ```page```
+  - Omitting ```[template]``` in ```ajs new page [url] [template]``` now defaults to ```page``` [#179](https://github.com/adamrenklint/asimov.js/issues/179)
 
 ## 0.15.2
 
