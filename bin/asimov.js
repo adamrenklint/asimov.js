@@ -15,7 +15,6 @@ var commandsPath = '../lib/commands/';
 var path = __dirname;
 var isModule = path.indexOf('node_modules/asimov.js/bin') >= 0;
 var frameworkDir = path.replace('/bin', '');
-console.log(frameworkDir)
 
 var CLI = Base.extend({
 
@@ -31,7 +30,6 @@ var CLI = Base.extend({
     }));
 
     var command = self.getCommand(self.options.args);
-    console.log(config.json.paths.commands)
     var loadPath = self.filesystem.findFirstMatch('/' + command + '.js', config.json.paths.commands);
     var Command;
 
