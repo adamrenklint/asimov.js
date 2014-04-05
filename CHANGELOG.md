@@ -4,6 +4,7 @@
 
   - **Released ?**
   - Removed version from *meta generator** tag, a security faux pas
+  - Omitting ```[template]``` in ```ajs new page [url] [template]``` now defaults to ```page```
 
 ## 0.15.2
 

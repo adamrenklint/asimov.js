@@ -7,24 +7,44 @@ asimov.js
 
 ## How to use
 
+### Install globally from NPM
+
+    $ npm install -g asimov.js
+
+### Show usage instructions
+
+    $ ajs help
+
+### Create a new project
+
+    $ ajs create myProject
+
+### Start your project
+
+    $ ajs start
+
+### Run all tests
+
+    $ ajs test
+
 Documentation is still in progress and will be made available at [asimovjs.org](http://asimovjs.org).
 
 ## Develop and contribute
 
-You need to have node and npm installed. Then fork this repo and open it in your terminal.
+  First, fork this repo. Obviously.
 
 ### Install dependencies
 
-    $ make install
+    $ npm install
 
 ### Run tests
 
-    $ make test
+    $ node bin/asimov.js test
 
 ### Start the server
 
-    $ make start
+    $ node bin/asimov.js start
 
 ### Publish to NPM
 
-    $ make publish
+    $ node bin/asimov.js publish
