@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.1
+
+  - **Released Saturday April 5th, 2014 @ 4.45pm**
+  - Fixed issue in ```ajs publish```, which always published with ```--beta``` flag
+
 ## 0.15.0
 
   - **Released Saturday April 5th, 2014 @ 4.40pm**
