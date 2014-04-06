@@ -3,7 +3,7 @@
 ## 0.15.4
 
   - **Released ?**
-  - The project path is now stripped when  logging, for cleaner logs
+  - The project path is now stripped when logging, for cleaner logs
 
 ## 0.15.3
 
