@@ -2,7 +2,7 @@
 
 ## 0.15.3
 
-  - **Released Sunday April 6th, 2014 @ 4pm**
+  - **Released Sundary April 6th, 2014 @ 6.30pm**
   - Removed version from *meta generator** tag, a security faux pas
   - Omitting ```[template]``` in ```ajs new page [url] [template]``` now defaults to ```page``` [#179](https://github.com/adamrenklint/asimov.js/issues/179)
   - Server now also reports throughput (requests per minute) every 15 seconds [#181](https://github.com/adamrenklint/asimov.js/issues/181)
