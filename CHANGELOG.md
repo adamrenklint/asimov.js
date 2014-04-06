@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.4
+
+  - **Released ?**
+  - The project path is now stripped when  logging, for cleaner logs
+
 ## 0.15.3
 
   - **Released Sundary April 6th, 2014 @ 6.30pm**

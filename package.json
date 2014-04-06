@@ -1,8 +1,8 @@
 {
   "name": "asimov.js",
-  "version": "0.15.3",
+  "version": "0.15.4",
   "homepage": "http://asimovjs.org",
-  "description": "A better way to build awesome websites and apps",
+  "description": "A better way to build awesome websites and apps, with javascript and textfiles",
   "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
   "contributors": [
     "Marvin Labod <marvin@6wunderkinder.com> (http://www.inlovewithcss.com)",
