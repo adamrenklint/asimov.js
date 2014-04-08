@@ -2,11 +2,12 @@
 
 ## 0.15.4
 
-  - **Released ?**
+  - **Released Tuesday April 8th, 2014 @ 2.40pm**
   - The project path is now stripped when logging, for cleaner logs
   - Fixed broken Coverage command exit [#196](https://github.com/adamrenklint/asimov.js/issues/196)
   - Fixed new Command subclasses including an invalid path to its superclass [#197](https://github.com/adamrenklint/asimov.js/issues/197)
   - Added <code>ajs new style [name]</code> instructions to <code>ajs help</code> [#194](https://github.com/adamrenklint/asimov.js/issues/194)
+  - Fixed issue where the wrong path for the Browserify executable was used and everything crashes
 
 ## 0.15.3
 
