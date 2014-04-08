@@ -5,6 +5,7 @@
   - **Released ?**
   - The project path is now stripped when logging, for cleaner logs
   - Fixed broken Coverage command exit [#196](https://github.com/adamrenklint/asimov.js/issues/196)
+  - Fixed new Command subclasses including an invalid path to its superclass [#197](https://github.com/adamrenklint/asimov.js/issues/197)
 
 ## 0.15.3
 
