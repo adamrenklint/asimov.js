@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.5
+
+  - **Released Tuesday April 8th, 2014 @ 4.50pm**
+  - Fixed an issue with images inside the content folder returning 404s because of an incorrect path
+
 ## 0.15.4
 
   - **Released Tuesday April 8th, 2014 @ 2.40pm**
