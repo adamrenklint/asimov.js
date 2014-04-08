@@ -4,6 +4,7 @@
 
   - **Released ?**
   - The project path is now stripped when logging, for cleaner logs
+  - Fixed broken Coverage command exit [#196](https://github.com/adamrenklint/asimov.js/issues/196)
 
 ## 0.15.3
 
