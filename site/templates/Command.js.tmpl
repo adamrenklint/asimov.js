@@ -1,0 +1,13 @@
+var Command = require('asimov.js').Command;
+var _super = Command.prototype;
+
+module.exports = Command.extend({
+
+  'initialize': function () {
+
+    var self = this;
+    _super.initialize.apply(self, arguments);
+
+    // Here's where your custom command logic goes
+  }
+});
