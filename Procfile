@@ -1,1 +1,1 @@
-web: ENV=production node main.js
+web: ENV=production node main.jss
