@@ -39,7 +39,7 @@
     "defaultLangCode": "en"
   },
   "server": {
-    "logDelay": 5
+    "logDelay": 15
   },
   "middleware": [],
   "initializers": []
