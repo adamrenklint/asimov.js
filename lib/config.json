@@ -38,6 +38,9 @@
   "localization": {
     "defaultLangCode": "en"
   },
+  "server": {
+    "logDelay": 5
+  },
   "middleware": [],
   "initializers": []
 }
