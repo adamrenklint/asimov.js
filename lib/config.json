@@ -39,7 +39,8 @@
     "defaultLangCode": "en"
   },
   "server": {
-    "logDelay": 15
+    "logDelay": 15,
+    "workerLogInterval": 5
   },
   "middleware": [],
   "initializers": []
