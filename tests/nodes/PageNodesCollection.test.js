@@ -97,14 +97,14 @@ Test.run('nodes/PageNodesCollection', function (test) {
     });
   });
 
-  test.spec('getPageForAlias (string url)', function () {
+  test.spec('getUrlForAlias (string url)', function () {
 
     test.when('url matches page.attributes.alias', function () {
 
-      test.it('should return the page', function () {
+      test.it('should return the redirect url', function () {
 
-        var page = instance.getPageForAlias('/winnie-the-poo');
-        expect(page && page.attributes.url).to.equal('/');
+        var url = instance.getUrlForAlias('/winnie-the-poo');
+        expect(url).to.equal('/');
       });
     });
 
@@ -112,8 +112,8 @@ Test.run('nodes/PageNodesCollection', function (test) {
 
       test.it('should return null', function () {
 
-        var page = instance.getPageForAlias('/winnie-the-poo-2');
-        expect(page).to.be.undefined;
+        var url = instance.getUrlForAlias('/winnie-the-poo-2');
+        expect(url).to.be.undefined;
       });
     });
   });
