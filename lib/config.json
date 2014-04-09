@@ -42,6 +42,15 @@
     "logDelay": 15,
     "workerLogInterval": 5
   },
+  "attributes": {
+    "middleware": {
+      "page": [
+        "url",
+        "alias",
+        "redirect"
+      ]
+    }
+  },
   "middleware": [],
   "initializers": []
 }
