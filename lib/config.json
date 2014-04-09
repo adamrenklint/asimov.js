@@ -47,7 +47,9 @@
       "page": [
         "url",
         "alias",
-        "redirect"
+        "redirect",
+        "middleware",
+        "title"
       ]
     }
   },
