@@ -14,7 +14,7 @@
   - Improved error message in when an invalid path is passed to the ```{{script}}``` helper [#184](https://github.com/adamrenklint/asimov.js/issues/184)
   - Use any standard mocha reporter with a flag, for example ```ajs test --spec``` or ```--dot```
   - Initializers can hook in right before a page is rendered and modify its attributes, by listening to ```pre:render:page``` on ```self.mediator``` [#193](https://github.com/adamrenklint/asimov.js/issues/193)
-  - Default computed page properties are ```isVisible```, ```hasChildren``` and ```childCount```
+  - Default computed page properties are ```isHomepage```, ```isVisible```, ```hasChildren``` and ```childCount```
 
 ## 0.15.5
 
