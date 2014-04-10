@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.16.0
+
+  - **Released ?**
+  - The server is now clustered, spawning one worker per cpu [#151](https://github.com/adamrenklint/asimov.js/issues/151)
+  - [ ] Upgraded to Express 4 [#206](https://github.com/adamrenklint/asimov.js/issues/206)
+  - Cache resolved middleware paths, fixes slow response times
+  - [ ] LiveReload now uses a random port to avoid conflict with other running servers [#200](https://github.com/adamrenklint/asimov.js/issues/200)
+  - Improved throughput calculation, now reports the actual requests per minute in the last minute, not aggregated [#202](https://github.com/adamrenklint/asimov.js/issues/202)
+  - Fixed an issue where ```ajs test [grep]``` would always run all tests [#204](https://github.com/adamrenklint/asimov.js/issues/204)
+  - ```ajs``` default command is now ```start``` [#201](https://github.com/adamrenklint/asimov.js/issues/201)
+  - Improved error message in when an invalid path is passed to the ```{{script}}``` helper [#184](https://github.com/adamrenklint/asimov.js/issues/184)
+
 ## 0.15.5
 
   - **Released Tuesday April 8th, 2014 @ 4.50pm**
