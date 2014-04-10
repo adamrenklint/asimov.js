@@ -5,8 +5,8 @@
   - **Released ?**
   - The server is now clustered, spawning one worker per cpu [#151](https://github.com/adamrenklint/asimov.js/issues/151)
   - Upgraded to Express 4 [#206](https://github.com/adamrenklint/asimov.js/issues/206)
-  - Cache resolved middleware paths, fixes slow response times
-  - LiveReload doesn't use the default port anymore, toavoid conflict with other running servers [#200](https://github.com/adamrenklint/asimov.js/issues/200)
+  - Server workers are caching resolved middleware paths, cuts response times in half
+  - LiveReload doesn't use the default port anymore, to avoid conflict with other running servers [#200](https://github.com/adamrenklint/asimov.js/issues/200)
   - Improved throughput calculation, now reports the actual requests per minute in the last minute, not aggregated [#202](https://github.com/adamrenklint/asimov.js/issues/202)
   - Solved performance bottleneck in ```Collection.add()```, which would fire a ```change``` event for each attribute on the added model
   - Fixed an issue where ```ajs test [grep]``` would always run all tests [#204](https://github.com/adamrenklint/asimov.js/issues/204)
