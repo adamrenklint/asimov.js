@@ -8,7 +8,7 @@
   - Server workers are caching resolved middleware paths, cuts response times in half
   - LiveReload doesn't use the default port anymore, to avoid conflict with other running servers [#200](https://github.com/adamrenklint/asimov.js/issues/200)
   - Improved throughput calculation, now reports the actual requests per minute in the last minute, not aggregated [#202](https://github.com/adamrenklint/asimov.js/issues/202)
-  - Solved performance bottleneck in ```Collection.add()```, which would fire a ```change``` event for each attribute on the added model
+  - Solved performance bottleneck in ```Collection.add()```, which would fire a ```change``` event for each attribute on the added model [#173](https://github.com/adamrenklint/asimov.js/issues/173)
   - Fixed an issue where ```ajs test [grep]``` would always run all tests [#204](https://github.com/adamrenklint/asimov.js/issues/204)
   - ```ajs``` default command is now ```start``` [#201](https://github.com/adamrenklint/asimov.js/issues/201)
   - Improved error message in when an invalid path is passed to the ```{{script}}``` helper [#184](https://github.com/adamrenklint/asimov.js/issues/184)
