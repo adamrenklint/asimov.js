@@ -2,7 +2,7 @@
 
 ## 0.16.0
 
-  - **Released ?**
+  - **Released Friday April 11th, 2014 @ 0.30am**
   - The server is now clustered, spawning one worker per cpu [#151](https://github.com/adamrenklint/asimov.js/issues/151)
   - Upgraded to Express 4 [#206](https://github.com/adamrenklint/asimov.js/issues/206)
   - Server workers are caching resolved middleware paths, cuts response times in half
