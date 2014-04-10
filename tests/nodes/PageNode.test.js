@@ -8,7 +8,7 @@ Test.run('nodes/PageNode', function (test) {
 
   var instance, pages;
 
-  test.before(function (done) {
+  test.beforeEach(function (done) {
 
     pages = new PageNodesCollection(null, {
       'localization': {
@@ -129,6 +129,68 @@ Test.run('nodes/PageNode', function (test) {
         expect(children.get('/foo').attributes.title).to.equal('foo');
         expect(children.get('/zoo').attributes.title).to.equal('zoologogogogy');
       });
+    });
+  });
+
+  test.spec('computed attributes', function () {
+
+    test.beforeEach(function () {
+      instance.mediator.trigger('collection:pages', pages);
+    });
+
+    test.spec('attributes.hasChildren', function () {
+
+      test.when('a page has children', function () {
+
+        test.it('should be true', function () {
+
+          var parent = pages.get('/');
+          expect(parent.attributes.hasChildren).to.be.true;
+        });
+
+        test.when('the child is removed', function () {
+
+          test.it('should be false', function () {
+
+            var parent = pages.get('/');
+            pages.remove(parent.children());
+            expect(parent.attributes.hasChildren).to.be.false;
+          });
+        });
+      });
+
+      test.when('a page has no children', function () {
+
+        test.it('should be false', function () {
+
+          var parent = pages.get('/zoo');
+          expect(parent.attributes.hasChildren).to.be.false;
+        });
+
+        test.when('a child is added', function () {
+
+          test.it('should be true', function () {
+
+            var parent = pages.get('/zoo');
+
+            pages.add({
+              'url': '/zoo/boo'
+            });
+
+            expect(parent.attributes.hasChildren).to.be.true;
+          });
+        });
+      });
+
+      // test.it('should return the children of the page node', function () {
+
+      //   var parent = pages.get('/');
+      //   var children = parent.children();
+
+      //   expect(children.models.length).to.equal(2);
+      //   expect(children.get('/foo').attributes.title).to.equal('foo');
+      //   expect(children.get('/zoo').attributes.title).to.equal('zoologogogogy');
+      // });
     });
   });
 });

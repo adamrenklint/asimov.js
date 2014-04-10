@@ -12,6 +12,7 @@
   - Fixed an issue where ```ajs test [grep]``` would always run all tests [#204](https://github.com/adamrenklint/asimov.js/issues/204)
   - ```ajs``` default command is now ```start``` [#201](https://github.com/adamrenklint/asimov.js/issues/201)
   - Improved error message in when an invalid path is passed to the ```{{script}}``` helper [#184](https://github.com/adamrenklint/asimov.js/issues/184)
+  - Use any standard mocha reporter with a flag, for example ```ajs test --spec``` or ```--dot```
 
 ## 0.15.5
 
