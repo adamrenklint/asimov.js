@@ -123,12 +123,9 @@ Test.run('helpers/Children', function (test) {
             test.it('should sort the results in descending order', function () {
 
               var result = instance.run('/', {
-                'hash': {
-                  'order': 'DESC'
-                },
-                'fn': function (obj) {
-                  return '::' + obj.url;
-                }
+                'order': 'DESC'
+              }, function (obj) {
+                return '::' + obj.url;
               });
 
               expect(result).to.equal('::/zoo::/foo');
@@ -139,10 +136,7 @@ Test.run('helpers/Children', function (test) {
         test.when('options.fn is not function', function () {
 
           test.itShould.throwError(function () {
-            instance.run('/foo', {
-              'hash': {},
-              'fn': null
-            });
+            instance.run('/foo', {}, null);
           });
         });
       });
@@ -150,10 +144,7 @@ Test.run('helpers/Children', function (test) {
       test.when('no page exists for url', function () {
 
         test.itShould.throwError(function () {
-            instance.run('/foos', {
-              'hash': {},
-              'fn': function () {}
-            });
+            instance.run('/foos', {}, function () {});
           });
       });
     });
@@ -165,12 +156,9 @@ Test.run('helpers/Children', function (test) {
         test.it('should use options.url as url', function () {
 
           var result = instance.run({
-            'hash': {
-              'url': '/foo'
-            },
-            'fn': function (obj) {
-              return '::' + obj.url;
-            }
+            'url': '/foo'
+          }, function (obj) {
+            return '::' + obj.url;
           });
 
           expect(result).to.equal('::/foo/bar');
@@ -181,11 +169,8 @@ Test.run('helpers/Children', function (test) {
 
         test.it('should use self.currentUrl as url', function () {
 
-          var result = instance.run({
-            'hash': {},
-            'fn': function (obj) {
+          var result = instance.run({}, function (obj) {
               return '::' + obj.url;
-            }
           });
 
           expect(result).to.equal('::/foo/bar');
