@@ -136,11 +136,11 @@ Test.run('nodes/PageNodesCollection', function (test) {
         test.it('should sort pages by that attribute', function () {
 
           var sorted = instance.filter(passIterator, {
-            'sortBy': 'text'
+            'sortBy': 'foo'
           });
 
-          expect(sorted[0].attributes.url).to.equal('/zoo');
-          expect(sorted[5].attributes.url).to.equal('/foo/bar');
+          expect(sorted.models[0].attributes.url).to.equal('/zoo');
+          expect(sorted.models[sorted.models.length - 1].attributes.url).to.equal('/foo/bar');
         });
       });
 
