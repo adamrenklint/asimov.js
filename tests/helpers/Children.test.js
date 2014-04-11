@@ -84,6 +84,74 @@ Test.run('helpers/Children', function (test) {
 
             expect(result).to.equal('::/foo::/zoo');
           });
+
+          test.when('hash.limit is a number', function () {
+
+            test.it('should limit the result length', function () {
+
+              var result = instance.run('/', {
+                'hash': {
+                  'limit': 1
+                },
+                'fn': function (obj) {
+                  return '::' + obj.url;
+                }
+              });
+
+              expect(result).to.equal('::/foo');
+            });
+          });
+
+          test.when('hash.offset is a number', function () {
+
+            test.it('should not include pages before offset', function () {
+
+              var result = instance.run('/', {
+                'hash': {
+                  'offset': 1
+                },
+                'fn': function (obj) {
+                  return '::' + obj.url;
+                }
+              });
+
+              expect(result).to.equal('::/zoo');
+            });
+          });
+
+          test.when('hash.sortBy is a string', function () {
+
+            test.it('should sort the result by that attribute', function () {
+
+              var result = instance.run('/', {
+                'hash': {
+                  'sortBy': 'foo'
+                },
+                'fn': function (obj) {
+                  return '::' + obj.url;
+                }
+              });
+
+              expect(result).to.equal('::/zoo::/foo');
+            });
+          });
+
+          test.when('hash.order is the string "DESC"', function () {
+
+            test.it('should sort the results in descending order', function () {
+
+              var result = instance.run('/', {
+                'hash': {
+                  'order': 'DESC'
+                },
+                'fn': function (obj) {
+                  return '::' + obj.url;
+                }
+              });
+
+              expect(result).to.equal('::/zoo::/foo');
+            });
+          });
         });
 
         test.when('options.fn is not function', function () {
