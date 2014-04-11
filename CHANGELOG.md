@@ -4,6 +4,7 @@
 
   - **Released Friday April 11th, 2014 @ 8.40am**
   - Fixed a regression in the CollectionEvents initializer, which would prevent templates to be parsed for dependencies to watch for changes
+  - Fixed the ```ajs publish``` command, which would always exit after running tests, regardless of test output
 
 ## 0.16.0
 
