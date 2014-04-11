@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.2
+
+  - **Released ?**
+  - ```pages.filter()``` and ```pages.childrenOf()``` now takes an options object, which can be used to filter, sort and slice the results
+  - Define ```options.sortBy``` as an attribute key to sort pages by that attribute
+  - Use ```options.reverse``` or ```options.order = "DESC"``` to reverse the order of pages
+  - ```options.limit``` and ```options.offset``` also works to slice the array of models
+  - All the above options are also available in the ```{{#children}}``` helper, for example using ```{{#children limit=5 offset=10}}```
+
 ## 0.16.1
 
   - **Released Friday April 11th, 2014 @ 8.40am**
