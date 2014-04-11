@@ -157,6 +157,31 @@ Test.run('nodes/PageNodesCollection', function (test) {
           var children = instance.childrenOf('/');
           expect(children.models.length).to.equal(2);
         });
+
+        test.when('hash.sortBy is a string', function () {
+
+          test.it('should sort children by that attribute');
+        });
+
+        test.when('hash.order is the string "ASC"', function () {
+
+          test.it('should sort children in ascending order');
+        });
+
+        test.when('hash.order is the string "DESC"', function () {
+
+          test.it('should sort children in descending order');
+        });
+
+        test.when('hash.limit is a number', function () {
+
+          test.it('should return max that number of children');
+        });
+
+        test.when('hash.offset is a number', function () {
+
+          test.it('should exclude children with an index lower than hash.offset');
+        });
       });
 
       test.when('the page model has no children in self.pages', function () {
