@@ -3,7 +3,7 @@
 ## 0.16.2
 
   - **Released ?**
-  - ```pages.filter()``` and ```pages.childrenOf()``` now takes an options object, which can be used to filter, sort and slice the results
+  - ```pages.filter()``` and ```pages.childrenOf()``` now takes an options object, which can be used to filter, sort and slice the results [#175](https://github.com/adamrenklint/asimov.js/issues/175)
   - Define ```options.sortBy``` as an attribute key to sort pages by that attribute
   - Use ```options.reverse``` or ```options.order = "DESC"``` to reverse the order of pages
   - ```options.limit``` and ```options.offset``` also works to slice the array of models
