@@ -52,10 +52,7 @@ Test.run('helpers/Children', function (test) {
           test.it('should execute function with each child', function () {
 
             var spy = sinon.spy();
-            instance.run('/foo', {
-              'hash': {},
-              'fn': spy
-            });
+            instance.run('/foo', {}, spy);
 
             expect(spy).to.have.been.calledOnce;
             expect(spy.firstCall.args[0].url).to.equal('/foo/bar');
@@ -63,11 +60,8 @@ Test.run('helpers/Children', function (test) {
 
           test.it('should return the value of all function calls', function () {
 
-            var result = instance.run('/foo', {
-              'hash': {},
-              'fn': function (obj) {
-                return '::' + obj.url;
-              }
+            var result = instance.run('/foo', {}, function (obj) {
+              return '::' + obj.url;
             });
 
             expect(result).to.equal('::/foo/bar');
@@ -75,11 +69,8 @@ Test.run('helpers/Children', function (test) {
 
           test.it('should only include direct children', function () {
 
-            var result = instance.run('/', {
-              'hash': {},
-              'fn': function (obj) {
-                return '::' + obj.url;
-              }
+            var result = instance.run('/', {}, function (obj) {
+              return '::' + obj.url;
             });
 
             expect(result).to.equal('::/foo::/zoo');
@@ -90,12 +81,9 @@ Test.run('helpers/Children', function (test) {
             test.it('should limit the result length', function () {
 
               var result = instance.run('/', {
-                'hash': {
-                  'limit': 1
-                },
-                'fn': function (obj) {
-                  return '::' + obj.url;
-                }
+                'limit': 1
+                }, function (obj) {
+                return '::' + obj.url;
               });
 
               expect(result).to.equal('::/foo');
@@ -107,12 +95,9 @@ Test.run('helpers/Children', function (test) {
             test.it('should not include pages before offset', function () {
 
               var result = instance.run('/', {
-                'hash': {
-                  'offset': 1
-                },
-                'fn': function (obj) {
-                  return '::' + obj.url;
-                }
+                'offset': 1
+              }, function (obj) {
+                return '::' + obj.url;
               });
 
               expect(result).to.equal('::/zoo');
@@ -124,12 +109,9 @@ Test.run('helpers/Children', function (test) {
             test.it('should sort the result by that attribute', function () {
 
               var result = instance.run('/', {
-                'hash': {
-                  'sortBy': 'foo'
-                },
-                'fn': function (obj) {
-                  return '::' + obj.url;
-                }
+                'sortBy': 'foo'
+              }, function (obj) {
+                return '::' + obj.url;
               });
 
               expect(result).to.equal('::/zoo::/foo');

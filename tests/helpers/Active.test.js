@@ -58,11 +58,8 @@ Test.run('helpers/Active', function (test) {
 
             test.it('should return the passed value', function () {
 
-              var result = instance.run('/blog', {
-                'hash': {},
-                'fn': function () {
-                  return '<div id="active">yo</div>';
-                }
+              var result = instance.run('/blog', {}, function () {
+                return '<div id="active">yo</div>';
               });
 
               expect(result).to.equal('<div id="active">yo</div>');
@@ -73,11 +70,8 @@ Test.run('helpers/Active', function (test) {
 
             test.it('should return an empty string', function () {
 
-              var result = instance.run('/blog2', {
-                'hash': {},
-                'fn': function () {
-                  return '<div id="active">yo</div>';
-                }
+              var result = instance.run('/blog2', {}, function () {
+                return '<div id="active">yo</div>';
               });
 
               expect(result).to.equal('');
@@ -89,10 +83,7 @@ Test.run('helpers/Active', function (test) {
 
           test.it('should return an empty string', function () {
 
-            var result = instance.run('/blog2', {
-              'hash': {},
-              'fn': null
-            });
+            var result = instance.run('/blog2', {}, null);
 
             expect(result).to.equal('');
           });

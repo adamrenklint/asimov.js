@@ -4,6 +4,8 @@ alias: /the-alias-for-home
 ---
 headline: asimov.js
 ---
+tags: [one, two, three]
+---
 text:
 
 Welcome to your brand new asimov.js project.

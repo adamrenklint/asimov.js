@@ -1,13 +1,16 @@
 # Changelog
 
-## 0.16.2
+## 0.17.0
 
   - **Released ?**
+  - Simplified how data is passed to template helpers, with breaking changes to existing template helpers using ```self.opts()```, which is removed. Instead you always get params and block callbacks in the function arguments.
+  - Fixed issues with the consistency and data available in textfiles and templates, now enforces defaults [#192](https://github.com/adamrenklint/asimov.js/issues/192)
   - ```pages.filter()``` and ```pages.childrenOf()``` now takes an options object, which can be used to filter, sort and slice the results [#175](https://github.com/adamrenklint/asimov.js/issues/175)
   - Define ```options.sortBy``` as an attribute key to sort pages by that attribute
   - Use ```options.reverse``` or ```options.order = "DESC"``` to reverse the order of pages
   - ```options.limit``` and ```options.offset``` also works to slice the array of models
   - All the above options are also available in the ```{{#children}}``` helper, for example using ```{{#children limit=5 offset=10}}```
+  - ```{{#pages}}``` block helper will iterate over all your pages, and also takes all the options above
 
 ## 0.16.1
 
