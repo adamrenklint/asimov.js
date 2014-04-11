@@ -127,11 +127,21 @@ Test.run('nodes/PageNodesCollection', function (test) {
       });
     });
 
+    function passIterator () { return true; }
+
     test.when('test is a function', function () {
 
       test.when('hash.sortBy is a string', function () {
 
-        test.it('should sort children by that attribute');
+        test.it('should sort pages by that attribute', function () {
+
+          var sorted = instance.filter(passIterator, {
+            'sortBy': 'text'
+          });
+
+          expect(sorted[0].attributes.url).to.equal('/zoo');
+          expect(sorted[5].attributes.url).to.equal('/foo/bar');
+        });
       });
 
       test.when('hash.order is the string "ASC"', function () {
