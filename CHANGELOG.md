@@ -14,6 +14,7 @@
   - Initializers can now also hook in right after a page has been rendered, to modify the rendered content before it's written to the static build folder, by listening to ```post:render:page``` on ```self.mediator``` [#47](https://github.com/adamrenklint/asimov.js/issues/47)
   - Add custom, page specific stylesheets by creating a stylus file in your page folder and including it in the textfile or template with ```{{style "myCustomStyles"}}``` [#189](https://github.com/adamrenklint/asimov.js/issues/189)
   - If any attribute in a textfile is changed, the page is re-rendered and the browser reloaded [#190](https://github.com/adamrenklint/asimov.js/issues/190)
+  - Fixed issue with invalidating nested templates, changing a template file now re-renders all pages that uses it; directly, imported or nested in an imported template [#209](https://github.com/adamrenklint/asimov.js/issues/209)
 
 ## 0.16.1
 

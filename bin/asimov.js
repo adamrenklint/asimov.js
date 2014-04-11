@@ -41,7 +41,7 @@ var CLI = Base.extend({
     self.assert('function', Command, function () {
       self.error([
         'Invalid command: ' + command.toLowerCase(),
-        'To get usage instructions, type ' + 'asimov.js help'.bold
+        'To get usage instructions, type ' + 'ajs help'.bold
       ]);
     });
 
