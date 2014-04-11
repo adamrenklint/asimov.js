@@ -12,6 +12,7 @@
   - All the above options are also available in the ```{{#children}}``` helper, for example using ```{{#children limit=5 offset=10}}```
   - ```{{#pages}}``` block helper will iterate over all your pages, and also takes all the options above
   - Initializers can now also hook in right after a page has been rendered, to modify the rendered content before it's written to the static build folder, by listening to ```post:render:page``` on ```self.mediator``` [#47](https://github.com/adamrenklint/asimov.js/issues/47)
+  - Add custom, page specific stylesheets by creating a stylus file in your page folder and including it in the textfile or template with ```{{style "myCustomStyles"}}``` [#189](https://github.com/adamrenklint/asimov.js/issues/189)
 
 ## 0.16.1
 

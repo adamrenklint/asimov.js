@@ -10,6 +10,8 @@ inherits: /
 ---
 text:
 
+{{style "test"}}
+
 # Rendering tests
 
 ## Attributes
