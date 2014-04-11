@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.16.1
+
+  - **Released Friday April 11th, 2014 @ 8.40am**
+  - Fixed a regression in the CollectionEvents initializer, which would prevent templates to be parsed for dependencies to watch for changes
+
 ## 0.16.0
 
   - **Released Friday April 11th, 2014 @ 0.30am**
