@@ -52,10 +52,7 @@ Test.run('helpers/Menu', function (test) {
           test.it('should execute function with each child', function () {
 
             var spy = sinon.spy();
-            instance.run('/foo', {
-              'hash': {},
-              'fn': spy
-            });
+            instance.run('/foo', {}, spy);
 
             expect(spy).to.have.been.calledOnce;
             expect(spy.firstCall.args[0].url).to.equal('/foo/bar');
@@ -63,11 +60,8 @@ Test.run('helpers/Menu', function (test) {
 
           test.it('should return the value of all function calls', function () {
 
-            var result = instance.run('/foo', {
-              'hash': {},
-              'fn': function (obj) {
-                return '::' + obj.url;
-              }
+            var result = instance.run('/foo', {}, function (obj) {
+              return '::' + obj.url;
             });
 
             expect(result).to.equal('<ul><li><a href="/foo/bar">::/foo/bar</a></li></ul>');
@@ -75,11 +69,8 @@ Test.run('helpers/Menu', function (test) {
 
           test.it('should only include direct children', function () {
 
-            var result = instance.run('/', {
-              'hash': {},
-              'fn': function (obj) {
-                return '::' + obj.url;
-              }
+            var result = instance.run('/', {}, function (obj) {
+              return '::' + obj.url;
             });
 
             expect(result).to.equal('<ul><li class="active"><a href="/foo">::/foo</a></li><li><a href="/zoo">::/zoo</a></li></ul>');
@@ -87,11 +78,8 @@ Test.run('helpers/Menu', function (test) {
 
           test.it('should set class to "active" for active page', function () {
 
-            var result = instance.run('/', {
-              'hash': {},
-              'fn': function (obj) {
-                return '::' + obj.url;
-              }
+            var result = instance.run('/', {}, function (obj) {
+              return '::' + obj.url;
             });
 
             expect(result).to.equal('<ul><li class="active"><a href="/foo">::/foo</a></li><li><a href="/zoo">::/zoo</a></li></ul>');
@@ -102,9 +90,7 @@ Test.run('helpers/Menu', function (test) {
 
           test.it('should return text links', function () {
 
-            var result = instance.run('/', {
-              'hash': {}
-            });
+            var result = instance.run('/', {});
 
             expect(result).to.equal('<ul><li class="active"><a href="/foo">foo</a></li><li><a href="/zoo">zoologogogogy</a></li></ul>');
           });
@@ -114,10 +100,7 @@ Test.run('helpers/Menu', function (test) {
       test.when('no page exists for url', function () {
 
         test.itShould.throwError(function () {
-            instance.run('/foos', {
-              'hash': {},
-              'fn': function () {}
-            });
+            instance.run('/foos', {}, function () {});
           });
       });
     });
@@ -129,12 +112,9 @@ Test.run('helpers/Menu', function (test) {
         test.it('should use options.url as url', function () {
 
           var result = instance.run({
-            'hash': {
-              'url': '/foo'
-            },
-            'fn': function (obj) {
-              return '::' + obj.url;
-            }
+            'url': '/foo'
+          }, function (obj) {
+            return '::' + obj.url;
           });
 
           expect(result).to.equal('<ul><li><a href="/foo/bar">::/foo/bar</a></li></ul>');
@@ -145,11 +125,8 @@ Test.run('helpers/Menu', function (test) {
 
         test.it('should use self.currentUrl as url', function () {
 
-          var result = instance.run({
-            'hash': {},
-            'fn': function (obj) {
-              return '::' + obj.url;
-            }
+          var result = instance.run({}, function (obj) {
+            return '::' + obj.url;
           });
 
           expect(result).to.equal('<ul><li><a href="/foo/bar">::/foo/bar</a></li></ul>');
