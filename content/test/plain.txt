@@ -12,14 +12,24 @@ text:
 
 # Rendering tests
 
-## Page
+## Attributes
 
-### Use other page attributes in textfile
+### Page
 
 <ul>
   <li>page.title: {{page.title}}</li>
   <li>page.list array: {{#each page.list}}{{this}}{{/each}}</li>
   <li>page.nested: {{page.nested.deeper.here}}</li>
+  <li>page.hasChildren: {{page.hasChildren}}</li>
+  <li>page.childCount: {{page.childCount}}</li>
+  <li>page.isHomepage: {{page.isHomepage}}</li>
+  <li>page.isVisible: {{page.isVisible}}</li>
+</ul>
+
+### Site
+
+<ul>
+  <li>site.foo: {{site.foo}}</li>
 </ul>
 
 ### Inherit/import attributes from other pages
@@ -99,6 +109,12 @@ text:
 ### Menu
 
 {{menu}}
+
+### Pages
+
+<ul>
+  {{#pages}}<li>{{this.url}} = {{this.title}}</li>{{/pages}}
+</ul>
 
 ### Script
 
