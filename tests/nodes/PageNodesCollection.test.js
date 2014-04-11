@@ -146,22 +146,57 @@ Test.run('nodes/PageNodesCollection', function (test) {
 
       test.when('hash.order is the string "ASC"', function () {
 
-        test.it('should sort children in ascending order');
+        test.it('should sort children in ascending order', function () {
+
+          var sorted = instance.filter(passIterator, {
+            'sortBy': 'foo',
+            'order': 'ASC'
+          });
+
+          expect(sorted.models[0].attributes.url).to.equal('/zoo');
+          expect(sorted.models[sorted.models.length - 1].attributes.url).to.equal('/foo/bar');
+        });
       });
 
       test.when('hash.order is the string "DESC"', function () {
 
-        test.it('should sort children in descending order');
+        test.it('should sort children in descending order', function () {
+
+          var sorted = instance.filter(passIterator, {
+            'sortBy': 'foo',
+            'order': 'DESC'
+          });
+
+          expect(sorted.models[0].attributes.url).to.equal('/foo/bar');
+          expect(sorted.models[sorted.models.length - 1].attributes.url).to.equal('/zoo');
+        });
       });
 
       test.when('hash.limit is a number', function () {
 
-        test.it('should return max that number of children');
+        test.it('should return max that number of children', function () {
+
+          var limited = instance.filter(passIterator, {
+            'limit': 1
+          });
+
+          expect(limited.length).to.equal(1);
+        });
       });
 
       test.when('hash.offset is a number', function () {
 
-        test.it('should exclude children with an index lower than hash.offset');
+        test.it('should exclude children with an index lower than hash.offset', function () {
+
+          var offset = instance.filter(passIterator, {
+            'sortBy': 'foo',
+            'limit': 1,
+            'offset': 1
+          });
+
+          expect(offset.length).to.equal(1);
+          expect(offset.models[0].attributes.url).to.equal('/zoo');
+        });
       });
     });
   });
