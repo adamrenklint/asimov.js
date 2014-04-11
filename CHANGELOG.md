@@ -15,7 +15,7 @@
   - Add custom, page specific stylesheets by creating a stylus file in your page folder and including it in the textfile or template with ```{{style "myCustomStyles"}}``` [#189](https://github.com/adamrenklint/asimov.js/issues/189)
   - If any attribute in a textfile is changed, the page is re-rendered and the browser reloaded [#190](https://github.com/adamrenklint/asimov.js/issues/190)
   - Fixed issue with invalidating nested templates, changing a template file now re-renders all pages that uses it; directly, imported or nested in an imported template [#209](https://github.com/adamrenklint/asimov.js/issues/209)
-  - ```The {{#children}}```, ```{{#pages}}``` and ```{{#menu}}``` helpers registers the current page as a dependency, using ```helper.registerDependency(parent, child)``` and will re-render if any included resource is changed [#185](https://github.com/adamrenklint/asimov.js/issues/185)
+  - The ```{{#children}}```, ```{{#pages}}``` and ```{{#menu}}``` helpers registers the current page as a dependency, using ```helper.registerDependency(parent, child)``` and will re-render if any included resource is changed [#185](https://github.com/adamrenklint/asimov.js/issues/185)
 
 ## 0.16.1
 
