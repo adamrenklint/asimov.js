@@ -19,6 +19,8 @@
   - When any textfile in ```site/data``` is added, changed or removed, all pages are re-rendered [#19](https://github.com/adamrenklint/asimov.js/issues/19)
   - Define which files should be exported from your project as a npm module with ```config.exportScripts```
   - Generate a code complexity and maintainability report with Plato, using ```ajs complexity [--open]``` [#187](https://github.com/adamrenklint/asimov.js/issues/187)
+  - Pages register all template helpers they use as dependencies, and will re-render whenever they change
+  - Changing initializers, middleware or configuration files will restart the entire process [#191](https://github.com/adamrenklint/asimov.js/issues/191)
 
 ## 0.16.1
 
