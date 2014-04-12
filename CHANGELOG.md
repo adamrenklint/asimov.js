@@ -17,6 +17,7 @@
   - Fixed issue with invalidating nested templates, changing a template file now re-renders all pages that uses it; directly, imported or nested in an imported template [#209](https://github.com/adamrenklint/asimov.js/issues/209)
   - The ```{{#children}}```, ```{{#pages}}``` and ```{{#menu}}``` helpers registers the current page as a dependency, using ```helper.registerDependency(parent, child)``` and will re-render if any included resource is changed [#185](https://github.com/adamrenklint/asimov.js/issues/185)
   - When any textfile in ```site/data``` is added, changed or removed, all pages are re-rendered [#19](https://github.com/adamrenklint/asimov.js/issues/19)
+  - Define which files should be exported from your project as a npm module with ```config.exportScripts```
 
 ## 0.16.1
 

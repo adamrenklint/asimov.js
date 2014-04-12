@@ -9,4 +9,4 @@
 // process.env.ENV = 'development';
 
 var options = {};
-var asimov = require('./lib/asimov')(options);
+module.exports = require('./lib/asimov')(options);

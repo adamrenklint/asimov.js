@@ -1,4 +1,7 @@
 {
+  "exportScripts": [
+    "core/Base"
+  ],
   "paths": {
     "outputDir": "build",
     "frameworkPages": "{{framework}}/lib/pages",
