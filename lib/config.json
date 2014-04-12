@@ -2,6 +2,24 @@
   "exportScripts": [
     "core/Base"
   ],
+  "dependencies": {
+    "production": {
+      "express": "4.0.0",
+      "express-livereload": "0.0.24",
+      "require-uncache": "0.0.2",
+      "static-asset": "0.5.2",
+      "yaml-js": "0.0.8",
+      "compression": "1.0.1",
+      "marked": "0.3.1",
+      "uglify-js": "2.4.13",
+      "stylus": "0.43.1",
+      "nib": "1.0.2",
+      "browserify": "3.40.0"
+    },
+    "development": {
+
+    }
+  },
   "paths": {
     "outputDir": "build",
     "frameworkPages": "{{framework}}/lib/pages",
