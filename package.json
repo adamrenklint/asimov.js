@@ -43,6 +43,7 @@
     "mocha": "~1.18.2",
     "nib": "~1.0.2",
     "plato": "~1.0.1",
+    "require-uncache": "0.0.2",
     "sinon": "~1.9.0",
     "sinon-chai": "~2.5.0",
     "static-asset": "~0.5.2",
