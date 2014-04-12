@@ -180,16 +180,15 @@ Test.run('watcher/Watcher', function (test) {
     function testHandleChangeForAction (type, action) {
 
       test.when('a ' + type + ' file is ' + action, function () {
-        test.it('should call ' + type + '.' + action + ' handler', function () {
+        test.it('should call ' + type + '.' + action + ' handler', function (done) {
 
-          var spy = sinon.spy(instance._handlers[type], action);
+          var action = instance._handlers[type][action];
+          instance._handlers[type][action] = done();
+
           var path = 'a9ua09dua90sud09sad.' + extensions[type];
           instance.handleChange(path, {}, {}, action);
 
-          expect(spy).to.have.been.calledOnce;
-          // expect(spy).to.have.been.calledWith(model, null, instance);
-
-          instance._handlers[type][action].restore();
+          instance._handlers[type][action] = action;
         });
       });
     }
