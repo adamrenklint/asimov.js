@@ -21,6 +21,7 @@
   - Generate a code complexity and maintainability report with Plato, using ```ajs complexity [--open]``` [#187](https://github.com/adamrenklint/asimov.js/issues/187)
   - Pages register all template helpers they use as dependencies, and will re-render whenever they change [#191](https://github.com/adamrenklint/asimov.js/issues/191)
   - Changing initializers, middleware or configuration files will restart the entire process [#213](https://github.com/adamrenklint/asimov.js/issues/213)
+  - Template handler names are now used camelCased, meaning that your ```lib/helpers/MyCustomHelper``` is used with ```{{#myCustomHelper}}``` [#195](https://github.com/adamrenklint/asimov.js/issues/195)
 
 ## 0.16.1
 
