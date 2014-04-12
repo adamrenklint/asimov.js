@@ -14,7 +14,8 @@
       "uglify-js": "2.4.13",
       "stylus": "0.43.1",
       "nib": "1.0.2",
-      "browserify": "3.40.0"
+      "browserify": "3.40.0",
+      "watchdirectory": "0.1.5"
     },
     "development": {
 
