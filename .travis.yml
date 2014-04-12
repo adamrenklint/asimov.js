@@ -13,4 +13,4 @@ install:
   - npm install
 
 script:
-  - node bin/asimov.js test
+  - node bin/asimov.js
