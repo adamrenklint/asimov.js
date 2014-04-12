@@ -20,7 +20,6 @@ Test.run('nodes/MetaNode', function (test) {
         var raw = 'foo: asd\n\n--\n\nbar: asdf\n------\nbaz: asdfe';
         var result = instance.parseRawMeta(raw);
 
-        expect(Object.keys(result).length).to.equal(3);
         expect(result.foo).to.equal('asd');
         expect(result.bar).to.equal('asdf');
         expect(result.baz).to.equal('asdfe');
