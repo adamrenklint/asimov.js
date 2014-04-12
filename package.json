@@ -42,6 +42,7 @@
     "marked": "~0.3.1",
     "mocha": "~1.18.2",
     "nib": "~1.0.2",
+    "plato": "~1.0.1",
     "sinon": "~1.9.0",
     "sinon-chai": "~2.5.0",
     "static-asset": "~0.5.2",
@@ -50,7 +51,6 @@
     "watchdirectory": "~0.1.5",
     "wunderbits.core": "~0.1.4",
     "yaml-js": "0.0.8",
-    "zombie": "~2.0.0-alpha29",
-    "plato": "~1.0.1"
+    "zombie": "~2.0.0-alpha29"
   }
 }

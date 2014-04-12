@@ -18,6 +18,7 @@
   - The ```{{#children}}```, ```{{#pages}}``` and ```{{#menu}}``` helpers registers the current page as a dependency, using ```helper.registerDependency(parent, child)``` and will re-render if any included resource is changed [#185](https://github.com/adamrenklint/asimov.js/issues/185)
   - When any textfile in ```site/data``` is added, changed or removed, all pages are re-rendered [#19](https://github.com/adamrenklint/asimov.js/issues/19)
   - Define which files should be exported from your project as a npm module with ```config.exportScripts```
+  - Generate a code complexity and maintainability report with Plato, using ```ajs complexity [--open]``` [#187](https://github.com/adamrenklint/asimov.js/issues/187)
 
 ## 0.16.1
 
