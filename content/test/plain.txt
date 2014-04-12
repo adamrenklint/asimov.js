@@ -14,8 +14,6 @@ text:
 
 # Rendering tests
 
-{{menu}}
-
 ## Attributes
 
 ### Page
