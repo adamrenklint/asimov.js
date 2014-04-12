@@ -31,9 +31,7 @@
     "browserify": "~3.40.0",
     "chai": "~1.9.0",
     "cluster": "~0.7.7",
-    "cluster-master": "~0.2.0",
     "colors": "~0.6.2",
-    "commander": "~2.2.0",
     "compression": "^1.0.1",
     "express": "4.0.0",
     "express-livereload": "0.0.24",
@@ -41,8 +39,6 @@
     "istanbul": "~0.2.7",
     "jquery": "~2.1.0-rc1",
     "lodash": "~2.4.1",
-    "madge": "~0.1.8",
-    "markdown": "~0.5.0",
     "marked": "~0.3.1",
     "mocha": "~1.18.2",
     "nib": "~1.0.2",
@@ -54,6 +50,7 @@
     "watchdirectory": "~0.1.5",
     "wunderbits.core": "~0.1.4",
     "yaml-js": "0.0.8",
-    "zombie": "~2.0.0-alpha29"
+    "zombie": "~2.0.0-alpha29",
+    "plato": "~1.0.1"
   }
 }
