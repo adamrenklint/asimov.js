@@ -2,7 +2,7 @@
 
 ## 0.17.0
 
-  - **Released ?**
+  - **Released Monday April 14th, 2014 @ 12am**
   - Simplified how data is passed to template helpers, with breaking changes to existing template helpers using ```self.opts()```, which is removed. Instead you always get params and block callbacks in the function arguments.
   - Fixed issues with the consistency and data available in textfiles and templates, now enforces defaults [#192](https://github.com/adamrenklint/asimov.js/issues/192)
   - ```pages.filter()``` and ```pages.childrenOf()``` now takes an options object, which can be used to filter, sort and slice the results [#175](https://github.com/adamrenklint/asimov.js/issues/175)
