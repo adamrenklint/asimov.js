@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.17.1
+
+  - **Released Monday April 14th, 2014 @ 1am**
+  - Fixed critical issue that put render queue into an infinite loop on larger projects
+
 ## 0.17.0
 
   - **Released Monday April 14th, 2014 @ 12am**
