@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+process.env.PORT = typeof process.env.PORT === 'string' ? parseInt(process.env.PORT, 10) : process.env.PORT;
+
 var npath = require('path');
 var fs = require('fs');
 var Base = require('../lib/core/Base');
