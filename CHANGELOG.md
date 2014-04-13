@@ -22,6 +22,7 @@
   - Pages register all template helpers they use as dependencies, and will re-render whenever they change [#191](https://github.com/adamrenklint/asimov.js/issues/191)
   - Changing initializers, middleware or configuration files will restart the entire process [#213](https://github.com/adamrenklint/asimov.js/issues/213)
   - Template handler names are now used camelCased, meaning that your ```lib/helpers/MyCustomHelper``` is used with ```{{#myCustomHelper}}``` [#195](https://github.com/adamrenklint/asimov.js/issues/195)
+  - Slimmed down core dependencies: install what's needed, when it's needed [#212](https://github.com/adamrenklint/asimov.js/issues/212)
 
 ## 0.16.1
 
