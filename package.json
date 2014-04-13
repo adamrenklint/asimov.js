@@ -28,9 +28,10 @@
     "npm": "~1.1.60"
   },
   "dependencies": {
-    "colors": "~0.6.2",
-    "handlebars": "~2.0.0-alpha.2",
-    "lodash": "~2.4.1",
-    "wunderbits.core": "~0.1.4"
+    "colors": "0.6.2",
+    "handlebars": "2.0.0-alpha.2",
+    "lodash": "2.4.1",
+    "ncp": "0.5.0",
+    "wunderbits.core": "0.1.4"
   }
 }
