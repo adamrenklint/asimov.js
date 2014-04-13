@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+process.env.PORT = process.env.PORT || 3003;
+
 var npath = require('path');
 var fs = require('fs');
 var Base = require('../lib/core/Base');
