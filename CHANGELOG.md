@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.17.4
+
+  - **Released Monday April 14th, 2014 @ 1.25pm**
+  - Fixed issue with rendered variables not being accessible in template helpers
+  - Increased render job timeout to 10 seconds
+
 ## 0.17.3
 
   - **Released Monday April 14th, 2014 @ 11.55am**
