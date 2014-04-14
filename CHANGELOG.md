@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.17.3
+
+  - **Released Monday April 14th, 2014 @ 11.55am**
+  - Fixed issue with wrong path for Browserify executable
+
 ## 0.17.2
 
   - **Released Monday April 14th, 2014 @ 11.30am**
