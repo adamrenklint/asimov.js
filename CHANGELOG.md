@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.17.2
+
+  - **Released Monday April 14th, 2014 @ 11.30am**
+  - Fixed issue with Youtube and Vimeo template helpers crashing because of bad type check
+
 ## 0.17.1
 
   - **Released Monday April 14th, 2014 @ 1am**
