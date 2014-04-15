@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.17.5
+
+  - **Released Tuesday April 15th, 2014 @ 11.50pm**
+  - Refactored and moved lazy installer code to its [own module](https://www.npmjs.org/package/lazy-install)
+  - Work around problems on server deployments with cached npm modules and limited app boot time, like Heroku, by running ```node main.js --preinstall``` as a ```postinstall``` script
+
 ## 0.17.4
 
   - **Released Monday April 14th, 2014 @ 1.25pm**
