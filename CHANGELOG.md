@@ -2,7 +2,7 @@
 
 ## 0.17.6
 
-  - **Released ?**
+  - **Released Wednesday April 16th, 2014 @ 10.40pm**
   - Fixed critical issue with lazy installation not applying the right environment groups
 
 ## 0.17.5
