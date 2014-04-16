@@ -1,6 +1,6 @@
 {
   "name": "asimov.js",
-  "version": "0.17.5",
+  "version": "0.17.6-beta1",
   "homepage": "http://asimovjs.org",
   "description": "A better way to build awesome websites and apps, with javascript and textfiles",
   "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
@@ -51,7 +51,9 @@
       "watchdirectory": "0.1.5"
     },
     "test": {
-      "mocha": "1.18.2",
+      "mocha": "1.18.2"
+    },
+    "runner": {
       "zombie": "2.0.0-alpha29",
       "chai": "1.9.0",
       "sinon": "1.9.0",
