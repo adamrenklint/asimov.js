@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.17.7
+
+  - **Released Tuesday April 22nd, 2014 @ 12.30am**
+  - Use lazy-install 0.2.3, that now caches versioned dependencies for blazing fast re-installs in environments like Heroku, where the ```node_modules``` is pruned from modules not in ```package.json```'s normal dependencies list
+
 ## 0.17.6
 
   - **Released Wednesday April 16th, 2014 @ 10.40pm**
