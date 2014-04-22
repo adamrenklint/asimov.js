@@ -3,7 +3,7 @@
 ## 0.17.6
 
   - **Released Wednesday April 16th, 2014 @ 10.40pm**
-  - Fixed critical issue with lazy installation not applying the right environment groups
+  - Fixed critical issue with lazy installation not applying the right environment groups [#219](https://github.com/adamrenklint/asimov.js/issues/219)
 
 ## 0.17.5
 
