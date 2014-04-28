@@ -1,12 +1,17 @@
-/*
+var asimov = require('./index');
 
-  minimal bootstrap
 
-*/
 
-// Override env flags
-// process.env.DEBUG = true;
-// process.env.ENV = 'development';
 
-var options = {};
-module.exports = require('./lib/asimov')(options);
+// // Bootstrap the project
+
+// var Bootstrap = require('./lib/core/asimov').Bootstrap;
+
+// module.exports = if is_top_level ? new Bootstrap() : Bootstrap;
+// // var options = {};
+// // module.exports = require('./lib/asimov')(options);
+
+
+
+// // in every project
+// // lib/core/Bootstrap + lib/core/Server

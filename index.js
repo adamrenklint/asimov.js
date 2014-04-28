@@ -1,14 +1,39 @@
-/*
 
-  minimal bootstrap
+// public interfaces...
 
-*/
+var Asimov = require('./lib/bootstrap/Asimov');
+var asimov = module.exports = new Asimov();
 
-// Override env flags
-// process.env.DEBUG = true;
-// process.env.ENV = 'development';
+// 'Collections',
+//       'ServerCluster',
+//       'CollectionEvents',
+//       'ComputedPageProperties',
+//       'PagePostRender',
+//       'FetchCollections'
 
-var options = {};
-module.exports = require('./lib/asimov')(options);
+// asimov
+//   .use(require('./lib/plugins/initializers'))
+//   .use(require('./lib/plugins/processors'))
+//   .use(require('./lib/proxies/middleware'));
 
-//if included as module, or executed...
+// console.log(Object.keys(asimov));process.exit();
+
+module.parent || asimov.start();
+
+
+
+
+// /*
+
+//   minimal bootstrap
+
+// */
+
+// // Override env flags
+// // process.env.DEBUG = true;
+// // process.env.ENV = 'development';
+
+// var options = {};
+// module.exports = require('./lib/asimov')(options);
+
+// //if included as module, or executed...
