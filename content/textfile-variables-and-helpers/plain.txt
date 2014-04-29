@@ -116,7 +116,7 @@ text:
 ### Pages
 
 <ul>
-  {{#pages}}<li>{{this.url}} = {{this.title}}</li>{{/pages}}
+  {{#pages}}<li>{{this.url}} = {{this.title}} @ {{this.position}}</li>{{/pages}}
 </ul>
 
 ### Script
