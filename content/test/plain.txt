@@ -64,6 +64,7 @@ text:
   <li>sortBy="title": {{#children sortBy="title"}}{{title}}{{/children}}</li>
   <li>sortBy="title" reverse=true: {{#children sortBy="title" reverse=true}}{{title}}{{/children}}</li>
   <li>sortBy="title" reverse=true limit=1 offset=2: {{#children sortBy="title" reverse=true limit=1 offset=2}}{{title}}{{/children}}</li>
+  <li>hidden=true: {{#children hidden=true}}{{title}}{{/children}}</li>
 </ul>
 
 ### Email
