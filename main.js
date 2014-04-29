@@ -1,17 +1,6 @@
-var asimov = require('./index');
+//copied over to make tests run with old runner
 
+var Asimov = require('./lib/bootstrap/Asimov');
+var asimov = module.exports = new Asimov();
 
-
-
-// // Bootstrap the project
-
-// var Bootstrap = require('./lib/core/asimov').Bootstrap;
-
-// module.exports = if is_top_level ? new Bootstrap() : Bootstrap;
-// // var options = {};
-// // module.exports = require('./lib/asimov')(options);
-
-
-
-// // in every project
-// // lib/core/Bootstrap + lib/core/Server
+module.parent || asimov.start();
