@@ -13,7 +13,7 @@
   },
   "main": "./lib/asimov.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha tests/**/*.test.js"
+    "test": "node bin/asimov test"
   },
   "preferGlobal": true,
   "repository": {
