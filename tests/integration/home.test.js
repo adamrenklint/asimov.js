@@ -18,7 +18,7 @@ Test.run('integration/home', function (test) {
       expect(this.browser.text('H1')).to.contain('asimov.js');
     });
 
-    test.itShould.containLinkTo('asimovjs.org');
+    // test.itShould.containLinkTo('asimovjs.org');
   });
 
   test.integration('/the-alias-for-home', function () {
