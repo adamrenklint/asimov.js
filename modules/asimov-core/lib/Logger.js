@@ -1,4 +1,4 @@
-var Klass = require('../core/Klass');
+var Klass = require('./Klass');
 var _ = require('lodash');
 
 var start;

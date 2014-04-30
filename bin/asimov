@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+// The CLI is just tiny module that loads
+// commands from the working directory
+
+var CommandLineInterface = require('../lib/CommandLineInterface');
+var cli = new CommandLineInterface();

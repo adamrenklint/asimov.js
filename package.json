@@ -27,7 +27,7 @@
     "node": "~0.10.0",
     "npm": "~1.1.60"
   },
-  "dependencies": {
+  "xdependencies": {
     "colors": "0.6.2",
     "handlebars": "2.0.0-alpha.2",
     "lazy-install": "0.3.0",
@@ -35,7 +35,7 @@
     "ncp": "0.5.0",
     "wunderbits.core": "^0.1.4"
   },
-  "lazyDependencies": {
+  "xlazyDependencies": {
     "production": {
       "express": "4.0.0",
       "express-livereload": "0.0.24",
@@ -65,5 +65,8 @@
     "complexity": {
       "plato": "1.0.1"
     }
+  },
+  "dependencies": {
+    "wunderbits.core": "^0.1.7"
   }
 }

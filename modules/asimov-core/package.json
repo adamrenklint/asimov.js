@@ -1,0 +1,15 @@
+{
+  "name": "asimov-core",
+  "version": "0.0.1",
+  "description": "Base classes and toolkit for asimov.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "wunderbits.core": "^0.1.7"
+  }
+}
