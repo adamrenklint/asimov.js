@@ -12,9 +12,8 @@ var asimov = module.exports = new Asimov();
 //       'FetchCollections'
 
 // asimov
-//   .use(require('./lib/plugins/initializers'))
-//   .use(require('./lib/plugins/processors'))
-//   .use(require('./lib/proxies/middleware'));
+//   .use(require('./modules/ajs-pages'))
+//   .use(require('./modules/ajs-server'));
 
 // console.log(Object.keys(asimov));process.exit();
 
