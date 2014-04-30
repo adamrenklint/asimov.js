@@ -4,7 +4,7 @@ var _ = require('lodash');
 var start;
 var _super = Klass.prototype;
 
-module.exports =  Klass.extend({
+module.exports = Klass.extend({
 
   'pending': function (namespace, message, color) {
 

@@ -67,6 +67,7 @@
     }
   },
   "dependencies": {
+    "lodash": "^2.4.1",
     "wunderbits.core": "^0.1.7"
   }
 }

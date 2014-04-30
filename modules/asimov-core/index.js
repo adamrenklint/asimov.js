@@ -1,6 +1,8 @@
 // Public interface
 
 module.exports = {
-  'Base': require('./lib/Base'),
-  'Klass': require('./lib/Klass')
+  'Klass': require('./lib/Klass'),
+  'Filesystem': require('./lib/Filesystem'),
+  'Logger': require('./lib/Logger'),
+  'ChildProcess': require('./lib/ChildProcess')
 };
