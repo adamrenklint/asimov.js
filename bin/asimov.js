@@ -32,24 +32,7 @@ var CLI = Base.extend({
     }));
 
     var command = self.getCommand(self.options.args);
-    var loadPath = self.filesystem.findFirstMatch('/' + command + '.js', config.json.paths.commands);
-    var Command;
-
-    try {
-      Command = require(loadPath);
-    }
-    catch (e) {}
-
-    self.assert('function', Command, function () {
-      self.error([
-        'Invalid command: ' + command.toLowerCase(),
-        'To get usage instructions, type ' + 'ajs help'.bold
-      ]);
-    });
-
-    config.json.command = command;
-
-    new Command(config.json);
+    
   },
 
   'getCommand': function (args) {
