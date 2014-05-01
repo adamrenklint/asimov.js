@@ -1,5 +1,5 @@
 // Public interface
 
 module.exports = {
-  // 'Klass': require('./lib/Klass')
+  'Test': require('./lib/Test')
 };

@@ -1,0 +1,11 @@
+{
+  "name": "asimov-test",
+  "version": "0.1.0",
+  "description": "Testing toolkit for asimov.js",
+  "main": "index.js",
+  "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.18.2"
+  }
+}
