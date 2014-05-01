@@ -1,12 +1,9 @@
 {
   "name": "asimov-core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Base classes and toolkit for asimov.js",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
   "license": "MIT",
   "dependencies": {
     "lodash": "^2.4.1",
