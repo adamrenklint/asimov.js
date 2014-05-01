@@ -1,5 +1,5 @@
 {
-  "name": "asimov.js",
+  "name": "asimov",
   "version": "0.18.0",
   "homepage": "http://asimovjs.org",
   "description": "A better way to build awesome websites and apps, with javascript and textfiles",
@@ -8,10 +8,7 @@
     "Marvin Labod <marvin@6wunderkinder.com> (http://www.inlovewithcss.com)",
     "Timothy Achumba <timothy@achumba.com> (http://awsme.me)"
   ],
-  "bin": {
-    "ajs": "./bin/asimov.js"
-  },
-  "main": "./lib/asimov.js",
+  "main": "index.js",
   "scripts": {
     "test": "node bin/asimov test"
   },
