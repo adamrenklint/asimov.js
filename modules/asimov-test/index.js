@@ -1,5 +1,8 @@
 // Public interface
 
-module.exports = {
-  'Test': require('./lib/Test')
-};
+var Test = require('./lib/Test');
+var test = new Test();
+module.exports = test.run;
+
+exports.Test = Test;
+exports.Command = require('./lib/Command');

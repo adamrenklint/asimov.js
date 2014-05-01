@@ -2,6 +2,9 @@ var Klass = require('../../asimov-core').Klass;
 var _super = Klass.prototype;
 var child_process = require('child_process');
 
+var Filesystem = require('../../asimov-core').Filesystem;
+var filesystem = new Filesystem();
+
 var npath = require('path');
 var meta = require(npath.join(process.cwd(), 'package.json'));
 
@@ -73,9 +76,23 @@ module.exports = Klass.extend({
     var flags = self.getFlags(process.argv);
     var path = __dirname + '/../node_modules/mocha/bin/mocha';
 
+    if (!filesystem.pathExists(npath.join(process.cwd(), 'tests'))) {
+      self.error([
+        'No tests in /tests!'
+      ]);
+    }
+
     if (flags.length) {
       var child = child_process.fork(path, flags);
       child.on('exit', self.exit);
     }
-  }
+  },
+
+  'exit': function (code) {
+
+    var self = this;
+    // self.filesystem.recursiveDelete(npath.join(process.cwd(), 'tests/temp'));
+    // self.main.kill();
+    process.exit(code);
+  },
 });

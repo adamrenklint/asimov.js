@@ -71,5 +71,16 @@ module.exports = WBEventEmitter.extend({
         throw new Error(message);
       }
     }
+  },
+
+  'error': function (lines) {
+
+    var self = this;
+
+    lines.forEach(function (line) {
+      self.logger.log('error', line);
+    });
+
+    process.exit(1);
   }
 });

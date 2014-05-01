@@ -1,9 +1,9 @@
 var bootstrap = require(process.cwd() + '/index');
-var Test = require('../Test');
+var Command = require('../Command');
 
 module.exports = function testCommand (next) {
   bootstrap.start(function () {
-    var test = new Test();
-    test.run(next);
+    var command = new Command();
+    command.run(next);
   });
 };
