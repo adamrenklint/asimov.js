@@ -3,6 +3,9 @@ var WBUtilsMixin = require('wunderbits.core').mixins.WBUtilsMixin;
 var WBDestroyableMixin = require('wunderbits.core').mixins.WBDestroyableMixin;
 var _ = require('lodash');
 
+var Logger = require('./Logger');
+var logger = new Logger();
+
 var _super = WBEventEmitter.prototype;
 
 module.exports = WBEventEmitter.extend({
@@ -23,6 +26,9 @@ module.exports = WBEventEmitter.extend({
     if (!self.id) {
       self.id = _.uniqueId(self.idAttribute);
     }
+
+    self.logger = options && options.logger || self.logger || logger;
+    self.logger.logVerbose = options && options.logVerbose;
   },
 
   '_triggerEvent': function (name, params) {

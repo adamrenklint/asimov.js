@@ -1,10 +1,10 @@
-var Klass = require('./Klass');
+var WBEventEmitter = require('wunderbits.core').WBEventEmitter;
 var _ = require('lodash');
 
 var start;
-var _super = Klass.prototype;
+var _super = WBEventEmitter.prototype;
 
-module.exports = Klass.extend({
+module.exports = WBEventEmitter.extend({
 
   'pending': function (namespace, message, color) {
 
