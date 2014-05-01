@@ -12,6 +12,7 @@
     "chai": "^1.9.1",
     "sinon": "^1.9.1",
     "sinon-chai": "^2.5.0",
+    "wunderbits.core": "^0.1.7",
     "zombie": "^2.0.0-alpha31"
   }
 }
