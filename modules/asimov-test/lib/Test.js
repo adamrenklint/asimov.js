@@ -9,7 +9,6 @@ var chai = require('chai');
 var colors = require('colors');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
-var _super = Base.prototype;
 var mocha = new Mocha();
 
 var runner;

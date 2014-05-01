@@ -7,8 +7,12 @@ var zombie = require('zombie');
 var Mocha = require('mocha');
 var npath = require('path');
 var child = require('child_process');
-var Loader = require('../core/Loader');
 var createUID = require('wunderbits.core').lib.createUID;
+
+var tempPath = npath.join(process.cwd(), 'tests/temp');
+
+var Filesystem = require('../../asimov-core').Filesystem;
+var filesystem = new Filesystem();
 
 function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -23,8 +27,7 @@ module.exports = Klass.extend({
     var self = this;
     _super.initialize.apply(self, arguments);
 
-    var tempPath = self.options.tempPath = npath.join(process.cwd(), 'tests/temp');
-    self.filesystem.forceExists(tempPath);
+    filesystem.forceExists(tempPath);
 
     self.itShould = new AssertionHelper({
       'test': self
@@ -107,6 +110,10 @@ module.exports = Klass.extend({
   'spec': function (name, callback) {
 
     var self = this;
+
+    if (typeof name === 'function') {
+      return name();
+    }
 
     if (!process.env.LEGACY_RENDER) {
       name = name.grey.inverse.bold;
