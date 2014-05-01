@@ -36,14 +36,5 @@ function setup () {
 
 module.exports = Base.extend({}, {
 
-  'run': function (name, callback) {
-
-    var self = this;
-    var displayName = process.env.LEGACY_RENDER ? name.bold : name.black.inverse.bold;
-
-    setup();
-    describe(displayName, function () {
-      callback(runner);
-    });
-  }
+  
 });

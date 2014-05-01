@@ -7,5 +7,8 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "~1.18.2"
+  },
+  "devDependencies": {
+    "zombie": "^2.0.0-alpha31"
   }
 }
