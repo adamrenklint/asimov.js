@@ -28,13 +28,7 @@ module.exports = Installer.extend({
     console.log(self.lineDelimiter);
   },
 
-  'logLines': function (lines) {
-
-    var self = this;
-    (lines || self.lines).forEach(function (line) {
-      console.log(self.padding + line);
-    });
-  },
+  
 
   'logAsimovHeader': function () {
 
