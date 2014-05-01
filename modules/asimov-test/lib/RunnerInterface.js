@@ -1,4 +1,6 @@
-var Base = require('../core/Base');
+var Klass = require('../../asimov-core').Klass;
+var _super = Klass.prototype;
+
 var AssertionHelper = require('./AssertionHelper');
 var _ = require('lodash');
 var zombie = require('zombie');
@@ -12,10 +14,9 @@ function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var _super = Base.prototype;
 var mocha = new Mocha();
 
-module.exports = Base.extend({
+module.exports = Klass.extend({
 
   'initialize': function () {
 
