@@ -86,23 +86,33 @@ test('lib/Asimov', function (test) {
   testSequence('processor');
   testSequence('middleware');
 
-  test.spec('helper (function helper)', function () {
+  test.spec('helper (string name, function helper)', function () {
 
-    test.when('helper is not a function', function () {
+    test.when('name is not a string', function () {
 
       test.itShould.throwError(function () {
-
+        asimov.helper(null, function () {});
       });
     });
 
-    test.when('helper is a function', function () {
+    test.when('name is a string', function () {
 
-      // it should register helper
+      test.when('helper is not a function', function () {
 
-      test.it('be chainable', function () {
+        test.itShould.throwError(function () {
+          asimov.helper('myHelper', null);
+        });
+      });
 
-        var spy = sinon.spy();
-        expect(asimov.helper(spy)).to.equal(asimov);
+      test.when('helper is a function', function () {
+
+        // it should register helper
+
+        test.it('be chainable', function () {
+
+          var spy = sinon.spy();
+          expect(asimov.helper('spy', spy)).to.equal(asimov);
+        });
       });
     });
   });
