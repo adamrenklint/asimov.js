@@ -3,16 +3,17 @@ var Asimov = require('../../lib/Asimov');
 
 test('lib/Asimov', function (test) {
 
-  var asimov;
+  var asimov, instance;
 
   beforeEach(function () {
-    asimov = new Asimov({
+    instance = new Asimov({
       'muteLog': true
     });
+    asimov = instance.publicInterface();
   });
 
   afterEach(function () {
-    asimov.destroy();
+    instance.destroy();
   });
 
   test.spec('use (function plugin)', function () {
@@ -60,20 +61,12 @@ test('lib/Asimov', function (test) {
 
     test.when('initializer is a function', function () {
 
-      test.it('should add initializer to the queue', function () {
-
-        var spy = sinon.spy();
-        asimov.init(spy);
-
-        expect(asimov.initializers[0]).to.equal(spy);
-      });
-
       test.it('should only add the same initializer once', function () {
 
         var spy = sinon.spy();
-        asimov.init(spy).init(spy);
+        asimov.init(spy).init(spy).sequence('initializer');        
 
-        expect(asimov.initializers.length).to.equal(1);
+        expect(spy).to.have.been.calledOnce;
       });
 
       test.it('should be chainable', function () {
