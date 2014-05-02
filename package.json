@@ -64,9 +64,11 @@
     }
   },
   "dependencies": {
-    "colors": "^0.6.2",
+    "asimov-core": "^0.1.2",
     "handlebars": "^2.0.0-alpha.2",
-    "lodash": "^2.4.1",
-    "wunderbits.core": "^0.1.7"
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "asimov-test": "^0.1.0"
   }
 }
