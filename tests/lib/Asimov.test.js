@@ -1,4 +1,4 @@
-var test = require('../../modules/asimov-test');
+var test = require('asimov-test');
 
 test('lib/Asimov', function (test) {
 
