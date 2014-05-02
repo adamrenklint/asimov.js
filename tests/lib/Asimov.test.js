@@ -50,29 +50,59 @@ test('lib/Asimov', function (test) {
     });
   });
 
-  test.spec('init (function initializer)', function () {
+  function testSequence (method, name) {
 
-    test.when('initializer is not a function', function () {
+    name = name || method;
+
+    test.spec(method + ' (function ' + name + ')', function () {
+
+      test.when(name + ' is not a function', function () {
+
+        test.itShould.throwError(function () {
+          asimov[method]();
+        });
+      });
+
+      test.when(name + ' is a function', function () {
+
+        test.it('should only execute the same ' + name + ' once', function () {
+
+          var spy = sinon.spy();
+          asimov[method](spy)[method](spy).sequence(name);
+
+          expect(spy).to.have.been.calledOnce;
+        });
+
+        test.it('should be chainable', function () {
+
+          var spy = sinon.spy();
+          expect(asimov[method](spy)).to.equal(asimov);
+        });
+      });
+    });
+  }
+
+  testSequence('init', 'initializer');
+  testSequence('processor');
+  testSequence('middleware');
+
+  test.spec('helper (function helper)', function () {
+
+    test.when('helper is not a function', function () {
 
       test.itShould.throwError(function () {
-        asimov.init();
+
       });
     });
 
-    test.when('initializer is a function', function () {
+    test.when('helper is a function', function () {
 
-      test.it('should only add the same initializer once', function () {
+      // it should register helper
 
-        var spy = sinon.spy();
-        asimov.init(spy).init(spy).sequence('initializer');        
-
-        expect(spy).to.have.been.calledOnce;
-      });
-
-      test.it('should be chainable', function () {
+      test.it('be chainable', function () {
 
         var spy = sinon.spy();
-        expect(asimov.init(spy)).to.equal(asimov);
+        expect(asimov.helper(spy)).to.equal(asimov);
       });
     });
   });

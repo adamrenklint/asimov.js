@@ -7,7 +7,9 @@ var asimov = module.exports = (new Asimov()).publicInterface();
 
 asimov.use(require('./modules/asimov-pages'));
 
-//export public classes
-// exports.Base = req(Base);
+// Export public classes
+exports.Asimov = Asimov;
+exports.Base = require('./lib/Base');
+exports.CommandLineInterface = require('./lib/CommandLineInterface');
 
 module.parent || asimov.start();
