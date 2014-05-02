@@ -146,18 +146,15 @@ test('lib/Asimov', function (test) {
     });
   });
 
-  // test.spec('start ()', function () {
-  //
-  //   test.when('executing initializers', function () {
-  //
-  //     test.it('should execute the first initializer', function)
-  //
-  //     // test.it('should execute all initializers', function () {
-  //     //
-  //     //   var first = function (next) {
-  //     //
-  //     //   }
-  //     // });
-  //   });
-  // });
+  test.spec('start ()', function () {
+
+    test.it('should start initializer sequence', function () {
+
+      var spy = sinon.spy();
+      asimov.init(spy);
+      asimov.start();
+
+      expect(spy).to.have.been.calledOnce;
+    });
+  });
 });
