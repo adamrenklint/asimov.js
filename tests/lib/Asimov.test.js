@@ -106,7 +106,12 @@ test('lib/Asimov', function (test) {
 
       test.when('helper is a function', function () {
 
-        // it should register helper
+        test.it('should save a reference to the helper', function () {
+
+          var spy = sinon.spy();
+          asimov.helper('ssspy', spy);
+          expect(instance.helpers.ssspy).to.equal(spy);
+        });
 
         test.it('be chainable', function () {
 
