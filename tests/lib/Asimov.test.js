@@ -110,18 +110,37 @@ test('lib/Asimov', function (test) {
           expect(next).to.be.a('function');
           done();
         });
+
         asimov.sequence('initializer');
       });
 
       test.when('the job executes the "next" iterator', function () {
 
-        test.it('should execute the next job', function () {
+        test.it('should execute the next job', function (done) {
 
+          asimov.init(function (next) {
+            next();
+          });
+
+          asimov.init(function (next) {
+            done();
+          });
+
+          asimov.sequence('initializer');
         });
 
         test.when('the last job calls the "next" iterator', function () {
 
-          test.it('should call the "done" callback');
+          test.it('should call the "done" callback', function (done) {
+
+            asimov.init(function (next) {
+              next();
+            });
+
+            asimov.sequence('initializer', function () {
+              done();
+            });
+          });
         });
       });
     });
