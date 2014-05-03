@@ -16,7 +16,8 @@
     "url": "https://github.com/adamrenklint/asimov-pages/issues"
   },
   "dependencies": {
-    "asimov-core": "^0.1.4"
+    "asimov-core": "^0.1.4",
+    "yaml-js": "0.0.8"
   },
   "devDependencies": {
     "asimov-test": "^0.1.1"

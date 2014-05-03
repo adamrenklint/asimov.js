@@ -64,13 +64,13 @@
     }
   },
   "dependencies": {
-    "asimov-collection": "^0.1.0",
-    "asimov-core": "^0.1.4",
+    "asimov-collection": "latest",
+    "asimov-core": "latest",
     "colors": "^0.6.2",
     "handlebars": "^2.0.0-alpha.2",
     "lodash": "^2.4.1"
   },
   "devDependencies": {
-    "asimov-test": "^0.2.1"
+    "asimov-test": "latest"
   }
 }
