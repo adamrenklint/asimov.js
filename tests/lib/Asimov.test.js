@@ -152,6 +152,16 @@ test('lib/Asimov', function (test) {
         asimov.sequence('initializer');
       });
 
+      test.it('should pass the public interface', function (done) {
+
+        asimov.init(function (next, public) {
+          expect(public).to.equal(asimov);
+          done();
+        });
+
+        asimov.sequence('initializer');
+      });
+
       test.when('the job executes the "next" iterator', function () {
 
         test.it('should execute the next job', function (done) {
@@ -179,6 +189,36 @@ test('lib/Asimov', function (test) {
               done();
             });
           });
+        });
+      });
+    });
+  });
+
+  test.spec('register (string name, object target)', function () {
+
+    test.when('name is not a string', function () {
+
+      test.itShould.throwError(function () {
+        asimov.register(null, {});
+      });
+    });
+
+    test.when('name is a string', function () {
+
+      test.when('target is not defined', function () {
+
+        test.itShould.throwError(function () {
+          asimov.register('public', null);
+        });
+      });
+
+      test.when('target is defined', function () {
+
+        test.it('should include target in the public interface', function () {
+
+          var added = { 'foo': 'bar' };
+          asimov.register('public', added);
+          expect(asimov.public).to.equal(added);
         });
       });
     });
