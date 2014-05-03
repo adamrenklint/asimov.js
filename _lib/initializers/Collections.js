@@ -26,7 +26,7 @@ module.exports = Initializer.extend({
 
     // This makes sure all page nodes, even in sub collections,
     // have access to the master collection with all pages
-    self.mediator.publish('collection:pages', options.pages);
+    // self.mediator.publish('collection:pages', options.pages);
 
     self.options = options;
     next();

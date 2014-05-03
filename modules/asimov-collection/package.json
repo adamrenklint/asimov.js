@@ -1,0 +1,24 @@
+{
+  "name": "asimov-collection",
+  "version": "0.0.1",
+  "homepage": "http://asimovjs.org",
+  "description": "Collection and model classes for asimov.js",
+  "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node bin/asimov test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:adamrenklint/asimov-collection.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adamrenklint/asimov-collection/issues"
+  },
+  "dependencies": {
+    "asimov-core": "^0.1.4"
+  },
+  "devDependencies": {
+    "asimov-test": "^0.1.1"
+  }
+}

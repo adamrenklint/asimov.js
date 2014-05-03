@@ -1,8 +1,7 @@
-var libPath = '../../lib/';
-var Base = require(libPath + 'core/Base');
-var Test = require(libPath + 'runner/Test');
+var test = require('asimov-test');
+var Base = require('../../lib/Base');
 
-Test.run('core/Base', function (test) {
+test('lib/Base', function (test) {
 
   var instance;
 
