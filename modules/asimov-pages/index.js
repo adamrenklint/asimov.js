@@ -1,4 +1,6 @@
+var collections = require('./lib/init/collections');
+
 module.exports = function (asimov) {
 
-  // console.log(asimov);
+  asimov.init(collections);
 };
