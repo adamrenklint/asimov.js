@@ -6,7 +6,7 @@
   "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
   "main": "index.js",
   "scripts": {
-    "test": "node bin/asimov test"
+    "test": "node ../../bin/asimov test"
   },
   "repository": {
     "type": "git",

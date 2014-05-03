@@ -70,6 +70,6 @@
     "lodash": "^2.4.1"
   },
   "devDependencies": {
-    "asimov-test": "^0.1.1"
+    "asimov-test": "^0.2.1"
   }
 }
