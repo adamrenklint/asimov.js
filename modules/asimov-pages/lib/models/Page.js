@@ -1,3 +1,5 @@
+var asimov = require('../../../../index');
+console.log(asimov)
 var MetaNode = require('./MetaNode');
 var _super = MetaNode.prototype;
 
@@ -20,7 +22,7 @@ module.exports = MetaNode.extend({
 			'path': null,
 			'url': null,
 			'template': null,
-			'langCode': self.options.localization.defaultLangCode,
+			'langCode': asimov.config.defaultLangCode,
 			'text': null,
 			'title': null,
 			'position': null
@@ -32,7 +34,7 @@ module.exports = MetaNode.extend({
 		var self = this;
 		_super.initialize.apply(self, arguments);
 
-		self.bindOnceTo(self.mediator, 'collection:pages', self.saveAllPagesCollection);
+		// self.bindOnceTo(self.mediator, 'collection:pages', self.saveAllPagesCollection);
 
 		self.bindTo(self, 'change:path', self.parseSortablePath);
 		self.attributes.path && self.parseSortablePath();

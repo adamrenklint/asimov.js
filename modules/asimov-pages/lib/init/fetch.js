@@ -5,7 +5,9 @@ module.exports = function (next, asimov) {
   asimov.templates.fetch(paths.templates).done(function () {
     asimov.helpers.fetch(paths.helpers).done(function () {
       asimov.siteData.fetch(paths.siteData).done(function () {
-        next();
+        asimov.pages.fetch(paths.pages).done(function () {
+          next();
+        });
       })
     });
   });
