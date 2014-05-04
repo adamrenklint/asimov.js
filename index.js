@@ -1,38 +1,15 @@
+// Public interface and bootstrap
 
-// public interfaces...
+process.env.PORT = process.env.PORT || 3003;
 
-var Asimov = require('./lib/bootstrap/Asimov');
-var asimov = module.exports = new Asimov();
+var Asimov = require('./lib/Asimov');
+var asimov = module.exports = (new Asimov()).publicInterface();
 
-// 'Collections',
-//       'ServerCluster',
-//       'CollectionEvents',
-//       'ComputedPageProperties',
-//       'PagePostRender',
-//       'FetchCollections'
+// asimov.use(require('./modules/asimov-pages'));
 
-// asimov
-//   .use(require('./modules/ajs-pages'))
-//   .use(require('./modules/ajs-server'));
-
-// console.log(Object.keys(asimov));process.exit();
+// Export public classes
+exports.Asimov = Asimov;
+exports.Base = require('./lib/Base');
+exports.CommandLineInterface = require('./lib/CommandLineInterface');
 
 module.parent || asimov.start();
-
-
-
-
-// /*
-
-//   minimal bootstrap
-
-// */
-
-// // Override env flags
-// // process.env.DEBUG = true;
-// // process.env.ENV = 'development';
-
-// var options = {};
-// module.exports = require('./lib/asimov')(options);
-
-// //if included as module, or executed...

@@ -1,0 +1,24 @@
+{
+	"name": "asimov-watcher",
+	"version": "0.0.1",
+	"homepage": "http://asimovjs.org",
+	"description": "Plugin for watching models in asimov.js",
+	"author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
+	"main": "index.js",
+	"scripts": {
+		"test": "node bin/asimov test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:adamrenklint/asimov-pages.git"
+	},
+	"bugs": {
+		"url": "https://github.com/adamrenklint/asimov-pages/issues"
+	},
+	"dependencies": {
+		"asimov-core": "^0.1.4"
+	},
+	"devDependencies": {
+		"asimov-test": "^0.1.1"
+	}
+}
