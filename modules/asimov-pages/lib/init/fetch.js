@@ -4,6 +4,7 @@ module.exports = function (next, asimov) {
 
   asimov.templates.fetch(paths.templates)
     .done(function () {
+      console.log(paths)
       asimov.helpers.fetch(paths.helpers).done(function () {
         next();
       });

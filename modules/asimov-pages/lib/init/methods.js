@@ -18,6 +18,6 @@ module.exports = function (next, asimov) {
 	['pages', 'templates', 'helpers'].forEach(function (type) {
 		registerPathSetter(asimov, type);
 	});
-	
+
 	next();
 };

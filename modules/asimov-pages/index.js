@@ -7,8 +7,7 @@ var inits = [
   'methods',
   'paths',
   'render',
-  'watch',
-  'fetch'
+  'watch'
 ];
 
 module.exports = function (asimov, options) {
@@ -21,7 +20,9 @@ module.exports = function (asimov, options) {
   inits.forEach(function (name) {
     if (options[name] === false) return;
     asimov.init(getInit(name));
-  })
+  });
+
+  asimov.starter(getInit('fetch'));
 };
 
 // exports.Page = require('./lib/models/Page');
