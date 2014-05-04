@@ -68,7 +68,7 @@ test('lib/Asimov', function (test) {
         test.it('should only execute the same ' + name + ' once', function () {
 
           var spy = sinon.spy();
-          asimov[method](spy)[method](spy).sequence(name);
+          asimov[method](spy)[method](spy).runSequence(name);
 
           expect(spy).to.have.been.calledOnce;
         });
@@ -82,52 +82,54 @@ test('lib/Asimov', function (test) {
     });
   }
 
-  testSequence('init', 'initializer');
-  testSequence('processor');
-  testSequence('middleware');
+  // testSequence('init', 'initializer');
+  // testSequence('processor');
+  // testSequence('middleware');
 
-  test.spec('helper (string name, function helper)', function () {
+  // test.spec('helper (string name, function helper)', function () {
+  //
+  //   test.when('name is not a string', function () {
+  //
+  //     test.itShould.throwError(function () {
+  //       asimov.helper(null, function () {});
+  //     });
+  //   });
+  //
+  //   test.when('name is a string', function () {
+  //
+  //     test.when('helper is not a function', function () {
+  //
+  //       test.itShould.throwError(function () {
+  //         asimov.helper('myHelper', null);
+  //       });
+  //     });
+  //
+  //     test.when('helper is a function', function () {
+  //
+  //       test.it('should save a reference to the helper', function () {
+  //
+  //         var spy = sinon.spy();
+  //         asimov.helper('ssspy', spy);
+  //         expect(instance.helpers.ssspy).to.equal(spy);
+  //       });
+  //
+  //       test.it('be chainable', function () {
+  //
+  //         var spy = sinon.spy();
+  //         expect(asimov.helper('spy', spy)).to.equal(asimov);
+  //       });
+  //     });
+  //   });
+  // });
 
-    test.when('name is not a string', function () {
+  // test.spec('addSequence (string namespace, string method)');
 
-      test.itShould.throwError(function () {
-        asimov.helper(null, function () {});
-      });
-    });
-
-    test.when('name is a string', function () {
-
-      test.when('helper is not a function', function () {
-
-        test.itShould.throwError(function () {
-          asimov.helper('myHelper', null);
-        });
-      });
-
-      test.when('helper is a function', function () {
-
-        test.it('should save a reference to the helper', function () {
-
-          var spy = sinon.spy();
-          asimov.helper('ssspy', spy);
-          expect(instance.helpers.ssspy).to.equal(spy);
-        });
-
-        test.it('be chainable', function () {
-
-          var spy = sinon.spy();
-          expect(asimov.helper('spy', spy)).to.equal(asimov);
-        });
-      });
-    });
-  });
-
-  test.spec('sequence (string namespace, function done)', function () {
+  test.spec('runSequence (string namespace, function done)', function () {
 
     test.when('namespace is not valid', function () {
 
       test.itShould.throwError(function () {
-        asimov.sequence('beeswax');
+        asimov.runSequence('beeswax');
       });
     });
 
@@ -137,7 +139,7 @@ test('lib/Asimov', function (test) {
 
         var spy = sinon.spy();
         asimov.init(spy);
-        asimov.sequence('initializer');
+        asimov.runSequence('initializer');
 
         expect(spy).to.have.been.calledOnce;
       });
@@ -149,7 +151,7 @@ test('lib/Asimov', function (test) {
           done();
         });
 
-        asimov.sequence('initializer');
+        asimov.runSequence('initializer');
       });
 
       test.it('should pass the public interface', function (done) {
@@ -159,7 +161,7 @@ test('lib/Asimov', function (test) {
           done();
         });
 
-        asimov.sequence('initializer');
+        asimov.runSequence('initializer');
       });
 
       test.when('the job executes the "next" iterator', function () {
@@ -174,7 +176,7 @@ test('lib/Asimov', function (test) {
             done();
           });
 
-          asimov.sequence('initializer');
+          asimov.runSequence('initializer');
         });
 
         test.when('the last job calls the "next" iterator', function () {
@@ -185,7 +187,7 @@ test('lib/Asimov', function (test) {
               next();
             });
 
-            asimov.sequence('initializer', function () {
+            asimov.runSequence('initializer', function () {
               done();
             });
           });

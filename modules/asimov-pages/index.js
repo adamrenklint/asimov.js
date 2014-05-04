@@ -1,13 +1,23 @@
 var collections = require('./lib/init/collections');
 var methods = require('./lib/init/methods');
+var paths = require('./lib/init/paths');
+var watch = require('./lib/init/watch');
+var render = require('./lib/init/render');
 // var npath = require('path');
 
-module.exports = function (asimov) {
+module.exports = function (asimov, options) {
 
-  asimov.init(collections);
-  asimov.init(methods);
-  // asimov.init(watch);
-  // asimov.init(render);
+  options = options || {};
+
+  asimov.addSequence('processor');
+  //middleware sequence will be added by server module
+
+  [collections, methods, paths, render].forEach(function (init) {
+    asimov.init(init);
+  })
+
+  if (options.watch !== false) asimov.init(watch);
+  
 
   // asimov.init(config); // add paths
     //asimov.addTemplatePath(path);
