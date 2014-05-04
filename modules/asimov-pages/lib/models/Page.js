@@ -1,5 +1,4 @@
 var asimov = require('../../../../index');
-console.log(asimov)
 var MetaNode = require('./MetaNode');
 var _super = MetaNode.prototype;
 

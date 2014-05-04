@@ -11,7 +11,7 @@ module.exports = function (next, asimov) {
 
   Object.keys(collections).forEach(function (name) {
     var Constructor = collections[name];
-    asimov.register(name, new Constructor());
+    asimov.register(name, new Constructor(), 'pages');
   });
 
   next();

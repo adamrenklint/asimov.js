@@ -22,14 +22,14 @@ module.exports = Model.extend({
 		});
 	},
 
-	'addParser': function (type, fn) {
+	'addParser': function (type, fn, namespace) {
 
 		var self = this;
 
 		self.assert('string', type, 'Invalid parser type');
 		self.assert('function', fn, 'Invalid parser function');
 
-		self.logger.low(self.namespace, 'Adding dependency parser for ' + type + 's');
+		self.logger.low(namespace || self.namespace, 'Adding dependency parser for ' + type + 's');
 
 		self.parsers[type] = fn;
 	},

@@ -6,8 +6,8 @@ module.exports = function (asimov, options) {
 
 	var watcher = new Watcher(options);
 
-	asimov.register('dependencyParser', watcher.addParser);
-	asimov.register('updateHandler', watcher.addHandler);
+	asimov.register('dependencyParser', watcher.addParser, 'watcher');
+	asimov.register('updateHandler', watcher.addHandler, 'watcher');
 };
 
 module.exports.Watcher = Watcher;

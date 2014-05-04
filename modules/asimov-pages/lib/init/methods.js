@@ -9,7 +9,7 @@ function registerPathSetter (asimov, type) {
 		namespace = namespace || 'pages';
 		asimov.logPending(namespace, 'Adding path for asimov.' + type + ' @ ' + path);
 		asimov.config.paths[type].push(path);
-	});
+	}, 'pages');
 }
 
 module.exports = function (next, asimov) {
