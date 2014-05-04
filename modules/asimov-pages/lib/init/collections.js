@@ -10,8 +10,5 @@ module.exports = function (next, asimov) {
   asimov.register('styles', new StyleSheets());
   asimov.register('scripts', new Scripts());
 
-  asimov.templates(npath.join(__dirname, '../../site/templates'));
-  asimov.templates(npath.join(process.cwd(), 'site/templates'));
-
   next();
 };
