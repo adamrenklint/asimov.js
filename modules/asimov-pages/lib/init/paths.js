@@ -2,11 +2,8 @@ var npath = require('path');
 
 module.exports = function (next, asimov) {
 
-  var pages = npath.join(process.cwd(), 'content');
-  // console.log(pages);
-  if (asimov.fs.pathExists(pages) && asimov.fs.isDirectory(pages)) {
-    asimov.pagesPath(pages);
-  }
+  asimov.pagesPath(npath.join(process.cwd(), 'content'));
+  asimov.templatesPath(npath.join(process.cwd(), 'site/templates'));
 
   next();
 };
