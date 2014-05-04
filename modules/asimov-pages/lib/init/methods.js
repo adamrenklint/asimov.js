@@ -15,8 +15,9 @@ module.exports = function (next, asimov) {
 
 	//helper
 
-	registerPathSetter(asimov, 'pages');
-	registerPathSetter(asimov, 'templates');
-
+	['pages', 'templates', 'helpers'].forEach(function (type) {
+		registerPathSetter(asimov, type);
+	});
+	
 	next();
 };

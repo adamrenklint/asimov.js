@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "asimov-core": "^0.1.4",
+    "require-uncache": "0.0.2",
     "yaml-js": "0.0.8"
   },
   "devDependencies": {

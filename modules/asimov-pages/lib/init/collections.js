@@ -2,7 +2,8 @@ var collections = {
   'pages': require('../collections/Pages'),
   'styles': require('../collections/StyleSheets'),
   'scripts': require('../collections/Scripts'),
-  'templates': require('../collections/Templates')
+  'templates': require('../collections/Templates'),
+  'helpers': require('../collections/Helpers')
 };
 
 module.exports = function (next, asimov) {

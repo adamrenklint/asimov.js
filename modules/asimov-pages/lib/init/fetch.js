@@ -2,9 +2,12 @@ module.exports = function (next, asimov) {
 
   var paths = asimov.config.paths;
 
-  var templates = asimov.templates.fetch(paths.templates);
-
-  next();
+  asimov.templates.fetch(paths.templates)
+    .done(function () {
+      asimov.helpers.fetch(paths.helpers).done(function () {
+        next();
+      });
+    });
 };
 
 
