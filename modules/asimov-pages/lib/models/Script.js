@@ -7,6 +7,8 @@ module.exports = FileModel.extend({
 
 	'idAttribute': 'url',
 
+	'namespace': 'pages',
+
 	'defaults': {
 		'type': 'script',
 		'contentType': 'text/javascript',

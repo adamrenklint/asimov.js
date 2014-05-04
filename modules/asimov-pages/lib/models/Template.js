@@ -1,3 +1,4 @@
+var asimov = require('../../../../index');
 var FileModel = require('asimov-collection').FileModel;
 var _ = require('lodash');
 var npath = require('path');
@@ -7,6 +8,8 @@ var _super = FileModel.prototype;
 module.exports = FileModel.extend({
 
 	'idAttribute': 'name',
+
+	'namespace': 'pages',
 
 	'cacheRaw': false,
 
@@ -46,7 +49,7 @@ module.exports = FileModel.extend({
 
 		var self = this;
 
-		_.each(self.options.paths.templates, function (templatePath) {
+		_.each(asimov.config.paths.templates, function (templatePath) {
 			path = path.replace(templatePath + '/', '').replace('.tmpl', '');
 		});
 

@@ -4,8 +4,10 @@ var _super = FileCollection.prototype;
 
 module.exports = FileCollection.extend({
 
-'filetype': 'template',
-'extension': 'tmpl',
+  'filetype': 'template',
+  'extension': 'tmpl',
 
-'model': Template
+  'model': Template,
+
+  'namespace': 'pages'
 });

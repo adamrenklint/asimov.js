@@ -8,6 +8,8 @@ module.exports = MetaNode.extend({
 
 	'idAttribute': 'url',
 
+	'namespace': 'pages',
+
 	'defaults': function () {
 
 		var self = this;

@@ -6,7 +6,7 @@ function registerPathSetter (asimov, type) {
 	asimov.config.paths[type] = asimov.config.paths[type] || [];
 
 	asimov.register(name, function (path) {
-		asimov.logPending('pages', 'Adding path for ' + type + ' @ ' + path);
+		asimov.logPending('pages', 'Adding path for asimov.' + type + ' @ ' + path);
 		asimov.config.paths[type].push(path);
 	});
 }

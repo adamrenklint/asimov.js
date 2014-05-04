@@ -10,6 +10,8 @@ module.exports = FileCollection.extend({
 	'filetype': 'page',
 	'extension': 'txt',
 
+	'namespace': 'pages',
+
 	'comparator': 'sortablePath',
 
 	'model': Page,

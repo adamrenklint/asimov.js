@@ -7,5 +7,7 @@ module.exports = FileCollection.extend({
 	'filetype': 'styleSheet',
 	'extension': 'styl',
 
-	'model': StyleSheet
+	'model': StyleSheet,
+
+	'namespace': 'pages'
 });

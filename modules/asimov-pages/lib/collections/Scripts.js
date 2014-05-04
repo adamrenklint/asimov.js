@@ -7,5 +7,7 @@ module.exports = FileCollection.extend({
 	'filetype': 'script',
 	'extension': 'js',
 
-	'model': Script
+	'model': Script,
+
+	'namespace': 'pages'
 });

@@ -7,6 +7,8 @@ module.exports = FileModel.extend({
 
 	'idAttribute': 'url',
 
+	'namespace': 'pages',
+
 	'defaults': {
 		'type': 'styleSheet',
 		'contentType': 'text/css',

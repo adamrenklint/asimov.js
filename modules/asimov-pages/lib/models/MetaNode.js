@@ -12,6 +12,8 @@ module.exports = FileModel.extend({
 		'path': null
 	},
 
+	'namespace': 'pages',
+
 	'parseRaw': function () {
 
 		var self = this;
