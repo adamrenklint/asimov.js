@@ -17,8 +17,6 @@ module.exports = Initializer.extend({
     var options = self.options;
 
     // Create our resource collections - ORDER IS IMPORTANT!
-    options.styleSheets = new StyleSheetNodesCollection(null, options);
-    options.scripts = new ScriptNodesCollection(null, options);
     options.templates = new TemplatesCollection(null, options);
     options.pages = new PageNodesCollection(null, options);
     options.siteData = new SiteDataCollection(null, options);
