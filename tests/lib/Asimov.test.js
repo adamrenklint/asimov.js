@@ -224,31 +224,33 @@ test('lib/Asimov', function (test) {
     });
   });
 
-  test.spec('templates (string path)', function () {
-
-    test.when('no templates collection is registred', function () {
-
-      test.itShould.notThrowError();
-    });
-
-    test.when('a templates collection is registered', function () {
-
-        test.when('path does not exist', function () {
-
-          test.itShould.notThrowError();
-        });
-
-        test.when('path exists', function () {
-
-          test.it('should add the templates in path to the collection');
-        });
-    });
-
-    test.it('should be chainable', function () {
-
-      expect(asimov.templates()).to.equal(asimov);
-    });
-  });
+  // test.spec('templates (string path)', function () {
+  //
+  //   test.when('no templates collection is registred', function () {
+  //
+  //     test.itShould.notThrowError(function () {
+  //
+  //     });
+  //   });
+  //
+  //   test.when('a templates collection is registered', function () {
+  //
+  //       test.when('path does not exist', function () {
+  //
+  //         test.itShould.notThrowError();
+  //       });
+  //
+  //       test.when('path exists', function () {
+  //
+  //         test.it('should add the templates in path to the collection');
+  //       });
+  //   });
+  //
+  //   test.it('should be chainable', function () {
+  //
+  //     expect(asimov.templates()).to.equal(asimov);
+  //   });
+  // });
 
   test.spec('start ()', function () {
 
