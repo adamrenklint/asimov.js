@@ -10,5 +10,7 @@ module.exports = function (next, asimov) {
   asimov.helpersPath(npath.join(process.cwd(), 'lib/helpers'));
   asimov.helpersPath(npath.join(moduleRoot, 'lib/helpers'));
 
+  asimov.siteDataPath(npath.join(process.cwd(), 'site/data'));
+
   next();
 };

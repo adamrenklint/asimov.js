@@ -2,13 +2,13 @@ module.exports = function (next, asimov) {
 
   var paths = asimov.config.paths;
 
-  asimov.templates.fetch(paths.templates)
-    .done(function () {
-      console.log(paths)
-      asimov.helpers.fetch(paths.helpers).done(function () {
+  asimov.templates.fetch(paths.templates).done(function () {
+    asimov.helpers.fetch(paths.helpers).done(function () {
+      asimov.siteData.fetch(paths.siteData).done(function () {
         next();
-      });
+      })
     });
+  });
 };
 
 

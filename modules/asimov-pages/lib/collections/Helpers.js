@@ -4,6 +4,8 @@ var _super = FileCollection.prototype;
 
 module.exports = FileCollection.extend({
 
+  'namespace': 'pages',
+  
   'filetype': 'template helper',
   'extension': 'js',
 

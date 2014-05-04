@@ -5,17 +5,16 @@ function registerPathSetter (asimov, type) {
 	asimov.config.paths = asimov.config.paths || {};
 	asimov.config.paths[type] = asimov.config.paths[type] || [];
 
-	asimov.register(name, function (path) {
-		asimov.logPending('pages', 'Adding path for asimov.' + type + ' @ ' + path);
+	asimov.register(name, function (path, namespace) {
+		namespace = namespace || 'pages';
+		asimov.logPending(namespace, 'Adding path for asimov.' + type + ' @ ' + path);
 		asimov.config.paths[type].push(path);
 	});
 }
 
 module.exports = function (next, asimov) {
 
-	//helper
-
-	['pages', 'templates', 'helpers'].forEach(function (type) {
+	['pages', 'templates', 'helpers', 'siteData'].forEach(function (type) {
 		registerPathSetter(asimov, type);
 	});
 

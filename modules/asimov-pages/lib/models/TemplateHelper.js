@@ -6,6 +6,8 @@ var uncache = require('require-uncache');
 
 module.exports = FileModel.extend({
 
+  'namespace': 'pages',
+  
   'defaults': {
 
     'type': 'helper',

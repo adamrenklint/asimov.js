@@ -3,7 +3,8 @@ var collections = {
   'styles': require('../collections/StyleSheets'),
   'scripts': require('../collections/Scripts'),
   'templates': require('../collections/Templates'),
-  'helpers': require('../collections/Helpers')
+  'helpers': require('../collections/Helpers'),
+  'siteData': require('../collections/SiteData')
 };
 
 module.exports = function (next, asimov) {

@@ -22,7 +22,9 @@ module.exports = function (asimov, options) {
     asimov.init(getInit(name));
   });
 
-  asimov.starter(getInit('fetch'));
+  asimov.postinit(getInit('fetch'));
+
+  asimov.use(require('../asimov-helpers'));
 };
 
 // exports.Page = require('./lib/models/Page');
