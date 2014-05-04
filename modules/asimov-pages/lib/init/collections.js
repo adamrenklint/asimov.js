@@ -3,8 +3,6 @@ var StyleSheets = require('../collections/StyleSheets');
 var Scripts = require('../collections/Scripts');
 var Templates = require('../collections/Templates');
 
-var npath = require('path');
-
 module.exports = function (next, asimov) {
 
   asimov.register('templates', new Templates());
