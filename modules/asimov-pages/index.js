@@ -16,6 +16,7 @@ module.exports = function (asimov, options) {
   asimov.config.paths.outputPath = options.outputPath || (process.cwd() + '/build');
 
   asimov.addSequence('processor');
+  console.log(asimov.processor)
 
   inits.forEach(function (name) {
     if (options[name] === false) return;

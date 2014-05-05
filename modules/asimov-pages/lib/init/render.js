@@ -6,11 +6,11 @@ module.exports = function (next, asimov) {
   var queue = new Queue();
   var writer = new OutputWriter();
 
-  var collections = [
-    asimov.pages
-  ];
+  ['page', 'styleSheet', 'script'].forEach(function (name) {
 
-  collections.forEach(function (collection) {
+    var collection = asimov[name + 's'];
+
+    asimov.processor(require('../processors/' + name));
 
     collection.on('add change:raw forced:change', queue.add);
     collection.on('add', queue.start);

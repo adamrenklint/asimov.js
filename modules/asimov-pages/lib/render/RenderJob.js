@@ -1,7 +1,4 @@
 var Base = require('../../../../index').Base;
-// var PageRenderJob = require('./PageRenderJob');
-// var ScriptRenderJob = require('./ScriptRenderJob');
-// var StyleSheetRenderJob = require('./StyleSheetRenderJob');
 var _ = require('lodash');
 var _super = Base.prototype;
 
@@ -15,6 +12,7 @@ module.exports = Base.extend({
 
     var self = this;
     _super.initialize.apply(self, arguments);
+
 
     // self.page = new PageRenderJob(self.options);
     // self.script = new ScriptRenderJob(self.options);
