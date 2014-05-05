@@ -104,11 +104,6 @@ module.exports = MetaNode.extend({
 		});
 
 		path = path.replace(/\/_/g, '/');
-			// .replace(npath.join(process.cwd(), self.options.paths.content), '')
-			// .replace(self.options.paths.content, '')
-			// .replace(npath.join(process.cwd(), self.options.paths.frameworkPages), '')
-
-
 		path = self.parsePosition(path);
 
 		var parts = path.split('/');
@@ -118,7 +113,7 @@ module.exports = MetaNode.extend({
 		var filenameParts = filename.split('.');
 		if (filenameParts.length > 2) {
 			var langCode = filenameParts[filenameParts.length - 2];
-			if (langCode !== self.options.localization.defaultLangCode) {
+			if (langCode !== asimov.config.defaultLangCode) {
 				self.set('langCode', langCode);
 				parts = _.compact([langCode].concat(parts));
 			}
@@ -206,7 +201,7 @@ module.exports = MetaNode.extend({
 	'template': function () {
 
 		var self = this;
-		return self.options.templates.find(function (template) {
+		return asimov.templates.find(function (template) {
 			return template.attributes.name === self.attributes.template;
 		});
 	}
