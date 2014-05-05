@@ -68,7 +68,8 @@
     "asimov-core": "^0.2.1",
     "colors": "^0.6.2",
     "handlebars": "^2.0.0-alpha.2",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "marked": "^0.3.2"
   },
   "devDependencies": {
     "asimov-test": "latest"
