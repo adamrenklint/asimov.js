@@ -2,23 +2,26 @@ function getInit (name) {
   return require('./lib/init/' + name);
 }
 
-var inits = [
-  'collections',
-  'methods',
-  'paths',
-  'render',
-  'watch'
-];
-
 module.exports = function (asimov, options) {
 
   options = options || {};
   asimov.config.paths.outputPath = options.outputPath || (process.cwd() + '/build');
 
-  asimov.addSequence('processor');
-  console.log(asimov.processor)
+  [
+    'preprocessor',
+    'processor',
+    'postprocessor'
+  ].forEach(function (name) {
+    asimov.addSequence(name);
+  });
 
-  inits.forEach(function (name) {
+  [
+    'collections',
+    'methods',
+    'paths',
+    'render',
+    'watch'
+  ].forEach(function (name) {
     if (options[name] === false) return;
     asimov.init(getInit(name));
   });
