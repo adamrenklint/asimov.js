@@ -97,11 +97,17 @@ module.exports = MetaNode.extend({
 			return false;
 		}
 
-		path = path
-			.replace(npath.join(process.cwd(), self.options.paths.content), '')
-			.replace(self.options.paths.content, '')
-			.replace(npath.join(process.cwd(), self.options.paths.frameworkPages), '')
-			.replace(/\/_/g, '/');
+		var pagePaths = asimov.config.paths.pages || [];
+
+		pagePaths.forEach(function (pagePath) {
+			path = path.replace(pagePath, '');
+		});
+
+		path = path.replace(/\/_/g, '/');
+			// .replace(npath.join(process.cwd(), self.options.paths.content), '')
+			// .replace(self.options.paths.content, '')
+			// .replace(npath.join(process.cwd(), self.options.paths.frameworkPages), '')
+
 
 		path = self.parsePosition(path);
 

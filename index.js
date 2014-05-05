@@ -10,6 +10,7 @@ asimov.use(require('./modules/asimov-pages'));
 // Export public classes
 exports.Asimov = Asimov;
 exports.Base = require('./lib/Base');
+exports.Sequencer = require('./lib/Sequencer');
 exports.CommandLineInterface = require('./lib/CommandLineInterface');
 
 module.parent || asimov.start();
