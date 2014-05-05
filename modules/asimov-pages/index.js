@@ -7,6 +7,10 @@ module.exports = function (asimov, options) {
   options = options || {};
   asimov.config.paths.outputPath = options.outputPath || (process.cwd() + '/build');
 
+  ['pages', 'templates', 'siteData'].forEach(function (type) {
+    asimov.paths(type);
+  });
+
   [
     'preprocessor',
     'processor',
@@ -17,7 +21,6 @@ module.exports = function (asimov, options) {
 
   [
     'collections',
-    'methods',
     'paths',
     'render',
     'watch'

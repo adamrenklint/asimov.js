@@ -47,7 +47,7 @@ function getRenderer (attributes) {
       if (value.indexOf('{{') >= 0 && value.indexOf('}}') > 0) {
 
         var template = handlebars.compile(value);
-        // value = template(attributes);
+        value = template(attributes);
         renderedTemplate = true;
       }
 

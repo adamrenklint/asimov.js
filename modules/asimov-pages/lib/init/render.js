@@ -10,6 +10,7 @@ module.exports = function (next, asimov) {
   queue.on('add', _.debounce(queue.start, 100));
 
   asimov.preprocessor(require('../processors/decoratePage'));
+  asimov.postprocessor(require('../processors/renderPage'));
 
   ['page', 'styleSheet', 'script'].forEach(function (name) {
 
