@@ -12,13 +12,11 @@ module.exports = function (next, asimov) {
 
   collections.forEach(function (collection) {
 
-    // collection.on('add change:raw forced:change', queue.add);
-    // collection.on('change:rendered', writer.write);
-    // collection.on('remove', writer.clear);
+    collection.on('add change:raw forced:change', queue.add);
+    collection.on('add', queue.start);
+    collection.on('change:rendered', writer.write);
+    collection.on('remove', writer.clear);
   });
-
-
-  // self.bindTo(options.templates, 'add change:raw', watcher.watch);
 
   next();
 };
