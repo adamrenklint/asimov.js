@@ -1,3 +1,5 @@
+var asimov = require('../../../../index');
+
 var Collection = require('asimov-collection').Collection;
 var RenderJob = require('./RenderJob');
 var _ = require('lodash');
@@ -125,7 +127,7 @@ module.exports = Collection.extend({
       self.logger.since(self.namespace, logString, started);
 
       if (!self.models.length) {
-        self.mediator.trigger('queue:empty');
+        asimov.trigger('queue:empty');
       }
     }).fail(function () {
 

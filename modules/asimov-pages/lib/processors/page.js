@@ -1,3 +1,5 @@
-module.exports = function (model) {
+module.exports = function (next, asimov, model) {
 
+  console.log('page processor', model.id);
+  next();
 };

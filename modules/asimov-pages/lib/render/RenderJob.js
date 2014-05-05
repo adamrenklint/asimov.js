@@ -1,3 +1,4 @@
+var asimov = require('../../../../index');
 var Base = require('../../../../index').Base;
 var _ = require('lodash');
 var _super = Base.prototype;
@@ -41,26 +42,38 @@ module.exports = Base.extend({
   'run': function (job) {
 
     var self = this;
-    var type = job && job.attributes && job.attributes.type;
+    var deferred = self.deferred();
 
-    if (!type) {
+    asimov.runSequence('preprocessor', job).done(function () {
+      asimov.runSequence('processor', job).done(function () {
+        asimov.runSequence('postprocessor', job).done(function () {
+          deferred.resolve(job);
+        });
+      });
+    });
 
-      throw new Error('Invalid render job: ' + JSON.stringify(job.attributes));
-    }
+    return deferred.promise();
 
-    process.exit(1);
+    // var type = job && job.attributes && job.attributes.type;
+    //
+    // if (!type) {
+    //
+    //   throw new Error('Invalid render job: ' + JSON.stringify(job.attributes));
+    // }
 
-    if (self[type]) {
-
-      self.mediator.trigger('rendering:' + job.attributes.type, job);
-
-      var promise = self[type].run(job);
-
-      var timestamp = (new Date()).valueOf();
-      self.pending[timestamp] = self.pending[timestamp] || [];
-      self.pending[timestamp].push(promise);
-
-      return promise;
-    }
+    // process.exit(1);
+    //
+    // if (self[type]) {
+    //
+    //   self.mediator.trigger('rendering:' + job.attributes.type, job);
+    //
+    //   var promise = self[type].run(job);
+    //
+    //   var timestamp = (new Date()).valueOf();
+    //   self.pending[timestamp] = self.pending[timestamp] || [];
+    //   self.pending[timestamp].push(promise);
+    //
+    //   return promise;
+    // }
   }
 });

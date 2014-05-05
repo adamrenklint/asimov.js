@@ -187,7 +187,7 @@ test('lib/Asimov', function (test) {
               next();
             });
 
-            asimov.runSequence('initializer', function () {
+            asimov.runSequence('initializer').done(function () {
               done();
             });
           });
