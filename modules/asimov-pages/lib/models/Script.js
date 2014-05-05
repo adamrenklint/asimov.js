@@ -1,9 +1,9 @@
-var FileModel = require('asimov-collection').FileModel;
-var _super = FileModel.prototype;
+var WritableFileModel = require('./WritableFileModel');
+var _super = WritableFileModel.prototype;
 var _ = require('lodash');
 var npath = require('path');
 
-module.exports = FileModel.extend({
+module.exports = WritableFileModel.extend({
 
 	'idAttribute': 'url',
 

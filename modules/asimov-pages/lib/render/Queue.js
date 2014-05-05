@@ -7,7 +7,7 @@ var _super = Collection.prototype;
 
 module.exports = Collection.extend({
 
-  'namespace': 'queue',
+  'namespace': 'pages',
 
   'renderCosts': {
     'page': 5,

@@ -56,15 +56,9 @@ module.exports = Base.extend({
 
     self.mediator.trigger('pre:render:page', model);
 
-    var attributes = model.toJSON();
-    var raw = attributes.raw;
-    attributes.page = attributes;
 
-    var template = templates.get(attributes.template);
 
-    if (!template) {
-      throw new Error('Failed to render ' + attributes.path + ' - missing template "' + attributes.template + '"');
-    }
+    
 
     attributes.site = self.options.siteData.getJSON();
     attributes.pkg = self.options.meta;

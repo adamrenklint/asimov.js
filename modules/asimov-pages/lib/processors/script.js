@@ -1,5 +1,7 @@
 module.exports = function (next, asimov, model) {
 
-  console.log('script processor', model.id);
+  var attributes = model.toJSON();
+  if (attributes.type !== 'script') return next();
+
   next();
 };

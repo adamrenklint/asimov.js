@@ -1,10 +1,10 @@
-var FileModel = require('asimov-collection').FileModel;
+var WritableFileModel = require('./WritableFileModel');
 var _ = require('lodash');
 var npath = require('path');
-var _super = FileModel.prototype;
+var _super = WritableFileModel.prototype;
 var yaml = require('yaml-js');
 
-module.exports = FileModel.extend({
+module.exports = WritableFileModel.extend({
 
 	'defaults': {
 		'type': 'meta',

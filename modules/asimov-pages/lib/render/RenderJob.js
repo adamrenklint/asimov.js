@@ -5,9 +5,8 @@ var _super = Base.prototype;
 
 module.exports = Base.extend({
 
+  // Any render job should timeout after 10 seconds
   'limit': 10 * 1000,
-
-  'namespace': 'Render',
 
   'initialize': function (options) {
 
@@ -27,8 +26,8 @@ module.exports = Base.extend({
     _.each(self.pending, function (deferreds, timestamp) {
       if (timestamp < limit) {
         _.invoke(deferreds, 'reject');
-        self.pending[timestamp] = [];
       }
+      self.pending[timestamp] = [];
     });
 
     self.delay('checkTimeouts', 1000);
@@ -38,37 +37,24 @@ module.exports = Base.extend({
 
     var self = this;
     var deferred = self.deferred();
+    var promise = deferred.promise();
+
+    var timestamp = (new Date()).valueOf();
+    self.pending[timestamp] = self.pending[timestamp] || [];
+    self.pending[timestamp].push(deferred);
+
+    var processed = job.attributes.processed;
 
     asimov.runSequence('preprocessor', job).done(function () {
       asimov.runSequence('processor', job).done(function () {
         asimov.runSequence('postprocessor', job).done(function () {
+
+          if (job.attributes.processed !== processed) job.write();
           deferred.resolve(job);
         });
       });
     });
 
-    return deferred.promise();
-
-    // var type = job && job.attributes && job.attributes.type;
-    //
-    // if (!type) {
-    //
-    //   throw new Error('Invalid render job: ' + JSON.stringify(job.attributes));
-    // }
-
-    // process.exit(1);
-    //
-    // if (self[type]) {
-    //
-    //   self.mediator.trigger('rendering:' + job.attributes.type, job);
-    //
-    //   var promise = self[type].run(job);
-    //
-    //   var timestamp = (new Date()).valueOf();
-    //   self.pending[timestamp] = self.pending[timestamp] || [];
-    //   self.pending[timestamp].push(promise);
-    //
-    //   return promise;
-    // }
+    return promise;
   }
 });

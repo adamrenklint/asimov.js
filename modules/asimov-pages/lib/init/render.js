@@ -9,6 +9,8 @@ module.exports = function (next, asimov) {
 
   queue.on('add', _.debounce(queue.start, 100));
 
+  asimov.preprocessor(require('../processors/decoratePage'));
+
   ['page', 'styleSheet', 'script'].forEach(function (name) {
 
     var collection = asimov[name + 's'];
