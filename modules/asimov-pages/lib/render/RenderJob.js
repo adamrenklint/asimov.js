@@ -14,11 +14,6 @@ module.exports = Base.extend({
     var self = this;
     _super.initialize.apply(self, arguments);
 
-
-    // self.page = new PageRenderJob(self.options);
-    // self.script = new ScriptRenderJob(self.options);
-    // self.styleSheet = new StyleSheetRenderJob(self.options);
-
     self.pending = {};
     self.delay('checkTimeouts', 1000);
   },
