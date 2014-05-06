@@ -45,6 +45,10 @@ module.exports = Base.extend({
 
     var processed = job.attributes.processed;
 
+    // WHY IS JUST ONE PAGE AT A TIME RENDERING?
+    //
+    // shouldn't all pages go through the first, and then second...
+
     function error () {
       self.error('Failed to process ' + job.attributes.type + ' @ ' + job.id);
       deferred.reject();
