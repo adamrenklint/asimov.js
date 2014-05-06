@@ -45,15 +45,19 @@ module.exports = Base.extend({
 
     var processed = job.attributes.processed;
 
+    function error () {
+      self.error('Failed to process ' + job.attributes.type + ' @ ' + job.id);
+      deferred.reject();
+    }
+
     asimov.runSequence('preprocessor', job).done(function () {
       asimov.runSequence('processor', job).done(function () {
         asimov.runSequence('postprocessor', job).done(function () {
-
           if (job.attributes.processed !== processed) job.write();
           deferred.resolve(job);
-        });
-      });
-    });
+        }).fail(error);
+      }).fail(error);
+    }).fail(error);
 
     return promise;
   }

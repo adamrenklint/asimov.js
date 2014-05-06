@@ -8,11 +8,18 @@ module.exports = function (next, asimov, model) {
   var template = asimov.templates.get(attributes.template);
 
   if (!template) {
-    throw new Error('Failed to render ' + attributes.path + ' - missing template "' + attributes.template + '"');
+    asimov.logError('Failed to render page attributes @ ' + attributes.url, 'Missing template"' + attributes.template + '"');
   }
 
   var tmpl = template.attributes.compiled;
-  attributes.processed = tmpl(attributes).replace(/\s\s/g, ' ');
+
+  try {
+    attributes.processed = tmpl(attributes).replace(/\s\s/g, ' ');
+  }
+  catch (e) {
+    return asimov.logError('Failed to render page @ ' + attributes.url, e.toString());
+  }
+
   model.set(attributes, { 'silent': true });
 
   next();

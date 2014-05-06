@@ -6,6 +6,6 @@ module.exports = FileModel.extend({
   'write': function () {
 
     var self = this;
-    console.log('write...', self.attributes.processed);
+    // console.log('write...', self.attributes.processed);
   }
 });

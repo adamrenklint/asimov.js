@@ -1,9 +1,9 @@
 var asimov = require('../../../../index');
-var _ = require('lodash')
+var _ = require('lodash');
 var handlebars = require('handlebars');
 var marked = require('marked');
 
-var blacklist = ['page', 'raw', 'pkg', 'site', 'meta'];
+var blacklist = ['page', 'raw', 'pkg', 'site', 'meta', 'inherits', 'parent'];
 
 function markdown (raw) {
 
@@ -40,38 +40,43 @@ function getRenderer (attributes) {
 
     if (typeof value === 'string') {
 
-      var renderedTemplate = false;
-      var renderedMarkdown = false;
-      var containsMarkup = false;
+      try {
+        var renderedTemplate = false;
+        var renderedMarkdown = false;
+        var containsMarkup = false;
 
-      if (value.indexOf('{{') >= 0 && value.indexOf('}}') > 0) {
+        if (value.indexOf('{{') >= 0 && value.indexOf('}}') > 0) {
 
-        var template = handlebars.compile(value);
-        value = template(attributes);
-        renderedTemplate = true;
+          var template = handlebars.compile(value);
+          value = template(attributes);
+          renderedTemplate = true;
+        }
+
+        if (value.indexOf('\n') >= 0) {
+
+          value = markdown(value);
+          value = clean(value);
+          renderedMarkdown = true;
+        }
+
+        if (value.indexOf('<') >= 0 && value.indexOf('>') >= 0) {
+          containsMarkup = true;
+        }
+
+        if (containsMarkup) {
+          value = new handlebars.SafeString(value);
+        }
+
+        collection[key] = value;
       }
-
-      if (value.indexOf('\n') >= 0) {
-
-        value = markdown(value);
-        value = clean(value);
-        renderedMarkdown = true;
+      catch (e) {
+        asimov.logError('Failed to render page attribute "' + key + '" @ ' + attributes.url, e.toString());
       }
-
-      if (value.indexOf('<') >= 0 && value.indexOf('>') >= 0) {
-        containsMarkup = true;
-      }
-
-      if (containsMarkup) {
-        value = new handlebars.SafeString(value);
-      }
-
-      collection[key] = value;
     }
     else if (_.isPlainObject(value)) {
       _.each(value, renderValue);
     }
-  }
+  };
 }
 
 module.exports = function (next, asimov, model) {
