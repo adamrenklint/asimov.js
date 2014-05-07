@@ -6,14 +6,14 @@ var _ = require('lodash');
 
 module.exports = Base.extend({
 
-  'namespace': 'queue',
+  'namespace': 'pages',
 
   'initialize': function () {
 
     var self = this;
     _super.initialize.apply(self, arguments);
 
-    self.filesystem.rebuildDirectory(asimov.config.paths.outputPath);
+    self.filesystem.rebuildDirectory(asimov.config.paths.dest);
 
     // self.symlinkFavicon();
     self.symlinkSiteFolder('images');
@@ -65,20 +65,20 @@ module.exports = Base.extend({
     var started = new Date();
     var attributes = model.attributes;
     var path = model.getOutputPath();
-    var output = attributes.rendered;
+    var output = attributes.processed;
 
     var parts = path.split('/');
     parts.pop();
     var parentPath = parts.join('/');
     self.filesystem.forceExists(parentPath);
 
-    if (model.isPage()) {
-
-      var url = model.attributes.url;
-      self.symlinkPageFolder(self.options.paths.content + url, (self.options.outputPath + url).replace('//', '/'));
-      output = output.replace('<head>', '<head><meta generator="asimov.js">');
-      output = output.replace(/%divider%/g, '---').replace(/%cl%/g, '{{').replace(/%cr%/g, '}}');
-    }
+    // if (model.isPage()) {
+    //
+    //   var url = model.attributes.url;
+    //   self.symlinkPageFolder(self.options.paths.content + url, (self.options.outputPath + url).replace('//', '/'));
+    //   output = output.replace('<head>', '<head><meta generator="asimov.js">');
+    //   output = output.replace(/%divider%/g, '---').replace(/%cl%/g, '{{').replace(/%cr%/g, '}}');
+    // }
 
     self.filesystem.writeFile(path, output);
     model.set({ 'outputPath': path }, { 'silent': true });

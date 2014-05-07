@@ -5,7 +5,7 @@ function getInit (name) {
 module.exports = function (asimov, options) {
 
   options = options || {};
-  asimov.config.paths.outputPath = options.outputPath || (process.cwd() + '/build');
+  asimov.config.paths.dest = options.dest || (process.cwd() + '/build');
 
   ['pages', 'templates', 'siteData'].forEach(function (type) {
     asimov.paths(type);

@@ -59,7 +59,7 @@ module.exports = Base.extend({
     asimov.runSequence('preprocessor', job).done(function () {
       asimov.runSequence('processor', job).done(function () {
         asimov.runSequence('postprocessor', job).done(function () {
-          if (job.attributes.processed !== processed) job.write();
+          if (job.attributes.processed !== processed) job.trigger('write', job);
           deferred.resolve(job);
         }).fail(error);
       }).fail(error);
