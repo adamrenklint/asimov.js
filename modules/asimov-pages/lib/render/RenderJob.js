@@ -49,9 +49,9 @@ module.exports = Base.extend({
     //
     // shouldn't all pages go through the first, and then second...
 
-    function error () {
+    function error (err) {
       self.error('Failed to process ' + job.attributes.type + ' @ ' + job.id);
-      deferred.reject();
+      deferred.reject(err);
     }
 
     asimov.runSequence('preprocessor', job).done(function () {
