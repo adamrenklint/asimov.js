@@ -22,8 +22,10 @@ module.exports = Collection.extend({
 
     self.jobs = [];
     self.pending = [];
-    self.limit = 100;
-    self.delay = 10;
+
+    self.limit = self.options.limit || self.limit || 100;
+    self.delay = self.options.delay || self.delay || 10;
+    self.wait = self.options.wait || self.wait || 1000;
 
     self.renderer = new RenderJob(self.options);
   },
@@ -89,14 +91,14 @@ module.exports = Collection.extend({
     var self = this;
     var delay = self.delay;
     var started = new Date();
-
+    
     var models = self.getNextBatch();
     var size = models.length;
     var promises = [];
 
     if (!size) {
 
-      self.loopTimeout = _.delay(self.render, 1000);
+      self.loopTimeout = _.delay(self.render, self.wait);
       return;
     }
 

@@ -7,6 +7,7 @@ module.exports = Base.extend({
 
   // Any render job should timeout after 10 seconds
   'limit': 10 * 1000,
+  'interval': 1000,
 
   'initialize': function (options) {
 
@@ -14,7 +15,7 @@ module.exports = Base.extend({
     _super.initialize.apply(self, arguments);
 
     self.pending = {};
-    self.delay('checkTimeouts', 1000);
+    self.delay('checkTimeouts', self.interval);
   },
 
   'checkTimeouts': function () {
@@ -30,7 +31,7 @@ module.exports = Base.extend({
       self.pending[timestamp] = [];
     });
 
-    self.delay('checkTimeouts', 1000);
+    self.delay('checkTimeouts', self.interval);
   },
 
   'run': function (job) {
