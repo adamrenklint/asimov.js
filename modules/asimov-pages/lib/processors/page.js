@@ -70,7 +70,7 @@ function getRenderer (attributes) {
         collection[key] = value;
       }
       catch (e) {
-        throw [e.message, 'Failed to render page attribute "' + key + '" @ ' + attributes.url];
+        throw [e.message, 'Failed to render page attribute "' + key + '" @ ' + attributes.path];
       }
     }
     else if (_.isPlainObject(value)) {

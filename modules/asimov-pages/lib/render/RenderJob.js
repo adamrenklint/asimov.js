@@ -52,7 +52,7 @@ module.exports = Base.extend({
 
     function error (err) {
       err.push('Failed to process ' + job.attributes.type + ' @ ' + job.id);
-      asimov.logError(err);
+      asimov.error(err);
       deferred.reject(err);
     }
 

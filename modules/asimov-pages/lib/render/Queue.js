@@ -91,7 +91,7 @@ module.exports = Collection.extend({
     var self = this;
     var delay = self.delay;
     var started = new Date();
-    
+
     var models = self.getNextBatch();
     var size = models.length;
     var promises = [];
@@ -118,6 +118,7 @@ module.exports = Collection.extend({
 
       var models = _.flatten(_.toArray(arguments));
       _.each(models, function (model) {
+        model.set(model.attributes);
         self.trigger('processed', model);
       });
 
@@ -133,7 +134,7 @@ module.exports = Collection.extend({
       }
     }).fail(function () {
 
-      asimov.logError('Failed to complete ' + job.attributes.type + ' render batch');
+      asimov.error('Failed to complete ' + job.attributes.type + ' render batch');
     });
 
     self.loopTimeout = _.delay(self.render, delay);

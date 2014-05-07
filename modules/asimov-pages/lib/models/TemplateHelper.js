@@ -1,29 +1,21 @@
+var asimov = require('../../../../index');
 var FileModel = require('asimov-collection').FileModel;
 var _ = require('lodash');
 var npath = require('path');
 var _super = FileModel.prototype;
 var uncache = require('require-uncache');
+var handlebars = require('handlebars');
 
 module.exports = FileModel.extend({
 
   'namespace': 'pages',
-  
+
   'defaults': {
 
     'type': 'helper',
     'path': null,
     'name': null
   },
-
-  // 'initialize': function () {
-
-  //   var self = this;
-  //   _super.initialize.apply(self, arguments);
-
-  //   // if (typeof self.run !== 'function') {
-  //   //   throw new Error('Cannot register template helper without callback:' + JSON.stringify(self.attributes));
-  //   // }
-  // },
 
   'fetch': function (path, logger) {
 
@@ -44,22 +36,15 @@ module.exports = FileModel.extend({
       uncache(requirePath);
     }
 
-    var Helper = require(npath.relative(__dirname, requirePath));
-    var helper;
+    var helper = require(npath.relative(__dirname, requirePath));
 
-    try {
-
-      helper = new Helper(_.merge({}, self.options, {
-        'path': path,
-        'requirePath': requirePath,
-        'name': name,
-        'model': self
-      }));
+    if (typeof helper !== 'function') {
+      asimov.error(['Invalid template helper @ ' + path]);
+      return deferred.resolve(self);
     }
-    catch (e) {
 
-      throw new Error('Invalid template helper @ ' + path + ': '+ e);
-    }
+
+    handlebars.registerHelper(name, helper);
 
     self.set({
       'helper': helper,

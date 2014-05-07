@@ -8,7 +8,7 @@ module.exports = function (next, asimov, model) {
   var template = asimov.templates.get(attributes.template);
 
   if (!template) {
-    asimov.logError('Failed to render page attributes @ ' + attributes.url, 'Missing template"' + attributes.template + '"');
+    throw ['Failed to render page attributes @ ' + attributes.path, 'Missing template"' + attributes.template + '"'];
   }
 
   var tmpl = template.attributes.compiled;
@@ -17,7 +17,7 @@ module.exports = function (next, asimov, model) {
     attributes.processed = tmpl(attributes).replace(/\s\s/g, ' ');
   }
   catch (e) {
-    throw [e.message, 'Failed to render page @ ' + attributes.url];
+    throw [e.message, 'Failed to render page @ ' + attributes.path];
   }
 
   model.set(attributes, { 'silent': true });

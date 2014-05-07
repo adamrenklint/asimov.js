@@ -19,7 +19,7 @@ module.exports = function (next, asimov) {
     asimov.processor(require('../processors/' + name));
 
     collection.on('add change:raw forced:change', queue.add);
-    collection.on('change:rendered', writer.write);
+    collection.on('write', writer.write);
     collection.on('remove', writer.clear);
   });
 
