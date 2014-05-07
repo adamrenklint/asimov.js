@@ -131,7 +131,7 @@ module.exports = Collection.extend({
       }
     }).fail(function () {
 
-      throw new Error('Failed to complete ' + job.attributes.type + ' render batch');
+      asimov.logError('Failed to complete ' + job.attributes.type + ' render batch');
     });
 
     self.loopTimeout = _.delay(self.render, delay);

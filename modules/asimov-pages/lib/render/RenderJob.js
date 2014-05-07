@@ -50,7 +50,8 @@ module.exports = Base.extend({
     // shouldn't all pages go through the first, and then second...
 
     function error (err) {
-      self.error('Failed to process ' + job.attributes.type + ' @ ' + job.id);
+      err.push('Failed to process ' + job.attributes.type + ' @ ' + job.id);
+      asimov.logError(err);
       deferred.reject(err);
     }
 

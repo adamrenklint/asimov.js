@@ -70,7 +70,7 @@ function getRenderer (attributes) {
         collection[key] = value;
       }
       catch (e) {
-        asimov.logError('Failed to render page attribute "' + key + '" @ ' + attributes.url, e.toString());
+        throw [e.message, 'Failed to render page attribute "' + key + '" @ ' + attributes.url];
       }
     }
     else if (_.isPlainObject(value)) {

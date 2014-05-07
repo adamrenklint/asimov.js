@@ -17,7 +17,7 @@ module.exports = function (next, asimov, model) {
     attributes.processed = tmpl(attributes).replace(/\s\s/g, ' ');
   }
   catch (e) {
-    return asimov.logError('Failed to render page @ ' + attributes.url, e.toString());
+    throw [e.message, 'Failed to render page @ ' + attributes.url];
   }
 
   model.set(attributes, { 'silent': true });
