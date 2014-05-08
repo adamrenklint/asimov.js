@@ -13,7 +13,7 @@ module.exports = Helper.extend({
       'name': name
     });
 
-    self.assert('object', template, 'Failed to import partial template "' + name  + '" @ ' + self.currentUrl);
+    self.assert('object', template, 'Failed to import partial template "' + name  + '" @ ' + asimov.currentPage.attributes.path);
 
     return template.attributes.compiled(params);
   }
