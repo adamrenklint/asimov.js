@@ -1,6 +1,6 @@
 {
   "name": "asimov",
-  "version": "0.18.0-alpha3",
+  "version": "0.18.0-alpha4",
   "homepage": "http://asimovjs.org",
   "description": "A better way to build awesome websites and apps, with javascript and textfiles",
   "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
@@ -8,6 +8,9 @@
     "Marvin Labod <marvin@6wunderkinder.com> (http://www.inlovewithcss.com)",
     "Timothy Achumba <timothy@achumba.com> (http://awsme.me)"
   ],
+  "bin": {
+    "asimov": "bin/asimov"
+  },
   "main": "index.js",
   "scripts": {
     "test": "node bin/asimov test"
