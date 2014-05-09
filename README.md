@@ -48,3 +48,7 @@ Documentation is still in progress and will be made available at [asimovjs.org](
 ### Publish to NPM
 
     $ node bin/asimov.js publish
+
+---
+
+Made by [Adam Renklint](http://adamrenklint.com), Berlin 2014. [MIT licensed](https://github.com/adamrenklint/asimov.js/blob/master/LICENSE).
