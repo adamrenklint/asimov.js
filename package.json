@@ -1,6 +1,6 @@
 {
   "name": "asimov",
-  "version": "0.18.0-alpha4",
+  "version": "0.18.0-beta1",
   "homepage": "http://asimovjs.org",
   "description": "A better way to build awesome websites and apps, with javascript and textfiles",
   "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
@@ -35,37 +35,6 @@
     "ncp": "0.5.0",
     "wunderbits.core": "^0.1.4"
   },
-  "xlazyDependencies": {
-    "production": {
-      "express": "4.0.0",
-      "express-livereload": "0.0.24",
-      "require-uncache": "0.0.2",
-      "static-asset": "0.5.2",
-      "yaml-js": "0.0.8",
-      "compression": "1.0.1",
-      "marked": "0.3.1",
-      "uglify-js": "2.4.13",
-      "stylus": "0.43.1",
-      "nib": "1.0.2",
-      "browserify": "3.40.0",
-      "watchdirectory": "0.1.5"
-    },
-    "test": {
-      "mocha": "1.18.2"
-    },
-    "runner": {
-      "zombie": "2.0.0-alpha29",
-      "chai": "1.9.0",
-      "sinon": "1.9.0",
-      "sinon-chai": "2.5.0"
-    },
-    "coverage": {
-      "istanbul": "0.2.7"
-    },
-    "complexity": {
-      "plato": "1.0.1"
-    }
-  },
   "dependencies": {
     "asimov-collection": "^0.1.3",
     "asimov-core": "^0.2.1",
@@ -75,6 +44,6 @@
     "marked": "^0.3.2"
   },
   "devDependencies": {
-    "asimov-test": "latest"
+    "asimov-test": "^0.2.2"
   }
 }
