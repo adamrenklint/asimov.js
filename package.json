@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "asimov-collection": "^0.1.3",
-    "asimov-core": "^0.2.1",
+    "asimov-core": "^0.2.3",
     "colors": "^0.6.2",
     "handlebars": "^2.0.0-alpha.2",
     "lodash": "^2.4.1",
