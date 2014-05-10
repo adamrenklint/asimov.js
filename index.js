@@ -3,7 +3,7 @@
 process.env.PORT = process.env.PORT || 3003;
 
 var Asimov = require('./lib/Asimov');
-var asimov = module.exports = (new Asimov()).publicInterface();
+var asimov = global.asimov = module.exports = global.asimov || (new Asimov()).publicInterface();
 
 // Export public classes
 module.exports.Asimov = Asimov;
