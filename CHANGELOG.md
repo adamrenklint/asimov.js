@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.18.0
+
+  - **Released Sunday May 11th, 2014 @ ?pm**
+  - A complete refactor that breaks most existing API's, at least temporarily
+  - **asimov.js has been stripped down to it's core, and it's previous functionality, generating and serving pages, will be added back with the plugins [asimov-pages](http://asimovjs.org/docs/pages) and [asimov-server](http://asimovjs.org/docs/server)**
+  - Install with new module namespace: ```npm install -g asimov```
+  - The CLI executes command files in your project and node_modules folder
+  - Add initializers (+ pre and post) with ```asimov.init(fn)```
+  - + Lots of more stuff, check out the new documentation on [asimovjs.org](http://asimovjs.org/docs)
+
 ## 0.17.8
 
   - **Released Tuesday April 29th, 2014 @ 4.15pm**
