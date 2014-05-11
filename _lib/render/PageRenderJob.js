@@ -14,35 +14,11 @@ module.exports = Base.extend({
     _super.initialize.apply(self, arguments);
   },
 
-  'markdown': function (raw) {
-
-    var self = this;
-    var processed = marked(raw).trim();
-
-    // Remove wrapping <p> paragraphs
-    var lastIndex = processed.length - 4;
-    var startsWithParagraph = processed.indexOf('<p>') === 0;
-    var endsWithParagraph = processed.indexOf('</p>') === lastIndex;
-
-    if (startsWithParagraph && endsWithParagraph) {
-      processed = processed.substr(0, lastIndex);
-      processed = processed.substr(3);
-    }
-
-    if (processed === raw) {
-      return raw;
-    }
-
-    return processed;
-  },
-
   'clean': function (raw) {
 
     var self = this;
 
-    raw = raw.replace(/[^>]\n[^<]/g, function (match) {
-      return match.replace('\n', '<br>');
-    });
+    raw =
 
     return raw;
   },
@@ -56,75 +32,20 @@ module.exports = Base.extend({
 
     self.mediator.trigger('pre:render:page', model);
 
-    var attributes = model.toJSON();
-    var raw = attributes.raw;
-    attributes.page = attributes;
 
-    var template = templates.get(attributes.template);
 
-    if (!template) {
-      throw new Error('Failed to render ' + attributes.path + ' - missing template "' + attributes.template + '"');
-    }
 
-    attributes.site = self.options.siteData.getJSON();
-    attributes.pkg = self.options.meta;
-    attributes.ajs = self.options.pkg;
 
-    if (attributes.langCode !== options.localization.defaultLangCode && !attributes.inherits) {
-      attributes.inherits = attributes.url.toString().replace('/' + attributes.langCode, '');
-    }
 
-    if (attributes.inherits) {
-      var _super = options.pages.get(attributes.inherits);
-      attributes['super'] = _super.attributes;
-    }
 
-    function renderValues (value, key, collection) {
 
-      if (key === 'page' || key === 'raw') return;
 
-      if (typeof value === 'string') {
 
-        var renderedTemplate = false;
-        var renderedMarkdown = false;
-        var containsMarkup = false;
 
-        if (value.indexOf('{{') >= 0 && value.indexOf('}}') > 0) {
 
-          var template = handlebars.compile(value);
-          value = template(attributes);
-          renderedTemplate = true;
-        }
-
-        if (value.indexOf('\n') >= 0) {
-
-          value = self.markdown(value);
-          value = self.clean(value);
-          renderedMarkdown = true;
-        }
-
-        if (value.indexOf('<') >= 0 && value.indexOf('>') >= 0) {
-          containsMarkup = true;
-        }
-
-        if (containsMarkup) {
-          value = new handlebars.SafeString(value);
-        }
-
-        collection[key] = value;
-      }
-      else if (_.isPlainObject(value)) {
-        _.each(value, renderValues);
-      }
-    }
-
-    _.each(attributes, renderValues);
-    attributes.raw = raw;
     model.set(attributes, { 'silent': true });
 
-    var tmpl = template.attributes.compiled;
-    attributes.rendered = tmpl(attributes).replace(/\s\s/g, ' ');
-    model.set(attributes, { 'silent': true });
+
 
     self.mediator.trigger('post:render:page', model);
     model.trigger('change:rendered', model);
