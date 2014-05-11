@@ -11,6 +11,4 @@ module.exports.Base = require('./lib/Base');
 module.exports.Sequencer = require('./lib/Sequencer');
 module.exports.CommandLineInterface = require('./lib/CommandLineInterface');
 
-// asimov.use(require('./modules/asimov-pages'));
-
 module.parent || asimov.start();
