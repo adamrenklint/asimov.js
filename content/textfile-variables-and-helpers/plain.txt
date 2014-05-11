@@ -1,0 +1,134 @@
+title: I am the mighty page title!
+---
+list: [one, two, three]
+---
+nested:
+  deeper:
+    here: found
+---
+inherits: /
+---
+text:
+
+{{style "test"}}
+
+# Rendering tests
+
+## Attributes
+
+### Page
+
+<ul>
+  <li>page.title: {{page.title}}</li>
+  <li>page.list array: {{#each page.list}}{{this}}{{/each}}</li>
+  <li>page.nested: {{page.nested.deeper.here}}</li>
+  <li>page.hasChildren: {{page.hasChildren}}</li>
+  <li>page.childCount: {{page.childCount}}</li>
+  <li>page.isHomepage: {{page.isHomepage}}</li>
+  <li>page.isVisible: {{page.isVisible}}</li>
+</ul>
+
+### Site
+
+<ul>
+  <li>site.foo: {{site.foo}}</li>
+</ul>
+
+### Inherit/import attributes from other pages
+
+<ul>
+    <li>super.title: {{super.title}}</li>
+    <li>super.url: {{super.url}}</li>
+</ul>
+
+## Helpers
+
+### Active
+
+<ul>
+  <li>active: {{active "/test" "true"}}</li>
+  <li>not active: {{active "/" "not true"}}</li>
+  <li>block: {{#active "/test"}}true{{/active}}</li>
+  <li>block, not active: {{#active "/"}}not true{{/active}}</li>
+</ul>
+
+### Children
+
+<ul>
+  <li>no options: {{#children}}{{title}}{{/children}}</li>
+  <li>reverse=true: {{#children reverse=true}}{{title}}{{/children}}</li>
+  <li>order="DESC": {{#children order="DESC"}}{{title}}{{/children}}</li>
+  <li>limit=2: {{#children limit=2}}{{title}}{{/children}}</li>
+  <li>offset=1: {{#children offset=1}}{{title}}{{/children}}</li>
+  <li>limit=1 and offset=1: {{#children offset=1 limit=1}}{{title}}{{/children}}</li>
+  <li>sortBy="title": {{#children sortBy="title"}}{{title}}{{/children}}</li>
+  <li>sortBy="title" reverse=true: {{#children sortBy="title" reverse=true}}{{title}}{{/children}}</li>
+  <li>sortBy="title" reverse=true limit=1 offset=2: {{#children sortBy="title" reverse=true limit=1 offset=2}}{{title}}{{/children}}</li>
+  <li>hidden=true: {{#children hidden=true}}{{title}}{{/children}}</li>
+</ul>
+
+### Email
+
+<ul>
+  <li>just email: {{email "adam@renklint.com"}}</li>
+  <li>with title: {{email "adam@renklint.com" title="my title"}}</li>
+  <li>with text: {{email "adam@renklint.com" text="my text"}}</li>
+  <li>with text and title: {{email "adam@renklint.com" text="my text" title="my title"}}</li>
+  <li>block: {{#email "adam@renklint.com"}}the mail link{{/email}}</li>
+  <li>with subject: {{email "adam@renklint.com" subject="my subject"}}</li>
+</ul>
+
+### Image
+
+<ul>
+  <li>in page folder: {{image "1.png"}}</li>
+  <li>in site folder: {{image "site/images/site.png"}}</li>
+</ul>
+
+### Import
+
+<ul>
+  <li>simple, using current page.title: {{import "test.import.simple"}}</li>
+  <li>passing data: {{import "test.import.data" something="everything"}}</li>
+</ul>
+
+### Json
+
+{{json page.nested}}
+
+### Link
+
+<ul>
+  <li>simple: {{link "http://www.asimovjs.org"}}</li>
+  <li>without protocol: {{link "www.asimovjs.org"}}</li>
+  <li>without subdomain: {{link "asimovjs.org"}}</li>
+  <li>internal: {{link "/test/a"}}</li>
+  <li>with title: {{link "/test/a" title="the title"}}</li>
+  <li>with text: {{link "/test/a" text="the text"}}</li>
+  <li>with text and title: {{link "/test/a" title="the title" text="the text"}}</li>
+  <li>block: {{#link "/test/a" title="the title" text="the text"}}the block{{/link}}</li>
+</ul>
+
+### Menu
+
+{{menu}}
+
+### Pages
+
+<ul>
+  {{#pages}}<li>{{this.url}} = {{this.title}} @ {{this.position}}</li>{{/pages}}
+</ul>
+
+### Script
+
+<ul>
+  <li>simple: {{script "tests/test.simple"}}</li>
+  <li id="constructor">with constructor: {{script "test.constructor" construct=true}}</li>
+  <li id="constructor-data">with constructor, pass data: {{script "test.ctordata" construct=true data=page.nested}}</li>
+</ul>
+
+### Style
+
+### Vimeo
+
+### Youtube
