@@ -35,7 +35,7 @@ test('lib/Sequencer', function (test) {
 
         var spy = sinon.spy();
         sequencer.init(spy);
-        sequencer.runSequence('initializer');
+        sequencer.runSequence('init');
 
         expect(spy).to.have.been.calledOnce;
       });
@@ -47,7 +47,7 @@ test('lib/Sequencer', function (test) {
           done();
         });
 
-        sequencer.runSequence('initializer');
+        sequencer.runSequence('init');
       });
 
       test.it('should pass the any data provided', function (done) {
@@ -61,7 +61,7 @@ test('lib/Sequencer', function (test) {
           done();
         });
 
-        sequencer.runSequence('initializer', data);
+        sequencer.runSequence('init', data);
       });
 
       test.when('the job executes the "next" iterator', function () {
@@ -76,7 +76,7 @@ test('lib/Sequencer', function (test) {
             done();
           });
 
-          sequencer.runSequence('initializer');
+          sequencer.runSequence('init');
         });
 
         test.when('the last job calls the "next" iterator', function () {
@@ -87,7 +87,7 @@ test('lib/Sequencer', function (test) {
               next();
             });
 
-            sequencer.runSequence('initializer').done(function () {
+            sequencer.runSequence('init').done(function () {
               done();
             });
           });
