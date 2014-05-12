@@ -8,6 +8,11 @@ test('module index', function (test) {
     expect(index.start).to.be.a('function');
   });
 
+  test.it('should set global.asimov to itself', function () {
+
+    expect(index).to.equal(global.asimov);
+  });
+
   [
     'Base',
     'Asimov',
