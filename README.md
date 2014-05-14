@@ -134,7 +134,7 @@ Remember, you can **break the chain** at any time by not calling ```next()``` in
 
 Let's say we want to extend asimov.js with a new command that counts the lines of code in the ```lib``` folder. We could later publish it to npm, and use it in other asimov.js projects as a plugin.
 
-Create a basic npm module structure, and add ```lib/commands/loc.js``` - it will be loaded when you call ```asimov loc``.
+Create a basic npm module structure, and add ```lib/commands/loc.js``` - it will be loaded when you call ```asimov loc```.
 
 ```
 /asimov-loc
