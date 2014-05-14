@@ -203,7 +203,7 @@ For example, this is how asimov-pages exposes its main collection as ```asimov.p
 
 ## Verbose logging
 
-To get detailed logging on everything that happens in your app and plugins, set the env var ```VERBOSE``` to true. Or take the shortcut, call ```asimov debug````.
+To get detailed logging on everything that happens in your app and plugins, set the env var ```VERBOSE``` to true. Or take the shortcut, call ```asimov debug```.
 
 ---
 
