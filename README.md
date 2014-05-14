@@ -213,3 +213,7 @@ To get detailed logging on everything that happens in your app and plugins, set 
 2. Implement something awesome
 3. Write tests and run them with ```npm test```
 4. Submit a pull request
+
+### Credits
+
+Author: [Adam Renklint](http://adamrenklint.com). Contributors: [Marvin Labod](http://www.inlovewithcss.com), [Timothy Achumba](http://awsme.me).
