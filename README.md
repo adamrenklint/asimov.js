@@ -29,11 +29,36 @@ And any other command, you execute the same way. For the next example, we're goi
 asimov loc
 ```
 
-## Create a project
+## Create a new project
 
-Let's say we want to extend asimov.js with a new command that counts the lines of code in the lib folder. We could later publish it to npm, and use it in other asimov.js projects as a plugin.
+So let's create our very first app. It will load an initializer that logs a message.
 
-We create a basic npm module structure, and add a ```commands``` folder and ```loc.js``` - the actual command we'll be loading.
+```
+/hello-world
+  /lib
+    /init
+      logMessage.js
+  index.js
+  package.json
+```
+
+```logMessage.js``` should export an *initializer factory*, a function that takes options and returns another function, the actual *initializer*. The initializer function is passed a ```next``` function that continues the chain.
+
+```javascript
+module.exports = function (options) {
+  return function (next) {
+    console.log("Hello world");
+  };
+};
+
+```
+
+
+## Create a new command
+
+Let's say we want to extend asimov.js with a new command that counts the lines of code in the ```lib``` folder. We could later publish it to npm, and use it in other asimov.js projects as a plugin.
+
+Create a basic npm module structure, and add ```lib/commands/loc.js``` - t will be loaded when you call ```asimov loc``.
 
 ```
 /asimov-loc
@@ -44,17 +69,32 @@ We create a basic npm module structure, and add a ```commands``` folder and ```l
   package.json
 ```
 
-## Create a new command
-
 In ```lib/commands/loc.js```, we add the code to recursive count the lines of javascript code in the ```lib``` folder.
 
-```
-someting thing
-```
+```javascript
+var asimov = require('../../index');
 
-## Making it a plugin
+function countLinesInPath (path) {
+  // A function that recursively counts
+  // the lines in all the javascript files
+  // You'll need to figure that part out on your own
+}
 
-index.js
+module.exports = function () {
+
+  // Some basic setup
+  var path = process.cwd() + '/lib';
+  var namespace = 'loc';
+  var started = new Date();
+
+  // And get the count
+  var count = countLinesInPath(path);
+
+  // Log the result, and how long it took to count
+  var message = 'Counted ' + count + ' lines in ' + path;
+  asimov.logger.since(namespace, message, started);
+};
+```
 
 ---
 
