@@ -195,4 +195,13 @@ To get detailed logging on everything that happens in your app and plugins, set 
 
 ---
 
+## Develop and contribute
+
+1. First, fork this repo.
+2. Implement something awesome
+3. Write tests and run them with ```npm test```
+4. Submit a pull request
+
+---
+
 Made by [Adam Renklint](http://adamrenklint.com), Berlin 2014. [MIT licensed](https://github.com/adamrenklint/asimov.js/blob/master/LICENSE).
