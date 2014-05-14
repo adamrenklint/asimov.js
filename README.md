@@ -9,7 +9,7 @@ Made by [Adam Renklint](http://adamrenklint.com), Berlin 2014. [MIT licensed](ht
 
 asimov.js is at its core only two simple things: a command line interface that loads and executes command scripts in your project and node_modules folder, and a plugin interface for adding initializers and extend the app lifecycle.
 
-On it's own, asimov.js doesn't really do much - it leaves all the heavy lifting to plugins. The two most basic ones are asimov-pages and asimov-server. Together you get an awesome static site generator with extendable, chained processing and a high-performance clustered server, with express-compatible middleware. **These are still in development**.
+On it's own, asimov.js doesn't really do much - it leaves all the heavy lifting to plugins. The two most basic ones are asimov-pages and asimov-server. Together you get an awesome static site generator with extendable, chained processing and a high-performance clustered server, with express-compatible middleware. **Still in development**.
 
 ## Command line interface
 
@@ -25,7 +25,7 @@ Start your project and execute any registered initializers. This assumes your ``
 asimov start
 ```
 
-And any other command, you execute the same way. Later in this document, you'll learn to build a command that counts the lines of code.
+And any other command, you execute the same way. Later in this guide, you'll learn to build a command that counts lines of code.
 
 ```
 asimov loc
