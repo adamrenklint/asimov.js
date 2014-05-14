@@ -23,7 +23,7 @@ Start your project and execute any registered initializers. This assumes your ``
 asimov start
 ```
 
-And any other command, you execute the same way. For the next example, we're going to build this command:
+And any other command, you execute the same way. Later in this document, you'll learn to build a command that counts the lines of code.
 
 ```
 asimov loc
@@ -31,7 +31,7 @@ asimov loc
 
 ## Create a new project
 
-So let's create our very first app. It will load an initializer that logs a message.
+So let's create our very first asimov.js app, a tiny thing that will load an initializer that logs a message.
 
 ```
 /hello-world
@@ -48,17 +48,41 @@ So let's create our very first app. It will load an initializer that logs a mess
 module.exports = function (options) {
   return function (next) {
     console.log("Hello world");
+    next();
   };
 };
-
 ```
 
+Then, we add some bootstrap code in ```index.js```.
+
+```javascript
+var asimov = require('asimov');
+var logMessage = require('./lib/logMessage');
+
+// This is our plugin hook, the function that other modules
+// can use to load our modules functionality
+module.exports = function (options) {
+  asimov.init(logMessage(options));
+};
+
+// The "start" method should bootstrap your app
+// and start asimov.js
+module.exports.start = function start () {
+
+  asimov
+    .use(module.exports())
+    .start();
+};
+
+// If we are not loaded as a plugin, start the app
+module.parent || module.exports.start();
+```
 
 ## Create a new command
 
 Let's say we want to extend asimov.js with a new command that counts the lines of code in the ```lib``` folder. We could later publish it to npm, and use it in other asimov.js projects as a plugin.
 
-Create a basic npm module structure, and add ```lib/commands/loc.js``` - t will be loaded when you call ```asimov loc``.
+Create a basic npm module structure, and add ```lib/commands/loc.js``` - it will be loaded when you call ```asimov loc``.
 
 ```
 /asimov-loc
@@ -95,7 +119,7 @@ module.exports = function () {
   asimov.logger.since(namespace, message, started);
 };
 ```
-
+ß
 ---
 
 Made by [Adam Renklint](http://adamrenklint.com), Berlin 2014. [MIT licensed](https://github.com/adamrenklint/asimov.js/blob/master/LICENSE).
