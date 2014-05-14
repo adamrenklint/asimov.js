@@ -143,7 +143,7 @@ Create a basic npm module structure, and add ```lib/commands/loc.js``` - it will
   package.json
 ```
 
-In ```lib/commands/loc.js```, we add the code to recursive count the lines of javascript code in the ```lib``` folder.
+In ```lib/commands/loc.js```, we add the code to recursively count the lines of javascript code in the ```lib``` folder.
 
 ```javascript
 var asimov = require('../../index');
@@ -188,6 +188,10 @@ asimov.runSequence('chain')
     console.log('ooops', err)
   });
 ```
+
+## Verbose logging
+
+To get detailed logging on everything that happens in your app and plugins, set the env var ```VERBOSE``` to true. Or take the shortcut, call ```asimov debug````.
 
 ---
 
