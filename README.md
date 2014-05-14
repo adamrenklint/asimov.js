@@ -66,7 +66,7 @@ module.exports = function (options) {
 };
 
 // The "start" method should bootstrap your app
-// and start asimov.js
+// by calling the plugin hook and starting asimov.js
 module.exports.start = function start () {
 
   asimov
@@ -77,6 +77,23 @@ module.exports.start = function start () {
 // If we are not loaded as a plugin, start the app
 module.parent || module.exports.start();
 ```
+
+And run it...
+
+```
+$ asimov
+> Hello world
+```
+
+```asimov``` is short for ```asimov start```, which is actually just calling ```node index.js```.
+
+## Adding plugins
+
+Every asimov.js app is also a plugin, and using a plugin is how we started our app just before
+
+## Initializers
+
+Main, pre and post
 
 ## Create a new command
 
