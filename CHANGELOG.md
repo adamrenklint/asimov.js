@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.18.1
+
+  - Removed old dependencies, ```handlebars``` and ```marked```
+
 ## 0.18.0
 
   - **Released Wednesay May 14th, 2014 @ 11.40pm**
