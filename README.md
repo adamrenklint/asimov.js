@@ -9,7 +9,7 @@ Made by [Adam Renklint](http://adamrenklint.com), Berlin 2014. [MIT licensed](ht
 
 asimov.js is at its core only two simple things: a command line interface that loads and executes command scripts in your project and node_modules folder, and a plugin interface for adding initializers and extend the app lifecycle.
 
-On it's own, asimov.js doesn't really do much - it leaves all the heavy lifting to plugins. The two most basic ones are asimov-pages and asimov-server. Together you get an awesome static site generator with extendable, chained processing and a high-performance clustered server, with express-compatible middleware.
+On it's own, asimov.js doesn't really do much - it leaves all the heavy lifting to plugins. The two most basic ones are asimov-pages and asimov-server. Together you get an awesome static site generator with extendable, chained processing and a high-performance clustered server, with express-compatible middleware. **These are still in development**.
 
 ## Command line interface
 
@@ -190,6 +190,16 @@ asimov.runSequence('chain')
     console.log('ooops', err)
   });
 ```
+
+## Register a public interface
+
+Your app or plugin, or more exactly both and the same, could need to register methods or variables on ```asimov```'s public interface.
+
+```javascript
+asimov.register('doNothing', function () {});
+```
+
+For example, this is how asimov-pages exposes its main collection as ```asimov.pages```.
 
 ## Verbose logging
 
