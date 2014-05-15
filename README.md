@@ -33,10 +33,10 @@ asimov loc
 
 ## Create a new project
 
-So let's create our very first asimov.js app, a tiny thing that will load an initializer that logs a message.
+So let's create our very first asimov.js app, a tiny thing that will load an initializer that logs a message. Remember, **every app is also a also plugin**, meaning you can easily compose large applications from lots of smaller pieces of functionality.
 
 ```
-/hello-world
+/asimov-log-message
   /lib
     /init
       logMessage.js
@@ -100,7 +100,7 @@ $ asimov
 Every asimov.js app is also a plugin, and has the same interface as our app. In our projects plugin hook, we add all the plugins we need to get the job done. If we published the project above, we could add it in our next projects ```index.js```.
 
 ```javascript
-var logger = require('hello-world');
+var logger = require('asimov-log-message');
 module.exports = function plugin (options) {
   asimov.use(logger());
 };
