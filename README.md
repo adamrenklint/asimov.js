@@ -7,7 +7,7 @@ asimov.js
 
 Made by [Adam Renklint](http://adamrenklint.com), Berlin 2014. [MIT licensed](https://github.com/adamrenklint/asimov.js/blob/master/LICENSE).
 
-[asimov.js](http://asimovjs.org) is at its core only two simple things: a command line interface that loads and executes command scripts in your project and node_modules folder, and a plugin interface for adding initializers and extend the app lifecycle.
+[asimov.js](http://asimovjs.org) is at its core only two simple things: a command line interface that loads and executes command scripts in your project and ```node_modules folder```, and a plugin interface for adding initializers and extend the app lifecycle.
 
 On it's own, asimov.js doesn't really do much - it leaves all the heavy lifting to plugins. The two most basic ones are asimov-pages and asimov-server. Together you get an awesome static site generator with extendable, chained processing and a high-performance clustered server, with express-compatible middleware. **Still in development**.
 
@@ -33,7 +33,9 @@ asimov loc
 
 ## Create a new project
 
-So let's create our very first asimov.js app, a tiny thing that will load an initializer that logs a message. Remember, **every app is also a also plugin**, meaning you can easily compose large applications from lots of smaller pieces of functionality.
+So let's create our very first asimov.js app, a tiny thing that will load an initializer that logs a message.
+
+**Every app is also a plugin**, meaning you can easily compose large applications from lots of smaller pieces of functionality, or publish your app to npm and let others use it as a plugin.
 
 ```
 /asimov-log-message
@@ -53,8 +55,8 @@ $ npm install --save asimov
 ```logMessage.js``` should export an *initializer factory*, a function that takes options and returns another function, the actual *initializer*. The initializer function is passed a ```next``` function that continues the chain.
 
 ```javascript
-module.exports = function (options) {
-  return function (next) {
+module.exports = function factory (options) {
+  return function initializer (next) {
     console.log("Hello world");
     next();
   };
@@ -75,8 +77,7 @@ module.exports = function plugin (options) {
 
 // The "start" method should bootstrap your app
 // by calling the plugin hook and starting asimov.js
-module.exports.start = function start () {
-
+module.exports.start = function bootstrap () {
   asimov
     .use(module.exports())
     .start();
@@ -108,6 +109,18 @@ module.exports = function plugin (options) {
 
 Plugins can configure your app, add initializers and extend the public interface of ```asimov``` with new methods.
 
+Development plugins that shouldn't be included when you app is loaded as a plugin are added in the bootstrap function.
+
+```javascript
+var debuggerPlugin('asimov-some-debugger-plugin');
+module.exports.start = function bootstrap () {
+  asimov
+    .use(module.exports())
+    .use(debuggerPlugin())
+    .start();  
+};
+```
+
 ## Initializers
 
 Initializers come in three flavours: *vanilla*, *pre* and *post*. For most apps and plugins, *vanilla* initializers will be enough, but in some case you might need to override the entire *vanilla* chain.
@@ -134,7 +147,7 @@ Remember, you can **break the chain** at any time by not calling ```next()``` in
 
 Let's say we want to extend asimov.js with a new command that counts the lines of code in the ```lib``` folder. We could later publish it to npm, and use it in other asimov.js projects as a plugin.
 
-Create a basic npm module structure, and add ```lib/commands/loc.js``` - it will be loaded when you call ```asimov loc```.
+Create a new module structure, and add ```lib/commands/loc.js``` - it will be loaded when you call ```asimov loc```.
 
 ```
 /asimov-loc
@@ -193,7 +206,7 @@ asimov.runSequence('chain')
 
 ## Register a public interface
 
-Your app or plugin, or more exactly both and the same, could need to register methods or variables on ```asimov```'s public interface.
+Your app or plugin could need to register methods or variables on ```asimov```'s public interface.
 
 ```javascript
 asimov.register('doNothing', function () {});
@@ -201,7 +214,7 @@ asimov.register('doNothing', function () {});
 
 For example, this is how asimov-pages exposes its main collection as ```asimov.pages```.
 
-## Verbose logging
+## Verbose logging and hard crashes
 
 To get detailed logging on everything that happens in your app and plugins, set the env var ```VERBOSE``` to true. Or take the shortcut, call ```asimov debug```.
 
