@@ -1,7 +1,7 @@
 asimov.js
 ================
 
-[![NPM version](https://badge.fury.io/js/asimov.png)](http://badge.fury.io/js/asimov) [![Build Status](https://travis-ci.org/adamrenklint/asimov.png?branch=master)](https://travis-ci.org/adamrenklint/asimov) [![Code Climate](https://codeclimate.com/github/adamrenklint/asimov.js.png)](https://codeclimate.com/github/adamrenklint/asimov.js) [![Dependency Status](https://david-dm.org/adamrenklint/asimov.js.png?theme=shields.io)](https://david-dm.org/adamrenklint/asimov.js)
+[![NPM version](https://badge.fury.io/js/asimov.png)](http://badge.fury.io/js/asimov) [![Build Status](https://travis-ci.org/adamrenklint/asimov.js.png?branch=master)](https://travis-ci.org/adamrenklint/asimov.js) [![Code Climate](https://codeclimate.com/github/adamrenklint/asimov.js.png)](https://codeclimate.com/github/adamrenklint/asimov.js) [![Dependency Status](https://david-dm.org/adamrenklint/asimov.js.png?theme=shields.io)](https://david-dm.org/adamrenklint/asimov.js)
 
 **A better toolkit for building awesome websites and apps**
 
