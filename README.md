@@ -11,7 +11,7 @@ Made by [Adam Renklint](http://adamrenklint.com), Berlin 2014. [MIT licensed](ht
 
 On it's own, asimov.js doesn't really do much - it leaves all the heavy lifting to plugins. The two most basic ones are asimov-pages and asimov-server. Together you get an awesome static site generator with extendable, chained processing and a high-performance clustered server, with express-compatible middleware. **Still in development**.
 
-## Command line interface
+## Getting started
 
 Install asimov.js globally to use the cli
 
@@ -55,6 +55,7 @@ $ npm install --save asimov
 ```logMessage.js``` should export an *initializer factory*, a function that takes options and returns another function, the actual *initializer*. The initializer function is passed a ```next``` function that continues the chain.
 
 ```javascript
+// lib/init/logMessage.js
 module.exports = function factory (options) {
   return function initializer (next) {
     console.log("Hello world");
@@ -67,12 +68,14 @@ Then, we add some bootstrap code in ```index.js```.
 
 ```javascript
 var asimov = require('asimov');
-var logMessage = require('./lib/logMessage');
+var logMessage = require('./lib/init/logMessage');
 
 // This is our plugin hook, the function that other modules
 // can use to load our modules functionality
-module.exports = function plugin (options) {
-  asimov.init(logMessage(options));
+module.exports = function pluginFactory (options) {
+  return function plugin () {
+    asimov.init(logMessage(options));
+  };
 };
 
 // The "start" method should bootstrap your app
