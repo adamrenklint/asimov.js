@@ -209,30 +209,32 @@ asimov.runSequence('chain')
 
 ## Configuration
 
-You can override or add configuration keys, which will be available on ```asimov.config``` by adding *json files* in the ```env``` folder. Different configs are loaded with ```ENV=:envName``` and it defaults to ```"development"```.
+You can change the behavior of plugins and configure your app with the ```asimov.config``` method.
 
-```json
-// env/development.json
-{
-  "someDevConfigVar": true
-}
+Set a configuration variable.
+```javascript
+asimov.config('myConfigVar', true);
 ```
 
-Make you configs inherit from a base, or create multiple levels of inheritance.
-
-```json
-// env/common.json
-{
-  "someCommonVar": true
-}
+And get it.
+```javascript
+var myVar = asimov.config('myConfigVar');
 ```
 
-```json
-// env/production.json
-{
-  "inherits": "common",
-  "someProductionVar": true
-}
+Or get the whole config object.
+```javascript
+var myConfig = asimov.config();
+```
+
+Also supports constants, just uppercase the name. Trying to set it again will throw an error.
+```javascript
+asimov.config('SOMETHING_CONSTANT', true);
+```
+
+Use an object literal, or a JSON file.
+```javascript
+var production = require('./env/production.json');
+asimov.config(production);
 ```
 
 ## Register a public interface
