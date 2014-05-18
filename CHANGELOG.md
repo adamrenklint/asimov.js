@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.18.3
+
+  - **Released Monday May 19th, 2014 @ 1.05am**
+  - Fixed issue with ```off()``` and ```publish()``` not being exposed on ```asimov```'s public interface
+
 ## 0.18.2
 
   - **Released Sunday May 18th, 2014 @ 11.50pm**
