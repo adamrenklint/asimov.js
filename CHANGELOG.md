@@ -2,7 +2,8 @@
 
 ## 0.18.1
 
-  - Added **Configurable** mixin, used by **lib/Asimov**, that exposes ```.config()``` as a setter and getter, with support for uppercased constants
+  - **Released Sunday May 18th, 2014 @ 11pm**
+  - Added ```lib/mixins/Configurable``` mixin, used by ```lib/Asimov```, that exposes ```.config()``` as a setter and getter, with support for uppercased constants
   - Removed old dependencies, ```handlebars``` and ```marked```
 
 ## 0.18.0
