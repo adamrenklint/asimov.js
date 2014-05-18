@@ -25,4 +25,15 @@ test('module index', function (test) {
       expect(index[name]).to.be.a('function');
     });
   });
+
+  [
+  'Configurable'
+  ].forEach(function (name) {
+
+    test.it('should export the "' + name + '" mixin', function () {
+
+      expect(index.mixins[name]).to.be.a('object');
+      expect(index.mixins[name].Behavior).to.be.a('object');
+    });
+  });
 });
