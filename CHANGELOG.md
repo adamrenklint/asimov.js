@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.18.2
+
+  - **Released Sunday May 18th, 2014 @ 11.50pm**
+  - When your app is done running all initializers, ```"app:started"``` will be triggered on ```asimov```
+
 ## 0.18.1
 
   - **Released Sunday May 18th, 2014 @ 11pm**
