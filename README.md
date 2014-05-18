@@ -221,7 +221,8 @@ var myVar = asimov.config('myConfigVar');
 // Or get the whole config object.
 var myConfig = asimov.config();
 
-// Also supports constants, just uppercase the name. Trying to set it again will throw an error.
+// Also supports constants, just uppercase the name.
+// Trying to set it again will throw an error.
 asimov.config('SOMETHING_CONSTANT', true);
 
 // Use an object literal, or a JSON file.
