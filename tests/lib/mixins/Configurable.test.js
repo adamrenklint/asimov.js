@@ -68,6 +68,11 @@ test('lib/mixins/Configurable', function (test) {
       expect(instance.config('anyVar')).to.equal('foobar');
     });
 
+    test.it('should return the value', function () {
+
+      expect(instance.config('anyVar2', 'foobar')).to.equal('foobar');
+    });
+
     test.when('attribute is a constant name, all uppercase', function () {
 
       test.when('the constant has not been set before', function () {
