@@ -11,4 +11,8 @@ module.exports.Base = require('./lib/Base');
 module.exports.Sequencer = require('./lib/Sequencer');
 module.exports.CommandLineInterface = require('./lib/CommandLineInterface');
 
+module.exports.mixins = {
+  'Configurable': require('./lib/mixins/Configurable')
+};
+
 module.parent || asimov.start();

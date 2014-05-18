@@ -207,6 +207,28 @@ asimov.runSequence('chain')
   });
 ```
 
+## Configuration
+
+You can change the behavior of plugins and configure your app with the ```asimov.config``` method.
+
+```javascript
+// Set a configuration variable.
+asimov.config('myConfigVar', true);
+
+// And get it.
+var myVar = asimov.config('myConfigVar');
+
+// Or get the whole config object.
+var myConfig = asimov.config();
+
+// Also supports constants, just uppercase the name. Trying to set it again will throw an error.
+asimov.config('SOMETHING_CONSTANT', true);
+
+// Use an object literal, or a JSON file.
+var production = require('./env/production.json');
+asimov.config(production);
+```
+
 ## Register a public interface
 
 Your app or plugin could need to register methods or variables on ```asimov```'s public interface.

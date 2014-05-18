@@ -180,6 +180,25 @@ test('lib/Asimov', function (test) {
   //   });
   // });
 
+  test.spec('config ()', function () {
+
+    test.it('should expose the projects package.json as "PKG"', function () {
+      expect(asimov.config('PKG').name).to.equal('asimov');
+    });
+
+    test.it('should expose the framework package.json as "ASIMOV"', function () {
+      expect(asimov.config('ASIMOV').name).to.equal('asimov');
+    });
+
+    test.it('should expose process.cwd() as "ROOT"', function () {
+      expect(asimov.config('ROOT')).to.equal(process.cwd());
+    });
+
+    test.it('should expose "FRAMEWORK_ROOT"', function () {
+      expect(asimov.config('FRAMEWORK_ROOT')).to.equal(process.cwd());
+    });
+  });
+
   test.spec('start ()', function () {
 
     test.it('should start initializer sequence', function () {
