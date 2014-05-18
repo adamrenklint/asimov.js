@@ -94,4 +94,18 @@ test('lib/mixins/Configurable', function (test) {
       });
     });
   });
+
+  test.spec('config (object config)', function () {
+
+    test.it('should set each attribute value', function  () {
+
+      instance.config({
+        'foo': 'bar',
+        'zoo': 'keeper'
+      });
+
+      expect(instance.config().foo).to.equal('bar');
+      expect(instance.config().zoo).to.equal('keeper');
+    });
+  });
 });
