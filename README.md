@@ -207,6 +207,34 @@ asimov.runSequence('chain')
   });
 ```
 
+## Configuration
+
+You can override or add configuration keys, which will be available on ```asimov.config``` by adding *json files* in the ```env``` folder. Different configs are loaded with ```ENV=:envName``` and it defaults to ```"development"```.
+
+```json
+// env/development.json
+{
+  "someDevConfigVar": true
+}
+```
+
+Make you configs inherit from a base, or create multiple levels of inheritance.
+
+```json
+// env/common.json
+{
+  "someCommonVar": true
+}
+```
+
+```json
+// env/production.json
+{
+  "inherits": "common",
+  "someProductionVar": true
+}
+```
+
 ## Register a public interface
 
 Your app or plugin could need to register methods or variables on ```asimov```'s public interface.
