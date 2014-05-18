@@ -196,7 +196,10 @@ test('lib/Asimov', function (test) {
       'logPending',
       'logSince',
       'error',
-      'paths'
+      'paths',
+      'init',
+      'preinit',
+      'postinit'
     ].forEach(testPublicInterface);
   });
 
