@@ -152,34 +152,6 @@ test('lib/Asimov', function (test) {
     });
   });
 
-  // test.spec('templates (string path)', function () {
-  //
-  //   test.when('no templates collection is registred', function () {
-  //
-  //     test.itShould.notThrowError(function () {
-  //
-  //     });
-  //   });
-  //
-  //   test.when('a templates collection is registered', function () {
-  //
-  //       test.when('path does not exist', function () {
-  //
-  //         test.itShould.notThrowError();
-  //       });
-  //
-  //       test.when('path exists', function () {
-  //
-  //         test.it('should add the templates in path to the collection');
-  //       });
-  //   });
-  //
-  //   test.it('should be chainable', function () {
-  //
-  //     expect(asimov.templates()).to.equal(asimov);
-  //   });
-  // });
-
   test.spec('config ()', function () {
 
     test.it('should expose the projects package.json as "PKG"', function () {
@@ -197,6 +169,35 @@ test('lib/Asimov', function (test) {
     test.it('should expose "FRAMEWORK_ROOT"', function () {
       expect(asimov.config('FRAMEWORK_ROOT')).to.equal(process.cwd());
     });
+  });
+
+  function testPublicInterface (name) {
+    test.it('should expose "' + name + '" as a function in the public interface', function () {
+      expect(asimov[name]).to.be.a('function');
+    });
+  }
+
+  test.spec('publicInterface()', function () {
+
+    [
+      'config',
+      'on',
+      'off',
+      'once',
+      'trigger',
+      'publish',
+      'unpublish',
+      'use',
+      'start',
+      'register',
+      'config',
+      'addSequence',
+      'runSequence',
+      'logPending',
+      'logSince',
+      'error',
+      'paths'
+    ].forEach(testPublicInterface);
   });
 
   test.spec('start ()', function () {
