@@ -75,7 +75,7 @@ module.exports = function plugin () {
 };
 
 // The "start" method should bootstrap your app
-// by calling the plugin hook and starting asimov.js
+// by adding the plugin hook and starting asimov.js
 module.exports.start = function bootstrap () {
   asimov
     .use(module.exports)
@@ -102,7 +102,7 @@ Every asimov.js app is also a plugin, and has the same interface as our app. In 
 ```javascript
 var logger = require('asimov-log-message');
 module.exports = function plugin (options) {
-  asimov.use(logger());
+  asimov.use(logger);
 };
 ```
 
@@ -114,8 +114,8 @@ Development plugins that shouldn't be included when you app is loaded as a plugi
 var debuggerPlugin = require('asimov-some-debugger-plugin');
 module.exports.start = function bootstrap () {
   asimov
-    .use(module.exports())
-    .use(debuggerPlugin())
+    .use(module.exports)
+    .use(debuggerPlugin)
     .start();  
 };
 ```
@@ -127,7 +127,7 @@ Initializers come in three flavours: *vanilla*, *pre* and *post*. For most apps 
 ```javascript
 var overrider = require('./lib/init/overrider');
 module.exports = function plugin (options) {
-  asimov.preinit(overrider());
+  asimov.preinit(overrider);
 };
 ```
 
@@ -136,7 +136,7 @@ If you want your initializer to be executed last, register it with ```asimov.pos
 ```javascript
 var doneLogger = require('./lib/init/doneLogger');
 module.exports = function plugin (options) {
-  asimov.postinit(doneLogger());
+  asimov.postinit(doneLogger);
 };
 ```
 
