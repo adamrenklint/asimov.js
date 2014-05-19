@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.18.4
+
+  - **Released Tuesday May 20th, 2014 @ 12.35am**
+  - ```asimov.config()``` is now chainable when used as a setter
+  - Changed README to not recommend use of factory methods to pass options, should instead use ```asimov.config```
+
 ## 0.18.3
 
   - **Released Monday May 19th, 2014 @ 1.05am**

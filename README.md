@@ -52,15 +52,13 @@ Install and add asimov.js to your projects dependencies.
 $ npm install --save asimov
 ```
 
-```logMessage.js``` should export an *initializer factory*, a function that takes options and returns another function, the actual *initializer*. The initializer function is passed a ```next``` function that continues the chain.
+```logMessage.js``` should export an *initializer*, a function that is passed a ```next``` function, which continues the chain.
 
 ```javascript
 // lib/init/logMessage.js
-module.exports = function factory (options) {
-  return function initializer (next) {
-    console.log("Hello world");
-    next();
-  };
+module.exports = function initializer (next) {
+  console.log("Hello world");
+  next();
 };
 ```
 
@@ -72,17 +70,15 @@ var logMessage = require('./lib/init/logMessage');
 
 // This is our plugin hook, the function that other modules
 // can use to load our modules functionality
-module.exports = function pluginFactory (options) {
-  return function plugin () {
-    asimov.init(logMessage(options));
-  };
+module.exports = function plugin () {
+  asimov.init(logMessage);
 };
 
 // The "start" method should bootstrap your app
 // by calling the plugin hook and starting asimov.js
 module.exports.start = function bootstrap () {
   asimov
-    .use(module.exports())
+    .use(module.exports)
     .start();
 };
 
@@ -115,7 +111,7 @@ Plugins can configure your app, add initializers and extend the public interface
 Development plugins that shouldn't be included when you app is loaded as a plugin are added in the bootstrap function.
 
 ```javascript
-var debuggerPlugin('asimov-some-debugger-plugin');
+var debuggerPlugin = require('asimov-some-debugger-plugin');
 module.exports.start = function bootstrap () {
   asimov
     .use(module.exports())
@@ -212,7 +208,7 @@ asimov.runSequence('chain')
 You can change the behavior of plugins and configure your app with the ```asimov.config``` method.
 
 ```javascript
-// Set a configuration variable.
+// Set a configuration variable. Chainable.
 asimov.config('myConfigVar', true);
 
 // And get it.
@@ -225,14 +221,14 @@ var myConfig = asimov.config();
 // Trying to set it again will throw an error.
 asimov.config('SOMETHING_CONSTANT', true);
 
-// Use an object literal, or a JSON file.
+// Use an object literal, or a JSON file. Also chainable.
 var production = require('./env/production.json');
 asimov.config(production);
 ```
 
 ## Register a public interface
 
-Your app or plugin could need to register methods or variables on ```asimov```'s public interface.
+Your app or plugin could need to register methods or variables on ```asimov```'s public interface. Chainable method.
 
 ```javascript
 asimov.register('doNothing', function () {});
