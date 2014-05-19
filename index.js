@@ -1,7 +1,5 @@
 // Public interface and bootstrap
 
-process.env.PORT = process.env.PORT || 3003;
-
 var Asimov = require('./lib/Asimov');
 var asimov = global.asimov = module.exports = global.asimov || (new Asimov()).publicInterface();
 

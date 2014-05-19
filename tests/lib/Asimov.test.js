@@ -169,6 +169,24 @@ test('lib/Asimov', function (test) {
     test.it('should expose "FRAMEWORK_ROOT"', function () {
       expect(asimov.config('FRAMEWORK_ROOT')).to.equal(process.cwd());
     });
+
+    test.when('a key and a value is passed', function () {
+
+      test.it('should be chainable', function () {
+
+        expect(asimov.config('something123', true)).to.equal(asimov);
+      });
+    });
+
+    test.when('an object is passed', function () {
+
+      test.it('should be chainable', function () {
+
+        expect(asimov.config({
+          'someVaran': true
+        })).to.equal(asimov);
+      });
+    });
   });
 
   function testPublicInterface (name) {
