@@ -34,14 +34,6 @@ test('lib/Asimov', function (test) {
         expect(spy).to.have.been.calledOnce;
       });
 
-      test.it('should pass itself to the function', function (done) {
-
-        asimov.use(function (a) {
-          expect(a).to.equal(asimov);
-          done();
-        });
-      });
-
       test.it('should be chainable', function () {
 
         var spy = sinon.spy();
@@ -224,44 +216,8 @@ test('lib/Asimov', function (test) {
 
   test.spec('start ()', function () {
 
-    test.when('there are no registered initializers', function () {
-
-      test.it('should trigger "app:started"', function () {
-
-        var spy = sinon.spy();
-        asimov.once('app:started', spy);
-        asimov.start();
-
-        expect(spy).to.have.been.calledOnce;
-      });
-    });
-
-    test.when('there are registered initializers', function () {
-
-      test.it('should start initializer sequence', function () {
-
-        var spy = sinon.spy();
-        asimov.init(function (next) {
-          spy();
-          next();
-        });
-        asimov.start();
-
-        expect(spy).to.have.been.calledOnce;
-      });
-
-      test.it('should trigger "app:started"', function () {
-
-        var spy = sinon.spy();
-        asimov.init(function (next) {
-          next();
-        });
-
-        asimov.once('app:started', spy);
-        asimov.start();
-
-        expect(spy).to.have.been.calledOnce;
-      });
+    test.itShould.throwError(function () {
+      asimov.start();
     });
   });
 });
