@@ -74,46 +74,6 @@ test('lib/Asimov', function (test) {
     });
   }
 
-  // testSequence('init', 'initializer');
-  // testSequence('processor');
-  // testSequence('middleware');
-
-  // test.spec('helper (string name, function helper)', function () {
-  //
-  //   test.when('name is not a string', function () {
-  //
-  //     test.itShould.throwError(function () {
-  //       asimov.helper(null, function () {});
-  //     });
-  //   });
-  //
-  //   test.when('name is a string', function () {
-  //
-  //     test.when('helper is not a function', function () {
-  //
-  //       test.itShould.throwError(function () {
-  //         asimov.helper('myHelper', null);
-  //       });
-  //     });
-  //
-  //     test.when('helper is a function', function () {
-  //
-  //       test.it('should save a reference to the helper', function () {
-  //
-  //         var spy = sinon.spy();
-  //         asimov.helper('ssspy', spy);
-  //         expect(instance.helpers.ssspy).to.equal(spy);
-  //       });
-  //
-  //       test.it('be chainable', function () {
-  //
-  //         var spy = sinon.spy();
-  //         expect(asimov.helper('spy', spy)).to.equal(asimov);
-  //       });
-  //     });
-  //   });
-  // });
-
   test.spec('register (string name, object target)', function () {
 
     test.when('name is not a string', function () {
