@@ -1,6 +1,8 @@
 // Public interface and bootstrap
 
-var Asimov = require('./lib/Asimov');
+process.env.ROLE = process.env.ROLE || 'master';
+var isMaster = process.env.ROLE === 'master';
+var Asimov = isMaster ? require('./lib/Master') : require('./lib/Worker');
 var asimov = global.asimov = module.exports = global.asimov || (new Asimov()).publicInterface();
 
 // Export public classes
