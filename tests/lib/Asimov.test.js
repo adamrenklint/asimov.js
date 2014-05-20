@@ -211,6 +211,7 @@ test('lib/Asimov', function (test) {
       'config',
       'addSequence',
       'runSequence',
+      'getSequence',
       'logPending',
       'logSince',
       'error',

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.18.5
+
+  - **Released Tuesday May 20th, 2014 @ 10.20am**
+  - Expose ```asimov.getSequence```, for plugins and apps to implement their own handling of runing sequences
+
 ## 0.18.4
 
   - **Released Tuesday May 20th, 2014 @ 12.35am**
