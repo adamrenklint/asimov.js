@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.19.0
+
+  - **Released Friday May 23rd, 2014 @ 10.10am**
+  - asimov now runs on two processes - the master who listens for signals to reload, and the worker which actually loads and starts the application
+  - To restart your project, call ```kill -HUP $(cat process.cid)```
+
 ## 0.18.5
 
   - **Released Tuesday May 20th, 2014 @ 10.20am**
