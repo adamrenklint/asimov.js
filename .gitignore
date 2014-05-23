@@ -3,3 +3,4 @@ temp/
 node_modules/
 coverage/
 complexity/
+process.pid

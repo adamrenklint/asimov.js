@@ -8,3 +8,8 @@ content/
 .npmignore
 Makefile
 Procfile
+build/
+temp/
+coverage/
+complexity/
+process.pid

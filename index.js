@@ -5,9 +5,6 @@ var isMaster = process.env.ROLE === 'master';
 var Asimov = isMaster ? require('./lib/Master') : require('./lib/Worker');
 var asimov = global.asimov = module.exports = global.asimov || (new Asimov()).publicInterface();
 
-asimov.init(function (next) {
-  next();
-});
 // Export public classes
 module.exports.Asimov = Asimov;
 module.exports.Base = require('./lib/Base');
