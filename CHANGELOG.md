@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.19.1
+
+  - **Released ?**
+  - Log process uptime when stopping app
+
 ## 0.19.0
 
   - **Released Friday May 23rd, 2014 @ 10.10am**
