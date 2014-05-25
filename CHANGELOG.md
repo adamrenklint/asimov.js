@@ -2,8 +2,8 @@
 
 ## 0.19.1
 
-  - **Released ?**
-  - Log process uptime when stopping app
+  - **Released Sunday May 25th, 2014 @ 7.45pm**
+  - Log worker uptime when stopping app
 
 ## 0.19.0
 
