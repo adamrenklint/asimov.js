@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.19.2
+
+  - **Released Monday May 26th, 2014 @ 10.45pm**
+  - Register shutdown handlers to be called when your app restarts or is forcefully terminated using ```asimov.shutdown(fn)```
+
 ## 0.19.1
 
   - **Released Sunday May 25th, 2014 @ 7.45pm**

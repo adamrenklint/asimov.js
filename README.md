@@ -226,6 +226,29 @@ var production = require('./env/production.json');
 asimov.config(production);
 ```
 
+## Signals and rolling restarts
+
+Out of the box, asimov.js supports zero-downtime updates with "rolling restarts", using POSIX signals.
+
+For your convience, the master process' PID is saved in ```process.pid``` in your project root. This file is created when you start your app, removed when you stop it and can be used to send signals to asimov's master process.
+
+To reload all code and restart your app, send **SIGHUP** to the master process.
+
+```
+$ kill -HUP $(cat process.pid)
+```
+
+## Add shutdown handlers
+
+You can register functions that will be executed when your app is being restarted or forcefully shutdown. These work exactly the same way as initializers, are executed in sequence and you can change or override the chain of side effects by not calling the ```next()``` callback.
+
+```javascript
+asimov.shutdown(function (next) {
+  // do some cleanup here
+  next();
+});
+```
+
 ## Register a public interface
 
 Your app or plugin could need to register methods or variables on ```asimov```'s public interface. Chainable method.
@@ -236,7 +259,7 @@ asimov.register('doNothing', function () {});
 
 For example, this is how asimov-pages exposes its main collection as ```asimov.pages```.
 
-## Verbose logging and hard crashes
+## Verbose logging
 
 To get detailed logging on everything that happens in your app and plugins, set the env var ```VERBOSE``` to true. Or take the shortcut, call ```asimov debug```.
 
