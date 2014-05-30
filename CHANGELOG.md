@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.19.3
+
+  - **Released ?**
+  - Pass on environment variables from master to worker process
+
 ## 0.19.2
 
   - **Released Monday May 26th, 2014 @ 10.45pm**
