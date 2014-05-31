@@ -1,8 +1,13 @@
 # Changelog
 
+## 0.19.4
+
+  - **Released Saturday May 31st, 2014 @ 9.50pm**
+  - Check what version of the CLI is installed globally with ```asimov -v``` or ```asimov version```
+
 ## 0.19.3
 
-  - **Released ?**
+  - **Released Friday May 30th, 2014 @ 7.15pm**
   - Pass on environment variables from master to worker process
 
 ## 0.19.2
