@@ -16,6 +16,8 @@ test('module index', function (test) {
   [
     'Base',
     'Asimov',
+    'Master',
+    'Worker',
     'CommandLineInterface',
     'Sequencer'
   ].forEach(function (name) {
