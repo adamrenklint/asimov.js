@@ -18,6 +18,15 @@ test('lib/Worker', function (test) {
 
   test.spec('start ()', function () {
 
+    test.it('should remove register() from the public interface', function () {
+
+      asimov.start();
+
+      expect(function () {
+        asimov.register('foo', {});
+      }).to.throw('Cannot register public interface after calling asimov.start()');
+    });
+
     test.when('there are no registered initializers', function () {
 
       test.it('should trigger "app:started"', function () {
@@ -32,7 +41,7 @@ test('lib/Worker', function (test) {
 
     test.when('there are registered initializers', function () {
 
-      test.it('should start initializer sequence', function () {
+      test.it('should run initializer sequence', function () {
 
         var spy = sinon.spy();
         asimov.init(function (next) {

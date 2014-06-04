@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.19.5
+
+  - **Released ?**
+  - ```asimov.register()``` can now only be used before calling ```asimov.start()```, i.e. in your modules plugin hook
+
 ## 0.19.4
 
   - **Released Saturday May 31st, 2014 @ 9.50pm**
