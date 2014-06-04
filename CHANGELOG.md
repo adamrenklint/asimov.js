@@ -1,10 +1,5 @@
 # Changelog
 
-## 0.17.8
-
-  - **Released Tuesday April 29th, 2014 @ 4.15pm**
-  - Fixed path to Browserify executable, is always installed in framework directory
-
 ## 0.17.7
 
   - **Released Tuesday April 22nd, 2014 @ 12.30am**
@@ -13,7 +8,7 @@
 ## 0.17.6
 
   - **Released Wednesday April 16th, 2014 @ 10.40pm**
-  - Fixed critical issue with lazy installation not applying the right environment groups [#219](https://github.com/adamrenklint/asimov.js/issues/219)
+  - Fixed critical issue with lazy installation not applying the right environment groups
 
 ## 0.17.5
 

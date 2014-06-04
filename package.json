@@ -1,12 +1,24 @@
 {
   "name": "asimov.js",
-  "version": "0.17.12",
+  "version": "0.17.11",
   "homepage": "http://asimovjs.org",
   "description": "A better way to build awesome websites and apps, with javascript and textfiles",
-  "author": "Adam Renklint <adam@renklint.com> (http://adamrenklint.com)",
+  "author": {
+    "name": "Adam Renklint",
+    "email": "adam@renklint.com",
+    "url": "http://adamrenklint.com"
+  },
   "contributors": [
-    "Marvin Labod <marvin@6wunderkinder.com> (http://www.inlovewithcss.com)",
-    "Timothy Achumba <timothy@achumba.com> (http://awsme.me)"
+    {
+      "name": "Marvin Labod",
+      "email": "marvin@6wunderkinder.com",
+      "url": "http://www.inlovewithcss.com"
+    },
+    {
+      "name": "Timothy Achumba",
+      "email": "timothy@achumba.com",
+      "url": "http://awsme.me"
+    }
   ],
   "bin": {
     "ajs": "./bin/asimov.js"
@@ -65,5 +77,9 @@
     "complexity": {
       "plato": "1.0.1"
     }
-  }
+  },
+  "readme": "asimov.js\n================\n\n[![NPM version](https://badge.fury.io/js/asimov.js.png)](http://badge.fury.io/js/asimov.js) [![Build Status](https://travis-ci.org/adamrenklint/asimov.js.png?branch=master)](https://travis-ci.org/adamrenklint/asimov.js) [![Code Climate](https://codeclimate.com/github/adamrenklint/asimov.js.png)](https://codeclimate.com/github/adamrenklint/asimov.js) [![Dependency Status](https://david-dm.org/adamrenklint/asimov.js.png?theme=shields.io)](https://david-dm.org/adamrenklint/asimov.js)\n\n**A better way to build awesome websites and apps, with javascript and textfiles**\n\n## How to use\n\n### Install globally from NPM\n\n    $ npm install -g asimov.js\n\n### Show usage instructions\n\n    $ ajs help\n\n### Create a new project\n\n    $ ajs create myProject\n\n### Start your project\n\n    $ ajs start\n\n### Run all tests\n\n    $ ajs test\n\nDocumentation is still in progress and will be made available at [asimovjs.org](http://asimovjs.org).\n\n## Develop and contribute\n\n  First, fork this repo. Obviously.\n\n### Install dependencies\n\n    $ npm install\n\n### Run tests\n\n    $ node bin/asimov.js test\n\n### Start the server\n\n    $ node bin/asimov.js start\n\n### Publish to NPM\n\n    $ node bin/asimov.js publish",
+  "readmeFilename": "README.md",
+  "_id": "asimov.js@0.17.11",
+  "_from": "asimov.js@^0.17.10"
 }
