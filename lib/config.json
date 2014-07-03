@@ -6,7 +6,7 @@
     "outputDir": "build",
     "frameworkPages": "{{framework}}/lib/pages",
     "applications": "public/applications",
-    "configs": "config",
+    "configs": "config/env",
     "styles": [
       "site/styles",
       "{{framework}}/site/styles"
