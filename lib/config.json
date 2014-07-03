@@ -2,6 +2,7 @@
   "exportScripts": [
     "core/Base"
   ],
+  "domain_name": "example.com",
   "paths": {
     "outputDir": "build",
     "frameworkPages": "{{framework}}/lib/pages",
