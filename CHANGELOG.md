@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.20.1
+
+  - **Released Friday July 11th, 2014 @ 2pm**
+  - ```asimov.config('state')``` reflects the current lifecycle state of your app, returning the values ```starting```, ```running``` or ```stopping```
+
 ## 0.20.0
 
   - **Released Friday July 11th, 2014 @ 1.30pm**
