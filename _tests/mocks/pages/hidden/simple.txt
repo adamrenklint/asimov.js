@@ -1,9 +1,0 @@
-title: Invisible
----
-text:
-
-I will be in the all pages collection and is normally returned by collection filter methods, but I am not rendered by collection helpers.
-
-collection.visible()
-collection.hidden()
-collection.childrenOf(url, { hidden: true }) to also get hidden pages

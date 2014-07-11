@@ -1,5 +1,0 @@
-title: zoologogogogy
----
-foo:
-
-another child of home

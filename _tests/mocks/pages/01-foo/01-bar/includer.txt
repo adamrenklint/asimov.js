@@ -1,5 +1,0 @@
-title: using a more complex template
----
-foo:
-
-second level child

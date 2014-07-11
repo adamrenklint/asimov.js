@@ -1,5 +1,0 @@
-title: AUF DEUTSCH, BITTE!
----
-foo:
-
-localization built in
