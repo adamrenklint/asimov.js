@@ -1,7 +1,0 @@
-title: home
----
-alias: /winnie-the-poo
----
-foo:
-
-lorem ipsum, yo

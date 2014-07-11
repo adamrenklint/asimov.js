@@ -1,1 +1,0 @@
-document.write('test.simple was loaded');

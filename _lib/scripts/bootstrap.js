@@ -1,1 +1,0 @@
-console.log('normal script loaded the normal way...');
