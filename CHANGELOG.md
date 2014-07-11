@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.19.5
+## 0.20.0
 
-  - **Released ?**
+  - **Released Friday July 11th, 2014 @ 1.30pm**
+  - Removed lots of legacy code, ported to asimov-server and asimov-static
   - ```asimov.register()``` can now only be used before calling ```asimov.start()```, i.e. in your modules plugin hook
 
 ## 0.19.4
