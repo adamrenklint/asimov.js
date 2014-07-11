@@ -28,7 +28,6 @@
     "npm": "~1.1.60"
   },
   "dependencies": {
-    "asimov": "^0.19.0-beta3",
     "asimov-collection": "^0.1.3",
     "asimov-core": "^0.2.3",
     "colors": "^0.6.2",
