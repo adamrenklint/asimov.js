@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0
+
+  - **Released Saturday Septembere 27th, 2014 @ 10.15pm**
+  - Version 1.0 means the API is stable and all future updates will follow semantic versioning
+  - Removed circular dependency to ```0.19.x``` branch
+
 ## 0.20.2
 
   - **Released Friday July 11th, 2014 @ 2.05pm**
