@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+
+  - **Released Friday November 28th, 2014 @ 4.55pm**
+  - Update [asimov-core](http://github.com/adamrenklint/asimov-core) and [asimov-test](http://github.com/adamrenklint/asimov-test) to v0.3.0
+
 ## 1.0.0
 
   - **Released Saturday September 27th, 2014 @ 10.15pm**
