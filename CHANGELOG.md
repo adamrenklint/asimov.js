@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+  - **Released Tuesday December 16, 2015 @ 5.05pm**
+  - Remove unnecessary log when worker receives message
+
 ## 1.1.0
 
   - **Released Friday November 28th, 2014 @ 4.55pm**
