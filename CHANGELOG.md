@@ -1,8 +1,13 @@
 # Changelog
 
+## 1.2.0
+
+  - **Released Wednesday December 17th, 2015 @ 1.55pm**
+  - The master process now listens for events with payload ```{"restart":true}``` and restarts worker process
+
 ## 1.1.1
 
-  - **Released Tuesday December 16, 2015 @ 5.05pm**
+  - **Released Tuesday December 16th, 2015 @ 5.05pm**
   - Remove unnecessary log when worker receives message
 
 ## 1.1.0
