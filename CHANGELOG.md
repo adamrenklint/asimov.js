@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+  - Added proper ```asimov help``` command
+
 ## 1.2.0
 
   - **Released Wednesday December 17th, 2015 @ 1.55pm**
