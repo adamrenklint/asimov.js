@@ -23,10 +23,6 @@
   "bugs": {
     "url": "https://github.com/adamrenklint/asimov.js/issues"
   },
-  "engines": {
-    "node": "~0.10.0",
-    "npm": "~1.1.60"
-  },
   "dependencies": {
     "asimov-core": "^0.3.0",
     "colors": "^1.0.3",
@@ -34,6 +30,6 @@
     "wunderbits.core": "^0.1.7"
   },
   "devDependencies": {
-    "asimov-test": "^0.3.0"
+    "asimov-test": "^0.4.0"
   }
 }
