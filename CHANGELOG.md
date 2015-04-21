@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1
+
+  - **Released Tuesday April 21st, 2015 @ 11.00pm**
+  - Use correct exit code ```(0)``` when receiving ```{"terminate":true}``` payload
+
 ## 1.3.0
 
   - **Released Tuesday April 21st, 2015 @ 8.50pm**
