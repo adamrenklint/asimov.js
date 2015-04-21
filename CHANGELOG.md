@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0
+
+  - **Released Tuesday April 21st, 2015 @ 8.50pm**
+  - The master process listens for events with payload ```{"terminate":true}``` and shuts down master process
+
 ## 1.2.0
 
   - **Released Wednesday December 17th, 2015 @ 1.55pm**
